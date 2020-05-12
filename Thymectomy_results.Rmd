@@ -630,7 +630,8 @@ lessagr <- as_tibble(rbind(f, g, i, j))
 colnames(lessagr) <- head
 
 lessagr[,c(3:8,9:12)] <- sapply(lessagr[,c(3:8,9:12)], as.numeric)
-lessagr$i2 <- ifelse(lessagr$k==1, "na", paste(formatC(round2(lessagr$i2,n=0), format='f',digits=0)))
+lessagr$i2 <- ifelse(lessagr$k==1, "na", 
+                     paste(formatC(round2(lessagr$i2,n=0), format='f',digits=0), "%"))
 lessagr$rr <- paste(formatC(round2(lessagr$eff, n=2), format='f', digits=2), 
                 "(", formatC(round2(lessagr$llci, n=2), format='f', digits=2),
                 "-", formatC(round2(lessagr$ulci, n=2), format='f', digits=2),
@@ -709,7 +710,7 @@ less <- as_tibble(rbind(h, k, l))
 colnames(less) <- head
 
 less[,c(3:8,9:12)] <- sapply(less[,c(3:8,9:12)], as.numeric)
-less$i2 <- ifelse(less$k==1, "na", paste(formatC(round2(less$i2,n=0), format='f',digits=0)))
+less$i2 <- ifelse(less$k==1, "na", paste(formatC(round2(less$i2,n=0), format='f',digits=0),"%"))
 less$rr <- paste(formatC(round2(less$eff, n=2), format='f', digits=2), 
                 "(", formatC(round2(less$llci, n=2), format='f', digits=2),
                 "-", formatC(round2(less$ulci, n=2), format='f', digits=2),
