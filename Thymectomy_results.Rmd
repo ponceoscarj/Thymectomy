@@ -604,7 +604,7 @@ forestplot(agr2,
            ),
            lineheight=unit(0.6,'cm'),
            line.margin = 2,
-           is.summary = c(T, F, T, rep(F, 3), T, rep(F, 3), 
+           is.summary = c(T, T, T, rep(F, 3), T, rep(F, 3), 
                           T, rep(F,3), T, F, T, F),
            align = c("l","c", "c", "c", "l", "l", "l"),
            boxsize = 0.5,
@@ -651,7 +651,7 @@ lessagr <- lessagr %>% add_row(followup="VATS uni vs. STsT", .before = 12)
 lessagr <- lessagr %>% add_row(followup="VATS uni vs. ETsT", .before = 16)
 
 
-lessagr2 <- cbind(c("Treatment vs. Control and", "Follow-up",lessagr$followup),
+lessagr2 <- cbind(c("Treatment vs. Control", "Follow-up",lessagr$followup),
               c("N of studies", NA, lessagr$k),
               c("Treatment", "events/n", lessagr$rate1),
               c("Control", "events/n", lessagr$rate2),
@@ -729,7 +729,7 @@ less <- less %>% add_row(followup="VATS left vs. VATS right", .before = 6)
 less <- less %>% add_row(followup="VATS uni robotic vs. VATS uni", .before = 9)
 
 
-less2 <- cbind(c("Treatment vs. Control and", "Follow-up",less$followup),
+less2 <- cbind(c("Treatment vs. Control", "Follow-up",less$followup),
               c("N of studies", NA, less$k),
               c("Treatment", "events/n", less$rate1),
               c("Control", "events/n", less$rate2),
@@ -797,10 +797,10 @@ tfma40 <- cbind(
                            paste("< 0.001"),
                            paste("= ", formatC(ma40$QEp, digits=3, format="f")))), 
             ")")),
-  c( "VATS uni", "(events/n)", paste(prema40$events1,"/",prema40$n1), 
+  c( "VATS uni", "events/n", paste(prema40$events1,"/",prema40$n1), 
      paste(sum(prema40$events1, na.rm=TRUE),"/", sum(prema40$n1, na.rm=TRUE))),
   
-  c( "ETsT", "(events/n)", paste(prema40$events2,"/",prema40$n2), 
+  c( "ETsT", "events/n", paste(prema40$events2,"/",prema40$n2), 
      paste(sum(prema40$events2, na.rm=TRUE),"/",sum(prema40$n2, na.rm=TRUE))),
   
   c( "Relative Risk (95% CI)", NA,  prema40$rr, 
@@ -863,10 +863,10 @@ tfma41 <- cbind(
                            paste("< 0.001"),
                            paste("= ", formatC(ma41$QEp, digits=3, format="f")))), 
             ")")),
-  c( "VATS uni", "(events/n)", paste(prema41$events1,"/",prema41$n1), 
+  c( "VATS uni", "events/n", paste(prema41$events1,"/",prema41$n1), 
      paste(sum(prema41$events1, na.rm=TRUE),"/", sum(prema41$n1, na.rm=TRUE))),
   
-  c( "ETsT", "(events/n)", paste(prema41$events2,"/",prema41$n2), 
+  c( "ETsT", "events/n", paste(prema41$events2,"/",prema41$n2), 
      paste(sum(prema41$events2, na.rm=TRUE),"/",sum(prema41$n2, na.rm=TRUE))),
   
   c( "Relative Risk (95% CI)", NA,  prema41$rr, 
@@ -930,10 +930,10 @@ tfma42 <- cbind(
                            paste("< 0.001"),
                            paste("= ", formatC(ma42$QEp, digits=3, format="f")))), 
             ")")),
-  c( "VATS uni", "(events/n)", paste(prema42$events1,"/",prema42$n1), 
+  c( "VATS uni", "events/n", paste(prema42$events1,"/",prema42$n1), 
      paste(sum(prema42$events1, na.rm=TRUE),"/", sum(prema42$n1, na.rm=TRUE))),
   
-  c( "ETsT", "(events/n)", paste(prema42$events2,"/",prema42$n2), 
+  c( "ETsT", "events/n", paste(prema42$events2,"/",prema42$n2), 
      paste(sum(prema42$events2, na.rm=TRUE),"/",sum(prema42$n2, na.rm=TRUE))),
   
   c( "Relative Risk (95% CI)", NA,  prema42$rr, 
@@ -996,10 +996,10 @@ tfma43 <- cbind(
                            paste("< 0.001"),
                            paste("= ", formatC(ma43$QEp, digits=3, format="f")))), 
             ")")),
-  c( "VATS uni", "(events/n)", paste(prema43$events1,"/",prema43$n1), 
+  c( "VATS uni", "events/n", paste(prema43$events1,"/",prema43$n1), 
      paste(sum(prema43$events1, na.rm=TRUE),"/", sum(prema43$n1, na.rm=TRUE))),
   
-  c( "ETsT", "(events/n)", paste(prema43$events2,"/",prema43$n2), 
+  c( "ETsT", "events/n", paste(prema43$events2,"/",prema43$n2), 
      paste(sum(prema43$events2, na.rm=TRUE),"/",sum(prema43$n2, na.rm=TRUE))),
   
   c( "Relative Risk (95% CI)", NA,  prema43$rr, 
@@ -1061,10 +1061,10 @@ tfma44 <- cbind(
                            paste("< 0.001"),
                            paste("= ", formatC(ma44$QEp, digits=3, format="f")))), 
             ")")),
-  c( "VATS uni", "(events/n)", paste(prema44$events1,"/",prema44$n1), 
+  c( "VATS uni", "events/n", paste(prema44$events1,"/",prema44$n1), 
      paste(sum(prema44$events1, na.rm=TRUE),"/", sum(prema44$n1, na.rm=TRUE))),
   
-  c( "ETsT", "(events/n)", paste(prema44$events2,"/",prema44$n2), 
+  c( "ETsT", "events/n", paste(prema44$events2,"/",prema44$n2), 
      paste(sum(prema44$events2, na.rm=TRUE),"/",sum(prema44$n2, na.rm=TRUE))),
   
   c( "Relative Risk (95% CI)", NA,  prema44$rr, 
@@ -1127,10 +1127,10 @@ tfma45 <- cbind(
                            paste("< 0.001"),
                            paste("= ", formatC(ma45$QEp, digits=3, format="f")))), 
             ")")),
-  c( "VATS uni", "(events/n)", paste(prema45$events1,"/",prema45$n1), 
+  c( "VATS uni", "events/n", paste(prema45$events1,"/",prema45$n1), 
      paste(sum(prema45$events1, na.rm=TRUE),"/", sum(prema45$n1, na.rm=TRUE))),
   
-  c( "ETsT", "(events/n)", paste(prema45$events2,"/",prema45$n2), 
+  c( "ETsT", "events/n", paste(prema45$events2,"/",prema45$n2), 
      paste(sum(prema45$events2, na.rm=TRUE),"/",sum(prema45$n2, na.rm=TRUE))),
   
   c( "Relative Risk (95% CI)", NA,  prema45$rr, 
