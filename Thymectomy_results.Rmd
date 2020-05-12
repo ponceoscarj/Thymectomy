@@ -574,7 +574,7 @@ agr <- agr %>% add_row(followup="ETsT vs. BTcT", .before = 13)
 agr <- agr %>% add_row(followup="IMT vs. ETsT", .before = 15)
 
 
-agr2 <- cbind(c("Treatment vs. Control and", "Follow-up",agr$followup),
+agr2 <- cbind(c("Treatment vs. Control", "   Follow-up",agr$followup),
               c("N of studies", NA, agr$k),
               c("Treatment", "events/n", agr$rate1),
               c("Control", "events/n", agr$rate2),
