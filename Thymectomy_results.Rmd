@@ -548,7 +548,7 @@ round2 = function(x, n=0) {scale<-10^n; sign(x)*trunc(abs(x)*scale+0.5)/scale}
 ## Summary of forest plots
 
 
-**Figure 1 - Summary of forest plots of the risk of achieving Complete Stable Remission in patients with myasthenia gravis who underwent an agressive surgery  vs.  those who underwent another aggresive surgery at different follow-ups**
+**Figure 1** - Summary of forest plots of the risk of achieving Complete Stable Remission in patients with myasthenia gravis who underwent an **agressive surgery**  vs.  those who underwent another **aggresive surgery** at different follow-ups
 ```{r,  fig.height=6, fig.width=11, echo=FALSE, message=FALSE, warning=FALSE}
 agr <- as_tibble(rbind(a, b, c, d, e))
 colnames(agr) <- head
@@ -624,7 +624,7 @@ forestplot(agr2,
 
 ```
 
-**Figure 2 - Summary of forest plots of the risk of achieving Complete Stable Remission in patients with myasthenia gravis who underwent a less-aggresive surgery  vs.  those who underwent an aggresive surgery at different follow-ups**
+**Figure 2** - Summary of forest plots of the risk of achieving Complete Stable Remission in patients with myasthenia gravis who underwent a **less-aggresive surgery  vs.**  those who underwent an **aggresive surgery** at different follow-ups**
 ```{r,  echo=FALSE, fig.height=6.5, fig.width=11, echo=FALSE, message=FALSE, warning=FALSE}
 lessagr <- as_tibble(rbind(f, g, i, j))
 colnames(lessagr) <- head
@@ -703,7 +703,7 @@ forestplot(lessagr2,
 
 
 
-**Figure 3 - Summary of forest plots of the risk of achieving Complete Stable Remission in patients with myasthenia gravis who underwent a less-aggresive surgery  vs.  those who underwent another less-aggressive  surgery at different follow-ups**
+**Figure 3** - Summary of forest plots of the risk of achieving Complete Stable Remission in patients with myasthenia gravis who underwent a **less-aggresive surgery  vs.**  those who underwent another **less-aggressive  surgery** at different follow-ups**
 ```{r,  fig.height=5, fig.width=11, echo=FALSE, message=FALSE, warning=FALSE}
 less <- as_tibble(rbind(h, k, l))
 colnames(less) <- head
@@ -782,7 +782,7 @@ forestplot(less2,
 
 ## Individual forest plots
 
-**Suppl Figure 1 - The risk of achieving Complete Stable Remission in patients with myasthenia gravis who underwent VATS unilateral  vs.  those who underwent ETsT at 3 years of follow-up**
+**Suppl Figure 1** - The risk of achieving Complete Stable Remission in patients with myasthenia gravis who underwent **VATS unilateral**  vs.  those who underwent **ETsT** at **3 years of follow-up**
 ```{r forestplotma40, echo=FALSE, fig.height=3, fig.width=11, message=FALSE, warning=FALSE}
 boxsize <- (0.01666667*(weights(ma40)))
 
@@ -796,10 +796,10 @@ tfma40 <- cbind(
                            paste("< 0.001"),
                            paste("= ", formatC(ma40$QEp, digits=3, format="f")))), 
             ")")),
-  c( "ETsT", "(events/n)", paste(prema40$events1,"/",prema40$n1), 
+  c( "VATS uni", "(events/n)", paste(prema40$events1,"/",prema40$n1), 
      paste(sum(prema40$events1, na.rm=TRUE),"/", sum(prema40$n1, na.rm=TRUE))),
   
-  c( "STsT", "(events/n)", paste(prema40$events2,"/",prema40$n2), 
+  c( "ETsT", "(events/n)", paste(prema40$events2,"/",prema40$n2), 
      paste(sum(prema40$events2, na.rm=TRUE),"/",sum(prema40$n2, na.rm=TRUE))),
   
   c( "Relative Risk (95% CI)", NA,  prema40$rr, 
@@ -848,7 +848,7 @@ forestplot(tfma40,
 ```
 
 
-**Suppl Figure 2 - The risk of achieving Complete Stable Remission in patients with myasthenia gravis who underwent VATS unilateral  vs.  those who underwent ETsT at 4 years of follow-up**
+**Suppl Figure 2** - The risk of achieving Complete Stable Remission in patients with myasthenia gravis who underwent **VATS unilateral  vs.**  those who underwent **ETsT** at **4 years of follow-up**
 ```{r forestplotma41, echo=FALSE, fig.height=3, fig.width=11}
 boxsize <- (0.01666667*(weights(ma41)))
 
@@ -862,10 +862,10 @@ tfma41 <- cbind(
                            paste("< 0.001"),
                            paste("= ", formatC(ma41$QEp, digits=3, format="f")))), 
             ")")),
-  c( "ETsT", "(events/n)", paste(prema41$events1,"/",prema41$n1), 
+  c( "VATS uni", "(events/n)", paste(prema41$events1,"/",prema41$n1), 
      paste(sum(prema41$events1, na.rm=TRUE),"/", sum(prema41$n1, na.rm=TRUE))),
   
-  c( "STsT", "(events/n)", paste(prema41$events2,"/",prema41$n2), 
+  c( "ETsT", "(events/n)", paste(prema41$events2,"/",prema41$n2), 
      paste(sum(prema41$events2, na.rm=TRUE),"/",sum(prema41$n2, na.rm=TRUE))),
   
   c( "Relative Risk (95% CI)", NA,  prema41$rr, 
@@ -915,7 +915,7 @@ forestplot(tfma41,
 ```
 
 
-**Suppl Figure 3 - The risk of achieving Complete Stable Remission in patients with myasthenia gravis who underwent VATS unilateral  vs.  those who underwent ETsT at 5 years of follow-up**
+**Suppl Figure 3** - The risk of achieving Complete Stable Remission in patients with myasthenia gravis who underwent **VATS unilateral  vs.**  those who underwent **ETsT** at **5 years of follow-up**
 ```{r forestplotma42, echo=FALSE, fig.height=3, fig.width=11}
 boxsize <- (0.0125*(weights(ma42)))
 
@@ -929,10 +929,10 @@ tfma42 <- cbind(
                            paste("< 0.001"),
                            paste("= ", formatC(ma42$QEp, digits=3, format="f")))), 
             ")")),
-  c( "ETsT", "(events/n)", paste(prema42$events1,"/",prema42$n1), 
+  c( "VATS uni", "(events/n)", paste(prema42$events1,"/",prema42$n1), 
      paste(sum(prema42$events1, na.rm=TRUE),"/", sum(prema42$n1, na.rm=TRUE))),
   
-  c( "STsT", "(events/n)", paste(prema42$events2,"/",prema42$n2), 
+  c( "ETsT", "(events/n)", paste(prema42$events2,"/",prema42$n2), 
      paste(sum(prema42$events2, na.rm=TRUE),"/",sum(prema42$n2, na.rm=TRUE))),
   
   c( "Relative Risk (95% CI)", NA,  prema42$rr, 
@@ -981,7 +981,7 @@ forestplot(tfma42,
 ```
 
 
-**Suppl Figure 4 - The risk of achieving Complete Stable Remission in patients with myasthenia gravis who underwent VATS unilateral  vs.  those who underwent ETsT at 6 years of follow-up**
+**Suppl Figure 4** - The risk of achieving Complete Stable Remission in patients with myasthenia gravis who underwent **VATS unilateral**  vs.  those who underwent **ETsT** at **6 years of follow-up**
 ```{r forestplotma43, echo=FALSE, fig.height=3, fig.width=11}
 boxsize <- (0.0125*(weights(ma43)))
 
@@ -995,10 +995,10 @@ tfma43 <- cbind(
                            paste("< 0.001"),
                            paste("= ", formatC(ma43$QEp, digits=3, format="f")))), 
             ")")),
-  c( "ETsT", "(events/n)", paste(prema43$events1,"/",prema43$n1), 
+  c( "VATS uni", "(events/n)", paste(prema43$events1,"/",prema43$n1), 
      paste(sum(prema43$events1, na.rm=TRUE),"/", sum(prema43$n1, na.rm=TRUE))),
   
-  c( "STsT", "(events/n)", paste(prema43$events2,"/",prema43$n2), 
+  c( "ETsT", "(events/n)", paste(prema43$events2,"/",prema43$n2), 
      paste(sum(prema43$events2, na.rm=TRUE),"/",sum(prema43$n2, na.rm=TRUE))),
   
   c( "Relative Risk (95% CI)", NA,  prema43$rr, 
@@ -1046,7 +1046,7 @@ forestplot(tfma43,
                         axes="grey20", summary="black", zero="black"))
 ```
 
-**Suppl Figure 5 - The risk of achieving Complete Stable Remission in patients with myasthenia gravis who underwent VATS unilateral  vs.  those who underwent ETsT at 7 years of follow-up**
+**Suppl Figure 5** - The risk of achieving Complete Stable Remission in patients with myasthenia gravis who underwent **VATS unilateral  vs.**  those who underwent **ETsT** at **7 years of follow-up**
 ```{r forestplotma44, echo=FALSE, fig.height=3, fig.width=11}
 boxsize <- (0.0125*(weights(ma44)))
 
@@ -1060,10 +1060,10 @@ tfma44 <- cbind(
                            paste("< 0.001"),
                            paste("= ", formatC(ma44$QEp, digits=3, format="f")))), 
             ")")),
-  c( "ETsT", "(events/n)", paste(prema44$events1,"/",prema44$n1), 
+  c( "VATS uni", "(events/n)", paste(prema44$events1,"/",prema44$n1), 
      paste(sum(prema44$events1, na.rm=TRUE),"/", sum(prema44$n1, na.rm=TRUE))),
   
-  c( "STsT", "(events/n)", paste(prema44$events2,"/",prema44$n2), 
+  c( "ETsT", "(events/n)", paste(prema44$events2,"/",prema44$n2), 
      paste(sum(prema44$events2, na.rm=TRUE),"/",sum(prema44$n2, na.rm=TRUE))),
   
   c( "Relative Risk (95% CI)", NA,  prema44$rr, 
@@ -1112,7 +1112,7 @@ forestplot(tfma44,
 ```
 
 
-**Suppl Figure 6 - The risk of achieving Complete Stable Remission in patients with myasthenia gravis who underwent VATS unilateral  vs.  those who underwent ETsT at 8 years of follow-up**
+**Suppl Figure 6** - The risk of achieving Complete Stable Remission in patients with myasthenia gravis who underwent **VATS unilateral  vs.**  those who underwent **ETsT** at **8 years of follow-up**
 ```{r forestplotma45, echo=FALSE, fig.height=3, fig.width=11}
 boxsize <- (0.0125*(weights(ma45)))
 
@@ -1126,10 +1126,10 @@ tfma45 <- cbind(
                            paste("< 0.001"),
                            paste("= ", formatC(ma45$QEp, digits=3, format="f")))), 
             ")")),
-  c( "ETsT", "(events/n)", paste(prema45$events1,"/",prema45$n1), 
+  c( "VATS uni", "(events/n)", paste(prema45$events1,"/",prema45$n1), 
      paste(sum(prema45$events1, na.rm=TRUE),"/", sum(prema45$n1, na.rm=TRUE))),
   
-  c( "STsT", "(events/n)", paste(prema45$events2,"/",prema45$n2), 
+  c( "ETsT", "(events/n)", paste(prema45$events2,"/",prema45$n2), 
      paste(sum(prema45$events2, na.rm=TRUE),"/",sum(prema45$n2, na.rm=TRUE))),
   
   c( "Relative Risk (95% CI)", NA,  prema45$rr, 

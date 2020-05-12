@@ -293,52 +293,52 @@ expma50 <- predict(ma50, transf = exp, digits=2)
 
 ## Summary of forest plots
 
-**Figure 1 - Summary of forest plots of the risk of achieving Complete
+**Figure 1** - Summary of forest plots of the risk of achieving Complete
 Stable Remission in patients with myasthenia gravis who underwent an
-agressive surgery vs. those who underwent another aggresive surgery at
-different follow-ups**
+**agressive surgery** vs. those who underwent another **aggresive
+surgery** at different follow-ups
 ![](Thymectomy_results_files/figure-gfm/unnamed-chunk-1-1.svg)<!-- -->
 
-**Figure 2 - Summary of forest plots of the risk of achieving Complete
+**Figure 2** - Summary of forest plots of the risk of achieving Complete
 Stable Remission in patients with myasthenia gravis who underwent a
-less-aggresive surgery vs. those who underwent an aggresive surgery at
-different follow-ups**
+**less-aggresive surgery vs.** those who underwent an **aggresive
+surgery** at different follow-ups\*\*
 ![](Thymectomy_results_files/figure-gfm/unnamed-chunk-2-1.svg)<!-- -->
 
-**Figure 3 - Summary of forest plots of the risk of achieving Complete
+**Figure 3** - Summary of forest plots of the risk of achieving Complete
 Stable Remission in patients with myasthenia gravis who underwent a
-less-aggresive surgery vs. those who underwent another less-aggressive
-surgery at different follow-ups**
+**less-aggresive surgery vs.** those who underwent another
+**less-aggressive surgery** at different follow-ups\*\*
 ![](Thymectomy_results_files/figure-gfm/unnamed-chunk-3-1.svg)<!-- -->
 
 ## Individual forest plots
 
-**Suppl Figure 1 - The risk of achieving Complete Stable Remission in
-patients with myasthenia gravis who underwent VATS unilateral vs. those
-who underwent ETsT at 3 years of follow-up**
+**Suppl Figure 1** - The risk of achieving Complete Stable Remission in
+patients with myasthenia gravis who underwent **VATS unilateral**
+vs. those who underwent **ETsT** at **3 years of follow-up**
 ![](Thymectomy_results_files/figure-gfm/forestplotma40-1.svg)<!-- -->
 
-**Suppl Figure 2 - The risk of achieving Complete Stable Remission in
-patients with myasthenia gravis who underwent VATS unilateral vs. those
-who underwent ETsT at 4 years of follow-up**
+**Suppl Figure 2** - The risk of achieving Complete Stable Remission in
+patients with myasthenia gravis who underwent **VATS unilateral vs.**
+those who underwent **ETsT** at **4 years of follow-up**
 ![](Thymectomy_results_files/figure-gfm/forestplotma41-1.svg)<!-- -->
 
-**Suppl Figure 3 - The risk of achieving Complete Stable Remission in
-patients with myasthenia gravis who underwent VATS unilateral vs. those
-who underwent ETsT at 5 years of follow-up**
+**Suppl Figure 3** - The risk of achieving Complete Stable Remission in
+patients with myasthenia gravis who underwent **VATS unilateral vs.**
+those who underwent **ETsT** at **5 years of follow-up**
 ![](Thymectomy_results_files/figure-gfm/forestplotma42-1.svg)<!-- -->
 
-**Suppl Figure 4 - The risk of achieving Complete Stable Remission in
-patients with myasthenia gravis who underwent VATS unilateral vs. those
-who underwent ETsT at 6 years of follow-up**
+**Suppl Figure 4** - The risk of achieving Complete Stable Remission in
+patients with myasthenia gravis who underwent **VATS unilateral**
+vs. those who underwent **ETsT** at **6 years of follow-up**
 ![](Thymectomy_results_files/figure-gfm/forestplotma43-1.svg)<!-- -->
 
-**Suppl Figure 5 - The risk of achieving Complete Stable Remission in
-patients with myasthenia gravis who underwent VATS unilateral vs. those
-who underwent ETsT at 7 years of follow-up**
+**Suppl Figure 5** - The risk of achieving Complete Stable Remission in
+patients with myasthenia gravis who underwent **VATS unilateral vs.**
+those who underwent **ETsT** at **7 years of follow-up**
 ![](Thymectomy_results_files/figure-gfm/forestplotma44-1.svg)<!-- -->
 
-**Suppl Figure 6 - The risk of achieving Complete Stable Remission in
-patients with myasthenia gravis who underwent VATS unilateral vs. those
-who underwent ETsT at 8 years of follow-up**
+**Suppl Figure 6** - The risk of achieving Complete Stable Remission in
+patients with myasthenia gravis who underwent **VATS unilateral vs.**
+those who underwent **ETsT** at **8 years of follow-up**
 ![](Thymectomy_results_files/figure-gfm/forestplotma45-1.svg)<!-- -->
