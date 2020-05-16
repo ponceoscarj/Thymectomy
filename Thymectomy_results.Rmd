@@ -13,7 +13,6 @@ knitr::opts_chunk$set(dev="svg")
 library("metafor")
 library("tidyverse")
 library("rmarkdown")
-library("grid")
 library("magrittr")
 library("forestplot")
 
@@ -55,6 +54,16 @@ pao$int[pao$int == " VATET (bilateral)"] <- 'VATET bilateral'
 pao$int[pao$int == " VATET (unilateral)"] <- 'VATET unilateral'
 pao$int[pao$int == " VATS unilateral with robotic"] <- 'VATS unilateral with robotic'
 
+pao$int[pao$int == "BTcT"] <- "T1a"
+pao$int[pao$int == "VATS unilateral"] <- "T2a"
+pao$int[pao$int == "VATS left"] <- "T2a left"
+pao$int[pao$int == "VATET unilateral"] <- "T2b uni"
+pao$int[pao$int == "VATET bilateral"] <- "T2b bi"
+pao$int[pao$int == "VATS unilateral with robotic"] <- "T2c"
+pao$int[pao$int == "ETsT"] <- "T3b"
+pao$int[pao$int == "TcSxVT"] <- "T5a"
+pao$int[pao$int == "IMT"] <- "T5d"
+
 
 pao$comp[pao$comp %in% c("Extended median sternotomy", 
                          "Extended Transternal thymectomy")] <- "ETsT"
@@ -68,16 +77,33 @@ pao$comp[pao$comp == " VATET (bilateral)"] <- 'VATET bilateral'
 pao$comp[pao$comp == " VATS unilateral with robotic"] <- 'VATS unilateral with robotic'
 pao$comp[pao$comp == "Anterolateral thoracotomy"] <- 'STsT'
 
+
+pao$comp[pao$comp == "BTcT"] <- "T1a"
+pao$comp[pao$comp == "VATS unilateral"] <- "T2a"
+pao$comp[pao$comp == "VATS right"] <- "T2a right"
+pao$comp[pao$comp == "VATET bilateral"] <- "T2b bi"
+pao$comp[pao$comp == "VATS unilateral with robotic"] <- "T2c"
+pao$comp[pao$comp == "STsT"] <- "T3a"
+pao$comp[pao$comp == "ETsT"] <- "T3b"
+pao$comp[pao$comp == "TcSxVT"] <- "T5a"
+
+
+
 #Changin direction of comparison for better interpretation
 pao[63,] <- pao[63,c(1, 3, 2, 4:7, 9, 8, 11, 10,12:16)]
-pao[64,] <- pao[64,c(1, 3, 2, 4:7, 9, 8, 11, 10,12:16)]
+pao[c(1:13, 20:39, 50, 51, 54:56, 58, 60, 62, 64),] <- pao[c(1:13, 20:39, 50, 51, 54:56, 58, 60, 62, 64), c(1, 3, 2, 4:7, 9, 8, 11, 10,12:16)]
+pao[c(42, 45, 48, 57, 59, 61),] <- pao[c(42, 45, 48, 57, 59, 61), c(1, 3, 2, 4:7, 9, 8, 11, 10,12:16)]
+
+
 
 pao$comparison <- paste(pao$int, " vs. ", pao$comp)
+
 
 #round fucntion
 round2 = function(x, n=0) {scale<-10^n; sign(x)*trunc(abs(x)*scale+0.5)/scale}
 pao$events1 <- round2(pao$events1, 0)
 pao$events2 <- round2(pao$events2, 0)
+
 
 #creating author name based on refID
 pao$author <- 
@@ -98,6 +124,8 @@ pao$author <-
   ifelse(pao$refid==2416, paste("INCMNSZ, 2019"), NA )))))))))))))))
 
 pao <- pao[!(pao$refid %in% 592),]
+
+
 ```
 
 
@@ -110,272 +138,272 @@ pao <- pao[!(pao$refid %in% 592),]
 <p>
 
 ```{r analysis_overall_summary}
-prema1 <- escalc(measure="RR",ai=events1, ci=events2, n1i=n1, n2i=n2,
-                  subset=(followup==3 & comparison=="ETsT  vs.  STsT"), data=pao)
-prema1 <- summary(prema1)
-prema1$rr <- paste(formatC((exp(prema1$yi)), format='f', digits=2), " ",
-                   "(", formatC((exp(prema1$ci.lb)), format='f', digits=2), "-",
-                    formatC((exp(prema1$ci.ub)), format='f', digits=2),")")
-ma1 <- rma(measure="RR", yi,vi, data=prema1, method="REML")
-expma1 <- predict(ma1, transf = transf.exp.int)
-
-
-prema2 <- escalc(measure="RR",ai=events1, ci=events2, n1i=n1, n2i=n2,
-                  subset=(followup==4 & comparison=="ETsT  vs.  STsT"), data=pao)
-prema2 <- summary(prema2)
-prema2$rr <- paste(formatC((exp(prema2$yi)), format='f', digits=2), " ",
-                   "(", formatC((exp(prema2$ci.lb)), format='f', digits=2), "-",
-                    formatC((exp(prema2$ci.ub)), format='f', digits=2),")")
-ma2 <- rma(measure="RR", yi,vi, data=prema2, method="REML")
-expma2 <- predict(ma2, transf = transf.exp.int)
-
 
 ma1 <- rma(measure="RR", ai=events1, ci=events2, n1i=n1, n2i=n2, 
-           data=pao, subset=(followup==3 & comparison=="ETsT  vs.  STsT"), 
+           data=pao, subset=(followup==3 & comparison=="T3b  vs.  T3a"), 
            method="REML")
 expma1 <- predict(ma1, transf = exp, digits=2)
 
+
 ma2 <- rma(measure="RR", ai=events1, ci=events2, n1i=n1, n2i=n2, 
-           data=pao, subset=(followup==4 & comparison=="ETsT  vs.  STsT"), 
+           data=pao, subset=(followup==4 & comparison=="T3b  vs.  T3a"), 
            method="REML")
 expma2<- predict(ma2, transf = exp, digits=2)
 
+
 ma3 <- rma(measure="RR", ai=events1, ci=events2, n1i=n1, n2i=n2, 
-           data=pao, subset=(followup==5 & comparison=="ETsT  vs.  STsT"),
+           data=pao, subset=(followup==5 & comparison=="T3b  vs.  T3a"),
            method="REML")
 expma3 <- predict(ma3, transf = exp, digits=2)
 
 
 ma4 <- rma(measure="RR", ai=events1, ci=events2, n1i=n1, n2i=n2, 
-           data=pao, subset=(followup==3 & comparison=="TcSxVT  vs.  STsT"),
-           method="REML")
+            data=pao, subset=(followup==10 & comparison=="T3b  vs.  T1a"),
+            method="REML")
 expma4 <- predict(ma4, transf = exp, digits=2)
 
+
 ma5 <- rma(measure="RR", ai=events1, ci=events2, n1i=n1, n2i=n2, 
-           data=pao, subset=(followup==4 & comparison=="TcSxVT  vs.  STsT"), 
+           data=pao, subset=(followup==3 & comparison=="T3a  vs.  T2a"), 
            method="REML")
 expma5 <- predict(ma5, transf = exp, digits=2)
 
+
 ma6 <- rma(measure="RR", ai=events1, ci=events2, n1i=n1, n2i=n2, 
-           data=pao, subset=(followup==5 & comparison=="TcSxVT  vs.  STsT"), 
+           data=pao, subset=(followup==4 & comparison=="T3a  vs.  T2a"), 
            method="REML")
-expma6 <-predict(ma6, transf = exp, digits=2)
+expma6<- predict(ma6, transf = exp, digits=2)
 
 
 ma7 <- rma(measure="RR", ai=events1, ci=events2, n1i=n1, n2i=n2, 
-           data=pao, subset=(followup==3 & comparison=="ETsT  vs.  TcSxVT"),
+           data=pao, subset=(followup==5 & comparison=="T3a  vs.  T2a"),
            method="REML")
 expma7 <- predict(ma7, transf = exp, digits=2)
 
-ma8 <- rma(measure="RR", ai=events1, ci=events2, n1i=n1, n2i=n2, 
-           data=pao, subset=(followup==4 & comparison=="ETsT  vs.  TcSxVT"), 
-           method="REML")
-expma8 <- predict(ma8, transf = exp, digits=2)
 
-ma9 <- rma(measure="RR", ai=events1, ci=events2, n1i=n1, n2i=n2, 
-           data=pao, subset=(followup==5 & comparison=="ETsT  vs.  TcSxVT"), 
-           method="REML")
-expma9 <- predict(ma9, transf = exp, digits=2)
-
-
-ma10 <- rma(measure="RR", ai=events1, ci=events2, n1i=n1, n2i=n2, 
-            data=pao, subset=(followup==10 & comparison=="ETsT  vs.  BTcT"),
-            method="REML")
-expma10 <- predict(ma10, transf = exp, digits=2)
+prema8 <- escalc(measure="RR",ai=events1, ci=events2, n1i=n1, n2i=n2,
+                  subset=(followup==3 & 
+                            comparison=="T3b  vs.  T2a"), data=pao)
+prema8 <- summary(prema8)
+prema8$rr <- paste(formatC((exp(prema8$yi)), format='f', digits=2), " ",
+                    "(", formatC((exp(prema8$ci.lb)), format='f', digits=2), "-",
+                    formatC((exp(prema8$ci.ub)), format='f', digits=2),")")
+ma8 <- rma(measure="RR", yi,vi, data=prema8, method="REML")
+expma8 <- predict(ma8, transf = transf.exp.int)
 
 
-ma11 <- rma(measure="RR", ai=events1, ci=events2, n1i=n1, n2i=n2, 
-            data=pao, subset=(followup==5 & comparison=="IMT  vs.  ETsT"), 
-            method="REML")
-expma11 <- predict(ma11, transf = exp, digits=2)
+prema9 <- escalc(measure="RR",ai=events1, ci=events2, n1i=n1, n2i=n2,
+                  subset=(followup==4 & 
+                            comparison=="T3b  vs.  T2a"), data=pao)
+prema9 <- summary(prema9)
+prema9$rr <- paste(formatC((exp(prema9$yi)), format='f', digits=2), " ",
+                    "(", formatC((exp(prema9$ci.lb)), format='f', digits=2), "-",
+                    formatC((exp(prema9$ci.ub)), format='f', digits=2),")")
+ma9 <- rma(measure="RR", yi,vi, data=prema9, method="REML")
+expma9 <- predict(ma9, transf = transf.exp.int)
 
 
-ma12 <- rma(measure="RR", ai=events1, ci=events2, n1i=n1, n2i=n2, 
-            data=pao, 
-            subset=(followup==3 & comparison=="VATET bilateral  vs.  ETsT"), 
-            method="REML")
-expma12 <- predict(ma12, transf = exp, digits=2)
+prema10 <- escalc(measure="RR",ai=events1, ci=events2, n1i=n1, n2i=n2,
+                  subset=(followup==5 & 
+                            comparison=="T3b  vs.  T2a"), data=pao)
+prema10 <- summary(prema10)
+prema10$rr <- paste(formatC((exp(prema10$yi)), format='f', digits=2), " ",
+                    "(", formatC((exp(prema10$ci.lb)), format='f', digits=2), "-",
+                    formatC((exp(prema10$ci.ub)), format='f', digits=2),")")
+ma10 <- rma(measure="RR", yi,vi, data=prema10, method="REML")
+expma10 <- predict(ma10, transf = transf.exp.int)
 
-ma13 <- rma(measure="RR", ai=events1, ci=events2, n1i=n1, n2i=n2, 
-            data=pao, 
-            subset=(followup==4 & comparison=="VATET bilateral  vs.  ETsT"), 
-            method="REML")
-expma13 <- predict(ma13, transf = exp, digits=2)
+
+prema11 <- escalc(measure="RR",ai=events1, ci=events2, n1i=n1, n2i=n2,
+                  subset=(followup==6 & 
+                            comparison=="T3b  vs.  T2a"), data=pao)
+prema11 <- summary(prema11)
+prema11$rr <- paste(formatC((exp(prema11$yi)), format='f', digits=2), " ",
+                    "(", formatC((exp(prema11$ci.lb)), format='f', digits=2), "-",
+                    formatC((exp(prema11$ci.ub)), format='f', digits=2),")")
+ma11 <- rma(measure="RR", yi,vi, data=prema11, method="REML")
+expma11 <- predict(ma11, transf = transf.exp.int)
+
+
+prema12 <- escalc(measure="RR",ai=events1, ci=events2, n1i=n1, n2i=n2,
+                  subset=(followup==7 & 
+                            comparison=="T3b  vs.  T2a"), data=pao)
+prema12 <- summary(prema12)
+prema12$rr <- paste(formatC((exp(prema12$yi)), format='f', digits=2), " ",
+                    "(", formatC((exp(prema12$ci.lb)), format='f', digits=2), "-",
+                    formatC((exp(prema12$ci.ub)), format='f', digits=2),")")
+ma12 <- rma(measure="RR", yi,vi, data=prema12, method="REML")
+expma12 <- predict(ma12, transf = transf.exp.int)
+
+
+prema13 <- escalc(measure="RR",ai=events1, ci=events2, n1i=n1, n2i=n2,
+                  subset=(followup==8 & 
+                            comparison=="T3b  vs.  T2a"), data=pao)
+prema13 <- summary(prema13)
+prema13$rr <- paste(formatC((exp(prema13$yi)), format='f', digits=2), " ",
+                    "(", formatC((exp(prema13$ci.lb)), format='f', digits=2), "-",
+                    formatC((exp(prema13$ci.ub)), format='f', digits=2),")")
+ma13 <- rma(measure="RR", yi,vi, data=prema13, method="REML")
+expma13 <- predict(ma13, transf = transf.exp.int)
+
 
 ma14 <- rma(measure="RR", ai=events1, ci=events2, n1i=n1, n2i=n2, 
-            data=pao, 
-            subset=(followup==5 & comparison=="VATET bilateral  vs.  ETsT"), 
-            method="REML")
+            data=pao, subset=(followup==9 & 
+                                comparison=="T3b  vs.  T2a"), method="REML")
 expma14 <- predict(ma14, transf = exp, digits=2)
 
-ma15 <- rma(measure="RR", ai=events1, ci=events2, n1i=n1, n2i=n2, data=pao, 
-            subset=(followup==3 & comparison=="VATET unilateral  vs.  ETsT" &
-                      group=="Overall"), method="REML")
+
+ma15 <- rma(measure="RR", ai=events1, ci=events2, n1i=n1, n2i=n2, 
+            data=pao, 
+            subset=(followup==3 & comparison=="T3b  vs.  T2b bi"), 
+            method="REML")
 expma15 <- predict(ma15, transf = exp, digits=2)
 
-ma16 <- rma(measure="RR", ai=events1, ci=events2, n1i=n1, n2i=n2, data=pao, 
-            subset=(followup==4 & comparison=="VATET unilateral  vs.  ETsT" &
-                      group=="Overall"), method="REML")
+
+ma16 <- rma(measure="RR", ai=events1, ci=events2, n1i=n1, n2i=n2, 
+            data=pao, 
+            subset=(followup==4 & comparison=="T3b  vs.  T2b bi"), 
+            method="REML")
 expma16 <- predict(ma16, transf = exp, digits=2)
 
-ma17 <- rma(measure="RR", ai=events1, ci=events2, n1i=n1, n2i=n2, data=pao, 
-            subset=(followup==5 & comparison=="VATET unilateral  vs.  ETsT" &
-                      group=="Overall"), method="REML")
+
+ma17 <- rma(measure="RR", ai=events1, ci=events2, n1i=n1, n2i=n2, 
+            data=pao, 
+            subset=(followup==5 & comparison=="T3b  vs.  T2b bi"), 
+            method="REML")
 expma17 <- predict(ma17, transf = exp, digits=2)
 
+
 ma18 <- rma(measure="RR", ai=events1, ci=events2, n1i=n1, n2i=n2, data=pao, 
-            subset=(followup==6 & comparison=="VATET unilateral  vs.  ETsT" &
+            subset=(followup==3 & comparison=="T3b  vs.  T2b uni" &
                       group=="Overall"), method="REML")
 expma18 <- predict(ma18, transf = exp, digits=2)
 
+
 ma19 <- rma(measure="RR", ai=events1, ci=events2, n1i=n1, n2i=n2, data=pao, 
-            subset=(followup==7 & comparison=="VATET unilateral  vs.  ETsT" &
+            subset=(followup==4 & comparison=="T3b  vs.  T2b uni" &
                       group=="Overall"), method="REML")
 expma19 <- predict(ma19, transf = exp, digits=2)
 
+
 ma20 <- rma(measure="RR", ai=events1, ci=events2, n1i=n1, n2i=n2, data=pao, 
-            subset=(followup==8 & comparison=="VATET unilateral  vs.  ETsT" &
+            subset=(followup==5 & comparison=="T3b  vs.  T2b uni" &
                       group=="Overall"), method="REML")
 expma20 <- predict(ma20, transf = exp, digits=2)
 
 
-ma33 <- rma(measure="RR", ai=events1, ci=events2, n1i=n1, n2i=n2, 
+ma21 <- rma(measure="RR", ai=events1, ci=events2, n1i=n1, n2i=n2, data=pao, 
+            subset=(followup==6 & comparison=="T3b  vs.  T2b uni" &
+                      group=="Overall"), method="REML")
+expma21 <- predict(ma21, transf = exp, digits=2)
+
+
+ma22 <- rma(measure="RR", ai=events1, ci=events2, n1i=n1, n2i=n2, data=pao, 
+            subset=(followup==7 & comparison=="T3b  vs.  T2b uni" &
+                      group=="Overall"), method="REML")
+expma22 <- predict(ma22, transf = exp, digits=2)
+
+
+ma23 <- rma(measure="RR", ai=events1, ci=events2, n1i=n1, n2i=n2, data=pao, 
+            subset=(followup==8 & comparison=="T3b  vs.  T2b uni" &
+                      group=="Overall"), method="REML")
+expma23 <- predict(ma23, transf = exp, digits=2)
+
+
+ma24 <- rma(measure="RR", ai=events1, ci=events2, n1i=n1, n2i=n2, 
             data=pao, subset=(followup==3 & 
-                      comparison=="VATET unilateral  vs.  VATET bilateral"),
+                                comparison=="T2b uni  vs.  T2b bi"),
             method="REML")
+expma24 <- predict(ma24, transf = exp, digits=2)
+
+
+ma25 <- rma(measure="RR", ai=events1, ci=events2, n1i=n1, n2i=n2, 
+            data=pao, subset=(followup==4 & 
+                                comparison=="T2b uni  vs.  T2b bi"),
+            method="REML")
+expma25 <- predict(ma25, transf = exp, digits=2)
+
+
+ma26 <- rma(measure="RR", ai=events1, ci=events2, n1i=n1, n2i=n2, 
+            data=pao, subset=(followup==5 & 
+                                comparison=="T2b uni  vs.  T2b bi"),
+            method="REML")
+expma26 <- predict(ma26, transf = exp, digits=2)
+
+
+ma27 <- rma(measure="RR", ai=events1, ci=events2, n1i=n1, n2i=n2, 
+            data=pao, subset=(followup==6 & 
+                                comparison=="T2b uni  vs.  T2b bi"),
+            method="REML")
+expma27 <- predict(ma27, transf = exp, digits=2)
+
+
+ma28 <- rma(measure="RR", ai=events1, ci=events2, n1i=n1, n2i=n2, 
+            data=pao, subset=(followup==3 & comparison=="T2a left  vs.  T2a right"),
+            method="REML")
+expma28 <- predict(ma28, transf = exp, digits=2)
+
+
+ma29 <- rma(measure="RR", ai=events1, ci=events2, n1i=n1, n2i=n2, 
+            data=pao, subset=(followup==4 & comparison=="T2a left  vs.  T2a right"),
+            method="REML")
+expma29 <- predict(ma29, transf = exp, digits=2)
+
+
+ma30 <- rma(measure="RR", ai=events1, ci=events2, n1i=n1, n2i=n2, 
+            data=pao, subset=(followup==3 & 
+                                comparison=="T2c  vs.  T2a"),
+            method="REML")
+expma30 <- predict(ma30, transf = exp, digits=2)
+
+
+ma31 <- rma(measure="RR", ai=events1, ci=events2, n1i=n1, n2i=n2, 
+            data=pao, subset=(followup==5 & 
+                                comparison=="T2c  vs.  T2a"),
+            method="REML")
+expma31 <- predict(ma31, transf = exp, digits=2)
+
+
+ma32 <- rma(measure="RR", ai=events1, ci=events2, n1i=n1, n2i=n2, 
+           data=pao, subset=(followup==3 & comparison=="T3a  vs.  T5a"),
+           method="REML")
+expma32 <- predict(ma32, transf = exp, digits=2)
+
+
+ma33 <- rma(measure="RR", ai=events1, ci=events2, n1i=n1, n2i=n2, 
+           data=pao, subset=(followup==4 & comparison=="T3a  vs.  T5a"), 
+           method="REML")
 expma33 <- predict(ma33, transf = exp, digits=2)
 
+
 ma34 <- rma(measure="RR", ai=events1, ci=events2, n1i=n1, n2i=n2, 
-            data=pao, subset=(followup==4 & 
-                      comparison=="VATET unilateral  vs.  VATET bilateral"),
-            method="REML")
-expma34 <- predict(ma34, transf = exp, digits=2)
+           data=pao, subset=(followup==5 & comparison=="T3a  vs.  T5a"), 
+           method="REML")
+expma34 <-predict(ma34, transf = exp, digits=2)
+
 
 ma35 <- rma(measure="RR", ai=events1, ci=events2, n1i=n1, n2i=n2, 
-            data=pao, subset=(followup==5 & 
-                      comparison=="VATET unilateral  vs.  VATET bilateral"),
-            method="REML")
+           data=pao, subset=(followup==3 & comparison=="T3b  vs.  T5a"),
+           method="REML")
 expma35 <- predict(ma35, transf = exp, digits=2)
 
+
 ma36 <- rma(measure="RR", ai=events1, ci=events2, n1i=n1, n2i=n2, 
-            data=pao, subset=(followup==6 & 
-                      comparison=="VATET unilateral  vs.  VATET bilateral"),
-            method="REML")
+           data=pao, subset=(followup==4 & comparison=="T3b  vs.  T5a"), 
+           method="REML")
 expma36 <- predict(ma36, transf = exp, digits=2)
 
 
 ma37 <- rma(measure="RR", ai=events1, ci=events2, n1i=n1, n2i=n2, 
-            data=pao, subset=(followup==3 & 
-                      comparison=="VATS unilateral  vs.  STsT"), 
-            method="REML")
+           data=pao, subset=(followup==5 & comparison=="T3b  vs.  T5a"), 
+           method="REML")
 expma37 <- predict(ma37, transf = exp, digits=2)
 
+
 ma38 <- rma(measure="RR", ai=events1, ci=events2, n1i=n1, n2i=n2, 
-            data=pao, subset=(followup==4 & 
-                      comparison=="VATS unilateral  vs.  STsT"), 
+            data=pao, subset=(followup==5 & comparison=="T3b  vs.  T5d"), 
             method="REML")
 expma38 <- predict(ma38, transf = exp, digits=2)
-
-ma39 <- rma(measure="RR", ai=events1, ci=events2, n1i=n1, n2i=n2, 
-            data=pao, subset=(followup==5 & 
-                      comparison=="VATS unilateral  vs.  STsT"), 
-            method="REML")
-expma39 <- predict(ma39, transf = exp, digits=2)
-
-
-prema40 <- escalc(measure="RR",ai=events1, ci=events2, n1i=n1, n2i=n2,
-                  subset=(followup==3 & 
-                            comparison=="VATS unilateral  vs.  ETsT"), data=pao)
-prema40 <- summary(prema40)
-prema40$rr <- paste(formatC((exp(prema40$yi)), format='f', digits=2), " ",
-                   "(", formatC((exp(prema40$ci.lb)), format='f', digits=2), "-",
-                    formatC((exp(prema40$ci.ub)), format='f', digits=2),")")
-ma40 <- rma(measure="RR", yi,vi, data=prema40, method="REML")
-expma40 <- predict(ma40, transf = transf.exp.int)
-
-
-prema41 <- escalc(measure="RR",ai=events1, ci=events2, n1i=n1, n2i=n2,
-                  subset=(followup==4 & 
-                            comparison=="VATS unilateral  vs.  ETsT"), data=pao)
-prema41 <- summary(prema41)
-prema41$rr <- paste(formatC((exp(prema41$yi)), format='f', digits=2), " ",
-                   "(", formatC((exp(prema41$ci.lb)), format='f', digits=2), "-",
-                    formatC((exp(prema41$ci.ub)), format='f', digits=2),")")
-ma41 <- rma(measure="RR", yi,vi, data=prema41, method="REML")
-expma41 <- predict(ma41, transf = transf.exp.int)
-
-
-prema42 <- escalc(measure="RR",ai=events1, ci=events2, n1i=n1, n2i=n2,
-                  subset=(followup==5 & 
-                            comparison=="VATS unilateral  vs.  ETsT"), data=pao)
-prema42 <- summary(prema42)
-prema42$rr <- paste(formatC((exp(prema42$yi)), format='f', digits=2), " ",
-                   "(", formatC((exp(prema42$ci.lb)), format='f', digits=2), "-",
-                    formatC((exp(prema42$ci.ub)), format='f', digits=2),")")
-ma42 <- rma(measure="RR", yi,vi, data=prema42, method="REML")
-expma42 <- predict(ma42, transf = transf.exp.int)
-
-
-prema43 <- escalc(measure="RR",ai=events1, ci=events2, n1i=n1, n2i=n2,
-                  subset=(followup==6 & 
-                            comparison=="VATS unilateral  vs.  ETsT"), data=pao)
-prema43 <- summary(prema43)
-prema43$rr <- paste(formatC((exp(prema43$yi)), format='f', digits=2), " ",
-                   "(", formatC((exp(prema43$ci.lb)), format='f', digits=2), "-",
-                    formatC((exp(prema43$ci.ub)), format='f', digits=2),")")
-ma43 <- rma(measure="RR", yi,vi, data=prema43, method="REML")
-expma43 <- predict(ma43, transf = transf.exp.int)
-
-
-prema44 <- escalc(measure="RR",ai=events1, ci=events2, n1i=n1, n2i=n2,
-                  subset=(followup==7 & 
-                            comparison=="VATS unilateral  vs.  ETsT"), data=pao)
-prema44 <- summary(prema44)
-prema44$rr <- paste(formatC((exp(prema44$yi)), format='f', digits=2), " ",
-                   "(", formatC((exp(prema44$ci.lb)), format='f', digits=2), "-",
-                    formatC((exp(prema44$ci.ub)), format='f', digits=2),")")
-ma44 <- rma(measure="RR", yi,vi, data=prema44, method="REML")
-expma44 <- predict(ma44, transf = transf.exp.int)
-
-prema45 <- escalc(measure="RR",ai=events1, ci=events2, n1i=n1, n2i=n2,
-                  subset=(followup==8 & 
-                            comparison=="VATS unilateral  vs.  ETsT"), data=pao)
-prema45 <- summary(prema45)
-prema45$rr <- paste(formatC((exp(prema45$yi)), format='f', digits=2), " ",
-                   "(", formatC((exp(prema45$ci.lb)), format='f', digits=2), "-",
-                    formatC((exp(prema45$ci.ub)), format='f', digits=2),")")
-ma45 <- rma(measure="RR", yi,vi, data=prema45, method="REML")
-expma45 <- predict(ma45, transf = transf.exp.int)
-
-
-ma46 <- rma(measure="RR", ai=events1, ci=events2, n1i=n1, n2i=n2, 
-            data=pao, subset=(followup==9 & 
-                      comparison=="VATS unilateral  vs.  ETsT"), method="REML")
-expma46 <- predict(ma46, transf = exp, digits=2)
-
-
-ma47 <- rma(measure="RR", ai=events1, ci=events2, n1i=n1, n2i=n2, 
-            data=pao, subset=(followup==3 & comparison=="VATS left  vs.  VATS right"),
-            method="REML")
-expma47 <- predict(ma47, transf = exp, digits=2)
-
-ma48 <- rma(measure="RR", ai=events1, ci=events2, n1i=n1, n2i=n2, 
-            data=pao, subset=(followup==4 & comparison=="VATS left  vs.  VATS right"),
-            method="REML")
-expma48 <- predict(ma48, transf = exp, digits=2)
-
-ma49 <- rma(measure="RR", ai=events1, ci=events2, n1i=n1, n2i=n2, 
-            data=pao, subset=(followup==3 & 
-            comparison=="VATS unilateral with robotic  vs.  VATS unilateral"),
-            method="REML")
-expma49 <- predict(ma49, transf = exp, digits=2)
-
-ma50 <- rma(measure="RR", ai=events1, ci=events2, n1i=n1, n2i=n2, 
-            data=pao, subset=(followup==5 & 
-            comparison=="VATS unilateral with robotic  vs.  VATS unilateral"),
-            method="REML")
-expma50 <- predict(ma50, transf = exp, digits=2)
-
 
 ```
 
@@ -389,153 +417,171 @@ head <- c("comparison",  "followup", "k", "ai", "bi",
                      "ci", "di", "i2", "eff", "llci", "ulci","p")
 
 a<- rbind(
-  c("ETsT  vs.  STsT",  "3 years", ma1[[15]], sum(ma1[[42]]), sum(ma1[[43]]),
+  c("T3b  vs.  T3a",  "3 years", ma1[[15]], sum(ma1[[42]]), sum(ma1[[43]]),
     sum(ma1[[44]]),sum(ma1[[45]]), ma1[[25]], expma1[[1]], expma1[[3]], expma1[[4]],
     ma1[[24]]), 
-  c("ETsT  vs.  STsT",  "4 years", ma2[[15]], sum(ma2[[42]]), sum(ma2[[43]]),
+  c("T3b  vs.  T3a",  "4 years", ma2[[15]], sum(ma2[[42]]), sum(ma2[[43]]),
     sum(ma2[[44]]),sum(ma2[[45]]), ma2[[25]], expma2[[1]], expma2[[3]], expma2[[4]],
     ma2[[24]]), 
-  c("ETsT  vs.  STsT", "5 years", ma3[[15]], sum(ma3[[42]]), sum(ma3[[43]]),
+  c("T3b  vs.  T3a", "5 years", ma3[[15]], sum(ma3[[42]]), sum(ma3[[43]]),
     sum(ma3[[44]]),sum(ma3[[45]]), ma3[[25]], expma3[[1]], expma3[[3]], expma3[[4]],
     ma3[[24]]))
 
 
-b <- rbind(
-  c("TcSxVT  vs.  STsT",  "3 years", ma4[[15]], sum(ma4[[42]]), sum(ma4[[43]]),
+
+
+b <-  c("T3b  vs.  T1a",  "10 years", ma4[[15]], sum(ma4[[42]]), sum(ma4[[43]]),
     sum(ma4[[44]]),sum(ma4[[45]]), ma4[[25]], expma4[[1]], expma4[[3]], expma4[[4]],
-    ma4[[24]]),
-  c("TcSxVT  vs.  STsT",  "4 years", ma5[[15]], sum(ma5[[42]]), sum(ma5[[43]]),
+    ma4[[24]])
+
+
+
+c <- rbind(
+  c("T3a  vs.  T2a",  "3 years", ma5[[15]], sum(ma5[[42]]), sum(ma5[[43]]),
     sum(ma5[[44]]),sum(ma5[[45]]), ma5[[25]], expma5[[1]], expma5[[3]], expma5[[4]],
     ma5[[24]]), 
-  c("TcSxVT  vs.  STsT",  "5 years", ma6[[15]], sum(ma6[[42]]), sum(ma6[[43]]),
+  c("T3a  vs.  T2a",  "4 years", ma6[[15]], sum(ma6[[42]]), sum(ma6[[43]]),
     sum(ma6[[44]]),sum(ma6[[45]]), ma6[[25]], expma6[[1]], expma6[[3]], expma6[[4]],
-    ma6[[24]])) 
-  
-c <- rbind(
-  c("ETsT  vs.  TcSxVT", "3 years", ma7[[15]], sum(ma7[[42]]), sum(ma7[[43]]),
+    ma6[[24]]),
+  c("T3a  vs.  T2a", "5 years", ma7[[15]], sum(ma7[[42]]), sum(ma7[[43]]),
     sum(ma7[[44]]),sum(ma7[[45]]), ma7[[25]], expma7[[1]], expma7[[3]], expma7[[4]],
-    ma7[[24]]), 
-  c("ETsT  vs.  TcSxVT", "4 years", ma8[[15]], sum(ma8[[42]]), sum(ma8[[43]]),
-    sum(ma8[[44]]),sum(ma8[[45]]), ma8[[25]], expma8[[1]], expma8[[3]], expma8[[4]],
-    ma8[[24]]), 
-  c("ETsT  vs.  TcSxVT", "5 years", ma9[[15]], sum(ma9[[42]]), sum(ma9[[43]]),
-    sum(ma9[[44]]),sum(ma9[[45]]), ma9[[25]], expma9[[1]], expma9[[3]], expma9[[4]],
-    ma9[[24]]))
+    ma7[[24]]))
+  
 
-d <- c("ETsT  vs.  BTcT", "10 years", ma10[[15]], sum(ma10[[42]]), sum(ma10[[43]]),
-    sum(ma10[[44]]),sum(ma10[[45]]), ma10[[25]], expma10[[1]], expma10[[3]],
-    expma10[[4]], ma10[[24]])
-
-e <- c("IMT  vs.  ETsT", "5 years", ma11[[15]], sum(ma11[[42]]), sum(ma11[[43]]),
-    sum(ma11[[44]]),sum(ma11[[45]]), ma11[[25]], expma11[[1]], expma11[[3]], 
-    expma11[[4]], ma11[[24]])
-
-f <- rbind(
-  c("VATET bi  vs.  ETsT","3 years", ma12[[15]], sum(ma12[[42]]), sum(ma12[[43]]),
-    sum(ma12[[44]]),sum(ma12[[45]]), ma12[[25]], expma12[[1]], expma12[[3]], 
+d <- rbind(
+  c("T3b  vs.  T2a", "3 years", ma8[[15]], 
+  sum(prema8$events1), (sum(prema8$n1)-sum(prema8$events1)),
+  sum(prema8$events2), (sum(prema8$n2)-sum(prema8$events2)), 
+  ma8[[25]], expma8[[1]], expma8[[3]],
+  expma8[[4]], ma8[[24]]),
+  c("T3b  vs.  T2a", "4 years", ma9[[15]], 
+    sum(prema9$events1), (sum(prema9$n1)-sum(prema9$events1)),
+    sum(prema9$events2), (sum(prema9$n2)-sum(prema9$events2)), 
+    ma9[[25]], expma9[[1]], expma9[[3]],
+    expma9[[4]], ma9[[24]]),
+  c("T3b  vs.  T2a", "5 years", ma10[[15]], 
+    sum(prema10$events1), (sum(prema10$n1)-sum(prema10$events1)),
+    sum(prema10$events2), (sum(prema10$n2)-sum(prema10$events2)), 
+    ma10[[25]], expma10[[1]], expma10[[3]],
+    expma10[[4]], ma10[[24]]),
+  c("T3b  vs.  T2a", "6 years", ma11[[15]], 
+    sum(prema11$events1), (sum(prema11$n1)-sum(prema11$events1)),
+    sum(prema11$events2), (sum(prema11$n2)-sum(prema11$events2)), 
+    ma11[[25]], expma11[[1]], expma11[[3]],
+    expma11[[4]], ma11[[24]]),
+  c("T3b  vs.  T2a", "7 years", ma12[[15]], 
+    sum(prema12$events1), (sum(prema12$n1)-sum(prema12$events1)),
+    sum(prema12$events2), (sum(prema12$n2)-sum(prema12$events2)), 
+    ma12[[25]], expma12[[1]], expma12[[3]],
     expma12[[4]], ma12[[24]]),
-  c("VATET bi  vs.  ETsT", "4 years", ma13[[15]], sum(ma13[[42]]), sum(ma13[[43]]),
-    sum(ma13[[44]]),sum(ma13[[45]]), ma13[[25]], expma13[[1]], expma13[[3]],
+  c("T3b  vs.  T2a", "8 years", ma13[[15]], 
+    sum(prema13$events1), (sum(prema13$n1)-sum(prema13$events1)),
+    sum(prema13$events2), (sum(prema13$n2)-sum(prema13$events2)), 
+    ma13[[25]], expma13[[1]], expma13[[3]],
     expma13[[4]], ma13[[24]]),
-  c("VATET bi  vs.  ETsT", "5 years", ma14[[15]], sum(ma14[[42]]), sum(ma14[[43]]),
+  c("T3b  vs.  T2a", "9 years", ma14[[15]], sum(ma14[[42]]), sum(ma14[[43]]),
     sum(ma14[[44]]),sum(ma14[[45]]), ma14[[25]], expma14[[1]], expma14[[3]],
     expma14[[4]], ma14[[24]]))
 
-g <- rbind(
-c("VATET uni  vs.  ETsT", "3 years", ma15[[15]], sum(ma15[[42]]), sum(ma15[[43]]),
-  sum(ma15[[44]]),sum(ma15[[45]]), ma15[[25]], expma15[[1]], expma15[[3]],
-  expma15[[4]], ma15[[24]]),
-  c("VATET uni  vs.  ETsT", "4 years", ma16[[15]], sum(ma16[[42]]), sum(ma16[[43]]),
+
+
+
+e <- rbind(
+  c("T3b  vs.  T2b bi","3 years", ma15[[15]], sum(ma15[[42]]), sum(ma15[[43]]),
+    sum(ma15[[44]]),sum(ma15[[45]]), ma15[[25]], expma15[[1]], expma15[[3]], 
+    expma15[[4]], ma15[[24]]),
+  c("T3b  vs.  T2b bi", "4 years", ma16[[15]], sum(ma16[[42]]), sum(ma16[[43]]),
     sum(ma16[[44]]),sum(ma16[[45]]), ma16[[25]], expma16[[1]], expma16[[3]],
     expma16[[4]], ma16[[24]]),
-  c("VATET uni  vs.  ETsT", "5 years", ma17[[15]], sum(ma17[[42]]), sum(ma17[[43]]),
+  c("T3b  vs.  T2b bi", "5 years", ma17[[15]], sum(ma17[[42]]), sum(ma17[[43]]),
     sum(ma17[[44]]),sum(ma17[[45]]), ma17[[25]], expma17[[1]], expma17[[3]],
-    expma17[[4]], ma17[[24]]),
-  c("VATET uni  vs.  ETsT", "6 years", ma18[[15]], sum(ma18[[42]]), sum(ma18[[43]]),
-    sum(ma18[[44]]),sum(ma18[[45]]), ma18[[25]], expma18[[1]], expma18[[3]],
-    expma18[[4]], ma18[[24]]),
-  c("VATET uni  vs.  ETsT", "7 years", ma19[[15]], sum(ma19[[42]]), sum(ma19[[43]]),
+    expma17[[4]], ma17[[24]]))
+
+
+
+f <- rbind(
+c("T3b  vs.  T2b uni", "3 years", ma18[[15]], sum(ma18[[42]]), sum(ma18[[43]]),
+  sum(ma18[[44]]),sum(ma18[[45]]), ma18[[25]], expma18[[1]], expma18[[3]],
+  expma18[[4]], ma18[[24]]),
+  c("T3b  vs.  T2b uni", "4 years", ma19[[15]], sum(ma19[[42]]), sum(ma19[[43]]),
     sum(ma19[[44]]),sum(ma19[[45]]), ma19[[25]], expma19[[1]], expma19[[3]],
     expma19[[4]], ma19[[24]]),
-  c("VATET uni  vs.  ETsT", "8 years", ma20[[15]], sum(ma20[[42]]), sum(ma20[[43]]),
+  c("T3b  vs.  T2b uni", "5 years", ma20[[15]], sum(ma20[[42]]), sum(ma20[[43]]),
     sum(ma20[[44]]),sum(ma20[[45]]), ma20[[25]], expma20[[1]], expma20[[3]],
-    expma20[[4]], ma20[[24]]))
-  
+    expma20[[4]], ma20[[24]]),
+  c("T3b  vs.  T2b uni", "6 years", ma21[[15]], sum(ma21[[42]]), sum(ma21[[43]]),
+    sum(ma21[[44]]),sum(ma21[[45]]), ma21[[25]], expma21[[1]], expma21[[3]],
+    expma21[[4]], ma21[[24]]),
+  c("T3b  vs.  T2b uni", "7 years", ma22[[15]], sum(ma22[[42]]), sum(ma22[[43]]),
+    sum(ma22[[44]]),sum(ma22[[45]]), ma22[[25]], expma22[[1]], expma22[[3]],
+    expma22[[4]], ma22[[24]]),
+  c("T3b  vs.  T2b uni", "8 years", ma23[[15]], sum(ma23[[42]]), sum(ma23[[43]]),
+    sum(ma23[[44]]),sum(ma23[[45]]), ma23[[25]], expma23[[1]], expma23[[3]],
+    expma23[[4]], ma23[[24]]))
+
+
+g <- rbind(
+  c("T2b uni  vs.  T2b bi", "3 years", ma24[[15]], sum(ma24[[42]]), sum(ma24[[43]]),
+    sum(ma24[[44]]),sum(ma24[[45]]), ma24[[25]], expma24[[1]], expma24[[3]],
+    expma24[[4]], ma24[[24]]),
+  c("T2b uni  vs.  T2b bi", "4 years", ma25[[15]], sum(ma25[[42]]), sum(ma25[[43]]),
+    sum(ma25[[44]]),sum(ma25[[45]]), ma25[[25]], expma25[[1]], expma25[[3]],
+    expma25[[4]], ma25[[24]]),
+  c("T2b uni  vs.  T2b bi", "5 years", ma26[[15]], sum(ma26[[42]]), sum(ma26[[43]]),
+    sum(ma26[[44]]),sum(ma26[[45]]), ma26[[25]], expma26[[1]], expma26[[3]],
+    expma26[[4]], ma26[[24]]),
+  c("T2b uni  vs.  T2b bi", "6 years", ma27[[15]], sum(ma27[[42]]), sum(ma27[[43]]),
+    sum(ma27[[44]]),sum(ma27[[45]]), ma27[[25]], expma27[[1]], expma27[[3]],
+    expma27[[4]], ma27[[24]]))
+
+
 h <- rbind(
-  c("VATET uni  vs.  VATET bi", "3 years", ma33[[15]], sum(ma33[[42]]), sum(ma33[[43]]),
-    sum(ma33[[44]]),sum(ma33[[45]]), ma33[[25]], expma33[[1]], expma33[[3]],
-    expma33[[4]], ma33[[24]]),
-  c("VATET uni  vs.  VATET bi", "4 years", ma34[[15]], sum(ma34[[42]]), sum(ma34[[43]]),
-    sum(ma34[[44]]),sum(ma34[[45]]), ma34[[25]], expma34[[1]], expma34[[3]],
-    expma34[[4]], ma34[[24]]),
-  c("VATET uni  vs.  VATET bi", "5 years", ma35[[15]], sum(ma35[[42]]), sum(ma35[[43]]),
-    sum(ma35[[44]]),sum(ma35[[45]]), ma35[[25]], expma35[[1]], expma35[[3]],
-    expma35[[4]], ma34[[24]]),
-  c("VATET uni  vs.  VATET bi", "6 years", ma36[[15]], sum(ma36[[42]]), sum(ma36[[43]]),
-    sum(ma36[[44]]),sum(ma36[[45]]), ma36[[25]], expma36[[1]], expma36[[3]],
-    expma36[[4]], ma36[[24]]))
+  c("T2a left  vs.  T2a right", "3 years", ma28[[15]], sum(ma28[[42]]), 
+    sum(ma28[[43]]), sum(ma28[[44]]),sum(ma28[[45]]), ma28[[25]], expma28[[1]], 
+    expma28[[3]], expma28[[4]], ma28[[24]]),
+  c("T2a left  vs.  T2a right", "4 years", ma29[[15]], sum(ma29[[42]]),
+    sum(ma29[[43]]), sum(ma29[[44]]),sum(ma29[[45]]), ma29[[25]], expma29[[1]],
+    expma29[[3]], expma29[[4]], ma29[[24]]))
 
 i <- rbind(
-c("VATS uni  vs.  STsT", "3 years", ma37[[15]], sum(ma37[[42]]), sum(ma37[[43]]),
-  sum(ma37[[44]]),sum(ma37[[45]]), ma37[[25]], expma37[[1]], expma37[[3]],
-  expma37[[4]], ma37[[24]]),
-c("VATS uni  vs.  STsT", "4 years", ma38[[15]], sum(ma38[[42]]), sum(ma38[[43]]),
-    sum(ma38[[44]]),sum(ma38[[45]]), ma38[[25]], expma38[[1]], expma38[[3]],
-    expma38[[4]], ma38[[24]]),
-c("VATS uni  vs.  STsT", "5 years", ma39[[15]], sum(ma39[[42]]), sum(ma39[[43]]),
-    sum(ma39[[44]]),sum(ma39[[45]]), ma39[[25]], expma39[[1]], expma39[[3]],
-    expma39[[4]], ma39[[24]]))
+  c("T2c  vs.  T2a", "3 years", ma30[[15]], sum(ma30[[42]]),
+    sum(ma30[[43]]), sum(ma30[[44]]),sum(ma30[[45]]), ma30[[25]], expma30[[1]],
+    expma30[[3]], expma30[[4]], ma30[[24]]),
+  c("T2c  vs.  T2a", "5 years", ma31[[15]], sum(ma31[[42]]),
+    sum(ma31[[43]]), sum(ma31[[44]]),sum(ma31[[45]]), ma31[[25]], expma31[[1]],
+    expma31[[3]], expma31[[4]], ma31[[24]]))
+
 
 j <- rbind(
-c("VATS uni  vs.  ETsT", "3 years", ma40[[15]], 
-  sum(prema40$events1), (sum(prema40$n1)-sum(prema40$events1)),
-  sum(prema40$events2), (sum(prema40$n2)-sum(prema40$events2)), 
-  ma40[[25]], expma40[[1]], expma40[[3]],
-  expma40[[4]], ma40[[24]]),
-  c("VATS uni  vs.  ETsT", "4 years", ma41[[15]], 
-    sum(prema41$events1), (sum(prema41$n1)-sum(prema41$events1)),
-    sum(prema41$events2), (sum(prema41$n2)-sum(prema41$events2)), 
-    ma41[[25]], expma41[[1]], expma41[[3]],
-    expma41[[4]], ma41[[24]]),
-  c("VATS uni  vs.  ETsT", "5 years", ma42[[15]], 
-    sum(prema42$events1), (sum(prema42$n1)-sum(prema42$events1)),
-    sum(prema42$events2), (sum(prema42$n2)-sum(prema42$events2)), 
-    ma42[[25]], expma42[[1]], expma42[[3]],
-    expma42[[4]], ma42[[24]]),
-  c("VATS uni  vs.  ETsT", "6 years", ma43[[15]], 
-    sum(prema43$events1), (sum(prema43$n1)-sum(prema43$events1)),
-    sum(prema43$events2), (sum(prema43$n2)-sum(prema43$events2)), 
-    ma43[[25]], expma43[[1]], expma43[[3]],
-    expma43[[4]], ma43[[24]]),
-  c("VATS uni  vs.  ETsT", "7 years", ma44[[15]], 
-    sum(prema44$events1), (sum(prema44$n1)-sum(prema44$events1)),
-    sum(prema44$events2), (sum(prema44$n2)-sum(prema44$events2)), 
-    ma44[[25]], expma44[[1]], expma44[[3]],
-    expma44[[4]], ma44[[24]]),
-  c("VATS uni  vs.  ETsT", "8 years", ma45[[15]], 
-    sum(prema45$events1), (sum(prema45$n1)-sum(prema45$events1)),
-    sum(prema45$events2), (sum(prema45$n2)-sum(prema45$events2)), 
-    ma45[[25]], expma45[[1]], expma45[[3]],
-    expma45[[4]], ma45[[24]]),
-  c("VATS uni  vs.  ETsT", "9 years", ma46[[15]], sum(ma46[[42]]), sum(ma46[[43]]),
-    sum(ma46[[44]]),sum(ma46[[45]]), ma46[[25]], expma46[[1]], expma46[[3]],
-    expma46[[4]], ma46[[24]]))
+  c("T3a  vs.  T5a", "3 years", ma32[[15]], sum(ma32[[42]]), sum(ma32[[43]]),
+    sum(ma32[[44]]),sum(ma32[[45]]), ma32[[25]], expma32[[1]], expma32[[3]], expma32[[4]],
+    ma32[[24]]),
+  c("T3a  vs.  T5a", "4 years", ma33[[15]], sum(ma33[[42]]), sum(ma33[[43]]),
+    sum(ma33[[44]]),sum(ma33[[45]]), ma33[[25]], expma33[[1]], expma33[[3]], expma33[[4]],
+    ma33[[24]]), 
+  c("T3a  vs.  T5a", "5 years", ma34[[15]], sum(ma34[[42]]), sum(ma34[[43]]),
+    sum(ma34[[44]]),sum(ma34[[45]]), ma34[[25]], expma34[[1]], expma34[[3]], expma34[[4]],
+    ma34[[24]]))
+
 
 k <- rbind(
-  c("VATS left  vs.  VATS right", "3 years", ma47[[15]], sum(ma47[[42]]), 
-    sum(ma47[[43]]), sum(ma47[[44]]),sum(ma47[[45]]), ma47[[25]], expma47[[1]], 
-    expma47[[3]], expma47[[4]], ma47[[24]]),
-  c("VATS left  vs.  VATS right", "4 years", ma48[[15]], sum(ma48[[42]]),
-    sum(ma48[[43]]), sum(ma48[[44]]),sum(ma48[[45]]), ma48[[25]], expma48[[1]],
-    expma48[[3]], expma48[[4]], ma48[[24]]))
+  c("T3b  vs.  T5a", "3 years", ma35[[15]], sum(ma35[[42]]), sum(ma35[[43]]),
+    sum(ma35[[44]]),sum(ma35[[45]]), ma35[[25]], expma35[[1]], expma35[[3]], expma35[[4]],
+    ma35[[24]]),
+  c("T3b  vs.  T5a", "4 years", ma36[[15]], sum(ma36[[42]]), sum(ma36[[43]]),
+    sum(ma36[[44]]),sum(ma36[[45]]), ma36[[25]], expma36[[1]], expma36[[3]], expma36[[4]],
+    ma36[[24]]), 
+  c("T3b  vs.  T5a", "5 years", ma37[[15]], sum(ma37[[42]]), sum(ma37[[43]]),
+    sum(ma37[[44]]),sum(ma37[[45]]), ma37[[25]], expma37[[1]], expma37[[3]], expma37[[4]],
+    ma37[[24]]))
 
-l <- rbind(
- c("VATS uni robotic  vs.  VATS uni", "3 years", ma49[[15]], sum(ma49[[42]]),
-   sum(ma49[[43]]), sum(ma49[[44]]),sum(ma49[[45]]), ma49[[25]], expma49[[1]],
-   expma49[[3]], expma49[[4]], ma49[[24]]),
-  c("VATS uni robotic  vs.  VATS uni", "4 years", ma50[[15]], sum(ma50[[42]]),
-    sum(ma50[[43]]), sum(ma50[[44]]),sum(ma50[[45]]), ma50[[25]], expma50[[1]],
-    expma50[[3]], expma50[[4]], ma50[[24]]))
+
+
+l <- c("T3b  vs.  T5d", "5 years", ma38[[15]], sum(ma38[[42]]), sum(ma38[[43]]),
+    sum(ma38[[44]]),sum(ma38[[45]]), ma38[[25]], expma38[[1]], expma38[[3]], 
+    expma38[[4]], ma38[[24]])
+
+
 
 
 
@@ -548,9 +594,9 @@ round2 = function(x, n=0) {scale<-10^n; sign(x)*trunc(abs(x)*scale+0.5)/scale}
 ## Summary of forest plots
 
 
-**Figure 1** - Summary of forest plots of the risk of achieving Complete Stable Remission in patients with myasthenia gravis who underwent an **agressive surgery**  vs.  those who underwent another **aggresive surgery** at different follow-ups
-```{r,  fig.height=6, fig.width=11, echo=FALSE, message=FALSE, warning=FALSE}
-agr <- as_tibble(rbind(a, b, c, d, e))
+**Figure 1** - Summary of forest plots of the risk of achieving Complete Stable Remission in patients with myasthenia gravis who underwent  **Transsternal thymectomy**  vs.  those who underwent **Transsternal or Transcervial thymectomy** at different follow-ups
+```{r,  fig.height=4, fig.width=9.5, echo=FALSE, message=FALSE, warning=FALSE}
+agr <- as_tibble(rbind(a, b))
 colnames(agr) <- head
 agr[,c(3:7,9:12)] <- sapply(agr[,c(3:7,9:12)], as.numeric)
 agr$i2 <- ifelse(agr$k==1, "na", agr$i2)
@@ -567,22 +613,18 @@ agr$p2 <-
   ifelse(agr$p<0.001, paste("<0.001"), 
          paste(formatC(round2(agr$p,n=3), format='f', digits=3))))
 
-agr <- agr %>% add_row(followup="ETsT vs. STsT", .before = 1)
-agr <- agr %>% add_row(followup="TcSxVT vs. STsT", .before = 5)
-agr <- agr %>% add_row(followup="ETsT vs. TcSxVT", .before = 9)
-agr <- agr %>% add_row(followup="ETsT vs. BTcT", .before = 13)
-agr <- agr %>% add_row(followup="IMT vs. ETsT", .before = 15)
-
+agr <- agr %>% add_row(followup="T3b  vs.  T3a", .before = 1)
+agr <- agr %>% add_row(followup="T3b  vs.  T1a", .before = 5)
 
 agr2 <- cbind(c("Treatment vs. Control", "Follow-up",agr$followup),
               c("N of studies", NA, agr$k),
               c("Treatment", "events/n", agr$rate1),
               c("Control", "events/n", agr$rate2),
               c("I^2", NA, agr$i2),
-              c("Relative Risk (95% CI)", NA, agr$rr),
-              c("p value", NA, agr$p2))
+              c("Relative Risk (95% CI)", NA, agr$rr))
 
-sub1 <- c(4:6, 8:10, 12:14, 16, 18)
+
+sub1 <- c(4:6, 8)
 agr2[,1][sub1] <- paste("  ",agr2[,1][sub1])
 
 
@@ -591,7 +633,7 @@ rrsagr <- structure(list(
   lower = c(NA, NA, agr$llci),
   upper = c(NA, NA, agr$ulci)),
   .Names = c("mean", "lower", "upper"),
-  row.names = c(NA, -18L),
+  row.names = c(NA, -8L),
   class = "data.frame")
 
 forestplot(agr2,
@@ -600,12 +642,11 @@ forestplot(agr2,
            rrsagr,
            new_page = TRUE,
            colgap = unit(5, "mm"),
-           hrzl_lines = list("3" = gpar (lwd=1, columns=c(1:8), col="black") 
+           hrzl_lines = list("3" = gpar (lwd=1, columns=c(1:7), col="black") 
            ),
            lineheight=unit(0.6,'cm'),
            line.margin = 2,
-           is.summary = c(T, T, T, rep(F, 3), T, rep(F, 3), 
-                          T, rep(F,3), T, F, T, F),
+           is.summary = c(T, T, T, rep(F, 3), T, F),
            align = c("l","c", "c", "c", "l", "l", "l"),
            boxsize = 0.5,
            ci.vertices = TRUE,
@@ -613,7 +654,7 @@ forestplot(agr2,
                             ticks = gpar(cex = 0.8, fontface="bold"),
                             summary = gpar(cex = 0.8),
                             xlab = gpar(cex=0.8)),
-           xticks = c(0.25, 0.5, 1, 2, 4, 8),
+           xticks = c(0.12, 0.25, 0.5, 1, 2, 4, 8),
            xlog=TRUE,
            clip = c(0.5, 4),
            lwd.xaxis = 1,
@@ -624,9 +665,9 @@ forestplot(agr2,
 
 ```
 
-**Figure 2** - Summary of forest plots of the risk of achieving Complete Stable Remission in patients with myasthenia gravis who underwent a **less-aggresive surgery  vs.**  those who underwent an **aggresive surgery** at different follow-ups**
-```{r,  echo=FALSE, fig.height=6.5, fig.width=11, echo=FALSE, message=FALSE, warning=FALSE}
-lessagr <- as_tibble(rbind(f, g, i, j))
+**Figure 2** - Summary of forest plots of the risk of achieving Complete Stable Remission in patients with myasthenia gravis who underwent a **Transsternal  Thymectomy** vs.  those who underwent a **Minimally Invasive Thymectomy** at different follow-ups**
+```{r,  echo=FALSE, fig.height=9.5, fig.width=10, echo=FALSE, message=FALSE, warning=FALSE}
+lessagr <- as_tibble(rbind(c, d, e, f, j, k, l))
 colnames(lessagr) <- head
 
 lessagr[,c(3:8,9:12)] <- sapply(lessagr[,c(3:8,9:12)], as.numeric)
@@ -645,10 +686,15 @@ lessagr$p2 <-
   ifelse(lessagr$p<0.001, paste("<0.001"), 
          paste(formatC(round2(lessagr$p,n=3), format='f', digits=3))))
 
-lessagr <- lessagr %>% add_row(followup="VATET bi vs. ETsT", .before = 1)
-lessagr <- lessagr %>% add_row(followup="VATET uni vs. ETsT", .before = 5)
-lessagr <- lessagr %>% add_row(followup="VATS uni vs. STsT", .before = 12)
-lessagr <- lessagr %>% add_row(followup="VATS uni vs. ETsT", .before = 16)
+
+
+lessagr <- lessagr %>% add_row(followup="T3a  vs.  T2a", .before = 1)
+lessagr <- lessagr %>% add_row(followup="T3b  vs.  T2a", .before = 5)
+lessagr <- lessagr %>% add_row(followup="T3b  vs.  T2b bi", .before = 13)
+lessagr <- lessagr %>% add_row(followup="T3b  vs.  T2b uni", .before = 17)
+lessagr <- lessagr %>% add_row(followup="T3a  vs.  T5a", .before = 24)
+lessagr <- lessagr %>% add_row(followup="T3b  vs.  T5a", .before = 28)
+lessagr <- lessagr %>% add_row(followup="T3b  vs.  T5d", .before = 32)
 
 
 lessagr2 <- cbind(c("Treatment vs. Control", "Follow-up",lessagr$followup),
@@ -656,10 +702,10 @@ lessagr2 <- cbind(c("Treatment vs. Control", "Follow-up",lessagr$followup),
               c("Treatment", "events/n", lessagr$rate1),
               c("Control", "events/n", lessagr$rate2),
               c("I^2", NA, lessagr$i2),
-              c("Relative Risk (95% CI)", NA, lessagr$rr),
-              c("p value", NA, lessagr$p2))
+              c("Relative Risk (95% CI)", NA, lessagr$rr))
 
-sub1 <- c(4:6, 8:13, 15:17, 19:25)
+
+sub1 <- c(4:6, 8:14, 16:18, 20:25, 27:29, 31:33, 35)
 lessagr2[,1][sub1] <- paste("  ",lessagr2[,1][sub1])
 
 
@@ -668,7 +714,7 @@ rrslessagr <- structure(list(
   lower = c(NA, NA, lessagr$llci),
   upper = c(NA, NA, lessagr$ulci)),
   .Names = c("mean", "lower", "upper"),
-  row.names = c(NA, -25L),
+  row.names = c(NA, -35L),
   class = "data.frame")
 
 
@@ -678,12 +724,13 @@ forestplot(lessagr2,
            rrslessagr,
            new_page = TRUE,
            colgap = unit(5, "mm"),
-           hrzl_lines = list("3" = gpar (lwd=1, columns=c(1:8), col="black") 
+           hrzl_lines = list("3" = gpar (lwd=1, columns=c(1:7), col="black") 
            ),
            lineheight=unit(0.6,'cm'),
            line.margin = 2,
-           is.summary = c(T, T, T, rep(F, 3), T, rep(F, 6), 
-                          T, rep(F,3), T, rep(F, 7)),
+           is.summary = c(T, T, T, rep(F, 3), T, rep(F, 7), 
+                          T, rep(F,3), T, rep(F, 6), T, rep(F, 3),
+                          T, rep(F, 3), T, rep(F, 3), T, F),
            align = c("l","c", "c", "c", "l", "l", "l"),
            boxsize = 0.5,
            ci.vertices = TRUE,
@@ -691,7 +738,7 @@ forestplot(lessagr2,
                             ticks = gpar(cex = 0.8, fontface="bold"),
                             summary = gpar(cex = 0.8),
                             xlab = gpar(cex=0.8)),
-           xticks = c(0.25, 0.5, 1, 2, 4, 8),
+           xticks = c(0.12, 0.25, 0.5, 1, 2, 4, 8),
            xlog=TRUE,
            clip = c(0.5, 4),
            lwd.xaxis = 1,
@@ -704,9 +751,9 @@ forestplot(lessagr2,
 
 
 
-**Figure 3** - Summary of forest plots of the risk of achieving Complete Stable Remission in patients with myasthenia gravis who underwent a **less-aggresive surgery  vs.**  those who underwent another **less-aggressive  surgery** at different follow-ups**
-```{r,  fig.height=5, fig.width=11, echo=FALSE, message=FALSE, warning=FALSE}
-less <- as_tibble(rbind(h, k, l))
+**Figure 3** - Summary of forest plots of the risk of achieving Complete Stable Remission in patients with myasthenia gravis who underwent a **Minimally Invasive Thymectomy**  those who underwent another **Minimally Invasive Thymectomy** at different follow-ups**
+```{r,  fig.height=5, fig.width=9.5, echo=FALSE, message=FALSE, warning=FALSE}
+less <- as_tibble(rbind(g, h, i))
 colnames(less) <- head
 
 less[,c(3:8,9:12)] <- sapply(less[,c(3:8,9:12)], as.numeric)
@@ -724,9 +771,9 @@ less$p2 <-
   ifelse(less$p<0.001, paste("<0.001"), 
          paste(formatC(round2(less$p,n=3), format='f', digits=3))))
 
-less <- less %>% add_row(followup="VATET uni vs. VATET bi", .before = 1)
-less <- less %>% add_row(followup="VATS left vs. VATS right", .before = 6)
-less <- less %>% add_row(followup="VATS uni robotic vs. VATS uni", .before = 9)
+less <- less %>% add_row(followup="T2b uni  vs.  T2b bi", .before = 1)
+less <- less %>% add_row(followup="T2a left  vs.  T2a right", .before = 6)
+less <- less %>% add_row(followup="T2c  vs.  T2a", .before = 9)
 
 
 less2 <- cbind(c("Treatment vs. Control", "Follow-up",less$followup),
@@ -734,8 +781,8 @@ less2 <- cbind(c("Treatment vs. Control", "Follow-up",less$followup),
               c("Treatment", "events/n", less$rate1),
               c("Control", "events/n", less$rate2),
               c("I^2", NA, less$i2),
-              c("Relative Risk (95% CI)", NA, less$rr),
-              c("p value", NA, less$p2))
+              c("Relative Risk (95% CI)", NA, less$rr))
+
 
 sub1 <- c(4:7, 9:10, 12:13)
 less2[,1][sub1] <- paste("  ",less2[,1][sub1])
@@ -756,7 +803,7 @@ forestplot(less2,
            rrsless,
            new_page = TRUE,
            colgap = unit(5, "mm"),
-           hrzl_lines = list("3" = gpar (lwd=1, columns=c(1:8), col="black") 
+           hrzl_lines = list("3" = gpar (lwd=1, columns=c(1:7), col="black") 
            ),
            lineheight=unit(0.6,'cm'),
            line.margin = 2,
@@ -783,47 +830,113 @@ forestplot(less2,
 
 ## Individual forest plots
 
-**Suppl Figure 1** - The risk of achieving Complete Stable Remission in patients with myasthenia gravis who underwent **VATS unilateral**  vs.  those who underwent **ETsT** at **3 years of follow-up**
-```{r forestplotma40, echo=FALSE, fig.height=3, fig.width=11, message=FALSE, warning=FALSE}
-boxsize <- (0.01666667*(weights(ma40)))
+**Suppl Figure 1** - The risk of achieving Complete Stable Remission in patients with myasthenia gravis who underwent **T3b**  vs.  those who underwent **T2a** at **3 years of follow-up**
+```{r forestplotma40, echo=FALSE, fig.height=3, fig.width=9.5, message=FALSE, warning=FALSE}
+boxsize <- (0.01666667*(weights(ma8)))
 
-tfma40 <- cbind( 
-  c( "Author", NA, prema40$author, 
-     paste("Overall relative risk for", ma40$k.eff, "studies","\n", 
-           "(Tau^2 = ", (formatC(ma40$tau2, digits=2, format="f")), 
-           ", df = ", (ma40$k - ma40$p),
-           "; ", "I^2", "= ", (formatC(ma40$I2, digits=1, format="f")),"%",
-           ", p ", (ifelse(ma40$QEp < 0.001, 
+tfma8 <- cbind( 
+  c( "Author", NA, prema8$author, 
+     paste("Overall relative risk for", ma8$k.eff, "studies","\n", 
+           "(Tau^2 = ", (formatC(ma8$tau2, digits=2, format="f")), 
+           ", df = ", (ma8$k - ma8$p),
+           "; ", "I^2", "= ", (formatC(ma8$I2, digits=1, format="f")),"%",
+           ", p ", (ifelse(ma8$QEp < 0.001, 
                            paste("< 0.001"),
-                           paste("= ", formatC(ma40$QEp, digits=3, format="f")))), 
+                           paste("= ", formatC(ma8$QEp, digits=3, format="f")))), 
             ")")),
-  c( "VATS uni", "events/n", paste(prema40$events1,"/",prema40$n1), 
-     paste(sum(prema40$events1, na.rm=TRUE),"/", sum(prema40$n1, na.rm=TRUE))),
+  c( "T3b", "events/n", paste(prema8$events1,"/",prema8$n1), 
+     paste(sum(prema8$events1, na.rm=TRUE),"/", sum(prema8$n1, na.rm=TRUE))),
   
-  c( "ETsT", "events/n", paste(prema40$events2,"/",prema40$n2), 
-     paste(sum(prema40$events2, na.rm=TRUE),"/",sum(prema40$n2, na.rm=TRUE))),
+  c( "T2a", "events/n", paste(prema8$events2,"/",prema8$n2), 
+     paste(sum(prema8$events2, na.rm=TRUE),"/",sum(prema8$n2, na.rm=TRUE))),
   
-  c( "Relative Risk (95% CI)", NA,  prema40$rr, 
-     paste(formatC(expma40$pred, format='f', digits =2), 
-           " (",formatC(expma40$ci.lb, format='f', digits=2),
-           "-", formatC(expma40$ci.ub, format='f', digits=2), ")")))
+  c( "Relative Risk (95% CI)", NA,  prema8$rr, 
+     paste(formatC(expma8$pred, format='f', digits =2), 
+           " (",formatC(expma8$ci.lb, format='f', digits=2),
+           "-", formatC(expma8$ci.ub, format='f', digits=2), ")")))
 
-tfma40 <- as_tibble(tfma40)
-tfma40 <- add_row(tfma40, .after = 7)
-tfma40 <- add_row(tfma40, .after = 9)
+tfma8 <- as_tibble(tfma8)
+tfma8 <- add_row(tfma8, .after = 7)
+tfma8 <- add_row(tfma8, .after = 9)
 
-rrsma40 <- structure(list(
-  mean = c(NA, NA,  exp(prema40$yi), NA, expma40$pred, NA),
-  lower = c(NA, NA,  exp(prema40$ci.lb), NA,  expma40$ci.lb, NA),
-  upper = c(NA, NA, exp(prema40$ci.ub), NA, expma40$ci.ub, NA)),
+rrsma8 <- structure(list(
+  mean = c(NA, NA,  exp(prema8$yi), NA, expma8$pred, NA),
+  lower = c(NA, NA,  exp(prema8$ci.lb), NA,  expma8$ci.lb, NA),
+  upper = c(NA, NA, exp(prema8$ci.ub), NA, expma8$ci.ub, NA)),
   .Names = c("mean", "lower", "upper"),
   row.names = c(NA, -10L),
   class = "data.frame")
 
-forestplot(tfma40,
+forestplot(tfma8,
            graph.pos = 4,
            zero=1,
-           rrsma40,
+           rrsma8,
+           new_page = TRUE,
+           colgap = unit(5, "mm"),
+           hrzl_lines = list("3" = gpar (lwd=1, columns=c(1:5), col="black") 
+           ),
+           lineheight=unit(0.6,'cm'),
+           line.margin = 2,
+           boxsize = c(NA, NA, boxsize, NA, 1, NA),
+           is.summary = c(T, T, rep(F, 6), T, F),
+           align = c("l","c", "c"),
+           ci.vertices = TRUE,
+           txt_gp = fpTxtGp(label =gpar (cex=0.8), 
+                            ticks = gpar(cex = 0.8, fontface="bold"),
+                            summary = gpar(cex = 0.8),
+                            xlab = gpar(cex=0.8)),
+           xticks = c(0.12, 0.25, 0.5, 1, 2, 4, 8),
+           xlog=TRUE,
+           clip = c(0.5, 4),
+           lwd.xaxis = 1,
+           lwd.ci = 2.2,
+           graphwidth = unit(7,"cm"),
+           col=fpColors(box="black",line="grey", 
+                        axes="grey20", summary="black", zero="black"))
+```
+
+
+**Suppl Figure 2** - The risk of achieving Complete Stable Remission in patients with myasthenia gravis who underwent **T3b** vs.  those who underwent **T2a** at **4 years of follow-up**
+```{r forestplotma41, echo=FALSE, fig.height=3, fig.width=9.5}
+boxsize <- (0.01666667*(weights(ma9)))
+
+tfma9 <- cbind( 
+  c( "Author", NA, prema9$author, 
+     paste("Overall relative risk for", ma9$k.eff, "studies","\n", 
+           "(Tau^2 = ", (formatC(ma9$tau2, digits=2, format="f")), 
+           ", df = ", (ma9$k - ma9$p),
+           "; ", "I^2", "= ", (formatC(ma9$I2, digits=1, format="f")),"%",
+           ", p ", (ifelse(ma9$QEp < 0.001, 
+                           paste("< 0.001"),
+                           paste("= ", formatC(ma9$QEp, digits=3, format="f")))), 
+            ")")),
+  c( "T3b", "events/n", paste(prema9$events1,"/",prema9$n1), 
+     paste(sum(prema9$events1, na.rm=TRUE),"/", sum(prema9$n1, na.rm=TRUE))),
+  
+  c( "T2b", "events/n", paste(prema9$events2,"/",prema9$n2), 
+     paste(sum(prema9$events2, na.rm=TRUE),"/",sum(prema9$n2, na.rm=TRUE))),
+  
+  c( "Relative Risk (95% CI)", NA,  prema9$rr, 
+     paste(formatC(expma9$pred, format='f', digits =2), 
+           " (",formatC(expma9$ci.lb, format='f', digits=2),
+           "-", formatC(expma9$ci.ub, format='f', digits=2), ")")))
+
+tfma9 <- as_tibble(tfma9)
+tfma9 <- add_row(tfma9, .after = 7)
+tfma9 <- add_row(tfma9, .after = 9)
+
+rrsma9 <- structure(list(
+  mean = c(NA, NA,  exp(prema9$yi), NA, expma9$pred, NA),
+  lower = c(NA, NA,  exp(prema9$ci.lb), NA,  expma9$ci.lb, NA),
+  upper = c(NA, NA, exp(prema9$ci.ub), NA, expma9$ci.ub, NA)),
+  .Names = c("mean", "lower", "upper"),
+  row.names = c(NA, -10L),
+  class = "data.frame")
+
+forestplot(tfma9,
+           graph.pos = 4,
+           zero=1,
+           rrsma9,
            new_page = TRUE,
            colgap = unit(5, "mm"),
            hrzl_lines = list("3" = gpar (lwd=1, columns=c(1:5), col="black") 
@@ -846,117 +959,51 @@ forestplot(tfma40,
            graphwidth = unit(7,"cm"),
            col=fpColors(box="black",line="grey", 
                         axes="grey20", summary="black", zero="black"))
-```
-
-
-**Suppl Figure 2** - The risk of achieving Complete Stable Remission in patients with myasthenia gravis who underwent **VATS unilateral  vs.**  those who underwent **ETsT** at **4 years of follow-up**
-```{r forestplotma41, echo=FALSE, fig.height=3, fig.width=11}
-boxsize <- (0.01666667*(weights(ma41)))
-
-tfma41 <- cbind( 
-  c( "Author", NA, prema41$author, 
-     paste("Overall relative risk for", ma41$k.eff, "studies","\n", 
-           "(Tau^2 = ", (formatC(ma41$tau2, digits=2, format="f")), 
-           ", df = ", (ma41$k - ma41$p),
-           "; ", "I^2", "= ", (formatC(ma41$I2, digits=1, format="f")),"%",
-           ", p ", (ifelse(ma41$QEp < 0.001, 
-                           paste("< 0.001"),
-                           paste("= ", formatC(ma41$QEp, digits=3, format="f")))), 
-            ")")),
-  c( "VATS uni", "events/n", paste(prema41$events1,"/",prema41$n1), 
-     paste(sum(prema41$events1, na.rm=TRUE),"/", sum(prema41$n1, na.rm=TRUE))),
-  
-  c( "ETsT", "events/n", paste(prema41$events2,"/",prema41$n2), 
-     paste(sum(prema41$events2, na.rm=TRUE),"/",sum(prema41$n2, na.rm=TRUE))),
-  
-  c( "Relative Risk (95% CI)", NA,  prema41$rr, 
-     paste(formatC(expma41$pred, format='f', digits =2), 
-           " (",formatC(expma41$ci.lb, format='f', digits=2),
-           "-", formatC(expma41$ci.ub, format='f', digits=2), ")")))
-
-tfma41 <- as_tibble(tfma41)
-tfma41 <- add_row(tfma41, .after = 7)
-tfma41 <- add_row(tfma41, .after = 9)
-
-rrsma41 <- structure(list(
-  mean = c(NA, NA,  exp(prema41$yi), NA, expma41$pred, NA),
-  lower = c(NA, NA,  exp(prema41$ci.lb), NA,  expma41$ci.lb, NA),
-  upper = c(NA, NA, exp(prema41$ci.ub), NA, expma41$ci.ub, NA)),
-  .Names = c("mean", "lower", "upper"),
-  row.names = c(NA, -10L),
-  class = "data.frame")
-
-forestplot(tfma41,
-           graph.pos = 4,
-           zero=1,
-           rrsma41,
-           new_page = TRUE,
-           colgap = unit(5, "mm"),
-           hrzl_lines = list("3" = gpar (lwd=1, columns=c(1:5), col="black") 
-           ),
-           lineheight=unit(0.6,'cm'),
-           line.margin = 2,
-           boxsize = c(NA, NA, boxsize, NA, 1, NA),
-           is.summary = c(T, T, rep(F, 6), T, F),
-           align = c("l","c", "c"),
-           ci.vertices = TRUE,
-           txt_gp = fpTxtGp(label =gpar (cex=0.8), 
-                            ticks = gpar(cex = 0.8, fontface="bold"),
-                            summary = gpar(cex = 0.8),
-                            xlab = gpar(cex=0.8)),
-           xticks = c(0.25, 0.5, 1, 2, 4, 8),
-           xlog=TRUE,
-           clip = c(0.5, 4),
-           lwd.xaxis = 1,
-           lwd.ci = 2.2,
-           graphwidth = unit(7,"cm"),
-           col=fpColors(box="black",line="grey", 
-                        axes="grey20", summary="black", zero="black"))
 
 ```
 
 
-**Suppl Figure 3** - The risk of achieving Complete Stable Remission in patients with myasthenia gravis who underwent **VATS unilateral  vs.**  those who underwent **ETsT** at **5 years of follow-up**
-```{r forestplotma42, echo=FALSE, fig.height=3, fig.width=11}
-boxsize <- (0.0125*(weights(ma42)))
+**Suppl Figure 3** - The risk of achieving Complete Stable Remission in patients with myasthenia gravis who underwent **T3b** vs.  those who underwent **T2a** at **5 years of follow-up**
+```{r forestplotma42, echo=FALSE, fig.height=3, fig.width=9.5}
+boxsize <- (0.0125*(weights(ma10)))
 
-tfma42 <- cbind( 
-  c( "Author", NA, prema42$author, 
-     paste("Overall relative risk for", ma42$k.eff, "studies","\n", 
-           "(Tau^2 = ", (formatC(ma42$tau2, digits=2, format="f")), 
-           ", df = ", (ma42$k - ma42$p),
-           "; ", "I^2", "= ", (formatC(ma42$I2, digits=1, format="f")),"%",
-           ", p ", (ifelse(ma42$QEp < 0.001, 
+tfma10 <- cbind( 
+  c( "Author", NA, prema10$author, 
+     paste("Overall relative risk for", ma10$k.eff, "studies","\n", 
+           "(Tau^2 = ", (formatC(ma10$tau2, digits=2, format="f")), 
+           ", df = ", (ma10$k - ma10$p),
+           "; ", "I^2", "= ", (formatC(ma10$I2, digits=1, format="f")),"%",
+           ", p ", (ifelse(ma10$QEp < 0.001, 
                            paste("< 0.001"),
-                           paste("= ", formatC(ma42$QEp, digits=3, format="f")))), 
+                           paste("= ", formatC(ma10$QEp, digits=3, format="f")))), 
             ")")),
-  c( "VATS uni", "events/n", paste(prema42$events1,"/",prema42$n1), 
-     paste(sum(prema42$events1, na.rm=TRUE),"/", sum(prema42$n1, na.rm=TRUE))),
+  c( "T3b", "events/n", paste(prema10$events1,"/",prema10$n1), 
+     paste(sum(prema10$events1, na.rm=TRUE),"/", sum(prema10$n1, na.rm=TRUE))),
   
-  c( "ETsT", "events/n", paste(prema42$events2,"/",prema42$n2), 
-     paste(sum(prema42$events2, na.rm=TRUE),"/",sum(prema42$n2, na.rm=TRUE))),
+  c( "T2a", "events/n", paste(prema10$events2,"/",prema10$n2), 
+     paste(sum(prema10$events2, na.rm=TRUE),"/",sum(prema10$n2, na.rm=TRUE))),
   
-  c( "Relative Risk (95% CI)", NA,  prema42$rr, 
-     paste(formatC(expma42$pred, format='f', digits =2), 
-           " (",formatC(expma42$ci.lb, format='f', digits=2),
-           "-", formatC(expma42$ci.ub, format='f', digits=2), ")")))
+  c( "Relative Risk (95% CI)", NA,  prema10$rr, 
+     paste(formatC(expma10$pred, format='f', digits =2), 
+           " (",formatC(expma10$ci.lb, format='f', digits=2),
+           "-", formatC(expma10$ci.ub, format='f', digits=2), ")")))
 
-tfma42 <- as_tibble(tfma42)
-tfma42 <- add_row(tfma42, .after = 6)
-tfma42 <- add_row(tfma42, .after = 8)
+tfma10 <- as_tibble(tfma10)
+tfma10 <- add_row(tfma10, .after = 6)
+tfma10 <- add_row(tfma10, .after = 8)
 
-rrsma42 <- structure(list(
-  mean = c(NA, NA,  exp(prema42$yi), NA, expma42$pred, NA),
-  lower = c(NA, NA,  exp(prema42$ci.lb), NA,  expma42$ci.lb, NA),
-  upper = c(NA, NA, exp(prema42$ci.ub), NA, expma42$ci.ub, NA)),
+rrsma10 <- structure(list(
+  mean = c(NA, NA,  exp(prema10$yi), NA, expma10$pred, NA),
+  lower = c(NA, NA,  exp(prema10$ci.lb), NA,  expma10$ci.lb, NA),
+  upper = c(NA, NA, exp(prema10$ci.ub), NA, expma10$ci.ub, NA)),
   .Names = c("mean", "lower", "upper"),
   row.names = c(NA, -9L),
   class = "data.frame")
 
-forestplot(tfma42,
+forestplot(tfma10,
            graph.pos = 4,
            zero=1,
-           rrsma42,
+           rrsma10,
            new_page = TRUE,
            colgap = unit(5, "mm"),
            hrzl_lines = list("3" = gpar (lwd=1, columns=c(1:5), col="black") 
@@ -982,47 +1029,47 @@ forestplot(tfma42,
 ```
 
 
-**Suppl Figure 4** - The risk of achieving Complete Stable Remission in patients with myasthenia gravis who underwent **VATS unilateral**  vs.  those who underwent **ETsT** at **6 years of follow-up**
-```{r forestplotma43, echo=FALSE, fig.height=3, fig.width=11}
-boxsize <- (0.0125*(weights(ma43)))
+**Suppl Figure 4** - The risk of achieving Complete Stable Remission in patients with myasthenia gravis who underwent **T3b**  vs.  those who underwent **T2a** at **6 years of follow-up**
+```{r forestplotma43, echo=FALSE, fig.height=3, fig.width=9.5}
+boxsize <- (0.0125*(weights(ma11)))
 
-tfma43 <- cbind( 
-  c( "Author", NA, prema43$author, 
-     paste("Overall relative risk for", ma43$k.eff, "studies","\n", 
-           "(Tau^2 = ", (formatC(ma43$tau2, digits=2, format="f")), 
-           ", df = ", (ma43$k - ma43$p),
-           "; ", "I^2", "= ", (formatC(ma43$I2, digits=1, format="f")),"%",
-           ", p ", (ifelse(ma43$QEp < 0.001, 
+tfma11 <- cbind( 
+  c( "Author", NA, prema11$author, 
+     paste("Overall relative risk for", ma11$k.eff, "studies","\n", 
+           "(Tau^2 = ", (formatC(ma11$tau2, digits=2, format="f")), 
+           ", df = ", (ma11$k - ma11$p),
+           "; ", "I^2", "= ", (formatC(ma11$I2, digits=1, format="f")),"%",
+           ", p ", (ifelse(ma11$QEp < 0.001, 
                            paste("< 0.001"),
-                           paste("= ", formatC(ma43$QEp, digits=3, format="f")))), 
+                           paste("= ", formatC(ma11$QEp, digits=3, format="f")))), 
             ")")),
-  c( "VATS uni", "events/n", paste(prema43$events1,"/",prema43$n1), 
-     paste(sum(prema43$events1, na.rm=TRUE),"/", sum(prema43$n1, na.rm=TRUE))),
+  c( "T3b", "events/n", paste(prema11$events1,"/",prema11$n1), 
+     paste(sum(prema11$events1, na.rm=TRUE),"/", sum(prema11$n1, na.rm=TRUE))),
   
-  c( "ETsT", "events/n", paste(prema43$events2,"/",prema43$n2), 
-     paste(sum(prema43$events2, na.rm=TRUE),"/",sum(prema43$n2, na.rm=TRUE))),
+  c( "T2a", "events/n", paste(prema11$events2,"/",prema11$n2), 
+     paste(sum(prema11$events2, na.rm=TRUE),"/",sum(prema11$n2, na.rm=TRUE))),
   
-  c( "Relative Risk (95% CI)", NA,  prema43$rr, 
-     paste(formatC(expma43$pred, format='f', digits =2), 
-           " (",formatC(expma43$ci.lb, format='f', digits=2),
-           "-", formatC(expma43$ci.ub, format='f', digits=2), ")")))
+  c( "Relative Risk (95% CI)", NA,  prema11$rr, 
+     paste(formatC(expma11$pred, format='f', digits =2), 
+           " (",formatC(expma11$ci.lb, format='f', digits=2),
+           "-", formatC(expma11$ci.ub, format='f', digits=2), ")")))
 
-tfma43 <- as_tibble(tfma43)
-tfma43 <- add_row(tfma43, .after = 5)
-tfma43 <- add_row(tfma43, .after = 7)
+tfma11 <- as_tibble(tfma11)
+tfma11 <- add_row(tfma11, .after = 5)
+tfma11 <- add_row(tfma11, .after = 7)
 
-rrsma43 <- structure(list(
-  mean = c(NA, NA,  exp(prema43$yi), NA, expma43$pred, NA),
-  lower = c(NA, NA,  exp(prema43$ci.lb), NA,  expma43$ci.lb, NA),
-  upper = c(NA, NA, exp(prema43$ci.ub), NA, expma43$ci.ub, NA)),
+rrsma11 <- structure(list(
+  mean = c(NA, NA,  exp(prema11$yi), NA, expma11$pred, NA),
+  lower = c(NA, NA,  exp(prema11$ci.lb), NA,  expma11$ci.lb, NA),
+  upper = c(NA, NA, exp(prema11$ci.ub), NA, expma11$ci.ub, NA)),
   .Names = c("mean", "lower", "upper"),
   row.names = c(NA, -8L),
   class = "data.frame")
 
-forestplot(tfma43,
+forestplot(tfma11,
            graph.pos = 4,
            zero=1,
-           rrsma43,
+           rrsma11,
            new_page = TRUE,
            colgap = unit(5, "mm"),
            hrzl_lines = list("3" = gpar (lwd=1, columns=c(1:5), col="black") 
@@ -1047,47 +1094,47 @@ forestplot(tfma43,
                         axes="grey20", summary="black", zero="black"))
 ```
 
-**Suppl Figure 5** - The risk of achieving Complete Stable Remission in patients with myasthenia gravis who underwent **VATS unilateral  vs.**  those who underwent **ETsT** at **7 years of follow-up**
-```{r forestplotma44, echo=FALSE, fig.height=3, fig.width=11}
-boxsize <- (0.0125*(weights(ma44)))
+**Suppl Figure 5** - The risk of achieving Complete Stable Remission in patients with myasthenia gravis who underwent **T3b** vs.  those who underwent **T2a** at **7 years of follow-up**
+```{r forestplotma44, echo=FALSE, fig.height=3, fig.width=9.5}
+boxsize <- (0.0125*(weights(ma12)))
 
-tfma44 <- cbind( 
-  c( "Author", NA, prema44$author, 
-     paste("Overall relative risk for", ma44$k.eff, "studies","\n", 
-           "(Tau^2 = ", (formatC(ma44$tau2, digits=2, format="f")), 
-           ", df = ", (ma44$k - ma44$p),
-           "; ", "I^2", "= ", (formatC(ma44$I2, digits=1, format="f")),"%",
-           ", p ", (ifelse(ma44$QEp < 0.001, 
+tfma12 <- cbind( 
+  c( "Author", NA, prema12$author, 
+     paste("Overall relative risk for", ma12$k.eff, "studies","\n", 
+           "(Tau^2 = ", (formatC(ma12$tau2, digits=2, format="f")), 
+           ", df = ", (ma12$k - ma12$p),
+           "; ", "I^2", "= ", (formatC(ma12$I2, digits=1, format="f")),"%",
+           ", p ", (ifelse(ma12$QEp < 0.001, 
                            paste("< 0.001"),
-                           paste("= ", formatC(ma44$QEp, digits=3, format="f")))), 
+                           paste("= ", formatC(ma12$QEp, digits=3, format="f")))), 
             ")")),
-  c( "VATS uni", "events/n", paste(prema44$events1,"/",prema44$n1), 
-     paste(sum(prema44$events1, na.rm=TRUE),"/", sum(prema44$n1, na.rm=TRUE))),
+  c( "T3b", "events/n", paste(prema12$events1,"/",prema12$n1), 
+     paste(sum(prema12$events1, na.rm=TRUE),"/", sum(prema12$n1, na.rm=TRUE))),
   
-  c( "ETsT", "events/n", paste(prema44$events2,"/",prema44$n2), 
-     paste(sum(prema44$events2, na.rm=TRUE),"/",sum(prema44$n2, na.rm=TRUE))),
+  c( "T2a", "events/n", paste(prema12$events2,"/",prema12$n2), 
+     paste(sum(prema12$events2, na.rm=TRUE),"/",sum(prema12$n2, na.rm=TRUE))),
   
-  c( "Relative Risk (95% CI)", NA,  prema44$rr, 
-     paste(formatC(expma44$pred, format='f', digits =2), 
-           " (",formatC(expma44$ci.lb, format='f', digits=2),
-           "-", formatC(expma44$ci.ub, format='f', digits=2), ")")))
+  c( "Relative Risk (95% CI)", NA,  prema12$rr, 
+     paste(formatC(expma12$pred, format='f', digits =2), 
+           " (",formatC(expma12$ci.lb, format='f', digits=2),
+           "-", formatC(expma12$ci.ub, format='f', digits=2), ")")))
 
-tfma44 <- as_tibble(tfma44)
-tfma44 <- add_row(tfma44, .after = 5)
-tfma44 <- add_row(tfma44, .after = 7)
+tfma12 <- as_tibble(tfma12)
+tfma12 <- add_row(tfma12, .after = 5)
+tfma12 <- add_row(tfma12, .after = 7)
 
-rrsma44 <- structure(list(
-  mean = c(NA, NA,  exp(prema44$yi), NA, expma44$pred, NA),
-  lower = c(NA, NA,  exp(prema44$ci.lb), NA,  expma44$ci.lb, NA),
-  upper = c(NA, NA, exp(prema44$ci.ub), NA, expma44$ci.ub, NA)),
+rrsma12 <- structure(list(
+  mean = c(NA, NA,  exp(prema12$yi), NA, expma12$pred, NA),
+  lower = c(NA, NA,  exp(prema12$ci.lb), NA,  expma12$ci.lb, NA),
+  upper = c(NA, NA, exp(prema12$ci.ub), NA, expma12$ci.ub, NA)),
   .Names = c("mean", "lower", "upper"),
   row.names = c(NA, -8L),
   class = "data.frame")
 
-forestplot(tfma44,
+forestplot(tfma12,
            graph.pos = 4,
            zero=1,
-           rrsma44,
+           rrsma12,
            new_page = TRUE,
            colgap = unit(5, "mm"),
            hrzl_lines = list("3" = gpar (lwd=1, columns=c(1:5), col="black") 
@@ -1113,47 +1160,47 @@ forestplot(tfma44,
 ```
 
 
-**Suppl Figure 6** - The risk of achieving Complete Stable Remission in patients with myasthenia gravis who underwent **VATS unilateral  vs.**  those who underwent **ETsT** at **8 years of follow-up**
-```{r forestplotma45, echo=FALSE, fig.height=3, fig.width=11}
-boxsize <- (0.0125*(weights(ma45)))
+**Suppl Figure 6** - The risk of achieving Complete Stable Remission in patients with myasthenia gravis who underwent **T3b** vs.  those who underwent **T2a** at **8 years of follow-up**
+```{r forestplotma45, echo=FALSE, fig.height=3, fig.width=9.5}
+boxsize <- (0.0125*(weights(ma13)))
 
-tfma45 <- cbind( 
-  c( "Author", NA, prema45$author, 
-     paste("Overall relative risk for", ma45$k.eff, "studies","\n", 
-           "(Tau^2 = ", (formatC(ma45$tau2, digits=2, format="f")), 
-           ", df = ", (ma45$k - ma45$p),
-           "; ", "I^2", "= ", (formatC(ma45$I2, digits=1, format="f")),"%",
-           ", p ", (ifelse(ma45$QEp < 0.001, 
+tfma13 <- cbind( 
+  c( "Author", NA, prema13$author, 
+     paste("Overall relative risk for", ma13$k.eff, "studies","\n", 
+           "(Tau^2 = ", (formatC(ma13$tau2, digits=2, format="f")), 
+           ", df = ", (ma13$k - ma13$p),
+           "; ", "I^2", "= ", (formatC(ma13$I2, digits=1, format="f")),"%",
+           ", p ", (ifelse(ma13$QEp < 0.001, 
                            paste("< 0.001"),
-                           paste("= ", formatC(ma45$QEp, digits=3, format="f")))), 
+                           paste("= ", formatC(ma13$QEp, digits=3, format="f")))), 
             ")")),
-  c( "VATS uni", "events/n", paste(prema45$events1,"/",prema45$n1), 
-     paste(sum(prema45$events1, na.rm=TRUE),"/", sum(prema45$n1, na.rm=TRUE))),
+  c( "VATS uni", "events/n", paste(prema13$events1,"/",prema13$n1), 
+     paste(sum(prema13$events1, na.rm=TRUE),"/", sum(prema13$n1, na.rm=TRUE))),
   
-  c( "ETsT", "events/n", paste(prema45$events2,"/",prema45$n2), 
-     paste(sum(prema45$events2, na.rm=TRUE),"/",sum(prema45$n2, na.rm=TRUE))),
+  c( "ETsT", "events/n", paste(prema13$events2,"/",prema13$n2), 
+     paste(sum(prema13$events2, na.rm=TRUE),"/",sum(prema13$n2, na.rm=TRUE))),
   
-  c( "Relative Risk (95% CI)", NA,  prema45$rr, 
-     paste(formatC(expma45$pred, format='f', digits =2), 
-           " (",formatC(expma45$ci.lb, format='f', digits=2),
-           "-", formatC(expma45$ci.ub, format='f', digits=2), ")")))
+  c( "Relative Risk (95% CI)", NA,  prema13$rr, 
+     paste(formatC(expma13$pred, format='f', digits =2), 
+           " (",formatC(expma13$ci.lb, format='f', digits=2),
+           "-", formatC(expma13$ci.ub, format='f', digits=2), ")")))
 
-tfma45 <- as_tibble(tfma45)
-tfma45 <- add_row(tfma45, .after = 4)
-tfma45 <- add_row(tfma45, .after = 6)
+tfma13 <- as_tibble(tfma13)
+tfma13 <- add_row(tfma13, .after = 4)
+tfma13 <- add_row(tfma13, .after = 6)
 
-rrsma45 <- structure(list(
-  mean = c(NA, NA,  exp(prema45$yi), NA, expma45$pred, NA),
-  lower = c(NA, NA,  exp(prema45$ci.lb), NA,  expma45$ci.lb, NA),
-  upper = c(NA, NA, exp(prema45$ci.ub), NA, expma45$ci.ub, NA)),
+rrsma13 <- structure(list(
+  mean = c(NA, NA,  exp(prema13$yi), NA, expma13$pred, NA),
+  lower = c(NA, NA,  exp(prema13$ci.lb), NA,  expma13$ci.lb, NA),
+  upper = c(NA, NA, exp(prema13$ci.ub), NA, expma13$ci.ub, NA)),
   .Names = c("mean", "lower", "upper"),
   row.names = c(NA, -7L),
   class = "data.frame")
 
-forestplot(tfma45,
+forestplot(tfma13,
            graph.pos = 4,
            zero=1,
-           rrsma45,
+           rrsma13,
            new_page = TRUE,
            colgap = unit(5, "mm"),
            hrzl_lines = list("3" = gpar (lwd=1, columns=c(1:5), col="black") 
