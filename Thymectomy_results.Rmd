@@ -594,7 +594,7 @@ round2 = function(x, n=0) {scale<-10^n; sign(x)*trunc(abs(x)*scale+0.5)/scale}
 ## Summary of forest plots
 
 
-**Figure 1** - Summary of forest plots of the risk of achieving Complete Stable Remission in patients with myasthenia gravis who underwent  **Transsternal thymectomy**  vs.  those who underwent **Transsternal or Transcervial thymectomy** at different follow-ups
+**Figure 1** - Summary of forest plots of the risk of achieving Complete Stable Remission in patients with myasthenia gravis who underwent  **Transsternal thymectomy**  vs.  those who underwent **Transsternal or Transcervical thymectomy** at different follow-ups
 ```{r,  fig.height=4, fig.width=9.5, echo=FALSE, message=FALSE, warning=FALSE}
 agr <- as_tibble(rbind(a, b))
 colnames(agr) <- head
@@ -615,6 +615,7 @@ agr$p2 <-
 
 agr <- agr %>% add_row(followup="T3b  vs.  T3a", .before = 1)
 agr <- agr %>% add_row(followup="T3b  vs.  T1a", .before = 5)
+
 
 agr2 <- cbind(c("Treatment vs. Control", "Follow-up",agr$followup),
               c("N of studies", NA, agr$k),

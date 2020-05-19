@@ -296,7 +296,7 @@ expma38 <- predict(ma38, transf = exp, digits=2)
 **Figure 1** - Summary of forest plots of the risk of achieving Complete
 Stable Remission in patients with myasthenia gravis who underwent
 **Transsternal thymectomy** vs. those who underwent **Transsternal or
-Transcervial thymectomy** at different follow-ups
+Transcervical thymectomy** at different follow-ups
 ![](Thymectomy_results_files/figure-gfm/unnamed-chunk-1-1.svg)<!-- -->
 
 **Figure 2** - Summary of forest plots of the risk of achieving Complete
