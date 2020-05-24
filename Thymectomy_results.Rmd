@@ -8,13 +8,14 @@ output: github_document
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo=TRUE)
 knitr::opts_chunk$set(dpi=900)
-knitr::opts_chunk$set(dev="svg")
+knitr::opts_chunk$set(dev='svg')
 
 library("metafor")
 library("tidyverse")
 library("rmarkdown")
 library("magrittr")
 library("forestplot")
+library(grid)
 
 ```
 
@@ -142,11 +143,11 @@ pao <- pao[!(pao$refid %in% 592),]
 
 ## Analysis codes
 
->[Click here to view full script available in `R Markdown`](https://github.com/ponceoscarj/Thymectomy/blob/master/Thymectomy_results.Rmd)
+>[Click here to view our full script available as `R Markdown` file](https://github.com/ponceoscarj/Thymectomy/blob/master/Thymectomy_results.Rmd)
 
 ## Raw data
 
->[Click here to view the raw data available in `.CSV file`](https://github.com/ponceoscarj/Thymectomy/blob/master/Thymectomy_results.Rmd)
+>[Click here to view our raw data available as `.CSV` file](https://github.com/ponceoscarj/Thymectomy/blob/master/Thymectomy_results.Rmd)
 
 
 ```{r overall_analysis, echo=FALSE}
@@ -441,15 +442,21 @@ head <- c("comparison",  "followup", "k", "ai", "bi",
                      "ci", "di", "i2", "eff", "llci", "ulci","p")
 
 a<- rbind(
-  c("T3b  vs.  T3a",  "3 years", ma1[[15]], sum(ma1[[42]]), sum(ma1[[43]]),
-    sum(ma1[[44]]),sum(ma1[[45]]), ma1[[25]], expma1[[1]], expma1[[3]], expma1[[4]],
-    ma1[[24]]), 
-  c("T3b  vs.  T3a",  "4 years", ma2[[15]], sum(ma2[[42]]), sum(ma2[[43]]),
-    sum(ma2[[44]]),sum(ma2[[45]]), ma2[[25]], expma2[[1]], expma2[[3]], expma2[[4]],
-    ma2[[24]]), 
-  c("T3b  vs.  T3a", "5 years", ma3[[15]], sum(ma3[[42]]), sum(ma3[[43]]),
-    sum(ma3[[44]]),sum(ma3[[45]]), ma3[[25]], expma3[[1]], expma3[[3]], expma3[[4]],
-    ma3[[24]]))
+  c("T3b  vs.  T3a",  "3 years",  ma1[[15]], 
+  sum(prema1$events1), (sum(prema1$n1)-sum(prema1$events1)),
+  sum(prema1$events2), (sum(prema1$n2)-sum(prema1$events2)), 
+  ma1[[25]], expma1[[1]], expma1[[3]],
+  expma1[[4]], ma1[[24]] ), 
+  c("T3b  vs.  T3a",  "4 years", ma2[[15]], 
+  sum(prema2$events1), (sum(prema2$n1)-sum(prema2$events1)),
+  sum(prema2$events2), (sum(prema2$n2)-sum(prema2$events2)), 
+  ma2[[25]], expma2[[1]], expma2[[3]],
+  expma2[[4]], ma2[[24]]), 
+  c("T3b  vs.  T3a", "5 years", ma3[[15]], 
+  sum(prema3$events1), (sum(prema3$n1)-sum(prema3$events1)),
+  sum(prema3$events2), (sum(prema3$n2)-sum(prema3$events2)), 
+  ma3[[25]], expma3[[1]], expma3[[3]],
+  expma3[[4]], ma3[[24]]))
 
 
 
@@ -612,7 +619,7 @@ l <- c("T3b  vs.  T5d", "5 years", ma38[[15]], sum(ma38[[42]]), sum(ma38[[43]]),
 
 
 **Figure 1** - Summary of forest plots of the risk of achieving Complete Stable Remission in patients with myasthenia gravis who underwent  **Transsternal thymectomy**  vs.  those who underwent **Transsternal or Transcervical thymectomy** at different follow-ups
-```{r,  fig.height=4, fig.width=10.5, echo=FALSE, message=FALSE, warning=FALSE}
+```{r,  fig.height=3, fig.width=10, echo=FALSE, message=FALSE, warning=FALSE}
 agr <- as_tibble(rbind(a, b))
 colnames(agr) <- head
 agr[,c(3:7,8:12)] <- sapply(agr[,c(3:7,8:12)], as.numeric)
@@ -625,6 +632,8 @@ agr$n1 <- (agr$ai + agr$bi)
 agr$n2 <- (agr$ci + agr$di)
 agr$rate1 <- paste(agr$ai,"/",agr$n1)
 agr$rate2 <- paste(agr$ci,"/",agr$n2)
+
+
 agr$p2 <- 
   ifelse(is.na(agr$p), NA, 
   ifelse(agr$p<0.001, paste("<0.001"), 
@@ -639,7 +648,6 @@ agr2 <- cbind(c("Treatment vs. Control", "Follow-up",agr$followup),
               c("Control", "events/n", agr$rate2),
               c("I^2", NA, agr$i2),
               c("Relative Risk (95% CI)", NA, agr$rr))
-
 sub1 <- c(4:6, 8)
 agr2[,1][sub1] <- paste("  ",agr2[,1][sub1])
 
@@ -653,13 +661,12 @@ rrsagr <- structure(list(
   class = "data.frame")
 
 forestplot(agr2,
+           rrsagr,
            graph.pos = 6,
            zero=1,
-           rrsagr,
            new_page = TRUE,
            colgap = unit(5, "mm"),
-           hrzl_lines = list("3" = gpar (lwd=1, columns=c(1:7), col="black") 
-           ),
+           hrzl_lines = list("3" = gpar (lwd=1, columns=c(1:7), col="black")),
            lineheight=unit(0.6,'cm'),
            line.margin = 2,
            is.summary = c(T, T, T, rep(F, 3), T, F),
@@ -682,7 +689,7 @@ forestplot(agr2,
 ```
 
 **Figure 2** - Summary of forest plots of the risk of achieving Complete Stable Remission in patients with myasthenia gravis who underwent a **Transsternal  Thymectomy** vs.  those who underwent a **Minimally Invasive Thymectomy** at different follow-ups**
-```{r,  echo=FALSE, fig.height=9.5, fig.width=10, echo=FALSE, message=FALSE, warning=FALSE}
+```{r, fig.height=9.5, fig.width=10, echo=FALSE, message=FALSE, warning=FALSE}
 lessagr <- as_tibble(rbind(c, d, e, f, j, k, l))
 colnames(lessagr) <- head
 
@@ -767,7 +774,7 @@ forestplot(lessagr2,
 
 
 **Figure 3** - Summary of forest plots of the risk of achieving Complete Stable Remission in patients with myasthenia gravis who underwent a **Minimally Invasive Thymectomy**  those who underwent another **Minimally Invasive Thymectomy** at different follow-ups**
-```{r,  fig.height=5, fig.width=9.5, echo=FALSE, message=FALSE, warning=FALSE}
+```{r,  fig.height=4, fig.width=9.5, echo=FALSE, message=FALSE, warning=FALSE}
 less <- as_tibble(rbind(g, h, i))
 colnames(less) <- head
 

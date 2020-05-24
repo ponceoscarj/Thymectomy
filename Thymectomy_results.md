@@ -13,13 +13,13 @@ used to create forest plots
 
 ## Analysis codes
 
-> [Click here to view full script available in `R
-> Markdown`](https://github.com/ponceoscarj/Thymectomy/blob/master/Thymectomy_results.Rmd)
+> [Click here to view our full script available as `R Markdown`
+> file](https://github.com/ponceoscarj/Thymectomy/blob/master/Thymectomy_results.Rmd)
 
 ## Raw data
 
-> [Click here to view the raw data available in `.CSV
-> file`](https://github.com/ponceoscarj/Thymectomy/blob/master/Thymectomy_results.Rmd)
+> [Click here to view our raw data available as `.CSV`
+> file](https://github.com/ponceoscarj/Thymectomy/blob/master/Thymectomy_results.Rmd)
 
 ## Summary of forest plots
 
