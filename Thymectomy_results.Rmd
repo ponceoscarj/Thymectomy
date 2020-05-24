@@ -134,10 +134,6 @@ pao$author <-
 
 #Exclude RefID 592 because it enrolled patients that were enrolled for 366 
 pao <- pao[!(pao$refid %in% 592),]
-
-
-
-
 ```
 
 
@@ -153,9 +149,7 @@ pao <- pao[!(pao$refid %in% 592),]
 >[Click here to view the raw data available in `.CSV file`](https://github.com/ponceoscarj/Thymectomy/blob/master/Thymectomy_results.Rmd)
 
 
-```{r analysis_overall_summary, echo=FALSE}
-
-
+```{r overall_analysis, echo=FALSE}
 prema1 <- escalc(measure="RR",ai=events1, ci=events2, n1i=n1, n2i=n2,
                   subset=(followup==3 & 
                             comparison=="T3b  vs.  T3a"), data=pao)
@@ -609,12 +603,6 @@ k <- rbind(
 l <- c("T3b  vs.  T5d", "5 years", ma38[[15]], sum(ma38[[42]]), sum(ma38[[43]]),
     sum(ma38[[44]]),sum(ma38[[45]]), ma38[[25]], expma38[[1]], expma38[[3]], 
     expma38[[4]], ma38[[24]])
-
-
-
-
-
-round2 = function(x, n=0) {scale<-10^n; sign(x)*trunc(abs(x)*scale+0.5)/scale}
 
 ```
 
