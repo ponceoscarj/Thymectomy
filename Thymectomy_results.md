@@ -19,7 +19,7 @@ used to create forest plots
 ## Raw data
 
 > [Click here to view our raw data available as `.CSV`
-> file](https://github.com/ponceoscarj/Thymectomy/blob/master/Thymectomy_results.Rmd)
+> file](https://github.com/ponceoscarj/Thymectomy/blob/master/Data/thymectomy_outcomes.csv)
 
 ## Summary of forest plots
 

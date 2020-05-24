@@ -138,17 +138,13 @@ pao <- pao[!(pao$refid %in% 592),]
 ```
 
 
-print(pao[pao$comparison=="T3b  vs.  T2a",c(1,6)])
-colnames(pao)
-table(pao$group, pao$comparison)
-
 ## Analysis codes
 
 >[Click here to view our full script available as `R Markdown` file](https://github.com/ponceoscarj/Thymectomy/blob/master/Thymectomy_results.Rmd)
 
 ## Raw data
 
->[Click here to view our raw data available as `.CSV` file](https://github.com/ponceoscarj/Thymectomy/blob/master/Thymectomy_results.Rmd)
+>[Click here to view our raw data available as `.CSV` file](https://github.com/ponceoscarj/Thymectomy/blob/master/Data/thymectomy_outcomes.csv)
 
 
 ```{r overall_analysis, echo=FALSE}
