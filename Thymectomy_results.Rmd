@@ -145,11 +145,14 @@ pao <- pao[!(pao$refid %in% 592),]
 
 ## Analysis codes
 
+>[Click here to view full script available in `R Markdown`](https://github.com/ponceoscarj/Thymectomy/blob/master/Thymectomy_results.Rmd)
 
-<details><summary>CLICK To View Main analysis codes</summary>
-<p>
+## Raw data
 
-```{r analysis_overall_summary}
+>[Click here to view the raw data available in `.CSV file`](https://github.com/ponceoscarj/Thymectomy/blob/master/Thymectomy_results.Rmd)
+
+
+```{r analysis_overall_summary, echo=FALSE}
 
 
 prema1 <- escalc(measure="RR",ai=events1, ci=events2, n1i=n1, n2i=n2,
@@ -437,11 +440,6 @@ expma38 <- predict(ma38, transf = exp, digits=2)
 
 ```
 
-</p>
-</details>
-&nbsp;
-
->[Click here to view full script available in `R Markdown`](https://github.com/ponceoscarj/Thymectomy/blob/master/Thymectomy_results.Rmd)
 
 ```{r organization_summary, echo=FALSE}
 head <- c("comparison",  "followup", "k", "ai", "bi",
