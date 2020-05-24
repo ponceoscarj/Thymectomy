@@ -138,8 +138,9 @@ pao <- pao[!(pao$refid %in% 592),]
 ```
 
 
-
-
+print(pao[pao$comparison=="T3b  vs.  T2a",c(1,6)])
+colnames(pao)
+table(pao$group, pao$comparison)
 
 ## Analysis codes
 
