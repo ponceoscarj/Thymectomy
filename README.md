@@ -1,13 +1,5 @@
 # Thymectomy
 
-1. Protocol
-
-	a. PROSPERO registration: https://www.crd.york.ac.uk/prospero/display_record.php?RecordID=166827
-
-2. 
-
-
-3. 
-
+###Follow this [link](https://github.com/ponceoscarj/Thymectomy/blob/master/Thymectomy_results.md) to access Supplementary material
 
 
