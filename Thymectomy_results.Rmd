@@ -132,6 +132,7 @@ pao$author <-
   ifelse(pao$refid==1424, paste("Tomulescu et al., 2016"),
   ifelse(pao$refid==2416, paste("INCMNSZ, 2019"), NA )))))))))))))))
 
+#Exclude RefID 592 because it enrolled patients that were enrolled for 366 
 pao <- pao[!(pao$refid %in% 592),]
 
 
