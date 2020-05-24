@@ -20,22 +20,39 @@ used to create forest plots
 <p>
 
 ``` r
-ma1 <- rma(measure="RR", ai=events1, ci=events2, n1i=n1, n2i=n2, 
-           data=pao, subset=(followup==3 & comparison=="T3b  vs.  T3a"), 
-           method="REML")
-expma1 <- predict(ma1, transf = exp, digits=2)
+prema1 <- escalc(measure="RR",ai=events1, ci=events2, n1i=n1, n2i=n2,
+                  subset=(followup==3 & 
+                            comparison=="T3b  vs.  T3a"), data=pao)
+prema1 <- summary(prema1)
+prema1$rr <- paste(formatC((exp(prema1$yi)), format='f', digits=2), " ",
+                    "(", formatC((exp(prema1$ci.lb)), format='f', digits=2), "-",
+                    formatC((exp(prema1$ci.ub)), format='f', digits=2),")")
+ma1 <- rma(measure="RR", yi,vi, data=prema1, method="REML")
+expma1 <- predict(ma1, transf = transf.exp.int)
 
 
-ma2 <- rma(measure="RR", ai=events1, ci=events2, n1i=n1, n2i=n2, 
-           data=pao, subset=(followup==4 & comparison=="T3b  vs.  T3a"), 
-           method="REML")
-expma2<- predict(ma2, transf = exp, digits=2)
+prema2 <- escalc(measure="RR",ai=events1, ci=events2, n1i=n1, n2i=n2,
+                  subset=(followup==4 & 
+                            comparison=="T3b  vs.  T3a"), data=pao)
+prema2 <- summary(prema2)
+prema2$rr <- paste(formatC((exp(prema2$yi)), format='f', digits=2), " ",
+                    "(", formatC((exp(prema2$ci.lb)), format='f', digits=2), "-",
+                    formatC((exp(prema2$ci.ub)), format='f', digits=2),")")
+ma2 <- rma(measure="RR", yi,vi, data=prema2, method="REML")
+expma2 <- predict(ma2, transf = transf.exp.int)
 
 
-ma3 <- rma(measure="RR", ai=events1, ci=events2, n1i=n1, n2i=n2, 
-           data=pao, subset=(followup==5 & comparison=="T3b  vs.  T3a"),
-           method="REML")
-expma3 <- predict(ma3, transf = exp, digits=2)
+
+prema3 <- escalc(measure="RR",ai=events1, ci=events2, n1i=n1, n2i=n2,
+                  subset=(followup==5 & 
+                            comparison=="T3b  vs.  T3a"), data=pao)
+prema3 <- summary(prema3)
+prema3$rr <- paste(formatC((exp(prema3$yi)), format='f', digits=2), " ",
+                    "(", formatC((exp(prema3$ci.lb)), format='f', digits=2), "-",
+                    formatC((exp(prema3$ci.ub)), format='f', digits=2),")")
+ma3 <- rma(measure="RR", yi,vi, data=prema3, method="REML")
+expma3 <- predict(ma3, transf = transf.exp.int)
+
 
 
 ma4 <- rma(measure="RR", ai=events1, ci=events2, n1i=n1, n2i=n2, 
@@ -291,6 +308,11 @@ expma38 <- predict(ma38, transf = exp, digits=2)
 
 </details>
 
+ 
+
+> [Click here to view full script available in `R
+> Markdown`](https://github.com/ponceoscarj/Thymectomy/blob/master/Thymectomy_results.Rmd)
+
 ## Summary of forest plots
 
 **Figure 1** - Summary of forest plots of the risk of achieving Complete
@@ -311,34 +333,125 @@ Stable Remission in patients with myasthenia gravis who underwent a
 **Minimally Invasive Thymectomy** at different follow-ups\*\*
 ![](Thymectomy_results_files/figure-gfm/unnamed-chunk-3-1.svg)<!-- -->
 
-## Individual forest plots
+## Supplementary Figures
 
-**Suppl Figure 1** - The risk of achieving Complete Stable Remission in
-patients with myasthenia gravis who underwent **T3b** vs. those who
-underwent **T2a** at **3 years of follow-up**
+### T-3b vs. T-3a forest plots
+
+<details>
+
+<summary> Suppl. Figure 1: T-3b vs. T-3a, risk of CSR at 3 years of
+follow-up </summary>
+
+<p>
+
 ![](Thymectomy_results_files/figure-gfm/forestplotma40-1.svg)<!-- -->
 
-**Suppl Figure 2** - The risk of achieving Complete Stable Remission in
-patients with myasthenia gravis who underwent **T3b** vs. those who
-underwent **T2a** at **4 years of follow-up**
+</p>
+
+</details>
+
+<details>
+
+<summary> Suppl. Figure 2: T-3b vs. T-3a, risk of CSR at 4 years of
+follow-up </summary>
+
+<p>
+
 ![](Thymectomy_results_files/figure-gfm/forestplotma41-1.svg)<!-- -->
 
-**Suppl Figure 3** - The risk of achieving Complete Stable Remission in
-patients with myasthenia gravis who underwent **T3b** vs. those who
-underwent **T2a** at **5 years of follow-up**
+</p>
+
+</details>
+
+<details>
+
+<summary> Suppl. Figure 3: T-3b vs. T-3a, risk of CSR at 4 years of
+follow-up </summary>
+
+<p>
+
 ![](Thymectomy_results_files/figure-gfm/forestplotma42-1.svg)<!-- -->
 
-**Suppl Figure 4** - The risk of achieving Complete Stable Remission in
-patients with myasthenia gravis who underwent **T3b** vs. those who
-underwent **T2a** at **6 years of follow-up**
+</p>
+
+</details>
+
+### T-3b vs. T-2a forest plots
+
+<details>
+
+<summary> Suppl. Figure 4: T-3b vs. T-2a, risk of CSR at 3 years of
+follow-up </summary>
+
+<p>
+
 ![](Thymectomy_results_files/figure-gfm/forestplotma43-1.svg)<!-- -->
 
-**Suppl Figure 5** - The risk of achieving Complete Stable Remission in
-patients with myasthenia gravis who underwent **T3b** vs. those who
-underwent **T2a** at **7 years of follow-up**
+</p>
+
+</details>
+
+<details>
+
+<summary> Suppl. Figure 5: T-3b vs. T-2a, risk of CSR at 4 years of
+follow-up </summary>
+
+<p>
+
 ![](Thymectomy_results_files/figure-gfm/forestplotma44-1.svg)<!-- -->
 
-**Suppl Figure 6** - The risk of achieving Complete Stable Remission in
-patients with myasthenia gravis who underwent **T3b** vs. those who
-underwent **T2a** at **8 years of follow-up**
+</p>
+
+</details>
+
+<details>
+
+<summary> Suppl. Figure 6: T-3b vs. T-2a, risk of CSR at 5 years of
+follow-up </summary>
+
+<p>
+
 ![](Thymectomy_results_files/figure-gfm/forestplotma45-1.svg)<!-- -->
+
+</p>
+
+</details>
+
+<details>
+
+<summary> Suppl. Figure 7: T-3b vs. T-2a, risk of CSR at 6 years of
+follow-up </summary>
+
+<p>
+
+![](Thymectomy_results_files/figure-gfm/forestplotma46-1.svg)<!-- -->
+
+</p>
+
+</details>
+
+<details>
+
+<summary> Suppl. Figure 8: T-3b vs. T-2a, risk of CSR at 7 years of
+follow-up </summary>
+
+<p>
+
+![](Thymectomy_results_files/figure-gfm/forestplotma47-1.svg)<!-- -->
+
+</p>
+
+</details>
+
+<details>
+
+<summary> Suppl. Figure 9: T-3b vs. T-2a, risk of CSR at 8 years of
+follow-up </summary>
+
+<p>
+
+![](Thymectomy_results_files/figure-gfm/forestplotma48-1.svg)<!-- -->
+
+</p>
+
+</details>

@@ -27,7 +27,9 @@ library("forestplot")
 
  
 ```{r cleaning, echo=FALSE, message=FALSE, warning=FALSE}
-pao <- read.csv("C:/Users/Oscar Ponce/Documents/Research/GitHub/Thymectomy/Data/thymectomy_outcomes.csv")
+pao <- read.csv("Data/thymectomy_outcomes.csv")
+
+
 
 names(pao)[1] <- "refid"
 names(pao)[2] <- "int"
@@ -44,7 +46,8 @@ pao <- pao[,-(17:74)]
 
 pao$int[pao$int %in% c("extended transsternal\r\nthymectomies", 
                        "Extended Transternal thymectomy",
-                       "extended transsternal\nthymectomies")] <- "ETsT"
+                       "extended transsternal\nthymectomies",
+                       "Extended median sternotomy")] <- "ETsT"
 pao$int[pao$int == "Infrasternal mediastinoscopic thymectomy (IMT)"] <- "IMT"
 pao$int[pao$int == 
           "transcervical-subxiphoidvideothoracoscopic\n‘maximal’ thymectomy"] <- "TcSxVT"
@@ -89,6 +92,12 @@ pao$comp[pao$comp == "TcSxVT"] <- "T5a"
 
 
 
+pao <- pao[c(1:62,66:67,63:65),]
+row.names(pao) <- c(1:67)
+
+
+
+
 #Changin direction of comparison for better interpretation
 pao[63,] <- pao[63,c(1, 3, 2, 4:7, 9, 8, 11, 10,12:16)]
 pao[c(1:13, 20:39, 50, 51, 54:56, 58, 60, 62, 64),] <- pao[c(1:13, 20:39, 50, 51, 54:56, 58, 60, 62, 64), c(1, 3, 2, 4:7, 9, 8, 11, 10,12:16)]
@@ -126,7 +135,10 @@ pao$author <-
 pao <- pao[!(pao$refid %in% 592),]
 
 
+
+
 ```
+
 
 
 
@@ -139,22 +151,40 @@ pao <- pao[!(pao$refid %in% 592),]
 
 ```{r analysis_overall_summary}
 
-ma1 <- rma(measure="RR", ai=events1, ci=events2, n1i=n1, n2i=n2, 
-           data=pao, subset=(followup==3 & comparison=="T3b  vs.  T3a"), 
-           method="REML")
-expma1 <- predict(ma1, transf = exp, digits=2)
+
+prema1 <- escalc(measure="RR",ai=events1, ci=events2, n1i=n1, n2i=n2,
+                  subset=(followup==3 & 
+                            comparison=="T3b  vs.  T3a"), data=pao)
+prema1 <- summary(prema1)
+prema1$rr <- paste(formatC((exp(prema1$yi)), format='f', digits=2), " ",
+                    "(", formatC((exp(prema1$ci.lb)), format='f', digits=2), "-",
+                    formatC((exp(prema1$ci.ub)), format='f', digits=2),")")
+ma1 <- rma(measure="RR", yi,vi, data=prema1, method="REML")
+expma1 <- predict(ma1, transf = transf.exp.int)
 
 
-ma2 <- rma(measure="RR", ai=events1, ci=events2, n1i=n1, n2i=n2, 
-           data=pao, subset=(followup==4 & comparison=="T3b  vs.  T3a"), 
-           method="REML")
-expma2<- predict(ma2, transf = exp, digits=2)
+prema2 <- escalc(measure="RR",ai=events1, ci=events2, n1i=n1, n2i=n2,
+                  subset=(followup==4 & 
+                            comparison=="T3b  vs.  T3a"), data=pao)
+prema2 <- summary(prema2)
+prema2$rr <- paste(formatC((exp(prema2$yi)), format='f', digits=2), " ",
+                    "(", formatC((exp(prema2$ci.lb)), format='f', digits=2), "-",
+                    formatC((exp(prema2$ci.ub)), format='f', digits=2),")")
+ma2 <- rma(measure="RR", yi,vi, data=prema2, method="REML")
+expma2 <- predict(ma2, transf = transf.exp.int)
 
 
-ma3 <- rma(measure="RR", ai=events1, ci=events2, n1i=n1, n2i=n2, 
-           data=pao, subset=(followup==5 & comparison=="T3b  vs.  T3a"),
-           method="REML")
-expma3 <- predict(ma3, transf = exp, digits=2)
+
+prema3 <- escalc(measure="RR",ai=events1, ci=events2, n1i=n1, n2i=n2,
+                  subset=(followup==5 & 
+                            comparison=="T3b  vs.  T3a"), data=pao)
+prema3 <- summary(prema3)
+prema3$rr <- paste(formatC((exp(prema3$yi)), format='f', digits=2), " ",
+                    "(", formatC((exp(prema3$ci.lb)), format='f', digits=2), "-",
+                    formatC((exp(prema3$ci.ub)), format='f', digits=2),")")
+ma3 <- rma(measure="RR", yi,vi, data=prema3, method="REML")
+expma3 <- predict(ma3, transf = transf.exp.int)
+
 
 
 ma4 <- rma(measure="RR", ai=events1, ci=events2, n1i=n1, n2i=n2, 
@@ -409,8 +439,9 @@ expma38 <- predict(ma38, transf = exp, digits=2)
 
 </p>
 </details>
+&nbsp;
 
-
+>[Click here to view full script available in `R Markdown`](https://github.com/ponceoscarj/Thymectomy/blob/master/Thymectomy_results.Rmd)
 
 ```{r organization_summary, echo=FALSE}
 head <- c("comparison",  "followup", "k", "ai", "bi",
@@ -519,7 +550,6 @@ c("T3b  vs.  T2b uni", "3 years", ma18[[15]], sum(ma18[[42]]), sum(ma18[[43]]),
     sum(ma23[[44]]),sum(ma23[[45]]), ma23[[25]], expma23[[1]], expma23[[3]],
     expma23[[4]], ma23[[24]]))
 
-
 g <- rbind(
   c("T2b uni  vs.  T2b bi", "3 years", ma24[[15]], sum(ma24[[42]]), sum(ma24[[43]]),
     sum(ma24[[44]]),sum(ma24[[45]]), ma24[[25]], expma24[[1]], expma24[[3]],
@@ -595,11 +625,11 @@ round2 = function(x, n=0) {scale<-10^n; sign(x)*trunc(abs(x)*scale+0.5)/scale}
 
 
 **Figure 1** - Summary of forest plots of the risk of achieving Complete Stable Remission in patients with myasthenia gravis who underwent  **Transsternal thymectomy**  vs.  those who underwent **Transsternal or Transcervical thymectomy** at different follow-ups
-```{r,  fig.height=4, fig.width=9.5, echo=FALSE, message=FALSE, warning=FALSE}
+```{r,  fig.height=4, fig.width=10.5, echo=FALSE, message=FALSE, warning=FALSE}
 agr <- as_tibble(rbind(a, b))
 colnames(agr) <- head
-agr[,c(3:7,9:12)] <- sapply(agr[,c(3:7,9:12)], as.numeric)
-agr$i2 <- ifelse(agr$k==1, "na", agr$i2)
+agr[,c(3:7,8:12)] <- sapply(agr[,c(3:7,8:12)], as.numeric)
+agr$i2 <- ifelse(agr$k==1, "na", formatC(round2(agr$i2), format='f', digits=0))
 agr$rr <- paste(formatC(round2(agr$eff, n=2), format='f', digits=2), 
                 "(", formatC(round2(agr$llci, n=2), format='f', digits=2),
                 "-", formatC(round2(agr$ulci, n=2), format='f', digits=2),
@@ -607,15 +637,14 @@ agr$rr <- paste(formatC(round2(agr$eff, n=2), format='f', digits=2),
 agr$n1 <- (agr$ai + agr$bi)
 agr$n2 <- (agr$ci + agr$di)
 agr$rate1 <- paste(agr$ai,"/",agr$n1)
-agr$rate2 <- paste(agr$ci,"/",agr$n1)
+agr$rate2 <- paste(agr$ci,"/",agr$n2)
 agr$p2 <- 
   ifelse(is.na(agr$p), NA, 
   ifelse(agr$p<0.001, paste("<0.001"), 
          paste(formatC(round2(agr$p,n=3), format='f', digits=3))))
 
-agr <- agr %>% add_row(followup="T3b  vs.  T3a", .before = 1)
-agr <- agr %>% add_row(followup="T3b  vs.  T1a", .before = 5)
-
+agr <- agr %>% add_row(followup="T-3b  vs.  T-3a", .before = 1)
+agr <- agr %>% add_row(followup="T-3b  vs.  T-1a", .before = 5)
 
 agr2 <- cbind(c("Treatment vs. Control", "Follow-up",agr$followup),
               c("N of studies", NA, agr$k),
@@ -623,7 +652,6 @@ agr2 <- cbind(c("Treatment vs. Control", "Follow-up",agr$followup),
               c("Control", "events/n", agr$rate2),
               c("I^2", NA, agr$i2),
               c("Relative Risk (95% CI)", NA, agr$rr))
-
 
 sub1 <- c(4:6, 8)
 agr2[,1][sub1] <- paste("  ",agr2[,1][sub1])
@@ -681,21 +709,20 @@ lessagr$rr <- paste(formatC(round2(lessagr$eff, n=2), format='f', digits=2),
 lessagr$n1 <- (lessagr$ai + lessagr$bi)
 lessagr$n2 <- (lessagr$ci + lessagr$di)
 lessagr$rate1 <- paste(lessagr$ai,"/",lessagr$n1)
-lessagr$rate2 <- paste(lessagr$ci,"/",lessagr$n1)
+lessagr$rate2 <- paste(lessagr$ci,"/",lessagr$n2)
 lessagr$p2 <- 
   ifelse(is.na(lessagr$p), NA, 
   ifelse(lessagr$p<0.001, paste("<0.001"), 
          paste(formatC(round2(lessagr$p,n=3), format='f', digits=3))))
 
 
-
-lessagr <- lessagr %>% add_row(followup="T3a  vs.  T2a", .before = 1)
-lessagr <- lessagr %>% add_row(followup="T3b  vs.  T2a", .before = 5)
-lessagr <- lessagr %>% add_row(followup="T3b  vs.  T2b bi", .before = 13)
-lessagr <- lessagr %>% add_row(followup="T3b  vs.  T2b uni", .before = 17)
-lessagr <- lessagr %>% add_row(followup="T3a  vs.  T5a", .before = 24)
-lessagr <- lessagr %>% add_row(followup="T3b  vs.  T5a", .before = 28)
-lessagr <- lessagr %>% add_row(followup="T3b  vs.  T5d", .before = 32)
+lessagr <- lessagr %>% add_row(followup="T-3a  vs.  T-2a", .before = 1)
+lessagr <- lessagr %>% add_row(followup="T-3b  vs.  T-2a", .before = 5)
+lessagr <- lessagr %>% add_row(followup="T-3b  vs.  T-2b bi", .before = 13)
+lessagr <- lessagr %>% add_row(followup="T-3b  vs.  T-2b uni", .before = 17)
+lessagr <- lessagr %>% add_row(followup="T-3a  vs.  T-5a", .before = 24)
+lessagr <- lessagr %>% add_row(followup="T-3b  vs.  T-5a", .before = 28)
+lessagr <- lessagr %>% add_row(followup="T-3b  vs.  T-5d", .before = 32)
 
 
 lessagr2 <- cbind(c("Treatment vs. Control", "Follow-up",lessagr$followup),
@@ -766,15 +793,15 @@ less$rr <- paste(formatC(round2(less$eff, n=2), format='f', digits=2),
 less$n1 <- (less$ai + less$bi)
 less$n2 <- (less$ci + less$di)
 less$rate1 <- paste(less$ai,"/",less$n1)
-less$rate2 <- paste(less$ci,"/",less$n1)
+less$rate2 <- paste(less$ci,"/",less$n2)
 less$p2 <- 
   ifelse(is.na(less$p), NA, 
   ifelse(less$p<0.001, paste("<0.001"), 
          paste(formatC(round2(less$p,n=3), format='f', digits=3))))
 
-less <- less %>% add_row(followup="T2b uni  vs.  T2b bi", .before = 1)
-less <- less %>% add_row(followup="T2a left  vs.  T2a right", .before = 6)
-less <- less %>% add_row(followup="T2c  vs.  T2a", .before = 9)
+less <- less %>% add_row(followup="T-2b uni  vs.  T-2b bi", .before = 1)
+less <- less %>% add_row(followup="T-2a left  vs.  T-2a right", .before = 6)
+less <- less %>% add_row(followup="T-2c  vs.  T-2a", .before = 9)
 
 
 less2 <- cbind(c("Treatment vs. Control", "Follow-up",less$followup),
@@ -829,10 +856,234 @@ forestplot(less2,
 ```
 
 
-## Individual forest plots
+## Supplementary Figures
 
-**Suppl Figure 1** - The risk of achieving Complete Stable Remission in patients with myasthenia gravis who underwent **T3b**  vs.  those who underwent **T2a** at **3 years of follow-up**
-```{r forestplotma40, echo=FALSE, fig.height=3, fig.width=9.5, message=FALSE, warning=FALSE}
+### T-3b vs. T-3a forest plots
+<details><summary> Suppl. Figure 1: T-3b vs. T-3a, risk of CSR at 3 years of follow-up </summary>
+<p>
+
+```{r forestplotma40, echo=FALSE, fig.height=3, fig.width=10, message=FALSE, warning=FALSE}
+boxsize <- (0.0125*(weights(ma1)))
+
+tfma1 <- cbind( 
+  c( "Author", NA, prema1$author, 
+     paste("Overall relative risk for", ma1$k.eff, "studies","\n", 
+           "(Tau^2 = ", (formatC(ma1$tau2, digits=2, format="f")), 
+           ", df = ", (ma1$k - ma1$p),
+           "; ", "I^2", "= ", (formatC(ma1$I2, digits=1, format="f")),"%",
+           ", p ", (ifelse(ma1$QEp < 0.001, 
+                           paste("< 0.001"),
+                           paste("= ", formatC(ma1$QEp, digits=3, format="f")))), 
+            ")")),
+  c( "T3b", "events/n", paste(prema1$events1,"/",prema1$n1), 
+     paste(sum(prema1$events1, na.rm=TRUE),"/", sum(prema1$n1, na.rm=TRUE))),
+  
+  c( "T3a", "events/n", paste(prema1$events2,"/",prema1$n2), 
+     paste(sum(prema1$events2, na.rm=TRUE),"/",sum(prema1$n2, na.rm=TRUE))),
+  
+  c( "Relative Risk (95% CI)", NA,  prema1$rr, 
+     paste(formatC(expma1$pred, format='f', digits =2), 
+           " (",formatC(expma1$ci.lb, format='f', digits=2),
+           "-", formatC(expma1$ci.ub, format='f', digits=2), ")")))
+
+
+tfma1 <- as_tibble(tfma1)
+tfma1 <- add_row(tfma1, .after = 4)
+tfma1 <- add_row(tfma1, .after = 6)
+
+
+rrsma1 <- structure(list(
+  mean = c(NA, NA,  exp(prema1$yi), NA, expma1$pred, NA),
+  lower = c(NA, NA,  exp(prema1$ci.lb), NA,  expma1$ci.lb, NA),
+  upper = c(NA, NA, exp(prema1$ci.ub), NA, expma1$ci.ub, NA)),
+  .Names = c("mean", "lower", "upper"),
+  row.names = c(NA, -7L),
+  class = "data.frame")
+
+
+forestplot(tfma1,
+           graph.pos = 4,
+           zero=1,
+           rrsma1,
+           new_page = TRUE,
+           colgap = unit(5, "mm"),
+           hrzl_lines = list("3" = gpar (lwd=1, columns=c(1:5), col="black") 
+           ),
+           lineheight=unit(0.6,'cm'),
+           line.margin = 2,
+           boxsize = c(NA, NA, boxsize, NA, 1,NA),
+           is.summary = c(T, T, rep(F, 3), T, F),
+           align = c("l","c", "c"),
+           ci.vertices = TRUE,
+           txt_gp = fpTxtGp(label =gpar (cex=0.8), 
+                            ticks = gpar(cex = 0.8, fontface="bold"),
+                            summary = gpar(cex = 0.8),
+                            xlab = gpar(cex=0.8)),
+           xticks = c(0.12, 0.25, 0.5, 1, 2, 4, 8),
+           xlog=TRUE,
+           clip = c(0.5, 4),
+           lwd.xaxis = 1,
+           lwd.ci = 2.2,
+           graphwidth = unit(7,"cm"),
+           col=fpColors(box="black",line="grey", 
+                        axes="grey20", summary="black", zero="black"))
+```
+</p>
+</details>
+
+
+<details><summary> Suppl. Figure 2: T-3b vs. T-3a, risk of CSR at 4 years of follow-up </summary>
+<p>
+
+```{r forestplotma41, echo=FALSE, fig.height=3, fig.width=10, message=FALSE, warning=FALSE}
+boxsize <- (0.0125*(weights(ma2)))
+
+tfma2 <- cbind( 
+  c( "Author", NA, prema2$author, 
+     paste("Overall relative risk for", ma2$k.eff, "studies","\n", 
+           "(Tau^2 = ", (formatC(ma2$tau2, digits=2, format="f")), 
+           ", df = ", (ma2$k - ma2$p),
+           "; ", "I^2", "= ", (formatC(ma2$I2, digits=1, format="f")),"%",
+           ", p ", (ifelse(ma2$QEp < 0.001, 
+                           paste("< 0.001"),
+                           paste("= ", formatC(ma2$QEp, digits=3, format="f")))), 
+            ")")),
+  c( "T3b", "events/n", paste(prema2$events1,"/",prema2$n1), 
+     paste(sum(prema2$events1, na.rm=TRUE),"/", sum(prema2$n1, na.rm=TRUE))),
+  
+  c( "T3a", "events/n", paste(prema2$events2,"/",prema2$n2), 
+     paste(sum(prema2$events2, na.rm=TRUE),"/",sum(prema2$n2, na.rm=TRUE))),
+  
+  c( "Relative Risk (95% CI)", NA,  prema2$rr, 
+     paste(formatC(expma2$pred, format='f', digits =2), 
+           " (",formatC(expma2$ci.lb, format='f', digits=2),
+           "-", formatC(expma2$ci.ub, format='f', digits=2), ")")))
+
+
+tfma2 <- as_tibble(tfma2)
+tfma2 <- add_row(tfma2, .after = 4)
+tfma2 <- add_row(tfma2, .after = 6)
+
+
+rrsma2 <- structure(list(
+  mean = c(NA, NA,  exp(prema2$yi), NA, expma2$pred, NA),
+  lower = c(NA, NA,  exp(prema2$ci.lb), NA,  expma2$ci.lb, NA),
+  upper = c(NA, NA, exp(prema2$ci.ub), NA, expma2$ci.ub, NA)),
+  .Names = c("mean", "lower", "upper"),
+  row.names = c(NA, -7L),
+  class = "data.frame")
+
+
+forestplot(tfma2,
+           graph.pos = 4,
+           zero=1,
+           rrsma2,
+           new_page = TRUE,
+           colgap = unit(5, "mm"),
+           hrzl_lines = list("3" = gpar (lwd=1, columns=c(1:5), col="black") 
+           ),
+           lineheight=unit(0.6,'cm'),
+           line.margin = 2,
+           boxsize = c(NA, NA, boxsize, NA, 1,NA),
+           is.summary = c(T, T, rep(F, 3), T, F),
+           align = c("l","c", "c"),
+           ci.vertices = TRUE,
+           txt_gp = fpTxtGp(label =gpar (cex=0.8), 
+                            ticks = gpar(cex = 0.8, fontface="bold"),
+                            summary = gpar(cex = 0.8),
+                            xlab = gpar(cex=0.8)),
+           xticks = c(0.12, 0.25, 0.5, 1, 2, 4, 8),
+           xlog=TRUE,
+           clip = c(0.5, 4),
+           lwd.xaxis = 1,
+           lwd.ci = 2.2,
+           graphwidth = unit(7,"cm"),
+           col=fpColors(box="black",line="grey", 
+                        axes="grey20", summary="black", zero="black"))
+```
+</p>
+</details>
+
+
+
+<details><summary> Suppl. Figure 3: T-3b vs. T-3a, risk of CSR at 4 years of follow-up </summary>
+<p>
+
+```{r forestplotma42, echo=FALSE, fig.height=3, fig.width=10, message=FALSE, warning=FALSE}
+boxsize <- (0.0125*(weights(ma3)))
+
+tfma3 <- cbind( 
+  c( "Author", NA, prema3$author, 
+     paste("Overall relative risk for", ma3$k.eff, "studies","\n", 
+           "(Tau^2 = ", (formatC(ma3$tau2, digits=2, format="f")), 
+           ", df = ", (ma3$k - ma3$p),
+           "; ", "I^2", "= ", (formatC(ma3$I2, digits=1, format="f")),"%",
+           ", p ", (ifelse(ma3$QEp < 0.001, 
+                           paste("< 0.001"),
+                           paste("= ", formatC(ma3$QEp, digits=3, format="f")))), 
+            ")")),
+  c( "T3b", "events/n", paste(prema3$events1,"/",prema3$n1), 
+     paste(sum(prema3$events1, na.rm=TRUE),"/", sum(prema3$n1, na.rm=TRUE))),
+  
+  c( "T3a", "events/n", paste(prema3$events2,"/",prema3$n2), 
+     paste(sum(prema3$events2, na.rm=TRUE),"/",sum(prema3$n2, na.rm=TRUE))),
+  
+  c( "Relative Risk (95% CI)", NA,  prema3$rr, 
+     paste(formatC(expma3$pred, format='f', digits =2), 
+           " (",formatC(expma3$ci.lb, format='f', digits=2),
+           "-", formatC(expma3$ci.ub, format='f', digits=2), ")")))
+
+
+tfma3 <- as_tibble(tfma3)
+tfma3 <- add_row(tfma3, .after = 4)
+tfma3 <- add_row(tfma3, .after = 6)
+
+
+rrsma3 <- structure(list(
+  mean = c(NA, NA,  exp(prema3$yi), NA, expma3$pred, NA),
+  lower = c(NA, NA,  exp(prema3$ci.lb), NA,  expma3$ci.lb, NA),
+  upper = c(NA, NA, exp(prema3$ci.ub), NA, expma3$ci.ub, NA)),
+  .Names = c("mean", "lower", "upper"),
+  row.names = c(NA, -7L),
+  class = "data.frame")
+
+
+forestplot(tfma3,
+           graph.pos = 4,
+           zero=1,
+           rrsma3,
+           new_page = TRUE,
+           colgap = unit(5, "mm"),
+           hrzl_lines = list("3" = gpar (lwd=1, columns=c(1:5), col="black") 
+           ),
+           lineheight=unit(0.6,'cm'),
+           line.margin = 2,
+           boxsize = c(NA, NA, boxsize, NA, 1,NA),
+           is.summary = c(T, T, rep(F, 3), T, F),
+           align = c("l","c", "c"),
+           ci.vertices = TRUE,
+           txt_gp = fpTxtGp(label =gpar (cex=0.8), 
+                            ticks = gpar(cex = 0.8, fontface="bold"),
+                            summary = gpar(cex = 0.8),
+                            xlab = gpar(cex=0.8)),
+           xticks = c(0.12, 0.25, 0.5, 1, 2, 4, 8),
+           xlog=TRUE,
+           clip = c(0.5, 4),
+           lwd.xaxis = 1,
+           lwd.ci = 2.2,
+           graphwidth = unit(7,"cm"),
+           col=fpColors(box="black",line="grey", 
+                        axes="grey20", summary="black", zero="black"))
+```
+</p>
+</details>
+
+
+
+### T-3b vs. T-2a forest plots
+<details><summary> Suppl. Figure 4: T-3b vs. T-2a, risk of CSR at 3 years of follow-up </summary>
+<p>
+```{r forestplotma43, echo=FALSE, fig.height=3, fig.width=9.5, message=FALSE, warning=FALSE}
 boxsize <- (0.01666667*(weights(ma8)))
 
 tfma8 <- cbind( 
@@ -895,10 +1146,13 @@ forestplot(tfma8,
            col=fpColors(box="black",line="grey", 
                         axes="grey20", summary="black", zero="black"))
 ```
+</p>
+</details>
 
 
-**Suppl Figure 2** - The risk of achieving Complete Stable Remission in patients with myasthenia gravis who underwent **T3b** vs.  those who underwent **T2a** at **4 years of follow-up**
-```{r forestplotma41, echo=FALSE, fig.height=3, fig.width=9.5}
+<details><summary> Suppl. Figure 5: T-3b vs. T-2a, risk of CSR at 4 years of follow-up </summary>
+<p>
+```{r forestplotma44, echo=FALSE, fig.height=3, fig.width=9.5}
 boxsize <- (0.01666667*(weights(ma9)))
 
 tfma9 <- cbind( 
@@ -962,10 +1216,14 @@ forestplot(tfma9,
                         axes="grey20", summary="black", zero="black"))
 
 ```
+</p>
+</details>
 
 
-**Suppl Figure 3** - The risk of achieving Complete Stable Remission in patients with myasthenia gravis who underwent **T3b** vs.  those who underwent **T2a** at **5 years of follow-up**
-```{r forestplotma42, echo=FALSE, fig.height=3, fig.width=9.5}
+
+<details><summary> Suppl. Figure 6: T-3b vs. T-2a, risk of CSR at 5 years of follow-up </summary>
+<p>
+```{r forestplotma45, echo=FALSE, fig.height=3, fig.width=9.5}
 boxsize <- (0.0125*(weights(ma10)))
 
 tfma10 <- cbind( 
@@ -1028,10 +1286,13 @@ forestplot(tfma10,
            col=fpColors(box="black",line="grey", 
                         axes="grey20", summary="black", zero="black"))
 ```
+</p>
+</details>
 
 
-**Suppl Figure 4** - The risk of achieving Complete Stable Remission in patients with myasthenia gravis who underwent **T3b**  vs.  those who underwent **T2a** at **6 years of follow-up**
-```{r forestplotma43, echo=FALSE, fig.height=3, fig.width=9.5}
+<details><summary> Suppl. Figure 7: T-3b vs. T-2a, risk of CSR at 6 years of follow-up </summary>
+<p>
+```{r forestplotma46, echo=FALSE, fig.height=3, fig.width=9.5}
 boxsize <- (0.0125*(weights(ma11)))
 
 tfma11 <- cbind( 
@@ -1094,9 +1355,12 @@ forestplot(tfma11,
            col=fpColors(box="black",line="grey", 
                         axes="grey20", summary="black", zero="black"))
 ```
+</p>
+</details>
 
-**Suppl Figure 5** - The risk of achieving Complete Stable Remission in patients with myasthenia gravis who underwent **T3b** vs.  those who underwent **T2a** at **7 years of follow-up**
-```{r forestplotma44, echo=FALSE, fig.height=3, fig.width=9.5}
+<details><summary> Suppl. Figure 8: T-3b vs. T-2a, risk of CSR at 7 years of follow-up </summary>
+<p>
+```{r forestplotma47, echo=FALSE, fig.height=3, fig.width=9.5}
 boxsize <- (0.0125*(weights(ma12)))
 
 tfma12 <- cbind( 
@@ -1159,10 +1423,13 @@ forestplot(tfma12,
            col=fpColors(box="black",line="grey", 
                         axes="grey20", summary="black", zero="black"))
 ```
+</p>
+</details>
 
 
-**Suppl Figure 6** - The risk of achieving Complete Stable Remission in patients with myasthenia gravis who underwent **T3b** vs.  those who underwent **T2a** at **8 years of follow-up**
-```{r forestplotma45, echo=FALSE, fig.height=3, fig.width=9.5}
+<details><summary> Suppl. Figure 9: T-3b vs. T-2a, risk of CSR at 8 years of follow-up </summary>
+<p>
+```{r forestplotma48, echo=FALSE, fig.height=3, fig.width=9.5}
 boxsize <- (0.0125*(weights(ma13)))
 
 tfma13 <- cbind( 
@@ -1225,4 +1492,5 @@ forestplot(tfma13,
            col=fpColors(box="black",line="grey", 
                         axes="grey20", summary="black", zero="black"))
 ```
-
+</p>
+</details>
