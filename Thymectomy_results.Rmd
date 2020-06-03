@@ -1,6 +1,6 @@
 ---
 title: "Thymectomy"
-author: "Oscar Ponce & Andrea Solis-Pazmino"
+author: "Oscar J. Ponce & Andrea Solis-Pazmino"
 date: "5/7/2020"
 output: github_document
 ---
@@ -131,7 +131,7 @@ pao <- pao[!(pao$refid %in% 592),]
 ```
 
 
-## Transparency
+## Open Data
 >Click any of the following links to view the documents
 
 | Protocol   |      Analysis codes      |  Raw data |
@@ -682,7 +682,7 @@ forestplot(agr2,
 ```
 
 **Figure 2** - Summary of forest plots of the risk of achieving Complete Stable Remission in patients with myasthenia gravis who underwent a **Transsternal  Thymectomy** vs.  those who underwent a **Minimally Invasive Thymectomy** at different follow-ups**
-```{r, fig.height=9.5, fig.width=18, echo=FALSE, message=FALSE, warning=FALSE}
+```{r, fig.height=9.5, fig.width=20, echo=FALSE, message=FALSE, warning=FALSE}
 lessagr <- as_tibble(rbind(c, d, e, f, j, k, l))
 colnames(lessagr) <- head
 
@@ -759,7 +759,7 @@ forestplot(lessagr2,
            clip = c(0.5, 4),
            lwd.xaxis = 1,
            lwd.ci = 2.2,
-           graphwidth = unit(13,"cm"),
+           graphwidth = unit(18,"cm"),
            col=fpColors(box="black",line="grey", 
                         axes="grey20", summary="black", zero="black"))
 

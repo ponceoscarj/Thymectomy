@@ -1,9 +1,9 @@
 Thymectomy
 ================
-Oscar Ponce & Andrea Solis-Pazmino
+Oscar J. Ponce & Andrea Solis-Pazmino
 5/7/2020
 
-## Transparency
+## Open Data
 
 > Click any of the following links to view the documents
 
