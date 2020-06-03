@@ -138,13 +138,14 @@ pao <- pao[!(pao$refid %in% 592),]
 ```
 
 
-## Analysis codes
+## Transparency
+>Click any of the following links to view the documents
 
->[Click here to view our full script available as `R Markdown` file](https://github.com/ponceoscarj/Thymectomy/blob/master/Thymectomy_results.Rmd)
+| Protocol   |      Analysis codes      |  Raw data |
+|----------|:-------------:|------:|
+| [Prospero](https://www.crd.york.ac.uk/prospero/display_record.php?RecordID=166827) | [`R Markdown`](https://github.com/ponceoscarj/Thymectomy/blob/master/Thymectomy_results.Rmd) | [`.CSV`](https://github.com/ponceoscarj/Thymectomy/blob/master/Data/thymectomy_outcomes.csv)|
 
-## Raw data
 
->[Click here to view our raw data available as `.CSV` file](https://github.com/ponceoscarj/Thymectomy/blob/master/Data/thymectomy_outcomes.csv)
 
 
 ```{r overall_analysis, echo=FALSE}
@@ -616,7 +617,7 @@ l <- c("T3b  vs.  T5d", "5 years", ma38[[15]], sum(ma38[[42]]), sum(ma38[[43]]),
 
 
 **Figure 1** - Summary of forest plots of the risk of achieving Complete Stable Remission in patients with myasthenia gravis who underwent  **Transsternal thymectomy**  vs.  those who underwent **Transsternal or Transcervical thymectomy** at different follow-ups
-```{r,  fig.height=3, fig.width=10, echo=FALSE, message=FALSE, warning=FALSE}
+```{r,  fig.height=3, fig.width=12, echo=FALSE, message=FALSE, warning=FALSE}
 agr <- as_tibble(rbind(a, b))
 colnames(agr) <- head
 agr[,c(3:7,8:12)] <- sapply(agr[,c(3:7,8:12)], as.numeric)
@@ -636,10 +637,11 @@ agr$p2 <-
   ifelse(agr$p<0.001, paste("<0.001"), 
          paste(formatC(round2(agr$p,n=3), format='f', digits=3))))
 
-agr <- agr %>% add_row(followup="T-3b  vs.  T-3a", .before = 1)
-agr <- agr %>% add_row(followup="T-3b  vs.  T-1a", .before = 5)
 
-agr2 <- cbind(c("Treatment vs. Control", "Follow-up",agr$followup),
+agr <- agr %>% add_row(followup="Extended Transsternal vs. Standard Transsternal", .before = 1)
+agr <- agr %>% add_row(followup="Extended Transsternal vs. Basic Transcervical", .before = 5)
+
+agr2 <- cbind(c("Treatment vs. Control", "by follow-up",agr$followup),
               c("N of studies", NA, agr$k),
               c("Treatment", "events/n", agr$rate1),
               c("Control", "events/n", agr$rate2),
@@ -686,7 +688,7 @@ forestplot(agr2,
 ```
 
 **Figure 2** - Summary of forest plots of the risk of achieving Complete Stable Remission in patients with myasthenia gravis who underwent a **Transsternal  Thymectomy** vs.  those who underwent a **Minimally Invasive Thymectomy** at different follow-ups**
-```{r, fig.height=9.5, fig.width=10, echo=FALSE, message=FALSE, warning=FALSE}
+```{r, fig.height=9.5, fig.width=14, echo=FALSE, message=FALSE, warning=FALSE}
 lessagr <- as_tibble(rbind(c, d, e, f, j, k, l))
 colnames(lessagr) <- head
 
@@ -707,13 +709,13 @@ lessagr$p2 <-
          paste(formatC(round2(lessagr$p,n=3), format='f', digits=3))))
 
 
-lessagr <- lessagr %>% add_row(followup="T-3a  vs.  T-2a", .before = 1)
-lessagr <- lessagr %>% add_row(followup="T-3b  vs.  T-2a", .before = 5)
-lessagr <- lessagr %>% add_row(followup="T-3b  vs.  T-2b bi", .before = 13)
-lessagr <- lessagr %>% add_row(followup="T-3b  vs.  T-2b uni", .before = 17)
-lessagr <- lessagr %>% add_row(followup="T-3a  vs.  T-5a", .before = 24)
-lessagr <- lessagr %>% add_row(followup="T-3b  vs.  T-5a", .before = 28)
-lessagr <- lessagr %>% add_row(followup="T-3b  vs.  T-5d", .before = 32)
+lessagr <- lessagr %>% add_row(followup="Standard Transsternal vs. Classic Video-assisted thoracoscopic surgery (Unilateral)", .before = 1)
+lessagr <- lessagr %>% add_row(followup="Extended Transsternal vs. Classic Video-assisted thoracoscopic surgery (Unilateral)", .before = 5)
+lessagr <- lessagr %>% add_row(followup="Extended Transsternal  vs. Video-assisted thoracoscopic extended", .before = 13)
+lessagr <- lessagr %>% add_row(followup="Extended Transsternal  vs. Right Video-assisted thoracoscopic extended", .before = 17)
+lessagr <- lessagr %>% add_row(followup="Standard Transsternal  vs. Combined Transcervical – Subxiphoid Infra-sternal", .before = 24)
+lessagr <- lessagr %>% add_row(followup="Extended Transsternal  vs. Combined Transcervical – Subxiphoid Infra-sternal", .before = 28)
+lessagr <- lessagr %>% add_row(followup="Extended Transsternal  vs. Infra-sternal mediastinoscopy", .before = 32)
 
 
 lessagr2 <- cbind(c("Treatment vs. Control", "Follow-up",lessagr$followup),
@@ -771,7 +773,7 @@ forestplot(lessagr2,
 
 
 **Figure 3** - Summary of forest plots of the risk of achieving Complete Stable Remission in patients with myasthenia gravis who underwent a **Minimally Invasive Thymectomy**  those who underwent another **Minimally Invasive Thymectomy** at different follow-ups**
-```{r,  fig.height=4, fig.width=9.5, echo=FALSE, message=FALSE, warning=FALSE}
+```{r,  fig.height=4, fig.width=15, echo=FALSE, message=FALSE, warning=FALSE}
 less <- as_tibble(rbind(g, h, i))
 colnames(less) <- head
 
@@ -790,9 +792,9 @@ less$p2 <-
   ifelse(less$p<0.001, paste("<0.001"), 
          paste(formatC(round2(less$p,n=3), format='f', digits=3))))
 
-less <- less %>% add_row(followup="T-2b uni  vs.  T-2b bi", .before = 1)
-less <- less %>% add_row(followup="T-2a left  vs.  T-2a right", .before = 6)
-less <- less %>% add_row(followup="T-2c  vs.  T-2a", .before = 9)
+less <- less %>% add_row(followup="Right Video-assisted thoracoscopic extended vs. Video-assisted thoracoscopic extended", .before = 1)
+less <- less %>% add_row(followup="Left Video-assisted thoracoscopic extended vs. Right Video-assisted thoracoscopic extended", .before = 6)
+less <- less %>% add_row(followup="Videoscopic with Robotic Technology (Unilateral)  vs. Classic Video-assisted thoracoscopic surgery (Unilateral)", .before = 9)
 
 
 less2 <- cbind(c("Treatment vs. Control", "Follow-up",less$followup),
@@ -850,7 +852,7 @@ forestplot(less2,
 ## Supplementary Figures
 
 ### T-3b vs. T-3a forest plots
-<details><summary> Suppl. Figure 1: T-3b vs. T-3a, risk of CSR at 3 years of follow-up </summary>
+<details><summary> Suppl. Figure 1: Extended Transsternal vs. Standard Transsternal, risk of CSR at 3 years of follow-up </summary>
 <p>
 
 ```{r forestplotma40, echo=FALSE, fig.height=3, fig.width=10, message=FALSE, warning=FALSE}
@@ -923,7 +925,7 @@ forestplot(tfma1,
 </details>
 
 
-<details><summary> Suppl. Figure 2: T-3b vs. T-3a, risk of CSR at 4 years of follow-up </summary>
+<details><summary> Suppl. Figure 2: Extended Transsternal vs. Standard Transsternal, risk of CSR at 4 years of follow-up </summary>
 <p>
 
 ```{r forestplotma41, echo=FALSE, fig.height=3, fig.width=10, message=FALSE, warning=FALSE}
@@ -997,7 +999,7 @@ forestplot(tfma2,
 
 
 
-<details><summary> Suppl. Figure 3: T-3b vs. T-3a, risk of CSR at 4 years of follow-up </summary>
+<details><summary> Suppl. Figure 3: Extended Transsternal vs. Standard Transsternal, risk of CSR at 4 years of follow-up </summary>
 <p>
 
 ```{r forestplotma42, echo=FALSE, fig.height=3, fig.width=10, message=FALSE, warning=FALSE}
@@ -1072,7 +1074,7 @@ forestplot(tfma3,
 
 
 ### T-3b vs. T-2a forest plots
-<details><summary> Suppl. Figure 4: T-3b vs. T-2a, risk of CSR at 3 years of follow-up </summary>
+<details><summary> Suppl. Figure 4: Extended Transsternal vs. Classic Video-assisted thoracoscopic surgery (Unilateral), risk of CSR at 3 years of follow-up </summary>
 <p>
 ```{r forestplotma43, echo=FALSE, fig.height=3, fig.width=9.5, message=FALSE, warning=FALSE}
 boxsize <- (0.01666667*(weights(ma8)))
@@ -1141,7 +1143,7 @@ forestplot(tfma8,
 </details>
 
 
-<details><summary> Suppl. Figure 5: T-3b vs. T-2a, risk of CSR at 4 years of follow-up </summary>
+<details><summary> Suppl. Figure 5: Extended Transsternal vs. Classic Video-assisted thoracoscopic surgery (Unilateral), risk of CSR at 4 years of follow-up </summary>
 <p>
 ```{r forestplotma44, echo=FALSE, fig.height=3, fig.width=9.5}
 boxsize <- (0.01666667*(weights(ma9)))
@@ -1212,7 +1214,7 @@ forestplot(tfma9,
 
 
 
-<details><summary> Suppl. Figure 6: T-3b vs. T-2a, risk of CSR at 5 years of follow-up </summary>
+<details><summary> Suppl. Figure 6: Extended Transsternal vs. Classic Video-assisted thoracoscopic surgery (Unilateral), risk of CSR at 5 years of follow-up </summary>
 <p>
 ```{r forestplotma45, echo=FALSE, fig.height=3, fig.width=9.5}
 boxsize <- (0.0125*(weights(ma10)))
@@ -1281,7 +1283,7 @@ forestplot(tfma10,
 </details>
 
 
-<details><summary> Suppl. Figure 7: T-3b vs. T-2a, risk of CSR at 6 years of follow-up </summary>
+<details><summary> Suppl. Figure 7: Extended Transsternal vs. Classic Video-assisted thoracoscopic surgery (Unilateral), risk of CSR at 6 years of follow-up </summary>
 <p>
 ```{r forestplotma46, echo=FALSE, fig.height=3, fig.width=9.5}
 boxsize <- (0.0125*(weights(ma11)))
@@ -1349,7 +1351,7 @@ forestplot(tfma11,
 </p>
 </details>
 
-<details><summary> Suppl. Figure 8: T-3b vs. T-2a, risk of CSR at 7 years of follow-up </summary>
+<details><summary> Suppl. Figure 8: Extended Transsternal vs. Classic Video-assisted thoracoscopic surgery (Unilateral), risk of CSR at 7 years of follow-up </summary>
 <p>
 ```{r forestplotma47, echo=FALSE, fig.height=3, fig.width=9.5}
 boxsize <- (0.0125*(weights(ma12)))
@@ -1418,7 +1420,7 @@ forestplot(tfma12,
 </details>
 
 
-<details><summary> Suppl. Figure 9: T-3b vs. T-2a, risk of CSR at 8 years of follow-up </summary>
+<details><summary> Suppl. Figure 9: Extended Transsternal vs. Classic Video-assisted thoracoscopic surgery (Unilateral), risk of CSR at 8 years of follow-up </summary>
 <p>
 ```{r forestplotma48, echo=FALSE, fig.height=3, fig.width=9.5}
 boxsize <- (0.0125*(weights(ma13)))

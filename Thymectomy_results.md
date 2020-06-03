@@ -11,15 +11,13 @@ perform the analysis
 `forestplot`:[package](https://cran.r-project.org/web/packages/forestplot/forestplot.pdf)
 used to create forest plots
 
-## Analysis codes
+## Transparency
 
-> [Click here to view our full script available as `R Markdown`
-> file](https://github.com/ponceoscarj/Thymectomy/blob/master/Thymectomy_results.Rmd)
+> Click any of the following links to view the documents
 
-## Raw data
-
-> [Click here to view our raw data available as `.CSV`
-> file](https://github.com/ponceoscarj/Thymectomy/blob/master/Data/thymectomy_outcomes.csv)
+| Protocol                                                                           |                                        Analysis codes                                        |                                                                                     Raw data |
+| ---------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------: | -------------------------------------------------------------------------------------------: |
+| [Prospero](https://www.crd.york.ac.uk/prospero/display_record.php?RecordID=166827) | [`R Markdown`](https://github.com/ponceoscarj/Thymectomy/blob/master/Thymectomy_results.Rmd) | [`.CSV`](https://github.com/ponceoscarj/Thymectomy/blob/master/Data/thymectomy_outcomes.csv) |
 
 ## Summary of forest plots
 
@@ -47,8 +45,8 @@ Stable Remission in patients with myasthenia gravis who underwent a
 
 <details>
 
-<summary> Suppl. Figure 1: T-3b vs. T-3a, risk of CSR at 3 years of
-follow-up </summary>
+<summary> Suppl. Figure 1: Extended Transsternal vs. Standard
+Transsternal, risk of CSR at 3 years of follow-up </summary>
 
 <p>
 
@@ -60,8 +58,8 @@ follow-up </summary>
 
 <details>
 
-<summary> Suppl. Figure 2: T-3b vs. T-3a, risk of CSR at 4 years of
-follow-up </summary>
+<summary> Suppl. Figure 2: Extended Transsternal vs. Standard
+Transsternal, risk of CSR at 4 years of follow-up </summary>
 
 <p>
 
@@ -73,8 +71,8 @@ follow-up </summary>
 
 <details>
 
-<summary> Suppl. Figure 3: T-3b vs. T-3a, risk of CSR at 4 years of
-follow-up </summary>
+<summary> Suppl. Figure 3: Extended Transsternal vs. Standard
+Transsternal, risk of CSR at 4 years of follow-up </summary>
 
 <p>
 
@@ -88,8 +86,9 @@ follow-up </summary>
 
 <details>
 
-<summary> Suppl. Figure 4: T-3b vs. T-2a, risk of CSR at 3 years of
-follow-up </summary>
+<summary> Suppl. Figure 4: Extended Transsternal vs. Classic
+Video-assisted thoracoscopic surgery (Unilateral), risk of CSR at 3
+years of follow-up </summary>
 
 <p>
 
@@ -101,8 +100,9 @@ follow-up </summary>
 
 <details>
 
-<summary> Suppl. Figure 5: T-3b vs. T-2a, risk of CSR at 4 years of
-follow-up </summary>
+<summary> Suppl. Figure 5: Extended Transsternal vs. Classic
+Video-assisted thoracoscopic surgery (Unilateral), risk of CSR at 4
+years of follow-up </summary>
 
 <p>
 
@@ -114,8 +114,9 @@ follow-up </summary>
 
 <details>
 
-<summary> Suppl. Figure 6: T-3b vs. T-2a, risk of CSR at 5 years of
-follow-up </summary>
+<summary> Suppl. Figure 6: Extended Transsternal vs. Classic
+Video-assisted thoracoscopic surgery (Unilateral), risk of CSR at 5
+years of follow-up </summary>
 
 <p>
 
@@ -127,8 +128,9 @@ follow-up </summary>
 
 <details>
 
-<summary> Suppl. Figure 7: T-3b vs. T-2a, risk of CSR at 6 years of
-follow-up </summary>
+<summary> Suppl. Figure 7: Extended Transsternal vs. Classic
+Video-assisted thoracoscopic surgery (Unilateral), risk of CSR at 6
+years of follow-up </summary>
 
 <p>
 
@@ -140,8 +142,9 @@ follow-up </summary>
 
 <details>
 
-<summary> Suppl. Figure 8: T-3b vs. T-2a, risk of CSR at 7 years of
-follow-up </summary>
+<summary> Suppl. Figure 8: Extended Transsternal vs. Classic
+Video-assisted thoracoscopic surgery (Unilateral), risk of CSR at 7
+years of follow-up </summary>
 
 <p>
 
@@ -153,8 +156,9 @@ follow-up </summary>
 
 <details>
 
-<summary> Suppl. Figure 9: T-3b vs. T-2a, risk of CSR at 8 years of
-follow-up </summary>
+<summary> Suppl. Figure 9: Extended Transsternal vs. Classic
+Video-assisted thoracoscopic surgery (Unilateral), risk of CSR at 8
+years of follow-up </summary>
 
 <p>
 
