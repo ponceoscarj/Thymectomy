@@ -3,14 +3,6 @@ Thymectomy
 Oscar Ponce & Andrea Solis-Pazmino
 5/7/2020
 
-## R Packages
-
-`metafor`:[package](http://www.metafor-project.org/doku.php) used to
-perform the analysis
-
-`forestplot`:[package](https://cran.r-project.org/web/packages/forestplot/forestplot.pdf)
-used to create forest plots
-
 ## Transparency
 
 > Click any of the following links to view the documents

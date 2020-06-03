@@ -19,13 +19,6 @@ library(grid)
 
 ```
 
-
-## R Packages
-
-`metafor`:[package](http://www.metafor-project.org/doku.php) used to perform the analysis
-
-`forestplot`:[package](https://cran.r-project.org/web/packages/forestplot/forestplot.pdf) used to create forest plots
-
  
 ```{r cleaning, echo=FALSE, message=FALSE, warning=FALSE}
 pao <- read.csv("Data/thymectomy_outcomes.csv")
@@ -646,7 +639,8 @@ agr2 <- cbind(c("Treatment vs. Control", "by follow-up",agr$followup),
               c("Treatment", "events/n", agr$rate1),
               c("Control", "events/n", agr$rate2),
               c("I^2", NA, agr$i2),
-              c("Relative Risk (95% CI)", NA, agr$rr))
+              c("Relative Risk (95% CI)", NA, agr$rr),
+              c("p value", NA, agr$p2))
 sub1 <- c(4:6, 8)
 agr2[,1][sub1] <- paste("  ",agr2[,1][sub1])
 
@@ -665,7 +659,7 @@ forestplot(agr2,
            zero=1,
            new_page = TRUE,
            colgap = unit(5, "mm"),
-           hrzl_lines = list("3" = gpar (lwd=1, columns=c(1:7), col="black")),
+           hrzl_lines = list("3" = gpar (lwd=1, columns=c(1:8), col="black")),
            lineheight=unit(0.6,'cm'),
            line.margin = 2,
            is.summary = c(T, T, T, rep(F, 3), T, F),
@@ -688,7 +682,7 @@ forestplot(agr2,
 ```
 
 **Figure 2** - Summary of forest plots of the risk of achieving Complete Stable Remission in patients with myasthenia gravis who underwent a **Transsternal  Thymectomy** vs.  those who underwent a **Minimally Invasive Thymectomy** at different follow-ups**
-```{r, fig.height=9.5, fig.width=14, echo=FALSE, message=FALSE, warning=FALSE}
+```{r, fig.height=9.5, fig.width=18, echo=FALSE, message=FALSE, warning=FALSE}
 lessagr <- as_tibble(rbind(c, d, e, f, j, k, l))
 colnames(lessagr) <- head
 
@@ -711,19 +705,20 @@ lessagr$p2 <-
 
 lessagr <- lessagr %>% add_row(followup="Standard Transsternal vs. Classic Video-assisted thoracoscopic surgery (Unilateral)", .before = 1)
 lessagr <- lessagr %>% add_row(followup="Extended Transsternal vs. Classic Video-assisted thoracoscopic surgery (Unilateral)", .before = 5)
-lessagr <- lessagr %>% add_row(followup="Extended Transsternal  vs. Video-assisted thoracoscopic extended", .before = 13)
-lessagr <- lessagr %>% add_row(followup="Extended Transsternal  vs. Right Video-assisted thoracoscopic extended", .before = 17)
-lessagr <- lessagr %>% add_row(followup="Standard Transsternal  vs. Combined Transcervical – Subxiphoid Infra-sternal", .before = 24)
-lessagr <- lessagr %>% add_row(followup="Extended Transsternal  vs. Combined Transcervical – Subxiphoid Infra-sternal", .before = 28)
-lessagr <- lessagr %>% add_row(followup="Extended Transsternal  vs. Infra-sternal mediastinoscopy", .before = 32)
+lessagr <- lessagr %>% add_row(followup="Extended Transsternal vs. Video-assisted thoracoscopic extended", .before = 13)
+lessagr <- lessagr %>% add_row(followup="Extended Transsternal vs. Right Video-assisted thoracoscopic extended", .before = 17)
+lessagr <- lessagr %>% add_row(followup="Standard Transsternal vs. Combined Transcervical – Subxiphoid Infra-sternal", .before = 24)
+lessagr <- lessagr %>% add_row(followup="Extended Transsternal vs. Combined Transcervical – Subxiphoid Infra-sternal", .before = 28)
+lessagr <- lessagr %>% add_row(followup="Extended Transsternal vs. Infra-sternal mediastinoscopy", .before = 32)
 
 
-lessagr2 <- cbind(c("Treatment vs. Control", "Follow-up",lessagr$followup),
+lessagr2 <- cbind(c("Treatment vs. Control", "by follow-up",lessagr$followup),
               c("N of studies", NA, lessagr$k),
               c("Treatment", "events/n", lessagr$rate1),
               c("Control", "events/n", lessagr$rate2),
               c("I^2", NA, lessagr$i2),
-              c("Relative Risk (95% CI)", NA, lessagr$rr))
+              c("Relative Risk (95% CI)", NA, lessagr$rr),
+              c("p value", NA, lessagr$p2))
 
 
 sub1 <- c(4:6, 8:14, 16:18, 20:25, 27:29, 31:33, 35)
@@ -745,7 +740,7 @@ forestplot(lessagr2,
            rrslessagr,
            new_page = TRUE,
            colgap = unit(5, "mm"),
-           hrzl_lines = list("3" = gpar (lwd=1, columns=c(1:7), col="black") 
+           hrzl_lines = list("3" = gpar (lwd=1, columns=c(1:8), col="black") 
            ),
            lineheight=unit(0.6,'cm'),
            line.margin = 2,
@@ -764,7 +759,7 @@ forestplot(lessagr2,
            clip = c(0.5, 4),
            lwd.xaxis = 1,
            lwd.ci = 2.2,
-           graphwidth = unit(7,"cm"),
+           graphwidth = unit(13,"cm"),
            col=fpColors(box="black",line="grey", 
                         axes="grey20", summary="black", zero="black"))
 
@@ -773,7 +768,7 @@ forestplot(lessagr2,
 
 
 **Figure 3** - Summary of forest plots of the risk of achieving Complete Stable Remission in patients with myasthenia gravis who underwent a **Minimally Invasive Thymectomy**  those who underwent another **Minimally Invasive Thymectomy** at different follow-ups**
-```{r,  fig.height=4, fig.width=15, echo=FALSE, message=FALSE, warning=FALSE}
+```{r,  fig.height=4, fig.width=17, echo=FALSE, message=FALSE, warning=FALSE}
 less <- as_tibble(rbind(g, h, i))
 colnames(less) <- head
 
@@ -802,7 +797,8 @@ less2 <- cbind(c("Treatment vs. Control", "Follow-up",less$followup),
               c("Treatment", "events/n", less$rate1),
               c("Control", "events/n", less$rate2),
               c("I^2", NA, less$i2),
-              c("Relative Risk (95% CI)", NA, less$rr))
+              c("Relative Risk (95% CI)", NA, less$rr),
+              c("p value", NA, less$p2))
 
 
 sub1 <- c(4:7, 9:10, 12:13)
@@ -824,7 +820,7 @@ forestplot(less2,
            rrsless,
            new_page = TRUE,
            colgap = unit(5, "mm"),
-           hrzl_lines = list("3" = gpar (lwd=1, columns=c(1:7), col="black") 
+           hrzl_lines = list("3" = gpar (lwd=1, columns=c(1:8), col="black") 
            ),
            lineheight=unit(0.6,'cm'),
            line.margin = 2,
@@ -842,7 +838,7 @@ forestplot(less2,
            clip = c(0.5, 4),
            lwd.xaxis = 1,
            lwd.ci = 2.2,
-           graphwidth = unit(7,"cm"),
+           graphwidth = unit(9,"cm"),
            col=fpColors(box="black",line="grey", 
                         axes="grey20", summary="black", zero="black"))
 
