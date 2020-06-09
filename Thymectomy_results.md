@@ -33,7 +33,7 @@ Stable Remission in patients with myasthenia gravis who underwent a
 
 ## Supplementary Figures
 
-### T-3b vs. T-3a forest plots
+### Extended Transsternal vs. Standard Transsternal forest plots
 
 <details>
 
@@ -74,7 +74,7 @@ Transsternal, risk of CSR at 4 years of follow-up </summary>
 
 </details>
 
-### T-3b vs. T-2b forest plots
+### Extended Transsternal vs. VATS extended forest plots
 
 <details>
 

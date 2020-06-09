@@ -796,7 +796,7 @@ forestplot(less2,
 
 ## Supplementary Figures
 
-### T-3b vs. T-3a forest plots
+### Extended Transsternal vs. Standard Transsternal forest plots
 <details><summary> Suppl. Figure 1: Extended Transsternal vs. Standard Transsternal, risk of CSR at 3 years of follow-up </summary>
 <p>
 
@@ -1018,7 +1018,7 @@ forestplot(tfma3,
 
 
 
-### T-3b vs. T-2b forest plots
+### Extended Transsternal vs. VATS extended forest plots
 <details><summary> Suppl. Figure 4: Extended Transsternal vs. VATS extended, risk of CSR at 3 years of follow-up </summary>
 <p>
 ```{r forestplotma43, echo=FALSE, fig.height=3, fig.width=9.5, message=FALSE, warning=FALSE}
