@@ -630,7 +630,7 @@ forestplot(agr2,
 ```
 
 **Figure 2** - Summary of forest plots of the risk of achieving Complete Stable Remission in patients with myasthenia gravis who underwent a **Transsternal  Thymectomy** vs.  those who underwent a **Minimally Invasive Thymectomy** at different follow-ups**
-```{r, fig.height=7, fig.width=18, echo=FALSE, message=FALSE, warning=FALSE}
+```{r, fig.height=7, fig.width=19, echo=FALSE, message=FALSE, warning=FALSE}
 lessagr <- as_tibble(rbind(b, c, d, j, k, l))
 colnames(lessagr) <- head
 
@@ -697,9 +697,9 @@ forestplot(lessagr2,
            align = c("l","c", "c", "c", "l", "l", "l"),
            boxsize = 0.5,
            ci.vertices = TRUE,
-           txt_gp = fpTxtGp(label =gpar (cex=0.9), 
-                            ticks = gpar(cex = 0.9, fontface="bold"),
-                            summary = gpar(cex = 0.9),
+           txt_gp = fpTxtGp(label =gpar (cex=1), 
+                            ticks = gpar(cex = 1, fontface="bold"),
+                            summary = gpar(cex = 1),
                             xlab = gpar(cex=0.9)),
            xticks = c(0.12, 0.25, 0.5, 1, 2, 4, 8),
            xlog=TRUE,
