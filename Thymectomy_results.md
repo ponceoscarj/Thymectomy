@@ -74,13 +74,12 @@ Transsternal, risk of CSR at 4 years of follow-up </summary>
 
 </details>
 
-### T-3b vs. T-2a forest plots
+### T-3b vs. T-2b forest plots
 
 <details>
 
-<summary> Suppl. Figure 4: Extended Transsternal vs. Classic
-Video-assisted thoracoscopic surgery (Unilateral), risk of CSR at 3
-years of follow-up </summary>
+<summary> Suppl. Figure 4: Extended Transsternal vs. VATS extended, risk
+of CSR at 3 years of follow-up </summary>
 
 <p>
 
@@ -92,11 +91,13 @@ years of follow-up </summary>
 
 <details>
 
-<summary> Suppl. Figure 5: Extended Transsternal vs. Classic
-Video-assisted thoracoscopic surgery (Unilateral), risk of CSR at 4
-years of follow-up </summary>
+<summary> Suppl. Figure 5: Extended Transsternal vs. VATS extended, risk
+of CSR at 4 years of follow-up </summary>
 
 <p>
+
+    ## Warning in omit | x: longer object length is not a multiple of shorter object
+    ## length
 
 ![](Thymectomy_results_files/figure-gfm/forestplotma44-1.svg)<!-- -->
 
@@ -106,11 +107,13 @@ years of follow-up </summary>
 
 <details>
 
-<summary> Suppl. Figure 6: Extended Transsternal vs. Classic
-Video-assisted thoracoscopic surgery (Unilateral), risk of CSR at 5
-years of follow-up </summary>
+<summary> Suppl. Figure 6: Extended Transsternal vs. VATS extended, risk
+of CSR at 5 years of follow-up </summary>
 
 <p>
+
+    ## Warning in omit | x: longer object length is not a multiple of shorter object
+    ## length
 
 ![](Thymectomy_results_files/figure-gfm/forestplotma45-1.svg)<!-- -->
 
@@ -120,11 +123,13 @@ years of follow-up </summary>
 
 <details>
 
-<summary> Suppl. Figure 7: Extended Transsternal vs. Classic
-Video-assisted thoracoscopic surgery (Unilateral), risk of CSR at 6
-years of follow-up </summary>
+<summary> Suppl. Figure 7: Extended Transsternal vs. VATS extended, risk
+of CSR at 6 years of follow-up </summary>
 
 <p>
+
+    ## Warning in omit | x: longer object length is not a multiple of shorter object
+    ## length
 
 ![](Thymectomy_results_files/figure-gfm/forestplotma46-1.svg)<!-- -->
 
@@ -134,11 +139,13 @@ years of follow-up </summary>
 
 <details>
 
-<summary> Suppl. Figure 8: Extended Transsternal vs. Classic
-Video-assisted thoracoscopic surgery (Unilateral), risk of CSR at 7
-years of follow-up </summary>
+<summary> Suppl. Figure 8: Extended Transsternal vs. VATS extended, risk
+of CSR at 7 years of follow-up </summary>
 
 <p>
+
+    ## Warning in omit | x: longer object length is not a multiple of shorter object
+    ## length
 
 ![](Thymectomy_results_files/figure-gfm/forestplotma47-1.svg)<!-- -->
 
@@ -148,11 +155,13 @@ years of follow-up </summary>
 
 <details>
 
-<summary> Suppl. Figure 9: Extended Transsternal vs. Classic
-Video-assisted thoracoscopic surgery (Unilateral), risk of CSR at 8
-years of follow-up </summary>
+<summary> Suppl. Figure 9: Extended Transsternal vs. VATS extended, risk
+of CSR at 8 years of follow-up </summary>
 
 <p>
+
+    ## Warning in omit | x: longer object length is not a multiple of shorter object
+    ## length
 
 ![](Thymectomy_results_files/figure-gfm/forestplotma48-1.svg)<!-- -->
 
