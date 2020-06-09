@@ -96,9 +96,6 @@ of CSR at 4 years of follow-up </summary>
 
 <p>
 
-    ## Warning in omit | x: longer object length is not a multiple of shorter object
-    ## length
-
 ![](Thymectomy_results_files/figure-gfm/forestplotma44-1.svg)<!-- -->
 
 </p>
@@ -111,9 +108,6 @@ of CSR at 4 years of follow-up </summary>
 of CSR at 5 years of follow-up </summary>
 
 <p>
-
-    ## Warning in omit | x: longer object length is not a multiple of shorter object
-    ## length
 
 ![](Thymectomy_results_files/figure-gfm/forestplotma45-1.svg)<!-- -->
 
@@ -128,9 +122,6 @@ of CSR at 6 years of follow-up </summary>
 
 <p>
 
-    ## Warning in omit | x: longer object length is not a multiple of shorter object
-    ## length
-
 ![](Thymectomy_results_files/figure-gfm/forestplotma46-1.svg)<!-- -->
 
 </p>
@@ -144,9 +135,6 @@ of CSR at 7 years of follow-up </summary>
 
 <p>
 
-    ## Warning in omit | x: longer object length is not a multiple of shorter object
-    ## length
-
 ![](Thymectomy_results_files/figure-gfm/forestplotma47-1.svg)<!-- -->
 
 </p>
@@ -159,9 +147,6 @@ of CSR at 7 years of follow-up </summary>
 of CSR at 8 years of follow-up </summary>
 
 <p>
-
-    ## Warning in omit | x: longer object length is not a multiple of shorter object
-    ## length
 
 ![](Thymectomy_results_files/figure-gfm/forestplotma48-1.svg)<!-- -->
 
