@@ -15,14 +15,22 @@ Oscar J. Ponce & Andrea Solis-Pazmino
 
 **Figure 1** - Summary of forest plots of the risk of achieving Complete
 Stable Remission in patients with myasthenia gravis who underwent
-**Transsternal thymectomy** vs. those who underwent **Transsternal or
-Transcervical thymectomy** at different follow-ups
+**Transsternal thymectomy** vs. those who underwent **Transsternal
+thymectomy** at different follow-ups
+
+> To generate this forest plot, we used information from Supplementary
+> Figures 1 to 3.
+
 ![](Thymectomy_results_files/figure-gfm/unnamed-chunk-1-1.svg)<!-- -->
 
 **Figure 2** - Summary of forest plots of the risk of achieving Complete
 Stable Remission in patients with myasthenia gravis who underwent a
 **Transsternal Thymectomy** vs. those who underwent a **Minimally
 Invasive Thymectomy** at different follow-ups\*\*
+
+> To generate this forest plot, we used information from Supplementary
+> Figures 4 to 9.
+
 ![](Thymectomy_results_files/figure-gfm/unnamed-chunk-2-1.svg)<!-- -->
 
 **Figure 3** - Summary of forest plots of the risk of achieving Complete

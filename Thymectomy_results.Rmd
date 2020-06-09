@@ -558,7 +558,10 @@ summary <- rbind(
 ## Summary of forest plots
 
 
-**Figure 1** - Summary of forest plots of the risk of achieving Complete Stable Remission in patients with myasthenia gravis who underwent  **Transsternal thymectomy**  vs.  those who underwent **Transsternal or Transcervical thymectomy** at different follow-ups
+**Figure 1** - Summary of forest plots of the risk of achieving Complete Stable Remission in patients with myasthenia gravis who underwent  **Transsternal thymectomy**  vs.  those who underwent **Transsternal thymectomy** at different follow-ups
+
+> To generate this forest plot, we used information from Supplementary Figures 1 to 3.
+
 ```{r,  fig.height=3, fig.width=13, echo=FALSE, message=FALSE, warning=FALSE}
 agr <- as_tibble(a)
 colnames(agr) <- head
@@ -581,17 +584,19 @@ agr$p2 <-
 
 
 agr <- agr %>% add_row(followup="Extended Transsternal vs. Standard Transsternal", .before = 1)
+agr <- agr %>% add_row(.before =  1)
+agr <- agr %>% add_row(.after =  5)
 
-agr2 <- cbind(c("Treatment vs. Control", "by follow-up",agr$followup),
+
+agr2 <- cbind(c("Treatment vs. Control", "Follow-up",agr$followup),
               c("N of studies", NA, agr$k),
               c("Treatment", "events/n", agr$rate1),
               c("Control", "events/n", agr$rate2),
               c("I^2", NA, agr$i2),
               c("Relative Risk (95% CI)", NA, agr$rr),
               c("p value", NA, agr$p2))
-sub1 <- c(4:6)
+sub1 <- c(5:7)
 agr2[,1][sub1] <- paste("  ",agr2[,1][sub1])
-
 
 rrsagr <- structure(list(
   mean = c(NA, NA, agr$eff),
@@ -610,7 +615,8 @@ forestplot(agr2,
            hrzl_lines = list("3" = gpar (lwd=1, columns=c(1:8), col="black")),
            lineheight=unit(0.6,'cm'),
            line.margin = 2,
-           is.summary = c(T, T, T, rep(F, 3), T, F),
+           is.summary = c(T, T, F, 
+                          T, rep(F, 3), F),
            align = c("l","c", "c", "c", "l", "l", "l"),
            boxsize = 0.5,
            ci.vertices = TRUE,
@@ -630,6 +636,10 @@ forestplot(agr2,
 ```
 
 **Figure 2** - Summary of forest plots of the risk of achieving Complete Stable Remission in patients with myasthenia gravis who underwent a **Transsternal  Thymectomy** vs.  those who underwent a **Minimally Invasive Thymectomy** at different follow-ups**
+
+> To generate this forest plot, we used information from Supplementary Figures 4 to 9.
+
+
 ```{r, fig.height=7, fig.width=19, echo=FALSE, message=FALSE, warning=FALSE}
 lessagr <- as_tibble(rbind(b, c, d, j, k, l))
 colnames(lessagr) <- head
@@ -657,7 +667,11 @@ lessagr <- lessagr %>% add_row(followup="Standard Transsternal vs. Transcervical
 lessagr <- lessagr %>% add_row(followup="Extended Transsternal vs. Transcervical-Subxiphoid", .before = 19)
 lessagr <- lessagr %>% add_row(followup="Extended Transsternal vs. Subxiphoid Mediastinoscopy", .before = 23)
 
-lessagr2 <- cbind(c("Treatment vs. Control", "by follow-up",lessagr$followup),
+lessagr <- lessagr %>% add_row(.before = 1)
+lessagr <- lessagr %>% add_row(.after = 25)
+
+
+lessagr2 <- cbind(c("Treatment vs. Control", "Follow-up",lessagr$followup),
               c("N of studies", NA, lessagr$k),
               c("Treatment", "events/n", lessagr$rate1),
               c("Control", "events/n", lessagr$rate2),
@@ -666,7 +680,7 @@ lessagr2 <- cbind(c("Treatment vs. Control", "by follow-up",lessagr$followup),
               c("p value", NA, lessagr$p2))
 
 
-sub1 <- c(4, 6:8, 10:16, 18:20, 22:24, 26)
+sub1 <- c(5, 7:9, 11:17, 19:21, 23:25, 27)
 lessagr2[,1][sub1] <- paste("  ",lessagr2[,1][sub1])
 
 rrslessagr <- structure(list(
@@ -674,7 +688,7 @@ rrslessagr <- structure(list(
   lower = c(NA, NA, lessagr$llci),
   upper = c(NA, NA, lessagr$ulci)),
   .Names = c("mean", "lower", "upper"),
-  row.names = c(NA, -24L),
+  row.names = c(NA, -28L),
   class = "data.frame")
 
 
@@ -688,12 +702,12 @@ forestplot(lessagr2,
            ),
            lineheight=unit(0.6,'cm'),
            line.margin = 2,
-           is.summary = c(T, T, 
+           is.summary = c(T, T, F, 
                           T, F,
                           T, rep(F, 3), 
                           T, rep(F, 7), 
                           T, rep(F, 3), 
-                          T, rep(F, 3), T, F),
+                          T, rep(F, 3), T, F, F),
            align = c("l","c", "c", "c", "l", "l", "l"),
            boxsize = 0.5,
            ci.vertices = TRUE,
@@ -740,6 +754,9 @@ less <- less %>% add_row(followup="VATS extended uni vs. VATS extended bi", .bef
 less <- less %>% add_row(followup="VATS extended lelft vs. VATS extended right", .before = 6)
 less <- less %>% add_row(followup="VATS extended with robotic  vs. VATS extended", .before = 9)
 
+less <- less %>% add_row(.before = 1)
+less <- less %>% add_row(.after = 12)
+
 
 less2 <- cbind(c("Treatment vs. Control", "Follow-up",less$followup),
               c("N of studies", NA, less$k),
@@ -750,7 +767,7 @@ less2 <- cbind(c("Treatment vs. Control", "Follow-up",less$followup),
               c("p value", NA, less$p2))
 
 
-sub1 <- c(4:7, 9:10, 12:13)
+sub1 <- c(5:8, 10:11, 13:14)
 less2[,1][sub1] <- paste("  ",less2[,1][sub1])
 
 
@@ -759,7 +776,7 @@ rrsless <- structure(list(
   lower = c(NA, NA, less$llci),
   upper = c(NA, NA, less$ulci)),
   .Names = c("mean", "lower", "upper"),
-  row.names = c(NA, -13L),
+  row.names = c(NA, -15L),
   class = "data.frame")
 
 
@@ -773,8 +790,11 @@ forestplot(less2,
            ),
            lineheight=unit(0.6,'cm'),
            line.margin = 2,
-           is.summary = c(T, T, T, rep(F, 4), T, rep(F, 2), 
-                          T, rep(F,2)),
+           is.summary = c(T, T, F, 
+                          T, rep(F, 4), 
+                          T, rep(F, 2), 
+                          T, rep(F,2), 
+                          F),
            align = c("l","c", "c", "c", "l", "l", "l"),
            boxsize = 0.5,
            ci.vertices = TRUE,
