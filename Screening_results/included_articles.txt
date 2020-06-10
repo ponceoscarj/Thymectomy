@@ -1,0 +1,611 @@
+﻿TY  - JOUR
+AB  - Background: Thymectomy is an effective treatment for Myasthenia Gravis in the adult population. Surgical removal of the thymus can be performed through several approaches. Comparison of the most commonly used surgical techniques through randomized control trials with long-term follow-up is scarce. Objective: To comparatively analyze long-term results and complications of transcervical (TCT) and transsternal thymectomy (TST) in a randomized controlled trial with a mean follow-up of ten years. Results: A total of 100 patients were randomized to transsternal thymectomy (50), and transcervical procedure (50). There were not significant differences in the demographic characteristics, MGFA clinical classification, and MGFA therapy status between groups before surgery. Twenty patients were lost of follow up during the first year and were excluded. Our final group included 40 patients in each group. Three patients in TCT group (7.5%) and 6 patients in the TST group (15%) developed surgical complications. At 1 year of follow-up, 7 patients (17.5%) of the TCT group were asymptomatic in comparison with 15 patients (37.5%) of group TST, after 10 years of follow-up, 26 cases (72.9%) in group TCT were asymptomatic in comparison with 29 cases (80.5%) of group TST. Outcomes 10 years after surgery by MGFA post-intervention status showed that complete stable remission was achieved in 8 (21.6%) patients of the TCT group, and in 20 patients (55.5%) of the TST group. Conclusions: Transcervical and transsternal thymectomy are safe and result in significant improvement of patients with Myasthenia Gravis. TST has superior results in terms of complete stable remission at 10 years.
+AN  - CN-01702294 NEW
+KW  - Myasthenia Gravis
+N1  - Transsternal Versus Transcervical Thymectomy for the Management of Myasthenia Gravis: a Randomized Controlled Trial With a Mean Follow-up of 10 Years Using Smart Source Parsing PubMed Identifier 10119732
+PY  - 2019
+ST  - Transsternal Versus Transcervical Thymectomy
+T2  - Https://clinicaltrials.gov/show/nct03825185
+TI  - Transsternal Versus Transcervical Thymectomy
+UR  - http://ovidsp.ovid.com/ovidweb.cgi?T=JS&CSC=Y&NEWS=N&PAGE=fulltext&D=cctr&AN=CN-01702294http://sfxhosted.exlibrisgroup.com/mayo?sid=OVID:cctrdb&id=pmid:10119732&id=doi:&issn=0952-2271&isbn=&volume=102&issue=5308&spage=31&pages=&date=2019&title=Https%3A%2F%2Fclinicaltrials.gov%2Fshow%2Fnct03825185&atitle=Transsternal+Versus+Transcervical+Thymectomy&aulast=house&pid=%3Cauthor%3ENCT03825185%3C%2Fauthor%3E&%3CAN%3ECN-01702294%3C%2FAN%3E
+ID  - 434
+ER  - 
+
+
+TY  - JOUR
+AB  - OBJECTIVES: Myasthenia gravis (MG) is a common chronic disorder of neuromuscular transmission, frequently treated surgically. Little is known about perioperative cellular immune responses following video-assisted thoracoscopic surgery (VATS) when compared with open resection. METHODS: Between January and December 2009, 127 patients with non-thymomatous MG underwent surgery, with 54 undergoing VATS and 73 undergoing conventional trans-sternal extended thymectomy (TS). Operative details, ectopic thymic tissue findings, postoperative concentrations of serum immunoglobulin and complement components as well as T-cell immunity were compared in the VATS and TS groups. RESULTS: There were no between-group differences in patients' age, gender, preoperative duration of MG and operation time. Patients who underwent VATS had a lower rate of postoperative stay in the intensive care unit (P = 0.02), less blood loss (P = 0.01) and a lower probability of ectopic thymic tissue. Prominent cellular immunity difference occurred in serum IgG and C3 concentrations and CD4(+) and CD8(+) T-cell counts between the VATS and TS groups. In VATS patients, serum IgG concentration increased slightly on postoperative days 1 and 3. C3 concentration increased gradually in both groups after surgery, but decreased by postoperative day 7. CD4(+) and CD8(+) T-cell counts were relatively stable postoperatively in the VATS group, but were markedly increased in the TS group on postoperative days 1 and 3, with CD4(+), but not CD8(+), T-cells declining on postoperative day 7. CONCLUSIONS: VATS for non-thymomatous MG has short-term advantages, with less effect on cellular immune responses than open resection.
+AD  - Chen, Zhenguang. Department of Thoracic Surgery, The First Affiliated Hospital, Sun Yat-sen University, Guangzhou, Guangdong, China.
+AN  - 24005161
+AU  - Chen, Zhenguang
+AU  - Zuo, Jidong
+AU  - Zou, Jianyong
+AU  - Sun, Yanhong
+AU  - Liu, Weibing
+AU  - Lai, Yingrong
+AU  - Zhong, Beilong
+AU  - Su, Chunhua
+AU  - Tan, Min
+AU  - Luo, Honghe
+DA  - Apr
+J2  - Eur J Cardiothorac Surg
+KW  - Adolescent
+Adult
+Aged
+Child
+Child, Preschool
+Complement System Proteins/im [Immunology]
+Female
+Humans
+Immunity, Cellular/im [Immunology]
+Immunoglobulins/bl [Blood]
+Male
+Middle Aged
+*Myasthenia Gravis/im [Immunology]
+*Myasthenia Gravis/su [Surgery]
+Prospective Studies
+T-Lymphocytes/im [Immunology]
+*Thoracic Surgery, Video-Assisted/mt [Methods]
+*Thoracoscopy/mt [Methods]
+*Thymectomy/mt [Methods]
+Treatment Outcome
+Young Adult
+0 (Immunoglobulins)
+9007-36-7 (Complement System Proteins)
+LA  - English
+M1  - 4
+M3  - Clinical Trial Journal Article Research Support, Non-U.S. Gov't
+N1  - Chen Z Zuo J Zou J Sun Y Liu W Lai Y Zhong B Su C Tan M Luo H
+PY  - 2014
+SP  - 646-51
+ST  - Cellular immunity following video-assisted thoracoscopic and open resection for non-thymomatous myasthenia gravis
+T2  - European Journal of Cardio-Thoracic Surgery
+TI  - Cellular immunity following video-assisted thoracoscopic and open resection for non-thymomatous myasthenia gravis
+UR  - http://ovidsp.ovid.com/ovidweb.cgi?T=JS&CSC=Y&NEWS=N&PAGE=fulltext&D=med10&AN=24005161http://sfxhosted.exlibrisgroup.com/mayo?sid=OVID:medline&id=pmid:24005161&id=doi:10.1093%2Fejcts%2Fezt443&issn=1010-7940&isbn=&volume=45&issue=4&spage=646&pages=646-51&date=2014&title=European+Journal+of+Cardio-Thoracic+Surgery&atitle=Cellular+immunity+following+video-assisted+thoracoscopic+and+open+resection+for+non-thymomatous+myasthenia+gravis.&aulast=Chen&pid=%3Cauthor%3EChen+Z%3C%2Fauthor%3E&%3CAN%3E24005161%3C%2FAN%3E
+VL  - 45
+ID  - 409
+ER  - 
+
+
+TY  - JOUR
+AB  - PURPOSE: To clarify the efficacy of a right-sided video-assisted thoracoscopic extended thymectomy (RtVATET) as a surgical alternative for myasthenia gravis (MG) and to determine the optimal timing for a thymectomy. METHODS: Thirty-three patients who underwent RtVATET in two institutes were enrolled in this study. Another 66 paired, traditional trans-sternal extended thymectomy (TET) patients from the registered database were used to compare these two surgical modalities for MG. RESULTS: Mean blood loss was 88.5 ml in RtVATET and 226.8 ml in TET group patients (P < 0.001). Mean operation duration was 207.3 min for RtVATET and 172.8 min for TET patients (P = 0.003). Complete stable remission (CSR) rates and total improvement rates for the RtVATET and TET patients were 42.4% vs 60.6% (P = 0.087) and 87.9% vs 90.1% (P = 0.637), respectively. Furthermore, when we focused on the minor grades (classes I and IIa), TET groups showed significantly better CSR than the RtVATET groups (P = 0.012), but there was no statistically significant difference for the more severe grades (classes IIb and III, P = 0.827). CONCLUSION: Both RtVATET and TET are effective for treating MG, although this study does indicate an advantage for TET. We suggest that a thymectomy should therefore be performed earlier, or that the procedures should be extensive enough to remove all of the tissue that contains thymic tissue.
+AD  - Huang, Chien-Sheng. Division of Thoracic Surgery, Department of Surgery, Taipei Veterans General Hospital and National Yang-Ming University School of Medicine, No. 201, Section 2, Shih-Pai Road, Taipei, 112, Taiwan.
+AN  - 21365413
+AU  - Huang, Chien-Sheng
+AU  - Cheng, Ching-Yuan
+AU  - Hsu, Han-Shui
+AU  - Kao, Ko-Pei
+AU  - Hsieh, Chih-Cheng
+AU  - Hsu, Wen-Hu
+AU  - Huang, Biing-Shiun
+DA  - Mar
+J2  - Surg
+KW  - Adult
+Female
+Follow-Up Studies
+Humans
+Male
+Myasthenia Gravis/di [Diagnosis]
+*Myasthenia Gravis/su [Surgery]
+Remission Induction
+Retrospective Studies
+Severity of Illness Index
+*Sternotomy/mt [Methods]
+*Thoracic Surgery, Video-Assisted/mt [Methods]
+*Thymectomy/mt [Methods]
+Time Factors
+Treatment Outcome
+LA  - English
+M1  - 3
+M3  - Comparative Study Journal Article Multicenter Study Research Support, Non-U.S. Gov't
+N1  - Huang CS Cheng CY Hsu HS Kao KP Hsieh CC Hsu WH Huang BS
+PY  - 2011
+SP  - 338-45
+ST  - Video-assisted thoracoscopic surgery versus sternotomy in treating myasthenia gravis: comparison by a case-matched study
+T2  - Surgery Today
+TI  - Video-assisted thoracoscopic surgery versus sternotomy in treating myasthenia gravis: comparison by a case-matched study
+UR  - http://ovidsp.ovid.com/ovidweb.cgi?T=JS&CSC=Y&NEWS=N&PAGE=fulltext&D=med7&AN=21365413http://sfxhosted.exlibrisgroup.com/mayo?sid=OVID:medline&id=pmid:21365413&id=doi:10.1007%2Fs00595-010-4270-8&issn=0941-1291&isbn=&volume=41&issue=3&spage=338&pages=338-45&date=2011&title=Surgery+Today&atitle=Video-assisted+thoracoscopic+surgery+versus+sternotomy+in+treating+myasthenia+gravis%3A+comparison+by+a+case-matched+study.&aulast=Huang&pid=%3Cauthor%3EHuang+CS%3C%2Fauthor%3E&%3CAN%3E21365413%3C%2FAN%3E
+VL  - 41
+ID  - 413
+ER  - 
+
+
+TY  - JOUR
+AB  - OBJECTIVE: While thymectomy is an accepted treatment for myasthenia gravis (MG), video-assisted thoracoscopic surgery (VATS) thymectomy has recently become a popular surgical treatment, especially for non-thymomatous MG (NTMG). This study aims to compare the results of VATS thymectomy and trans-sternal thymectomy, and identify prognostic factors in NTMG patients after thymectomy. METHODS: A 10-year retrospective review (January 1995 to December 2004) of 60 consecutive thymectomies (22 trans-sternal thymectomies and 38 VATS thymectomies) of NTMG patients performed in a university teaching hospital was undertaken. RESULTS: There were 43 female patients and 17 male patients with a median MG-onset age of 25 years (range: 5-78 years). Median follow-up time was 44 months. VATS thymectomy patients had a shorter hospital stay than the trans-sternal thymectomy patients (5.6 days vs 8.1 days, p=0.008). There was no other statistically significant difference between the two operative methods in NTMG patients, including intensive care unit (ICU) stay, ventilator support time, operative time, postoperative status, complete stable remission (CSR) rate, morbidity and mortality. Three prognostic factors associated with better remission rate were hyperthyroidism (p=0.003), age <40 years (p=0.022) and the presence of thymic hyperplasia (p=0.041). Other factors, including gender, disease duration, preoperative MG severity, acetylcholine receptor antibody, perioperative therapy and operative methods (32% vs 36%, p=0.91, 95% confidence interval (CI)=0.27-3.21) were not statistically relevant to better remission rate. CONCLUSIONS: VATS thymectomy is more advantageous for NTMG patients because of shorter hospital stay, less tissue injury, better cosmetic result and equivalent CSR rate. NTMG patients aged <40 years with hyperthyroidism and a histologic diagnosis of lymphofollicular hyperplasia have better chances of remission after thymectomy.
+AD  - Lin, Mong-Wei. Department of Surgery, National Taiwan University Hospital, National Taiwan University College of Medicine, Taipei, Taiwan, ROC.
+AN  - 19615918
+AU  - Lin, Mong-Wei
+AU  - Chang, Yih-Leong
+AU  - Huang, Pei-Ming
+AU  - Lee, Yung-Chie
+DA  - Jan
+J2  - Eur J Cardiothorac Surg
+KW  - Adolescent
+Adult
+Age Factors
+Age of Onset
+Aged
+Child
+Child, Preschool
+Epidemiologic Methods
+Female
+Humans
+Length of Stay/sn [Statistics & Numerical Data]
+Male
+Middle Aged
+*Myasthenia Gravis/su [Surgery]
+Prognosis
+Remission Induction
+Sternum/su [Surgery]
+Thoracic Surgery, Video-Assisted/mt [Methods]
+*Thymectomy/mt [Methods]
+Treatment Outcome
+Young Adult
+LA  - English
+M1  - 1
+M3  - Comparative Study Journal Article
+N1  - Lin MW Chang YL Huang PM Lee YC Comment in (CIN)
+PY  - 2010
+SP  - 7-12
+ST  - Thymectomy for non-thymomatous myasthenia gravis: a comparison of surgical methods and analysis of prognostic factors
+T2  - European Journal of Cardio-Thoracic Surgery
+TI  - Thymectomy for non-thymomatous myasthenia gravis: a comparison of surgical methods and analysis of prognostic factors
+UR  - http://ovidsp.ovid.com/ovidweb.cgi?T=JS&CSC=Y&NEWS=N&PAGE=fulltext&D=med7&AN=19615918http://sfxhosted.exlibrisgroup.com/mayo?sid=OVID:medline&id=pmid:19615918&id=doi:10.1016%2Fj.ejcts.2009.05.027&issn=1010-7940&isbn=&volume=37&issue=1&spage=7&pages=7-12&date=2010&title=European+Journal+of+Cardio-Thoracic+Surgery&atitle=Thymectomy+for+non-thymomatous+myasthenia+gravis%3A+a+comparison+of+surgical+methods+and+analysis+of+prognostic+factors.&aulast=Lin&pid=%3Cauthor%3ELin+MW%3C%2Fauthor%3E&%3CAN%3E19615918%3C%2FAN%3E
+VL  - 37
+ID  - 416
+ER  - 
+
+
+TY  - JOUR
+AB  - BACKGROUND: Thymectomy is an established treatment for myasthenia gravis (MG), and video-assisted thoracoscopic surgery (VATS) thymectomy has become an acceptable surgical procedure. This study aimed to compare the results of VATS thymectomy and open thymectomy and to identify the prognostic factors after thymectomy. METHODS: The clinical data of 187 consecutive thymectomies performed between July 2000 and December 2009 were retrospectively reviewed; 75 open thymectomies and 112 VATS thymectomies. Clinical efficacy and variables influencing outcome were assessed by Kaplan-Meier survival curves and Cox proportional hazards regression analysis. RESULTS: The operative blood loss in the VATS group was significantly less than that in the open group ((62.14 +/- 55.43) ml vs. (137.87 +/- 165.25) ml, P < 0.05). The postoperative crisis rate increased with the severity of preoperative MG and the prescription dose of anticholinesterase. Complete follow-up information of patients more than 12 months after the thymectomy was obtained on 151 cases, 89 cases from the VATS group and 62 cases from the open group, with a mean follow-up period of 59.3 months, range from 12 to 117 months. Complete stable remission (CSR) was the end point for evaluation of the treatment results. The overall five-year CSR rate was 57.5%. Two good prognostic factors were identified; preoperative prescription of anticholinesterase alone (P = 0.035) and non-thymomatous MG (P = 0.003). The five-year CSR rate of the ocular type of MG reached a high level of 67.4%. CONCLUSIONS: Thymectomy can achieve good long-term CSR in MG, and VATS is an ideal alternative method. High-dose prescription of anticholinesterase and the advanced stage by Myasthenia Gravis Foundation of America (MGFA) classification have higher risks of postoperative crisis. Preoperative prescription of anticholinesterase alone and non-thymomatous MG are good prognostic factors. Thymectomy should also be considered for the ocular type of MG.
+AD  - Liu, Cheng-wu. Department of Thoracic Surgery, West China Hospital, Sichuan University, Chengdu, Sichuan 610041, China.
+AN  - 23286474
+AU  - Liu, Cheng-wu
+AU  - Luo, Meng
+AU  - Mei, Jian-dong
+AU  - Zhu, Yun-ke
+AU  - Pu, Qiang
+AU  - Ma, Lin
+AU  - Che, Guo-wei
+AU  - Lin, Yi-dan
+AU  - Wu, Zhu
+AU  - Wang, Yun
+AU  - Kou, Ying-li
+AU  - Liu, Lun-xu
+DA  - Jan
+J2  - Chin Med J
+KW  - Adolescent
+Adult
+Aged
+Child
+Female
+Humans
+Male
+Middle Aged
+*Myasthenia Gravis/su [Surgery]
+Proportional Hazards Models
+*Thoracic Surgery, Video-Assisted/mt [Methods]
+Thymectomy/ae [Adverse Effects]
+*Thymectomy/mt [Methods]
+Time Factors
+Treatment Outcome
+LA  - English
+M1  - 1
+M3  - Comparative Study Journal Article
+N1  - Liu CW Luo M Mei JD Zhu YK Pu Q Ma L Che GW Lin YD Wu Z Wang Y Kou YL Liu LX
+PY  - 2013
+SP  - 34-40
+ST  - Perioperative and long-term outcome of thymectomy for myasthenia gravis: comparison of surgical approaches and prognostic analysis
+T2  - Chinese Medical Journal
+TI  - Perioperative and long-term outcome of thymectomy for myasthenia gravis: comparison of surgical approaches and prognostic analysis
+UR  - http://ovidsp.ovid.com/ovidweb.cgi?T=JS&CSC=Y&NEWS=N&PAGE=fulltext&D=med9&AN=23286474http://sfxhosted.exlibrisgroup.com/mayo?sid=OVID:medline&id=pmid:23286474&id=doi:&issn=0366-6999&isbn=&volume=126&issue=1&spage=34&pages=34-40&date=2013&title=Chinese+Medical+Journal&atitle=Perioperative+and+long-term+outcome+of+thymectomy+for+myasthenia+gravis%3A+comparison+of+surgical+approaches+and+prognostic+analysis.&aulast=Liu&pid=%3Cauthor%3ELiu+CW%3C%2Fauthor%3E&%3CAN%3E23286474%3C%2FAN%3E
+VL  - 126
+ID  - 410
+ER  - 
+
+
+TY  - JOUR
+AB  - OBJECTIVES: Video-assisted thoracoscopic extended thymectomy (VATET) is commonly performed bilaterally to remove all the thymic tissue in the mediastinum for the surgical treatment of myasthenia gravis. We hypothesize that the therapeutic efficacy of unilateral thoracoscopic thymectomy (right-sided) is comparable to that of bilateral VATET. METHODS: We retrospectively reviewed 103 consecutive patients who received VATET for non-thymomatous myasthenia gravis (NTMG), with a minimum follow-up period of 36 months. RESULTS: Bilateral VATET was performed in the first 31 patients and right-sided VATET in the following 72. No patients died perioperatively. The operating time in the right-sided VATET group was significantly shorter than that in the bilateral VATET group (169.3 +/- 19.3 vs 152.6 +/- 20.7 min, P<0.001). There were no significant differences between groups, in terms of blood loss, pain severity, drainage time, ICU stay, hospital stay and postoperative morbidity. The median follow-up was 5.2 years. Forty-eight patients achieved complete stable remission (CSR). The 5-year CSR rate, calculated by Life-table analysis, was 52% in the bilateral VATET group and 47% in the right-sided VATET group. These two operative methods did not differ significantly with respect to CSR by Kaplan-Meier analysis. Multivariate analysis identified shorter disease duration (<12 months) (P = 0.021, HR = 0.50) and thymic hyperplasia (P = 0.038, HR = 0.48) as independent predictors of higher CSR rates in patients who underwent thymectomy. CONCLUSIONS: The long-term outcome of right-sided VATET in the surgical treatment of NTMG, in terms of CSR, is comparable to that of bilateral VATET.
+AD  - Liu, Zhiyi. Department of Thoracic Surgery, The Shanghai Pulmonary Hospital, Tongji University, Shanghai, China Department of Thoracic Surgery, The Second Affiliated Hospital, Fujian Medical University, Quanzhou, China. Yang, Jiansheng. Department of Thoracic Surgery, The Second Affiliated Hospital, Fujian Medical University, Quanzhou, China. Lin, Liangan. Department of Thoracic Surgery, The Second Affiliated Hospital, Fujian Medical University, Quanzhou, China. Huang, Jinlong. Department of Thoracic Surgery, The First Hospital of Quanzhou City, Fujian Medical University, Quanzhou, China. Jiang, Gening. Department of Thoracic Surgery, The Shanghai Pulmonary Hospital, Tongji University, Shanghai, China jgnwp@yahoo.com.cn jgnwp@aliyun.com.
+AN  - 26254034
+AU  - Liu, Zhiyi
+AU  - Yang, Jiansheng
+AU  - Lin, Liangan
+AU  - Huang, Jinlong
+AU  - Jiang, Gening
+DA  - Nov
+J2  - Interact Cardiovasc Thorac Surg
+KW  - Adult
+Female
+Follow-Up Studies
+Humans
+Length of Stay/td [Trends]
+Male
+*Myasthenia Gravis/su [Surgery]
+Retrospective Studies
+*Thoracic Surgery, Video-Assisted/mt [Methods]
+*Thymectomy/mt [Methods]
+Time Factors
+Treatment Outcome
+LA  - English
+M1  - 5
+M3  - Journal Article
+N1  - Liu Z Yang J Lin L Huang J Jiang G
+PY  - 2015
+SP  - 610-5
+ST  - Unilateral video-assisted thoracoscopic extended thymectomy offers long-term outcomes equivalent to that of the bilateral approach in the treatment of non-thymomatous myasthenia gravis
+T2  - Interactive Cardiovascular & Thoracic Surgery
+TI  - Unilateral video-assisted thoracoscopic extended thymectomy offers long-term outcomes equivalent to that of the bilateral approach in the treatment of non-thymomatous myasthenia gravis
+UR  - http://ovidsp.ovid.com/ovidweb.cgi?T=JS&CSC=Y&NEWS=N&PAGE=fulltext&D=med11&AN=26254034http://sfxhosted.exlibrisgroup.com/mayo?sid=OVID:medline&id=pmid:26254034&id=doi:10.1093%2Ficvts%2Fivv176&issn=1569-9285&isbn=&volume=21&issue=5&spage=610&pages=610-5&date=2015&title=Interactive+Cardiovascular+%26+Thoracic+Surgery&atitle=Unilateral+video-assisted+thoracoscopic+extended+thymectomy+offers+long-term+outcomes+equivalent+to+that+of+the+bilateral+approach+in+the+treatment+of+non-thymomatous+myasthenia+gravis.&aulast=Liu&pid=%3Cauthor%3ELiu+Z%3C%2Fauthor%3E&%3CAN%3E26254034%3C%2FAN%3E
+VL  - 21
+ID  - 408
+ER  - 
+
+
+TY  - JOUR
+AB  - We studied 197 patients with thymoma-associated myasthenia gravis (T-MG) to identify variables that can influence the natural history of the disease and the therapeutical approaches. Multivariate analysis showed that neither clinical nor pathological variables were associated with a better chance to reach complete stable remission. The video-assisted thoracoscopic extended thymectomy (VATET) was not significantly correlated with a lower chance of achieving complete stable remission compared with the classical transsternal approach (T-3b) (p=0.1090). Thymoma recurrence was not correlated with surgery by VATET or T-3b. VATET was safe and reliable for removal of thymoma. The low chance of achieving remission (9.64%) in T-MG underlines the importance of an early diagnosis as well as the need for more aggressive therapeutic strategies.
+AD  - Maggi, Lorenzo. Divisione Malattie Neuromuscolari e Neuroimmunologia, Fondazione Istituto Neurologico "Carlo Besta", Milan, Italy.
+AN  - 18722676
+AU  - Maggi, Lorenzo
+AU  - Andreetta, Francesca
+AU  - Antozzi, Carlo
+AU  - Baggi, Fulvio
+AU  - Bernasconi, Pia
+AU  - Cavalcante, Paola
+AU  - Cornelio, Ferdinando
+AU  - Muscolino, Giuseppe
+AU  - Novellino, Lorenzo
+AU  - Mantegazza, Renato
+DA  - Sep 15
+J2  - J Neuroimmunol
+KW  - Adult
+Age Factors
+Cholinesterase Inhibitors/tu [Therapeutic Use]
+Female
+Humans
+Life Tables
+Longitudinal Studies
+Male
+Middle Aged
+Myasthenia Gravis/co [Complications]
+Myasthenia Gravis/pa [Pathology]
+Myasthenia Gravis/th [Therapy]
+*Myasthenia Gravis
+Retrospective Studies
+Survival Analysis
+Thymectomy
+Thymoma/co [Complications]
+Thymoma/pa [Pathology]
+Thymoma/th [Therapy]
+*Thymoma
+Thymus Neoplasms/co [Complications]
+Thymus Neoplasms/pa [Pathology]
+Thymus Neoplasms/th [Therapy]
+*Thymus Neoplasms
+Treatment Outcome
+Video-Assisted Surgery/mt [Methods]
+0 (Cholinesterase Inhibitors)
+LA  - English
+M3  - Journal Article
+N1  - Maggi L Andreetta F Antozzi C Baggi F Bernasconi P Cavalcante P Cornelio F Muscolino G Novellino L Mantegazza R
+PY  - 2008
+SP  - 237-44
+ST  - Thymoma-associated myasthenia gravis: outcome, clinical and pathological correlations in 197 patients on a 20-year experience
+T2  - Journal of Neuroimmunology
+TI  - Thymoma-associated myasthenia gravis: outcome, clinical and pathological correlations in 197 patients on a 20-year experience
+UR  - http://ovidsp.ovid.com/ovidweb.cgi?T=JS&CSC=Y&NEWS=N&PAGE=fulltext&D=med6&AN=18722676http://sfxhosted.exlibrisgroup.com/mayo?sid=OVID:medline&id=pmid:18722676&id=doi:10.1016%2Fj.jneuroim.2008.07.012&issn=0165-5728&isbn=&volume=201-2&issue=&spage=237&pages=237-44&date=2008&title=Journal+of+Neuroimmunology&atitle=Thymoma-associated+myasthenia+gravis%3A+outcome%2C+clinical+and+pathological+correlations+in+197+patients+on+a+20-year+experience.&aulast=Maggi&pid=%3Cauthor%3EMaggi+L%3C%2Fauthor%3E&%3CAN%3E18722676%3C%2FAN%3E
+VL  - 201-202
+ID  - 420
+ER  - 
+
+
+TY  - JOUR
+AB  - The aims of this study were to assess the efficacy of video-assisted thoracoscopic extended thymectomy (VATET) as a treatment for myasthenia gravis (MG) and to identify prognostic factors for thymectomy success. Clinical efficacy and variables influencing outcome were assessed by life-table and Cox proportional hazards regression analysis. Complete stable remission (CSR), as defined by the MGFA Medical Task Force, was the end point for efficacy. VATET was performed in 159 MG patients and T-3b in 47 MG patients. At 6 years of follow-up, CSR, assessed by life-table analysis, was 50.6% in non-thymomatous VATET patients and 48.7% in non-thymomatous T-3b surgery. By univariate analysis, the presence of thymic hyperplasia (P=0.0002) and treatment only with anticholinesterases (P<0.0001) were positively associated with the probability of CSR. By multivariate analysis, the chance of complete remission was significantly increased by the use of anticholinesterases (odds ratio [OR] 2.45; 95% confidence interval [CI] 1.44-4.17; P=0.001) and the presence of thymic hyperplasia (OR 1.96; 95% CI 1.05-3.68; P=0.036). VATET seems to be effective in inducing CSR in MG with an efficiency similar to that of the T-3b transsternal (TS) approach; it is easy to perform in experienced hands and is associated with low morbidity and negligible esthetic sequelae.
+AD  - Mantegazza, Renato. Immunology and Muscular Pathology Unit, Department of Neuromuscular Diseases, Istituto Nazionale Neurologico Carlo Besta Via Celoria 11, 20133 Milan, Italy. rmantegazza@istituto-besta.it
+AN  - 12809996
+AU  - Mantegazza, Renato
+AU  - Baggi, Fulvio
+AU  - Bernasconi, Pia
+AU  - Antozzi, Carlo
+AU  - Confalonieri, Paolo
+AU  - Novellino, Lorenzo
+AU  - Spinelli, Luisella
+AU  - Ferro, Maria Teresa
+AU  - Beghi, Ettore
+AU  - Cornelio, Ferdinando
+DA  - Aug 15
+J2  - J Neurol Sci
+KW  - Adult
+Age of Onset
+Analysis of Variance
+Cholinesterase Inhibitors/tu [Therapeutic Use]
+Female
+Follow-Up Studies
+Humans
+Male
+Middle Aged
+Myasthenia Gravis/pp [Physiopathology]
+*Myasthenia Gravis/su [Surgery]
+Regression Analysis
+Remission Induction
+Retrospective Studies
+Task Performance and Analysis
+*Thoracic Surgery, Video-Assisted/mt [Methods]
+*Thymectomy
+Thymus Gland/pa [Pathology]
+Thymus Hyperplasia/co [Complications]
+Time Factors
+Treatment Outcome
+0 (Cholinesterase Inhibitors)
+LA  - English
+M1  - 1-2
+M3  - Comparative Study Journal Article Research Support, Non-U.S. Gov't
+N1  - Mantegazza R Baggi F Bernasconi P Antozzi C Confalonieri P Novellino L Spinelli L Ferro MT Beghi E Cornelio F Comment in (CIN)
+PY  - 2003
+SP  - 31-6
+ST  - Video-assisted thoracoscopic extended thymectomy and extended transsternal thymectomy (T-3b) in non-thymomatous myasthenia gravis patients: remission after 6 years of follow-up
+T2  - Journal of the Neurological Sciences
+TI  - Video-assisted thoracoscopic extended thymectomy and extended transsternal thymectomy (T-3b) in non-thymomatous myasthenia gravis patients: remission after 6 years of follow-up
+UR  - http://ovidsp.ovid.com/ovidweb.cgi?T=JS&CSC=Y&NEWS=N&PAGE=fulltext&D=med4&AN=12809996http://sfxhosted.exlibrisgroup.com/mayo?sid=OVID:medline&id=pmid:12809996&id=doi:&issn=0022-510X&isbn=&volume=212&issue=1-2&spage=31&pages=31-6&date=2003&title=Journal+of+the+Neurological+Sciences&atitle=Video-assisted+thoracoscopic+extended+thymectomy+and+extended+transsternal+thymectomy+%28T-3b%29+in+non-thymomatous+myasthenia+gravis+patients%3A+remission+after+6+years+of+follow-up.&aulast=Mantegazza&pid=%3Cauthor%3EMantegazza+R%3C%2Fauthor%3E&%3CAN%3E12809996%3C%2FAN%3E
+VL  - 212
+ID  - 424
+ER  - 
+
+
+TY  - JOUR
+AB  - BACKGROUND: Endoscopic thymectomy is commonly used for treatment of myasthenia gravis (MG) patients due to its relatively low invasiveness. However, the long-term effects of endoscopic thymectomy have not been fully evaluated. OBJECTIVE: To assess the long-term effects of extended infrasternal mediastinoscopic thymectomy (IMT) in MG patients and compare them with those of extended transsternal thymectomy (TT). METHODS: Among 24 MG patients without thymoma who underwent thymectomy in our Institute between January 1997 and December 2000, 14 patients who received IMT and 10 who received TT were enrolled in the present study. Quantitative myasthenia gravis (QMG) score and anti-acetylcholine receptor antibody (anti-AChR) titers were evaluated before and at five years after surgery. RESULTS: After five years, QMG scores were reduced from 6.6 to 1.8 (p<0.01) in the IMT group, and from 7.6 to 2.7 (p<0.01) in the TT group. The anti-AChR titers were reduced from 75.2 to 40.1 (p=0.027) in the IMT group, and from 224 to 61.3 (p=0.020) in the TT group. CONCLUSION: These data suggest that the long-term therapeutic effect of IMT is equivalent to TT, and is thus suitable for the treatment of MG patients.
+AD  - Murai, Hiroyuki. Department of Neurology, Neurological Institute, Graduate School of Medical Sciences, Kyushu University, Fukuoka 812-8582, Japan. hmurai@neuro.med.kyushu-u.ac.jp
+AN  - 19726063
+AU  - Murai, Hiroyuki
+AU  - Uchiyama, Akihiko
+AU  - Mei, Feng-Jun
+AU  - Kojima, Masayuki
+AU  - Kira, Jun-ichi
+DA  - Dec 15
+J2  - J Neurol Sci
+KW  - Abdominal Wall/ah [Anatomy & Histology]
+*Abdominal Wall/su [Surgery]
+Adolescent
+Adult
+Aged
+Autoantibodies/an [Analysis]
+Autoantibodies/bl [Blood]
+Disease-Free Survival
+Female
+Humans
+Male
+*Mediastinoscopy/mt [Methods]
+Mediastinoscopy/sn [Statistics & Numerical Data]
+Mediastinum/ah [Anatomy & Histology]
+*Mediastinum/su [Surgery]
+Middle Aged
+Myasthenia Gravis/im [Immunology]
+Myasthenia Gravis/pp [Physiopathology]
+*Myasthenia Gravis/su [Surgery]
+Outcome Assessment (Health Care)/mt [Methods]
+Receptors, Cholinergic/im [Immunology]
+Remission Induction/mt [Methods]
+Sternum/ah [Anatomy & Histology]
+Sternum/su [Surgery]
+Thymectomy/is [Instrumentation]
+*Thymectomy/mt [Methods]
+Thymectomy/sn [Statistics & Numerical Data]
+Thymus Gland/pp [Physiopathology]
+*Thymus Gland/su [Surgery]
+Time
+Treatment Outcome
+Young Adult
+0 (Autoantibodies)
+0 (Receptors, Cholinergic)
+LA  - English
+M1  - 1-2
+M3  - Evaluation Studies Journal Article Research Support, Non-U.S. Gov't
+N1  - Murai H Uchiyama A Mei FJ Kojima M Kira J
+PY  - 2009
+SP  - 185-7
+ST  - Long-term effects of infrasternal mediastinoscopic thymectomy in myasthenia gravis
+T2  - Journal of the Neurological Sciences
+TI  - Long-term effects of infrasternal mediastinoscopic thymectomy in myasthenia gravis
+UR  - http://ovidsp.ovid.com/ovidweb.cgi?T=JS&CSC=Y&NEWS=N&PAGE=fulltext&D=med6&AN=19726063http://sfxhosted.exlibrisgroup.com/mayo?sid=OVID:medline&id=pmid:19726063&id=doi:10.1016%2Fj.jns.2009.08.002&issn=0022-510X&isbn=&volume=287&issue=1-2&spage=185&pages=185-7&date=2009&title=Journal+of+the+Neurological+Sciences&atitle=Long-term+effects+of+infrasternal+mediastinoscopic+thymectomy+in+myasthenia+gravis.&aulast=Murai&pid=%3Cauthor%3EMurai+H%3C%2Fauthor%3E&%3CAN%3E19726063%3C%2FAN%3E
+VL  - 287
+ID  - 418
+ER  - 
+
+
+TY  - JOUR
+AB  - BACKGROUND: Because of the lack of evidence-based data comparing different techniques for thymectomy (Thx), a matched-pair study was conducted to evaluate the role of thoracoscopic Thx (tThx) more objectively. METHODS: Of 182 patients who underwent Thx, 3 groups according to the operation technique were matched for myasthenia gravis (MG) without thymoma, age, gender, and severity of MG. Twenty patients each who had Thx through anterolateral thoracotomy (aThx), extended median sternotomy (sThx), and tThx were compared for length of operation, postoperative morbidity, complete remission, quantification of improvement of MG, and cosmetic results. RESULTS: Complete tThx required 197 +/- 35 min as compared to 113 +/- 43 min for sThx and 82 +/- 27 min for aThx (P <0.001). With zero mortality the overall postoperative morbidity rate was 25% for sThx versus 15% for aThx and 5% for tThx (P <0.05). There was no difference in complete remission of MG. The median activities of daily living (ADL) scores improved by 6.0 (1-19) after tThx, 5.5 (2-4) after sThx, and 7.5 (0-12) after aThx. Best cosmetic results were achieved after tThx. CONCLUSIONS: There was adequate cumulative medium-term improvement of MG and less postoperative morbidity after tThx, which may become the preferred technique for Thx.
+AD  - Ruckert, J C. Department of General, Visceral, Thoracic, and Vascular Surgery, Humboldt University Medical School (Charite), Campus Mitte, Berlin, Germany. jens-c.rueckert@charite.de
+AN  - 12616395
+AU  - Ruckert, J. C.
+AU  - Sobel, H. K.
+AU  - Gohring, S.
+AU  - Einhaupl, K. M.
+AU  - Muller, J. M.
+DA  - May
+J2  - Surg Endosc
+KW  - Adult
+Evidence-Based Medicine
+Female
+Humans
+Male
+Matched-Pair Analysis
+Myasthenia Gravis/co [Complications]
+*Myasthenia Gravis/su [Surgery]
+Retrospective Studies
+Severity of Illness Index
+Thoracoscopy/ae [Adverse Effects]
+Thoracoscopy/mt [Methods]
+Thymectomy/ae [Adverse Effects]
+*Thymectomy/mt [Methods]
+Thymoma/pa [Pathology]
+LA  - English
+M1  - 5
+M3  - Comparative Study Evaluation Studies Journal Article
+N1  - Ruckert JC Sobel HK Gohring S Einhaupl KM Muller JM
+PY  - 2003
+SP  - 711-5
+ST  - Matched-pair comparison of three different approaches for thymectomy in myasthenia gravis
+T2  - Surgical Endoscopy
+TI  - Matched-pair comparison of three different approaches for thymectomy in myasthenia gravis
+UR  - http://ovidsp.ovid.com/ovidweb.cgi?T=JS&CSC=Y&NEWS=N&PAGE=fulltext&D=med4&AN=12616395http://sfxhosted.exlibrisgroup.com/mayo?sid=OVID:medline&id=pmid:12616395&id=doi:10.1007%2Fs00464-002-9162-6&issn=0930-2794&isbn=&volume=17&issue=5&spage=711&pages=711-5&date=2003&title=Surgical+Endoscopy&atitle=Matched-pair+comparison+of+three+different+approaches+for+thymectomy+in+myasthenia+gravis.&aulast=Ruckert&pid=%3Cauthor%3ERuckert+JC%3C%2Fauthor%3E&%3CAN%3E12616395%3C%2FAN%3E
+VL  - 17
+ID  - 425
+ER  - 
+
+
+TY  - JOUR
+AB  - BACKGROUND: Thymectomy is an effective treatment option for long-term remission of myasthenia gravis. The superiority of the trans-sternal and thoracoscopic surgical approaches is still being debated. The aims of this study are to compare postoperative outcomes and neurologic outcomes between the two approaches and to identify prognostic factors for complete stable remission (CSR). METHODS: Myasthenia gravis patients who underwent thymectomy with trans-sternal or thoracoscopic approach in MahaRaj Nakorn Chiang Mai Hospital, Chiang Mai, Thailand between January1, 2006 and December 31, 2013 were retrospectively reviewed. The endpoints were postoperative outcomes and cumulative incidence function for CSR. The analysis was performed using multilevel model, Cox's proportional hazard model, and propensity score. RESULTS: Ninety-eight patients were enrolled in this study: 53 in the thoracoscopic group and 45 in the trans-sternal group. There were no significant differences between groups in composite postoperative complications, surgical time, ventilator support days, and length of intensive care unit stay. Intraoperative blood loss and length of hospital stay were significant less in the thoracoscopic group. The CSR and median time to remission were not significantly different between the two approaches. Prognostic factors for CSR were nonthymoma (hazard ratio: 3.5, 95% confidence interval: 1.01-12.22) and presence of pharmacological remission (hazard ratio: 24.3, 95% confidence interval: 3.27-180.41). CONCLUSION: Thoracoscopic thymectomy is safe and provides good neurologic outcomes in comparison to the trans-sternal approach. Two predictive factors should be considered for CSR. Further prospective studies with a larger sample size and longer follow-up period are warranted to confirm these results.
+AD  - Siwachat, Sophon. Thoracic Surgery Unit, Department of Surgery, Faculty of Medicine, Chiang Mai University, Chiang Mai, Thailand. Tantraworasin, Apichat. Thoracic Surgery Unit, Department of Surgery, Faculty of Medicine, Chiang Mai University, Chiang Mai, Thailand. Electronic address: ohm_med@hotmail.com. Lapisatepun, Worakitti. Thoracic Surgery Unit, Department of Surgery, Faculty of Medicine, Chiang Mai University, Chiang Mai, Thailand. Ruengorn, Chidchanok. Department of Pharmaceutical Care, Faculty of Pharmacy, Chiang Mai University, Chiang Mai, Thailand. Taioli, Emanuela. Department of Population Health Science and Policy and Institute for Translational Epidemiology, Icahn Medical School at Mount Sinai, New York, NY, USA. Saeteng, Somcharoen. Thoracic Surgery Unit, Department of Surgery, Faculty of Medicine, Chiang Mai University, Chiang Mai, Thailand.
+AN  - 27810167
+AU  - Siwachat, Sophon
+AU  - Tantraworasin, Apichat
+AU  - Lapisatepun, Worakitti
+AU  - Ruengorn, Chidchanok
+AU  - Taioli, Emanuela
+AU  - Saeteng, Somcharoen
+DA  - Jan
+J2  - Asian J
+KW  - Adult
+Female
+Follow-Up Studies
+Humans
+Male
+Middle Aged
+*Myasthenia Gravis/su [Surgery]
+Propensity Score
+Proportional Hazards Models
+Retrospective Studies
+*Sternum/su [Surgery]
+*Thoracic Surgery, Video-Assisted
+*Thymectomy/mt [Methods]
+Treatment Outcome
+LA  - English
+M1  - 1
+M3  - Comparative Study Journal Article
+N1  - Siwachat S Tantraworasin A Lapisatepun W Ruengorn C Taioli E Saeteng S S1015-9584(16)30138-5
+PY  - 2018
+SP  - 77-85
+ST  - Comparative clinical outcomes after thymectomy for myasthenia gravis: Thoracoscopic versus trans-sternal approach
+T2  - Asian Journal of Surgery
+TI  - Comparative clinical outcomes after thymectomy for myasthenia gravis: Thoracoscopic versus trans-sternal approach
+UR  - http://ovidsp.ovid.com/ovidweb.cgi?T=JS&CSC=Y&NEWS=N&PAGE=fulltext&D=med13&AN=27810167http://sfxhosted.exlibrisgroup.com/mayo?sid=OVID:medline&id=pmid:27810167&id=doi:10.1016%2Fj.asjsur.2016.09.006&issn=1015-9584&isbn=&volume=41&issue=1&spage=77&pages=77-85&date=2018&title=Asian+Journal+of+Surgery&atitle=Comparative+clinical+outcomes+after+thymectomy+for+myasthenia+gravis%3A+Thoracoscopic+versus+trans-sternal+approach.&aulast=Siwachat&pid=%3Cauthor%3ESiwachat+S%3C%2Fauthor%3E&%3CAN%3E27810167%3C%2FAN%3E
+VL  - 41
+ID  - 404
+ER  - 
+
+
+TY  - JOUR
+AB  - Aims: Minimally invasive techniques are increasingly used for thymectomy. The most recent development in robotic thoracoscopic surgery has been successfully applied for mediastinal pathologies. The aim of this study is to compare thoracoscopic and robotic approaches in thymectomy for nontumoral myasthenia gravis (MG). Methods: In a retrospective match-pair study, the results of 34 thoracoscopic thymectomies (January 2008 to December 2013) were compared with the results of 34 robotic thoracoscopic thymectomies (January 2008 to December 2013). All of the patients were operated on by the same surgeon and apart from the docking and un-docking of robotic platform all operative times were the same. Data from both series were collected prospectively. All patients were matched-paired with respect to age, gender, type of myasthenia gravis, comorbidities and length of follow-up. Results: Inpatient length of stay was 6.18 days for thoracoscopic approach and 4.88 days for robotic approach, but with no statistical significance (p = 0.452). The preoperative and postoperative MGFA QMG scores were equivalent between the two groups. Complete stable remission rate (CSR) at 1 years was 29 % in thoracoscopic groups and 50 % in robotic group with p<0.05. At 5 year after thymectomy CSR was 60 % in patients with thoracoscopic approach and 65 % in patients with robotic approach. The postoperative use of acetylcholinesterase inhibitor drugs in patients with robotic approach was lower than that of the patients with thoracoscopic approach, 13.06 mg/day and 32.65 mg/day respectively, with p = 0.030<0.05. The same pattern was also seen with respect to the use of corticotherapy drugs, 3.29 mg/day in patients with robotic approach compared with 5.94 mg/day in patients with thoracoscopic approach, and p = 0.017<0.05. Conclusions: Although we have expected to be no differences between the two groups, there is an improved outcome for myasthenia gravis after robotic thymectomy compared with thoracoscopic thymectomy despite the similar techniques. Randomized trials with long-term follow-up will be needed to clearly define the appropriate role of robotic surgery in thymectomy for nontumoral MG.
+AD  - (Tomulescu) Fundeni Clinical Institute, Bucharest, Romania V. Tomulescu, Fundeni Clinical Institute, Bucharest, Romania
+AN  - 72210162
+AU  - Tomulescu, V.
+DA  - March
+KW  - myasthenia gravis
+European
+endoscopic surgery
+thymectomy
+human
+patient
+follow up
+gender
+pathology
+operation duration
+surgeon
+surgery
+remission
+statistical significance
+length of stay
+hospital patient
+corticosteroid therapy
+robot assisted surgery
+minimally invasive procedure
+cholinesterase inhibitor
+LA  - English
+M3  - Conference Abstract
+N1  - 23rd International Congress of the European Association for Endoscopic Surgery, EAES 2015. Bucharest Romania. Conference Publication: (var.pagings). 30 (SUPPL
+PY  - 2016
+SP  - S140
+ST  - Thymectomy for nontumoral myasthenia gravis: A matched-pair comparison of thoracoscopic and robotic approaches
+T2  - Surgical Endoscopy and Other Interventional Techniques
+TI  - Thymectomy for nontumoral myasthenia gravis: A matched-pair comparison of thoracoscopic and robotic approaches
+UR  - http://ovidsp.ovid.com/ovidweb.cgi?T=JS&CSC=Y&NEWS=N&PAGE=fulltext&D=emed17&AN=72210162http://sfxhosted.exlibrisgroup.com/mayo?sid=OVID:embase&id=pmid:&id=doi:10.1007%2Fs00464-016-4767-3&issn=0930-2794&isbn=&volume=30&issue=SUPPL.+1&spage=S140&pages=S140&date=2016&title=Surgical+Endoscopy+and+Other+Interventional+Techniques&atitle=Thymectomy+for+nontumoral+myasthenia+gravis%3A+A+matched-pair+comparison+of+thoracoscopic+and+robotic+approaches&aulast=Tomulescu&pid=%3Cauthor%3ETomulescu+V.%3C%2Fauthor%3E&%3CAN%3E72210162%3C%2FAN%3E
+VL  - 1)
+ID  - 431
+ER  - 
+
+
+TY  - JOUR
+AB  - BACKGROUND: Unilateral video-assisted thoracoscopic (VATS) thymectomy features less operative trauma, improved cosmesis, and similar efficiency compared with transsternal (TS) thymectomy for treatment of patients with myasthenia gravis (MG). Unilateral VATS thymectomy can be easily performed from either side of the thorax, because thymus is located in the middle of mediastinum. Nevertheless, the side that provides better outcomes remains controversial. This study presents our experience on treatments for MG and reveals the differences between the unilateral VATS thymectomy performed on each side. METHODS: Eighty-one consecutive patients with MG who underwent TS or VATS thymectomy on either side between January 2003 and December 2012 were enrolled in the study. Clinicopathologic data and surgical outcomes were retrospectively analyzed and compared among different surgical approaches. RESULTS: TS thymectomy was administered in 50 patients, whereas unilateral VATS approaches were performed on the remaining 31 patients, 15 on the left side and 16 on the right side. The VATS group exhibited a significantly shorter surgery duration (P<0.001), less intraoperative blood loss (P=0.009), shorter postoperative hospital stay (P=0.025), smaller thoracic drainage volume (P=0.033), shorter thoracic drainage duration (P=0.006), and less postoperative complications (P<0.001) compared with the TS group. However, disease remission rates did not significantly differ among the groups (P=0.988). The left-sided group exhibited considerably longer thoracic drainage duration than the right-sided group (P=0.041). Moreover, surgical time (P=0.736), intraoperative blood loss (P=0.281), postoperative hospital stay (P=0.599), thoracic drainage volume (P=0.571), postoperative complications (P=0.742) and therapeutic effect (P=1.000) did not significantly differ among the groups. Multivariate analysis revealed that the ocular type of MG is the only independent factor for clinical remission (P=0.002). CONCLUSIONS: Unilateral VATS thymectomy can reduce surgical risks and shorten hospitalization duration without threatening the therapeutic effect. This technique can be safely and effectively performed by experienced surgeons in either side of the thorax.
+AD  - Xie, Xuan. 1 Guangdong Provincial Key Laboratory of Malignant Tumor Epigenetics and Gene Regulation, 2 Department of Thoracic Surgery, Sun Yat-sen Memorial Hospital, Sun Yat-sen University, Guangzhou 510120, China ; 3 Department of Thoracic Surgery, General Hospital of Ningxia Medical University, Yinchuan 750004, China. Gan, Xiangfeng. 1 Guangdong Provincial Key Laboratory of Malignant Tumor Epigenetics and Gene Regulation, 2 Department of Thoracic Surgery, Sun Yat-sen Memorial Hospital, Sun Yat-sen University, Guangzhou 510120, China ; 3 Department of Thoracic Surgery, General Hospital of Ningxia Medical University, Yinchuan 750004, China. Chen, Baishen. 1 Guangdong Provincial Key Laboratory of Malignant Tumor Epigenetics and Gene Regulation, 2 Department of Thoracic Surgery, Sun Yat-sen Memorial Hospital, Sun Yat-sen University, Guangzhou 510120, China ; 3 Department of Thoracic Surgery, General Hospital of Ningxia Medical University, Yinchuan 750004, China. Shen, Zhuojian. 1 Guangdong Provincial Key Laboratory of Malignant Tumor Epigenetics and Gene Regulation, 2 Department of Thoracic Surgery, Sun Yat-sen Memorial Hospital, Sun Yat-sen University, Guangzhou 510120, China ; 3 Department of Thoracic Surgery, General Hospital of Ningxia Medical University, Yinchuan 750004, China. Wang, Minghui. 1 Guangdong Provincial Key Laboratory of Malignant Tumor Epigenetics and Gene Regulation, 2 Department of Thoracic Surgery, Sun Yat-sen Memorial Hospital, Sun Yat-sen University, Guangzhou 510120, China ; 3 Department of Thoracic Surgery, General Hospital of Ningxia Medical University, Yinchuan 750004, China. Zhang, Huizhong. 1 Guangdong Provincial Key Laboratory of Malignant Tumor Epigenetics and Gene Regulation, 2 Department of Thoracic Surgery, Sun Yat-sen Memorial Hospital, Sun Yat-sen University, Guangzhou 510120, China ; 3 Department of Thoracic Surgery, General Hospital of Ningxia Medical University, Yinchuan 750004, China. Xu, Xia. 1 Guangdong Provincial Key Laboratory of Malignant Tumor Epigenetics and Gene Regulation, 2 Department of Thoracic Surgery, Sun Yat-sen Memorial Hospital, Sun Yat-sen University, Guangzhou 510120, China ; 3 Department of Thoracic Surgery, General Hospital of Ningxia Medical University, Yinchuan 750004, China. Chen, Ju. 1 Guangdong Provincial Key Laboratory of Malignant Tumor Epigenetics and Gene Regulation, 2 Department of Thoracic Surgery, Sun Yat-sen Memorial Hospital, Sun Yat-sen University, Guangzhou 510120, China ; 3 Department of Thoracic Surgery, General Hospital of Ningxia Medical University, Yinchuan 750004, China.
+AN  - 26904220
+AU  - Xie, Xuan
+AU  - Gan, Xiangfeng
+AU  - Chen, Baishen
+AU  - Shen, Zhuojian
+AU  - Wang, Minghui
+AU  - Zhang, Huizhong
+AU  - Xu, Xia
+AU  - Chen, Ju
+DA  - Jan
+J2  - J
+LA  - English
+M1  - 1
+M3  - Journal Article
+N1  - Xie X Gan X Chen B Shen Z Wang M Zhang H Xu X Chen J
+PY  - 2016
+SP  - 124-32
+ST  - Left- and right-sided video-assisted thoracoscopic thymectomy exhibit similar effects on myasthenia gravis
+T2  - Journal of Thoracic Disease
+TI  - Left- and right-sided video-assisted thoracoscopic thymectomy exhibit similar effects on myasthenia gravis
+UR  - http://ovidsp.ovid.com/ovidweb.cgi?T=JS&CSC=Y&NEWS=N&PAGE=fulltext&D=prem1&AN=26904220http://sfxhosted.exlibrisgroup.com/mayo?sid=OVID:medline&id=pmid:26904220&id=doi:10.3978%2Fj.issn.2072-1439.2016.01.40&issn=2072-1439&isbn=&volume=8&issue=1&spage=124&pages=124-32&date=2016&title=Journal+of+Thoracic+Disease&atitle=Left-+and+right-sided+video-assisted+thoracoscopic+thymectomy+exhibit+similar+effects+on+myasthenia+gravis.&aulast=Xie&pid=%3Cauthor%3EXie+X%3C%2Fauthor%3E&%3CAN%3E26904220%3C%2FAN%3E
+VL  - 8
+ID  - 405
+ER  - 
+
+
+TY  - JOUR
+AB  - OBJECTIVE: This study aims to analyse the effectiveness of treatment of myasthenia gravis with three different techniques of thymectomy. METHODS: Results of complete remission rates after 5-year follow-up of 60 patients who underwent basic transsternal thymectomies (group A) from 1 January 1996 to 31 December 1997, 75 patients who underwent extended transsternal thymectomies (group B) from 1 January 1998 to 30 June 2000 and 291 patients who underwent transcervical-subxiphoid-videothoracoscopic 'maximal' thymectomy (group C) from 1 September 2000 to 31 January 2009 were compared. RESULTS: There were no differences between groups according to patient's characteristics and postoperative complications' rate. Ectopic foci of the thymic tissue were discovered in the fat of the neck and the mediastinum in 53.9% of patients from the group B and in 65.9% patients from the group C. After 1, 2, 3, 4 and 5 years of follow-up, complete remission rates were 8.3%, 11.7%, 15.0%, 16.7% and 20.0%, respectively, in group A; 26.7%, 38.7%, 42.7%, 46.7% and 50.7%, respectively, in group B; and 31.5%, 39%, 45.8%, 46.3% and 53.1%, respectively, in group C. The differences between group A and the groups B and C after 1, 2, 3, 4 and 5 years were statistically significant. There were no significant differences between groups B and C. CONCLUSIONS: (1) The results of complete remission rates after 5-year follow-up were statistically better in patients with myasthenia gravis (MG), who were operated on with extended transsternal thymectomy and transcervical-subxiphoid-videothoracoscopic 'maximal' thymectomy than the patients who underwent basic transsternal thymectomy. (2) The difference can be explained by the removal of ectopic foci of the thymic tissue from the neck and the mediastinum in these patients.
+AD  - Zielinski, Marcin. Department of Thoracic Surgery, Pulmonary Hospital, Ul. Gladkie 1, 34 500, Zakopane, Poland. marcinz@mp.pl
+AN  - 20117014
+AU  - Zielinski, Marcin
+AU  - Hauer, Lukasz
+AU  - Hauer, Jolanta
+AU  - Pankowski, Juliusz
+AU  - Nabialek, Tomasz
+AU  - Szlubowski, Artur
+DA  - May
+J2  - Eur J Cardiothorac Surg
+KW  - Adolescent
+Adult
+Aged
+Choristoma/su [Surgery]
+Epidemiologic Methods
+Female
+Humans
+Male
+Mediastinal Diseases/su [Surgery]
+Middle Aged
+*Myasthenia Gravis/su [Surgery]
+Neck/su [Surgery]
+Remission Induction
+Sternum/su [Surgery]
+Thoracic Surgery, Video-Assisted/mt [Methods]
+Thymectomy/ae [Adverse Effects]
+*Thymectomy/mt [Methods]
+Thymus Gland
+Treatment Outcome
+Young Adult
+LA  - English
+M1  - 5
+M3  - Comparative Study Journal Article
+N1  - Zielinski M Hauer L Hauer J Pankowski J Nabialek T Szlubowski A
+PY  - 2010
+SP  - 1137-43
+ST  - Comparison of complete remission rates after 5 year follow-up of three different techniques of thymectomy for myasthenia gravis
+T2  - European Journal of Cardio-Thoracic Surgery
+TI  - Comparison of complete remission rates after 5 year follow-up of three different techniques of thymectomy for myasthenia gravis
+UR  - http://ovidsp.ovid.com/ovidweb.cgi?T=JS&CSC=Y&NEWS=N&PAGE=fulltext&D=med7&AN=20117014http://sfxhosted.exlibrisgroup.com/mayo?sid=OVID:medline&id=pmid:20117014&id=doi:10.1016%2Fj.ejcts.2009.11.029&issn=1010-7940&isbn=&volume=37&issue=5&spage=1137&pages=1137-43&date=2010&title=European+Journal+of+Cardio-Thoracic+Surgery&atitle=Comparison+of+complete+remission+rates+after+5+year+follow-up+of+three+different+techniques+of+thymectomy+for+myasthenia+gravis.&aulast=Zielinski&pid=%3Cauthor%3EZielinski+M%3C%2Fauthor%3E&%3CAN%3E20117014%3C%2FAN%3E
+VL  - 37
+ID  - 415
+ER  - 
+
+
