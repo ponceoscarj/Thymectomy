@@ -7,9 +7,14 @@ Oscar J. Ponce & Andrea Solis-Pazmino
 
 > Click any of the following links to view the documents
 
-| Protocol                                                                           |                                        Analysis codes                                        |                                                                                     Raw data |
-| ---------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------: | -------------------------------------------------------------------------------------------: |
-| [Prospero](https://www.crd.york.ac.uk/prospero/display_record.php?RecordID=166827) | [`R Markdown`](https://github.com/ponceoscarj/Thymectomy/blob/master/Thymectomy_results.Rmd) | [`.CSV`](https://github.com/ponceoscarj/Thymectomy/blob/master/Data/thymectomy_outcomes.csv) |
+|        Stage        |                                                                              File                                                                              |
+| :-----------------: | :------------------------------------------------------------------------------------------------------------------------------------------------------------: |
+|      Protocol       |                                       [Prospero](https://www.crd.york.ac.uk/prospero/display_record.php?RecordID=166827)                                       |
+| Abstract screening  | [References used in this stage or search results](https://github.com/ponceoscarj/Thymectomy/blob/master/Screening_results/articles_for_abstract_screening.txt) |
+| Full-text screening |          [References used in this stage](https://github.com/ponceoscarj/Thymectomy/blob/master/Screening_results/articles_for_fulltext_screening.txt)          |
+|  Included studies   |              [References used for data extraction](https://github.com/ponceoscarj/Thymectomy/blob/master/Screening_results/included_articles.txt)              |
+|      Raw data       |                              [Data as `.CSV`](https://github.com/ponceoscarj/Thymectomy/blob/master/Data/thymectomy_outcomes.csv)                              |
+|   Analysis codes    |                             [Script as `R Markdown`](https://github.com/ponceoscarj/Thymectomy/blob/master/Thymectomy_results.Rmd)                             |
 
 ## Summary of forest plots
 
