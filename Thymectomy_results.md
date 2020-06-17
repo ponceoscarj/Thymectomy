@@ -44,6 +44,12 @@ Stable Remission in patients with myasthenia gravis who underwent a
 **Minimally Invasive Thymectomy** at different follow-ups\*\*
 ![](Thymectomy_results_files/figure-gfm/unnamed-chunk-3-1.svg)<!-- -->
 
+**Figure 4** - Summary of forest plots of the risk of achieving Complete
+Stable Remission in patients with myasthenia gravis who underwent a
+**Minimally Invasive Thymectomy** those who underwent another
+**Minimally Invasive Thymectomy** at different follow-ups\*\*
+![](Thymectomy_results_files/figure-gfm/label_of_this_figure-1.svg)<!-- -->
+
 ## Supplementary Figures
 
 ### Extended Transsternal vs. Standard Transsternal forest plots

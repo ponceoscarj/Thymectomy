@@ -735,8 +735,8 @@ forestplot(lessagr2,
 
 
 **Figure 3** - Summary of forest plots of the risk of achieving Complete Stable Remission in patients with myasthenia gravis who underwent a **Minimally Invasive Thymectomy**  those who underwent another **Minimally Invasive Thymectomy** at different follow-ups**
-```{r,  fig.height=4, fig.width=15, echo=FALSE, message=FALSE, warning=FALSE}
-less <- as_tibble(rbind(g, h, i))
+```{r,  fig.height=3, fig.width=15, echo=FALSE, message=FALSE, warning=FALSE}
+less <- as_tibble(rbind(h, i))
 colnames(less) <- head
 
 less[,c(3:8,9:12)] <- sapply(less[,c(3:8,9:12)], as.numeric)
@@ -756,12 +756,11 @@ less$p2 <-
 
 
 
-less <- less %>% add_row(followup="VATS extended uni vs. VATS extended bi", .before = 1)
-less <- less %>% add_row(followup="VATS extended lelft vs. VATS extended right", .before = 6)
-less <- less %>% add_row(followup="VATS extended with robotic  vs. VATS extended", .before = 9)
+less <- less %>% add_row(followup="VATS extended lelft vs. VATS extended right", .before = 1)
+less <- less %>% add_row(followup="VATS extended with robotic  vs. VATS extended", .before = 4)
 
 less <- less %>% add_row(.before = 1)
-less <- less %>% add_row(.after = 12)
+less <- less %>% add_row(.after = 7)
 
 
 less2 <- cbind(c("Treatment vs. Control", "Follow-up",less$followup),
@@ -772,8 +771,7 @@ less2 <- cbind(c("Treatment vs. Control", "Follow-up",less$followup),
               c("Relative Risk (95% CI)", NA, less$rr),
               c("p value", NA, less$p2))
 
-
-sub1 <- c(5:8, 10:11, 13:14)
+sub1 <- c(5,6,8,9)
 less2[,1][sub1] <- paste("  ",less2[,1][sub1])
 
 
@@ -782,7 +780,7 @@ rrsless <- structure(list(
   lower = c(NA, NA, less$llci),
   upper = c(NA, NA, less$ulci)),
   .Names = c("mean", "lower", "upper"),
-  row.names = c(NA, -15L),
+  row.names = c(NA, -10L),
   class = "data.frame")
 
 
@@ -797,7 +795,6 @@ forestplot(less2,
            lineheight=unit(0.6,'cm'),
            line.margin = 2,
            is.summary = c(T, T, F, 
-                          T, rep(F, 4), 
                           T, rep(F, 2), 
                           T, rep(F,2), 
                           F),
@@ -818,6 +815,87 @@ forestplot(less2,
                         axes="grey20", summary="black", zero="black"))
 
 ```
+
+**Figure 4** - Summary of forest plots of the risk of achieving Complete Stable Remission in patients with myasthenia gravis who underwent a **Minimally Invasive Thymectomy**  those who underwent another **Minimally Invasive Thymectomy** at different follow-ups**
+```{r label_of_this_figure,  fig.height=3, fig.width=14, echo=FALSE, message=FALSE, warning=FALSE, fig.lp='fig:'}
+less3 <- as_tibble(rbind(g))
+colnames(less3) <- head
+
+less3[,c(3:8,9:12)] <- sapply(less3[,c(3:8,9:12)], as.numeric)
+less3$i2 <- ifelse(less3$k==1, "na", paste(formatC(round2(less3$i2,n=0), format='f',digits=0),"%"))
+less3$rr <- paste(formatC(round2(less3$eff, n=2), format='f', digits=2), 
+                "(", formatC(round2(less3$llci, n=2), format='f', digits=2),
+                "-", formatC(round2(less3$ulci, n=2), format='f', digits=2),
+                ")")
+less3$n1 <- (less3$ai + less3$bi)
+less3$n2 <- (less3$ci + less3$di)
+less3$rate1 <- paste(less3$ai,"/",less3$n1)
+less3$rate2 <- paste(less3$ci,"/",less3$n2)
+less3$p2 <- 
+  ifelse(is.na(less3$p), NA, 
+  ifelse(less3$p<0.001, paste("<0.001"), 
+         paste(formatC(round2(less3$p,n=3), format='f', digits=3))))
+
+
+
+less3 <- less3 %>% add_row(followup="VATS extended uni vs. VATS extended bi", .before = 1)
+
+less3 <- less3 %>% add_row(.before = 1)
+less3 <- less3 %>% add_row(.after = 6)
+
+
+less4 <- cbind(c("Treatment vs. Control", "Follow-up",less3$followup),
+              c("N of studies", NA, less3$k),
+              c("Treatment", "events/n", less3$rate1),
+              c("Control", "events/n", less3$rate2),
+              c("I^2", NA, less3$i2),
+              c("Relative Risk (95% CI)", NA, less3$rr),
+              c("p value", NA, less3$p2))
+
+sub1 <- c(5:8)
+less4[,1][sub1] <- paste("  ",less4[,1][sub1])
+
+
+rrsless <- structure(list(
+  mean = c(NA, NA, less3$eff),
+  lower = c(NA, NA, less3$llci),
+  upper = c(NA, NA, less3$ulci)),
+  .Names = c("mean", "lower", "upper"),
+  row.names = c(NA, -9L),
+  class = "data.frame")
+
+
+forestplot(less4,
+           graph.pos = 6,
+           zero=1,
+           rrsless,
+           new_page = TRUE,
+           colgap = unit(5, "mm"),
+           hrzl_lines = list("3" = gpar (lwd=1, columns=c(1:8), col="black") 
+           ),
+           lineheight=unit(0.6,'cm'),
+           line.margin = 2,
+           is.summary = c(T, T, F, 
+                          T, rep(F, 4), 
+                          F),
+           align = c("l","c", "c", "c", "l", "l", "l"),
+           boxsize = 0.5,
+           ci.vertices = TRUE,
+           txt_gp = fpTxtGp(label =gpar (cex=0.9), 
+                            ticks = gpar(cex = 0.9, fontface="bold"),
+                            summary = gpar(cex = 0.9),
+                            xlab = gpar(cex=0.9)),
+           xticks = c(0.25, 0.5, 1, 2, 4, 8),
+           xlog=TRUE,
+           clip = c(0.5, 4),
+           lwd.xaxis = 1,
+           lwd.ci = 2.2,
+           graphwidth = unit(9,"cm"),
+           col=fpColors(box="black",line="grey", 
+                        axes="grey20", summary="black", zero="black"))
+
+```
+
 
 
 ## Supplementary Figures
