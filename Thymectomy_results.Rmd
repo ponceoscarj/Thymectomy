@@ -36,7 +36,7 @@ names(pao)[8:11] <- c("n1","n2","events1","events2")
 names(pao)[12:14] <- c("eff", "cill", "ciul")
 names(pao)[15] <- "pvalue"
 names(pao)[16] <- "app"
-pao <- pao[,-(17:74)]
+pao <- pao[,-(17)]
 
 
 pao$group[pao$group == "Overall "] <- "Overall"
@@ -97,8 +97,10 @@ row.names(pao) <- c(1:67)
 
 #Changin direction of comparison for better interpretation
 pao[63,] <- pao[63,c(1, 3, 2, 4:7, 9, 8, 11, 10,12:16)]
-pao[c(1:13, 20:39, 50, 51, 54:56, 58, 60, 62, 64),] <- pao[c(1:13, 20:39, 50, 51, 54:56, 58, 60, 62, 64), c(1, 3, 2, 4:7, 9, 8, 11, 10,12:16)]
-pao[c(42, 45, 48, 57, 59, 61),] <- pao[c(42, 45, 48, 57, 59, 61), c(1, 3, 2, 4:7, 9, 8, 11, 10,12:16)]
+pao[c(43,46,49),] <- pao[c(43,46,49),c(1, 3, 2, 4:7, 9, 8, 11, 10,12:16)]
+
+
+
 
 
 
@@ -134,13 +136,25 @@ pao <- pao[!(pao$refid %in% 592),]
 pao$int[pao$int == "T2a left"] <- "T2b left"
 
 pao$comp[pao$comp == "T2a right"] <- "T2b right"
-pao$comp[pao$comp == "T2b uni"] <- "T2b"
+pao$int[pao$int == "T2b uni"] <- "T2b"
+
 pao$comp[pao$comp == "T2b bi"] <- "T2b"
+pao$int[pao$int == "T2b bi"] <- "T2b"
+
+
 pao$comp[pao$comp == "T2a"] <- "T2b"
+pao$int[pao$int == "T2a"] <- "T2b"
+
 pao$comp <- ifelse(pao$refid==196, paste("T2b bi"), pao$comp)
+pao$int <- ifelse(pao$refid==196, paste("T2b uni"), pao$int)
+
+
 
 #Final paste
 pao$comparison <- paste(pao$int, " vs. ", pao$comp)
+
+
+
 ```
 
 
@@ -203,32 +217,32 @@ expma3 <- predict(ma3, transf = transf.exp.int)
 
 
 ma4 <- rma(measure="RR", ai=events1, ci=events2, n1i=n1, n2i=n2, 
-            data=pao, subset=(followup==10 & comparison=="T3b  vs.  T1a"),
+            data=pao, subset=(followup==10 & comparison=="T1a  vs.  T3b"),
             method="REML")
 expma4 <- predict(ma4, transf = exp, digits=2)
 
 
 ma5 <- rma(measure="RR", ai=events1, ci=events2, n1i=n1, n2i=n2, 
-           data=pao, subset=(followup==3 & comparison=="T3a  vs.  T2b"), 
+           data=pao, subset=(followup==3 & comparison=="T2b  vs.  T3a"), 
            method="REML")
 expma5 <- predict(ma5, transf = exp, digits=2)
 
 
 ma6 <- rma(measure="RR", ai=events1, ci=events2, n1i=n1, n2i=n2, 
-           data=pao, subset=(followup==4 & comparison=="T3a  vs.  T2b"), 
+           data=pao, subset=(followup==4 & comparison=="T2b  vs.  T3a"), 
            method="REML")
 expma6<- predict(ma6, transf = exp, digits=2)
 
 
 ma7 <- rma(measure="RR", ai=events1, ci=events2, n1i=n1, n2i=n2, 
-           data=pao, subset=(followup==5 & comparison=="T3a  vs.  T2b"),
+           data=pao, subset=(followup==5 & comparison=="T2b  vs.  T3a"),
            method="REML")
 expma7 <- predict(ma7, transf = exp, digits=2)
 
 
 prema8 <- escalc(measure="RR",ai=events1, ci=events2, n1i=n1, n2i=n2,
                   subset=(followup==3 & 
-                            comparison=="T3b  vs.  T2b" & group=="Overall"), data=pao)
+                            comparison=="T2b  vs.  T3b" & group=="Overall"), data=pao)
 prema8 <- summary(prema8)
 prema8$rr <- paste(formatC((exp(prema8$yi)), format='f', digits=2), " ",
                     "(", formatC((exp(prema8$ci.lb)), format='f', digits=2), "-",
@@ -239,7 +253,7 @@ expma8 <- predict(ma8, transf = transf.exp.int)
 
 prema9 <- escalc(measure="RR",ai=events1, ci=events2, n1i=n1, n2i=n2,
                   subset=(followup==4 & 
-                            comparison=="T3b  vs.  T2b" & group=="Overall"), data=pao)
+                            comparison=="T2b  vs.  T3b" & group=="Overall"), data=pao)
 prema9 <- summary(prema9)
 prema9$rr <- paste(formatC((exp(prema9$yi)), format='f', digits=2), " ",
                     "(", formatC((exp(prema9$ci.lb)), format='f', digits=2), "-",
@@ -250,7 +264,7 @@ expma9 <- predict(ma9, transf = transf.exp.int)
 
 prema10 <- escalc(measure="RR",ai=events1, ci=events2, n1i=n1, n2i=n2,
                   subset=(followup==5 & 
-                            comparison=="T3b  vs.  T2b" & group=="Overall"), data=pao)
+                            comparison=="T2b  vs.  T3b" & group=="Overall"), data=pao)
 prema10 <- summary(prema10)
 prema10$rr <- paste(formatC((exp(prema10$yi)), format='f', digits=2), " ",
                     "(", formatC((exp(prema10$ci.lb)), format='f', digits=2), "-",
@@ -261,7 +275,7 @@ expma10 <- predict(ma10, transf = transf.exp.int)
 
 prema11 <- escalc(measure="RR",ai=events1, ci=events2, n1i=n1, n2i=n2,
                   subset=(followup==6 & 
-                            comparison=="T3b  vs.  T2b" & group=="Overall"), data=pao)
+                            comparison=="T2b  vs.  T3b" & group=="Overall"), data=pao)
 prema11 <- summary(prema11)
 prema11$rr <- paste(formatC((exp(prema11$yi)), format='f', digits=2), " ",
                     "(", formatC((exp(prema11$ci.lb)), format='f', digits=2), "-",
@@ -272,7 +286,7 @@ expma11 <- predict(ma11, transf = transf.exp.int)
 
 prema12 <- escalc(measure="RR",ai=events1, ci=events2, n1i=n1, n2i=n2,
                   subset=(followup==7 & 
-                            comparison=="T3b  vs.  T2b" & group=="Overall"), data=pao)
+                            comparison=="T2b  vs.  T3b" & group=="Overall"), data=pao)
 prema12 <- summary(prema12)
 prema12$rr <- paste(formatC((exp(prema12$yi)), format='f', digits=2), " ",
                     "(", formatC((exp(prema12$ci.lb)), format='f', digits=2), "-",
@@ -283,7 +297,7 @@ expma12 <- predict(ma12, transf = transf.exp.int)
 
 prema13 <- escalc(measure="RR",ai=events1, ci=events2, n1i=n1, n2i=n2,
                   subset=(followup==8 & 
-                            comparison=="T3b  vs.  T2b" & group=="Overall"), data=pao)
+                            comparison=="T2b  vs.  T3b" & group=="Overall"), data=pao)
 prema13 <- summary(prema13)
 prema13$rr <- paste(formatC((exp(prema13$yi)), format='f', digits=2), " ",
                     "(", formatC((exp(prema13$ci.lb)), format='f', digits=2), "-",
@@ -295,7 +309,7 @@ expma13 <- predict(ma13, transf = transf.exp.int)
 
 ma14 <- rma(measure="RR", ai=events1, ci=events2, n1i=n1, n2i=n2, 
             data=pao, subset=(followup==9 & 
-                                comparison=="T3b  vs.  T2b"),
+                                comparison=="T2b  vs.  T3b"),
             method="REML")
 expma14 <- predict(ma14, transf = exp, digits=2)
 
@@ -355,43 +369,43 @@ expma31 <- predict(ma31, transf = exp, digits=2)
 
 
 ma32 <- rma(measure="RR", ai=events1, ci=events2, n1i=n1, n2i=n2, 
-           data=pao, subset=(followup==3 & comparison=="T3a  vs.  T5a"),
+           data=pao, subset=(followup==3 & comparison=="T5a  vs.  T3a"),
            method="REML")
 expma32 <- predict(ma32, transf = exp, digits=2)
 
 
 ma33 <- rma(measure="RR", ai=events1, ci=events2, n1i=n1, n2i=n2, 
-           data=pao, subset=(followup==4 & comparison=="T3a  vs.  T5a"), 
+           data=pao, subset=(followup==4 & comparison=="T5a  vs.  T3a"), 
            method="REML")
 expma33 <- predict(ma33, transf = exp, digits=2)
 
 
 ma34 <- rma(measure="RR", ai=events1, ci=events2, n1i=n1, n2i=n2, 
-           data=pao, subset=(followup==5 & comparison=="T3a  vs.  T5a"), 
+           data=pao, subset=(followup==5 & comparison=="T5a  vs.  T3a"), 
            method="REML")
 expma34 <-predict(ma34, transf = exp, digits=2)
 
 
 ma35 <- rma(measure="RR", ai=events1, ci=events2, n1i=n1, n2i=n2, 
-           data=pao, subset=(followup==3 & comparison=="T3b  vs.  T5a"),
+           data=pao, subset=(followup==3 & comparison=="T5a  vs.  T3b"),
            method="REML")
 expma35 <- predict(ma35, transf = exp, digits=2)
 
 
 ma36 <- rma(measure="RR", ai=events1, ci=events2, n1i=n1, n2i=n2, 
-           data=pao, subset=(followup==4 & comparison=="T3b  vs.  T5a"), 
+           data=pao, subset=(followup==4 & comparison=="T5a  vs.  T3b"), 
            method="REML")
 expma36 <- predict(ma36, transf = exp, digits=2)
 
 
 ma37 <- rma(measure="RR", ai=events1, ci=events2, n1i=n1, n2i=n2, 
-           data=pao, subset=(followup==5 & comparison=="T3b  vs.  T5a"), 
+           data=pao, subset=(followup==5 & comparison=="T5a  vs.  T3b"), 
            method="REML")
 expma37 <- predict(ma37, transf = exp, digits=2)
 
 
 ma38 <- rma(measure="RR", ai=events1, ci=events2, n1i=n1, n2i=n2, 
-            data=pao, subset=(followup==5 & comparison=="T3b  vs.  T5d"), 
+            data=pao, subset=(followup==5 & comparison=="T5d  vs.  T3b"), 
             method="REML")
 expma38 <- predict(ma38, transf = exp, digits=2)
 
@@ -424,56 +438,56 @@ a<- rbind(
 
 
 
-b <-  c("T3b  vs.  T1a",  "10 years", ma4[[15]], sum(ma4[[42]]), sum(ma4[[43]]),
+b <-  c("T1a  vs.  T3b",  "10 years", ma4[[15]], sum(ma4[[42]]), sum(ma4[[43]]),
     sum(ma4[[44]]),sum(ma4[[45]]), ma4[[25]], expma4[[1]], expma4[[3]], expma4[[4]],
     ma4[[24]])
 
 
 
 c <- rbind(
-  c("T3a  vs.  T2b",  "3 years", ma5[[15]], sum(ma5[[42]]), sum(ma5[[43]]),
+  c("T2b  vs.  T3a",  "3 years", ma5[[15]], sum(ma5[[42]]), sum(ma5[[43]]),
     sum(ma5[[44]]),sum(ma5[[45]]), ma5[[25]], expma5[[1]], expma5[[3]], expma5[[4]],
     ma5[[24]]), 
-  c("T3a  vs.  T2b",  "4 years", ma6[[15]], sum(ma6[[42]]), sum(ma6[[43]]),
+  c("T2b  vs.  T3a",  "4 years", ma6[[15]], sum(ma6[[42]]), sum(ma6[[43]]),
     sum(ma6[[44]]),sum(ma6[[45]]), ma6[[25]], expma6[[1]], expma6[[3]], expma6[[4]],
     ma6[[24]]),
-  c("T3a  vs.  T2b", "5 years", ma7[[15]], sum(ma7[[42]]), sum(ma7[[43]]),
+  c("T2b  vs.  T3a", "5 years", ma7[[15]], sum(ma7[[42]]), sum(ma7[[43]]),
     sum(ma7[[44]]),sum(ma7[[45]]), ma7[[25]], expma7[[1]], expma7[[3]], expma7[[4]],
     ma7[[24]]))
   
 
 d <- rbind(
-  c("T3b  vs.  T2b", "3 years", ma8[[15]], 
+  c("T2b  vs.  T3b", "3 years", ma8[[15]], 
   sum(prema8$events1), (sum(prema8$n1)-sum(prema8$events1)),
   sum(prema8$events2), (sum(prema8$n2)-sum(prema8$events2)), 
   ma8[[25]], expma8[[1]], expma8[[3]],
   expma8[[4]], ma8[[24]]),
-  c("T3b  vs.  T2b", "4 years", ma9[[15]], 
+  c("T2b  vs.  T3b", "4 years", ma9[[15]], 
     sum(prema9$events1), (sum(prema9$n1)-sum(prema9$events1)),
     sum(prema9$events2), (sum(prema9$n2)-sum(prema9$events2)), 
     ma9[[25]], expma9[[1]], expma9[[3]],
     expma9[[4]], ma9[[24]]),
-  c("T3b  vs.  T2b", "5 years", ma10[[15]], 
+  c("T2b  vs.  T3b", "5 years", ma10[[15]], 
     sum(prema10$events1), (sum(prema10$n1)-sum(prema10$events1)),
     sum(prema10$events2), (sum(prema10$n2)-sum(prema10$events2)), 
     ma10[[25]], expma10[[1]], expma10[[3]],
     expma10[[4]], ma10[[24]]),
-  c("T3b  vs.  T2b", "6 years", ma11[[15]], 
+  c("T2b  vs.  T3b", "6 years", ma11[[15]], 
     sum(prema11$events1), (sum(prema11$n1)-sum(prema11$events1)),
     sum(prema11$events2), (sum(prema11$n2)-sum(prema11$events2)), 
     ma11[[25]], expma11[[1]], expma11[[3]],
     expma11[[4]], ma11[[24]]),
-  c("T3b  vs.  T2b", "7 years", ma12[[15]], 
+  c("T2b  vs.  T3b", "7 years", ma12[[15]], 
     sum(prema12$events1), (sum(prema12$n1)-sum(prema12$events1)),
     sum(prema12$events2), (sum(prema12$n2)-sum(prema12$events2)), 
     ma12[[25]], expma12[[1]], expma12[[3]],
     expma12[[4]], ma12[[24]]),
-  c("T3b  vs.  T2b", "8 years", ma13[[15]], 
+  c("T2b  vs.  T3b", "8 years", ma13[[15]], 
     sum(prema13$events1), (sum(prema13$n1)-sum(prema13$events1)),
     sum(prema13$events2), (sum(prema13$n2)-sum(prema13$events2)), 
     ma13[[25]], expma13[[1]], expma13[[3]],
     expma13[[4]], ma13[[24]]),
-  c("T3b  vs.  T2b", "9 years", ma14[[15]], sum(ma14[[42]]), sum(ma14[[43]]),
+  c("T2b  vs.  T3b", "9 years", ma14[[15]], sum(ma14[[42]]), sum(ma14[[43]]),
     sum(ma14[[44]]),sum(ma14[[45]]), ma14[[25]], expma14[[1]], expma14[[3]],
     expma14[[4]], ma14[[24]]))
 
@@ -515,37 +529,37 @@ i <- rbind(
 
 
 j <- rbind(
-  c("T3a  vs.  T5a", "3 years", ma32[[15]], sum(ma32[[42]]), sum(ma32[[43]]),
+  c("T5a  vs.  T3a", "3 years", ma32[[15]], sum(ma32[[42]]), sum(ma32[[43]]),
     sum(ma32[[44]]),sum(ma32[[45]]), ma32[[25]], expma32[[1]], expma32[[3]], expma32[[4]],
     ma32[[24]]),
-  c("T3a  vs.  T5a", "4 years", ma33[[15]], sum(ma33[[42]]), sum(ma33[[43]]),
+  c("T5a  vs.  T3a", "4 years", ma33[[15]], sum(ma33[[42]]), sum(ma33[[43]]),
     sum(ma33[[44]]),sum(ma33[[45]]), ma33[[25]], expma33[[1]], expma33[[3]], expma33[[4]],
     ma33[[24]]), 
-  c("T3a  vs.  T5a", "5 years", ma34[[15]], sum(ma34[[42]]), sum(ma34[[43]]),
+  c("T5a  vs.  T3a", "5 years", ma34[[15]], sum(ma34[[42]]), sum(ma34[[43]]),
     sum(ma34[[44]]),sum(ma34[[45]]), ma34[[25]], expma34[[1]], expma34[[3]], expma34[[4]],
     ma34[[24]]))
 
 
 k <- rbind(
-  c("T3b  vs.  T5a", "3 years", ma35[[15]], sum(ma35[[42]]), sum(ma35[[43]]),
+  c("T5a  vs.  T3b", "3 years", ma35[[15]], sum(ma35[[42]]), sum(ma35[[43]]),
     sum(ma35[[44]]),sum(ma35[[45]]), ma35[[25]], expma35[[1]], expma35[[3]], expma35[[4]],
     ma35[[24]]),
-  c("T3b  vs.  T5a", "4 years", ma36[[15]], sum(ma36[[42]]), sum(ma36[[43]]),
+  c("T5a  vs.  T3b", "4 years", ma36[[15]], sum(ma36[[42]]), sum(ma36[[43]]),
     sum(ma36[[44]]),sum(ma36[[45]]), ma36[[25]], expma36[[1]], expma36[[3]], expma36[[4]],
     ma36[[24]]), 
-  c("T3b  vs.  T5a", "5 years", ma37[[15]], sum(ma37[[42]]), sum(ma37[[43]]),
+  c("T5a  vs.  T3b", "5 years", ma37[[15]], sum(ma37[[42]]), sum(ma37[[43]]),
     sum(ma37[[44]]),sum(ma37[[45]]), ma37[[25]], expma37[[1]], expma37[[3]], expma37[[4]],
     ma37[[24]]))
 
 
 
-l <- c("T3b  vs.  T5d", "5 years", ma38[[15]], sum(ma38[[42]]), sum(ma38[[43]]),
+l <- c("T5d  vs.  T3b", "5 years", ma38[[15]], sum(ma38[[42]]), sum(ma38[[43]]),
     sum(ma38[[44]]),sum(ma38[[45]]), ma38[[25]], expma38[[1]], expma38[[3]], 
     expma38[[4]], ma38[[24]])
 
 
 
-summary <- rbind(
+summarybefore <- rbind(
   c("a", "T3b  vs.  T3a"),
   c("b", "T3b  vs.  T1a"),
   c("c", "T3a  vs.  T2b"),
@@ -557,12 +571,25 @@ summary <- rbind(
   c("k", "T3b  vs.  T5a"),
   c("l", "T3b  vs.  T5d"))
 
+summaryafter <- rbind(
+  c("a", "T3b  vs.  T3a"),
+  c("b", "T1a  vs.  T3b"),
+  c("c", "T2b  vs.  T3a"),
+  c("d", "T2b  vs.  T3b"),
+  c("g", "T2b uni  vs.  T2b bi"),
+  c("h", "T2b left  vs.  T2b right"),
+  c("i", "T2c  vs.  T2b"),
+  c("j", "T5a  vs.  T3a"),
+  c("k", "T5a  vs.  T3b"),
+  c("l", "T5d  vs.  T3b"))
+
+
+
 ```
 
 
 
 ## Summary of forest plots
-
 
 **Figure 1** - Summary of forest plots of the risk of achieving Complete Stable Remission in patients with myasthenia gravis who underwent  **Transsternal thymectomy**  vs.  those who underwent **Transsternal thymectomy** at different follow-ups
 
@@ -641,10 +668,10 @@ forestplot(agr2,
 
 ```
 
+
 **Figure 2** - Summary of forest plots of the risk of achieving Complete Stable Remission in patients with myasthenia gravis who underwent a **Transsternal  Thymectomy** vs.  those who underwent a **Minimally Invasive Thymectomy** at different follow-ups**
 
 > To generate this forest plot, we used information from Supplementary Figures 4 to 9.
-
 
 ```{r, fig.height=7, fig.width=19, echo=FALSE, message=FALSE, warning=FALSE}
 lessagr <- as_tibble(rbind(b, c, d, j, k, l))
@@ -816,8 +843,9 @@ forestplot(less2,
 
 ```
 
+
 **Figure 4** - Summary of forest plots of the risk of achieving Complete Stable Remission in patients with myasthenia gravis who underwent a **Minimally Invasive Thymectomy**  those who underwent another **Minimally Invasive Thymectomy** at different follow-ups**
-```{r label_of_this_figure,  fig.height=3, fig.width=14, echo=FALSE, message=FALSE, warning=FALSE, fig.lp='fig:'}
+```{r label_of_this_figure,  fig.height=3, fig.width=14, echo=FALSE, message=FALSE, warning=FALSE}
 less3 <- as_tibble(rbind(g))
 colnames(less3) <- head
 
