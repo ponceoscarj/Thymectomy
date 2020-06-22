@@ -414,6 +414,7 @@ expma38 <- predict(ma38, transf = exp, digits=2)
 ```
 
 
+
 ```{r organization_summary, echo=FALSE}
 head <- c("comparison",  "followup", "k", "ai", "bi",
                      "ci", "di", "i2", "eff", "llci", "ulci","p")
@@ -550,8 +551,6 @@ k <- rbind(
   c("T5a  vs.  T3b", "5 years", ma37[[15]], sum(ma37[[42]]), sum(ma37[[43]]),
     sum(ma37[[44]]),sum(ma37[[45]]), ma37[[25]], expma37[[1]], expma37[[3]], expma37[[4]],
     ma37[[24]]))
-
-
 
 l <- c("T5d  vs.  T3b", "5 years", ma38[[15]], sum(ma38[[42]]), sum(ma38[[43]]),
     sum(ma38[[44]]),sum(ma38[[45]]), ma38[[25]], expma38[[1]], expma38[[3]], 
@@ -693,12 +692,13 @@ lessagr$p2 <-
   ifelse(lessagr$p<0.001, paste("<0.001"), 
          paste(formatC(round2(lessagr$p,n=3), format='f', digits=3))))
 
-lessagr <- lessagr %>% add_row(followup="Extended Transsternal vs. Basic Transcervical", .before = 1)
-lessagr <- lessagr %>% add_row(followup="Standard Transsternal vs. VATS extended", .before = 3)
-lessagr <- lessagr %>% add_row(followup="Extended Transsternal vs. VATS extended", .before = 7)
-lessagr <- lessagr %>% add_row(followup="Standard Transsternal vs. Transcervical-Subxiphoid", .before = 15)
+
+lessagr <- lessagr %>% add_row(followup="Basic Transcervical vs. Extended Transsternal", .before = 1)
+lessagr <- lessagr %>% add_row(followup="VATS extended vs. Standard Transsternal ", .before = 3)
+lessagr <- lessagr %>% add_row(followup="VATS extended vs. Extended Transsternal", .before = 7)
+lessagr <- lessagr %>% add_row(followup="Transcervical-Subxiphoid vs. Standard Transsternal", .before = 15)
 lessagr <- lessagr %>% add_row(followup="Extended Transsternal vs. Transcervical-Subxiphoid", .before = 19)
-lessagr <- lessagr %>% add_row(followup="Extended Transsternal vs. Subxiphoid Mediastinoscopy", .before = 23)
+lessagr <- lessagr %>% add_row(followup="Subxiphoid Mediastinoscopy vs. Extended Transsternal", .before = 23)
 
 lessagr <- lessagr %>% add_row(.before = 1)
 lessagr <- lessagr %>% add_row(.after = 25)
