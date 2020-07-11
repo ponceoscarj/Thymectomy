@@ -1,0 +1,52 @@
+﻿Search line ,Search terms
+1,exp Myasthenia Gravis/
+2,"(""erb goldflam disease"" or ""myasthenia gravis"").ti,ab,hw,kw."
+3,1 or 2
+4,exp Thymectomy/
+5,"((thymus adj3 (extirpation* or remov*)) or thymectom* or thymectomia*).ti,ab,hw,kw."
+6,4 or 5
+7,3 and 6
+8,exp meta analysis/
+9,exp Meta-Analysis as Topic/
+10,"exp ""systematic review""/"
+11,exp controlled study/
+12,exp Randomized Controlled Trial/
+13,exp triple blind procedure/
+14,exp Double-Blind Method/
+15,exp Single-Blind Method/
+16,exp latin square design/
+17,exp Placebos/
+18,exp Placebo Effect/
+19,exp comparative study/
+20,exp intervention studies/
+21,exp Cross-Sectional Studies/
+22,exp Cohort Studies/
+23,exp longitudinal study/
+24,exp retrospective study/
+25,exp prospective study/
+26,exp observational study/
+27,exp clinical trial/
+28,clinical study/
+29,exp Evaluation Studies/
+30,exp Evaluation Studies as Topic/
+31,exp experimental study/
+32,exp quasi experimental study/
+33,exp case-control studies/
+34,exp confidence interval/
+35,exp regression analysis/
+36,exp proportional hazards model/
+37,exp multivariate analysis/
+38,exp follow up studies/
+39,"((meta adj analys*) or metaanalys* or (systematic* adj3 review*) or (control* adj3 study) or (control* adj3 trial) or (randomized adj3 study) or (randomized adj3 trial) or (randomised adj3 study) or (randomised adj3 trial) or ""pragmatic clinical trial"" or (random* adj1 allocat*) or (doubl* adj blind*) or (doubl* adj mask*) or (singl* adj blind*) or (singl* adj mask*) or (tripl* adj blind*) or (tripl* adj mask*) or (trebl* adj blind*) or (trebl* adj mask*) or ""latin square"" or placebo* or nocebo* or multivariate or ""comparative study"" or ""comparative survey"" or ""comparative analysis"" or (intervention* adj2 study) or (intervention* adj2 trial) or ""cross-sectional study"" or ""cross-sectional analysis"" or ""cross-sectional survey"" or ""cross-sectional design"" or ""prevalence study"" or ""prevalence analysis"" or ""prevalence survey"" or ""disease frequency study"" or ""disease frequency analysis"" or ""disease frequency survey"" or cohort* or ""longitudinal study"" or ""longitudinal survey"" or ""longitudinal analysis"" or ""longitudinal evaluation"" or longitudinal* or ((retrospective or ""ex post facto"") adj3 (study or survey or analysis or design)) or retrospectiv* or ""prospective study"" or ""prospective survey"" or ""prospective analysis"" or prospectiv* or ((""follow-up"" or followup) adj (stud* or survey or analysis)) or ((observation or observational) adj (study or survey or analysis)) or ""case study"" or ""case series"" or ""clinical series"" or ""case studies"" or ""clinical study"" or ""clinical trial"" or ((""phase 0"" or ""phase 1"" or ""phase I"" or ""phase 2"" or ""phase II"" or ""phase 3"" or ""phase III"" or ""phase 4"" or ""phase IV"") adj5 (trial or study)) or ""evaluation study"" or ""evaluation survey"" or ""evaluation analysis"" or ""experimental study"" or ""experimental analysis"" or ""quasi experimental study"" or ""quasi experimental analysis"" or ""quasiexperimental study"" or ""quasiexperimental analysis"" or ((correlation* adj2 study) or (correlation* adj2 analys*)) or ""case control study"" or ""case base study"" or ""case referrent study"" or ""case referent study"" or ""case referent study"" or ""case compeer study"" or ""case comparison study"" or ""matched case control"" or ""multicenter study"" or ""multi-center study"" or ""odds ratio"" or ""confidence interval"" or ""regression analysis"" or ""least square"" or ""least squares"" or (hazard* adj (model* or analys* or regression or ratio or ratios)) or ""Cox model"" or ""Cox multivariate analyses"" or ""Cox multivariate analysis"" or ""Cox regression"" or ""Cox survival analyses"" or ""Cox survival analysis"" or ""Cox survival model"" or ""change analysis"" or ((study or trial or random* or control*) and compar*)).mp,pt."
+40,or/8-39
+41,7 and 40
+42,"limit 41 to (""all adult (19 plus years)"" or ""young adult (19 to 24 years)"" or ""adult (19 to 44 years)"" or ""young adult and adult (19-24 and 19-44)"" or ""middle age (45 to 64 years)"" or ""middle aged (45 plus years)"" or ""all aged (65 and over)"" or ""aged (80 and over)"") [Limit not valid in CCTR,CDSR,Embase; records were retained]"
+43,"limit 42 to (adult <18 to 64 years> or aged <65+ years>) [Limit not valid in CCTR,CDSR,Ovid MEDLINE(R),Ovid MEDLINE(R) Daily Update,Ovid MEDLINE(R) In-Process,Ovid MEDLINE(R) Publisher; records were retained]"
+44,"limit 41 to (""all infant (birth to 23 months)"" or ""all child (0 to 18 years)"" or ""newborn infant (birth to 1 month)"" or ""infant (1 to 23 months)"" or ""preschool child (2 to 5 years)"" or ""child (6 to 12 years)"" or ""adolescent (13 to 18 years)"") [Limit not valid in CCTR,CDSR,Embase; records were retained]"
+45,"limit 44 to (embryo or infant or child or preschool child <1 to 6 years> or school child <7 to 12 years> or adolescent <13 to 17 years>) [Limit not valid in CCTR,CDSR,Ovid MEDLINE(R),Ovid MEDLINE(R) Daily Update,Ovid MEDLINE(R) In-Process,Ovid MEDLINE(R) Publisher; records were retained]"
+46,45 not 43
+47,41 not 46
+48,"limit 47 to (editorial or erratum or note or addresses or autobiography or bibliography or biography or blogs or comment or dictionary or directory or interactive tutorial or interview or lectures or legal cases or legislation or news or newspaper article or overall or patient education handout or periodical index or portraits or published erratum or video-audio media or webcasts) [Limit not valid in CCTR,CDSR,Embase,Ovid MEDLINE(R),Ovid MEDLINE(R) Daily Update,Ovid MEDLINE(R) In-Process,Ovid MEDLINE(R) Publisher; records were retained]"
+49,from 48 keep 1-2
+50,(47 not 48) or 49
+51,remove duplicates from 50
