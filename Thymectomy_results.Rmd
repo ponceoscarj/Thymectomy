@@ -183,7 +183,7 @@ pao$comparison <- paste(pao$int, " vs. ", pao$comp)
 <details>
 <summary>Show OVID search</summary>
 
-```{r ovid, echo=FALSE}
+```{r ovid, echo=FALSE, message=FALSE, warning=FALSE}
 ovid <- read.csv("1 Search strategy/ovid_search.csv")
 names(ovid)[1] <- "line"
 names(ovid)[2] <- "terms"
@@ -228,7 +228,7 @@ gt() %>%
 <details>
 <summary>Show SCOPUS search</summary>
 
-```{r scopus, echo=FALSE}
+```{r scopus, echo=FALSE, message=FALSE, warning=FALSE}
 scopus <- read.csv("1 Search strategy/scopus_search.csv")
 names(scopus)[1] <- "line"
 names(scopus)[2] <- "terms"
