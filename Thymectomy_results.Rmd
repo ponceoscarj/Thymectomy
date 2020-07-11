@@ -500,9 +500,6 @@ ma38 <- rma(measure="RR", ai=events1, ci=events2, n1i=n1, n2i=n2,
             data=pao, subset=(followup==5 & comparison=="T5d  vs.  T3b"), 
             method="REML")
 expma38 <- predict(ma38, transf = exp, digits=2)
-
-
-
 ```
 
 
@@ -1262,7 +1259,7 @@ forestplot(tfma3,
 ### Extended Transsternal vs. VATS extended forest plots
 <details><summary> Suppl. Figure 4: Extended Transsternal vs. VATS extended, risk of CSR at 3 years of follow-up </summary>
 <p>
-```{r forestplotma43, echo=FALSE, fig.height=3, fig.width=9.5, message=FALSE, warning=FALSE}
+```{r forestplotma43, echo=FALSE, message=FALSE, warning=FALSE, fig.height=3, fig.width=9.5}
 boxsize <- (0.01666667*(weights(ma8)))
 
 tfma8 <- cbind( 
@@ -1287,16 +1284,17 @@ tfma8 <- cbind(
            "-", formatC(expma8$ci.ub, format='f', digits=2), ")")))
 
 tfma8 <- as_tibble(tfma8)
-tfma8 <- add_row(tfma8, .after = 9)
-tfma8 <- add_row(tfma8, .after = 11)
+tfma8 <- add_row(tfma8, .after = 8)
+tfma8 <- add_row(tfma8, .after = 10)
 
 rrsma8 <- structure(list(
   mean = c(NA, NA,  exp(prema8$yi), NA, expma8$pred, NA),
   lower = c(NA, NA,  exp(prema8$ci.lb), NA,  expma8$ci.lb, NA),
   upper = c(NA, NA, exp(prema8$ci.ub), NA, expma8$ci.ub, NA)),
   .Names = c("mean", "lower", "upper"),
-  row.names = c(NA, -12L),
+  row.names = c(NA, -11L),
   class = "data.frame")
+
 
 forestplot(tfma8,
            graph.pos = 4,
@@ -1309,7 +1307,7 @@ forestplot(tfma8,
            lineheight=unit(0.6,'cm'),
            line.margin = 2,
            boxsize = c(NA, NA, boxsize, NA, 1, NA),
-           is.summary = c(T, T, rep(F, 8), T, F),
+           is.summary = c(T, T, rep(F, 7), T, F),
            align = c("l","c", "c"),
            ci.vertices = TRUE,
            txt_gp = fpTxtGp(label =gpar (cex=0.8), 
@@ -1331,7 +1329,7 @@ forestplot(tfma8,
 
 <details><summary> Suppl. Figure 5: Extended Transsternal vs. VATS extended, risk of CSR at 4 years of follow-up </summary>
 <p>
-```{r forestplotma44, echo=FALSE, fig.height=3, fig.width=9.5}
+```{r forestplotma44, echo=FALSE, message=FALSE, warning=FALSE, fig.height=3, fig.width=9.5}
 boxsize <- (0.01666667*(weights(ma9)))
 
 tfma9 <- cbind( 
@@ -1356,16 +1354,15 @@ tfma9 <- cbind(
            "-", formatC(expma9$ci.ub, format='f', digits=2), ")")))
 
 tfma9 <- as_tibble(tfma9)
-tfma9 <- add_row(tfma9, .after = 9)
-tfma9 <- add_row(tfma9, .after = 11)
-
+tfma9 <- add_row(tfma9, .after = 8)
+tfma9 <- add_row(tfma9, .after = 10)
 
 rrsma9 <- structure(list(
   mean = c(NA, NA,  exp(prema9$yi), NA, expma9$pred, NA),
   lower = c(NA, NA,  exp(prema9$ci.lb), NA,  expma9$ci.lb, NA),
   upper = c(NA, NA, exp(prema9$ci.ub), NA, expma9$ci.ub, NA)),
   .Names = c("mean", "lower", "upper"),
-  row.names = c(NA, -12L),
+  row.names = c(NA, -11L),
   class = "data.frame")
 
 forestplot(tfma9,
@@ -1379,7 +1376,7 @@ forestplot(tfma9,
            lineheight=unit(0.6,'cm'),
            line.margin = 2,
            boxsize = c(NA, NA, boxsize, NA, 1, NA),
-           is.summary = c(T, T, rep(F, 8), T, F),
+           is.summary = c(T, T, rep(F, 7), T, F),
            align = c("l","c", "c"),
            ci.vertices = TRUE,
            txt_gp = fpTxtGp(label =gpar (cex=0.8), 
@@ -1403,7 +1400,7 @@ forestplot(tfma9,
 
 <details><summary> Suppl. Figure 6: Extended Transsternal vs. VATS extended, risk of CSR at 5 years of follow-up </summary>
 <p>
-```{r forestplotma45, echo=FALSE, fig.height=3, fig.width=9.5}
+```{r forestplotma45, echo=FALSE, message=FALSE, warning=FALSE, fig.height=3, fig.width=9.5}
 boxsize <- (0.0125*(weights(ma10)))
 
 tfma10 <- cbind( 
@@ -1428,15 +1425,15 @@ tfma10 <- cbind(
            "-", formatC(expma10$ci.ub, format='f', digits=2), ")")))
 
 tfma10 <- as_tibble(tfma10)
-tfma10 <- add_row(tfma10, .after = 8)
-tfma10 <- add_row(tfma10, .after = 10)
+tfma10 <- add_row(tfma10, .after = 7)
+tfma10 <- add_row(tfma10, .after = 9)
 
 rrsma10 <- structure(list(
   mean = c(NA, NA,  exp(prema10$yi), NA, expma10$pred, NA),
   lower = c(NA, NA,  exp(prema10$ci.lb), NA,  expma10$ci.lb, NA),
   upper = c(NA, NA, exp(prema10$ci.ub), NA, expma10$ci.ub, NA)),
   .Names = c("mean", "lower", "upper"),
-  row.names = c(NA, -11L),
+  row.names = c(NA, -10L),
   class = "data.frame")
 
 forestplot(tfma10,
@@ -1450,7 +1447,7 @@ forestplot(tfma10,
            lineheight=unit(0.6,'cm'),
            line.margin = 2,
            boxsize = c(NA, NA, boxsize, NA, 1, NA),
-           is.summary = c(T, T, rep(F, 7), T, F),
+           is.summary = c(T, T, rep(F, 6), T, F),
            align = c("l","c", "c"),
            ci.vertices = TRUE,
            txt_gp = fpTxtGp(label =gpar (cex=0.8), 
@@ -1472,7 +1469,7 @@ forestplot(tfma10,
 
 <details><summary> Suppl. Figure 7: Extended Transsternal vs. VATS extended, risk of CSR at 6 years of follow-up </summary>
 <p>
-```{r forestplotma46, echo=FALSE, fig.height=3, fig.width=9.5}
+```{r forestplotma46, echo=FALSE, message=FALSE, warning=FALSE, fig.height=3, fig.width=9.5}
 boxsize <- (0.0125*(weights(ma11)))
 
 tfma11 <- cbind( 
@@ -1540,7 +1537,7 @@ forestplot(tfma11,
 
 <details><summary> Suppl. Figure 8: Extended Transsternal vs. VATS extended, risk of CSR at 7 years of follow-up </summary>
 <p>
-```{r forestplotma47, echo=FALSE, fig.height=3, fig.width=9.5}
+```{r forestplotma47, echo=FALSE, message=FALSE, warning=FALSE, fig.height=3, fig.width=9.5}
 boxsize <- (0.0125*(weights(ma12)))
 
 tfma12 <- cbind( 
@@ -1609,7 +1606,7 @@ forestplot(tfma12,
 
 <details><summary> Suppl. Figure 9: Extended Transsternal vs. VATS extended, risk of CSR at 8 years of follow-up </summary>
 <p>
-```{r forestplotma48, echo=FALSE, fig.height=3, fig.width=9.5}
+```{r forestplotma48, echo=FALSE, message=FALSE, warning=FALSE, fig.height=3, fig.width=9.5}
 boxsize <- (0.0125*(weights(ma13)))
 
 tfma13 <- cbind( 

@@ -29,7 +29,7 @@ Oscar J. Ponce & Andrea Solis-Pazmino
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#idvigjcqkk .gt_table {
+#qvdfuugfhd .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -52,7 +52,7 @@ Oscar J. Ponce & Andrea Solis-Pazmino
   border-left-color: #D3D3D3;
 }
 
-#idvigjcqkk .gt_heading {
+#qvdfuugfhd .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -64,7 +64,7 @@ Oscar J. Ponce & Andrea Solis-Pazmino
   border-right-color: #D3D3D3;
 }
 
-#idvigjcqkk .gt_title {
+#qvdfuugfhd .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -74,7 +74,7 @@ Oscar J. Ponce & Andrea Solis-Pazmino
   border-bottom-width: 0;
 }
 
-#idvigjcqkk .gt_subtitle {
+#qvdfuugfhd .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -84,13 +84,13 @@ Oscar J. Ponce & Andrea Solis-Pazmino
   border-top-width: 0;
 }
 
-#idvigjcqkk .gt_bottom_border {
+#qvdfuugfhd .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#idvigjcqkk .gt_col_headings {
+#qvdfuugfhd .gt_col_headings {
   border-top-style: solid;
   border-top-width: 0.5px;
   border-top-color: #D3D3D3;
@@ -105,7 +105,7 @@ Oscar J. Ponce & Andrea Solis-Pazmino
   border-right-color: #D3D3D3;
 }
 
-#idvigjcqkk .gt_col_heading {
+#qvdfuugfhd .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -125,7 +125,7 @@ Oscar J. Ponce & Andrea Solis-Pazmino
   overflow-x: hidden;
 }
 
-#idvigjcqkk .gt_column_spanner_outer {
+#qvdfuugfhd .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -137,15 +137,15 @@ Oscar J. Ponce & Andrea Solis-Pazmino
   padding-right: 4px;
 }
 
-#idvigjcqkk .gt_column_spanner_outer:first-child {
+#qvdfuugfhd .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#idvigjcqkk .gt_column_spanner_outer:last-child {
+#qvdfuugfhd .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#idvigjcqkk .gt_column_spanner {
+#qvdfuugfhd .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 0.5px;
   border-bottom-color: #D3D3D3;
@@ -157,7 +157,7 @@ Oscar J. Ponce & Andrea Solis-Pazmino
   width: 100%;
 }
 
-#idvigjcqkk .gt_group_heading {
+#qvdfuugfhd .gt_group_heading {
   padding: 8px;
   color: #333333;
   background-color: #FFFFFF;
@@ -179,7 +179,7 @@ Oscar J. Ponce & Andrea Solis-Pazmino
   vertical-align: middle;
 }
 
-#idvigjcqkk .gt_empty_group_heading {
+#qvdfuugfhd .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -194,19 +194,19 @@ Oscar J. Ponce & Andrea Solis-Pazmino
   vertical-align: middle;
 }
 
-#idvigjcqkk .gt_striped {
+#qvdfuugfhd .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#idvigjcqkk .gt_from_md > :first-child {
+#qvdfuugfhd .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#idvigjcqkk .gt_from_md > :last-child {
+#qvdfuugfhd .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#idvigjcqkk .gt_row {
+#qvdfuugfhd .gt_row {
   padding-top: 5px;
   padding-bottom: 5px;
   padding-left: 5px;
@@ -225,7 +225,7 @@ Oscar J. Ponce & Andrea Solis-Pazmino
   overflow-x: hidden;
 }
 
-#idvigjcqkk .gt_stub {
+#qvdfuugfhd .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -237,7 +237,7 @@ Oscar J. Ponce & Andrea Solis-Pazmino
   padding-left: 12px;
 }
 
-#idvigjcqkk .gt_summary_row {
+#qvdfuugfhd .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -247,7 +247,7 @@ Oscar J. Ponce & Andrea Solis-Pazmino
   padding-right: 5px;
 }
 
-#idvigjcqkk .gt_first_summary_row {
+#qvdfuugfhd .gt_first_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -257,7 +257,7 @@ Oscar J. Ponce & Andrea Solis-Pazmino
   border-top-color: #D3D3D3;
 }
 
-#idvigjcqkk .gt_grand_summary_row {
+#qvdfuugfhd .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -267,7 +267,7 @@ Oscar J. Ponce & Andrea Solis-Pazmino
   padding-right: 5px;
 }
 
-#idvigjcqkk .gt_first_grand_summary_row {
+#qvdfuugfhd .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -277,7 +277,7 @@ Oscar J. Ponce & Andrea Solis-Pazmino
   border-top-color: #D3D3D3;
 }
 
-#idvigjcqkk .gt_table_body {
+#qvdfuugfhd .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -286,7 +286,7 @@ Oscar J. Ponce & Andrea Solis-Pazmino
   border-bottom-color: #D3D3D3;
 }
 
-#idvigjcqkk .gt_footnotes {
+#qvdfuugfhd .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -300,13 +300,13 @@ Oscar J. Ponce & Andrea Solis-Pazmino
   border-right-color: #D3D3D3;
 }
 
-#idvigjcqkk .gt_footnote {
+#qvdfuugfhd .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding: 4px;
 }
 
-#idvigjcqkk .gt_sourcenotes {
+#qvdfuugfhd .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -320,47 +320,47 @@ Oscar J. Ponce & Andrea Solis-Pazmino
   border-right-color: #D3D3D3;
 }
 
-#idvigjcqkk .gt_sourcenote {
+#qvdfuugfhd .gt_sourcenote {
   font-size: 90%;
   padding: 4px;
 }
 
-#idvigjcqkk .gt_left {
+#qvdfuugfhd .gt_left {
   text-align: left;
 }
 
-#idvigjcqkk .gt_center {
+#qvdfuugfhd .gt_center {
   text-align: center;
 }
 
-#idvigjcqkk .gt_right {
+#qvdfuugfhd .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#idvigjcqkk .gt_font_normal {
+#qvdfuugfhd .gt_font_normal {
   font-weight: normal;
 }
 
-#idvigjcqkk .gt_font_bold {
+#qvdfuugfhd .gt_font_bold {
   font-weight: bold;
 }
 
-#idvigjcqkk .gt_font_italic {
+#qvdfuugfhd .gt_font_italic {
   font-style: italic;
 }
 
-#idvigjcqkk .gt_super {
+#qvdfuugfhd .gt_super {
   font-size: 65%;
 }
 
-#idvigjcqkk .gt_footnote_marks {
+#qvdfuugfhd .gt_footnote_marks {
   font-style: italic;
   font-size: 65%;
 }
 </style>
 
-<div id="idvigjcqkk" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="qvdfuugfhd" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 
 <table class="gt_table">
 
@@ -1311,7 +1311,7 @@ remove duplicates from 50
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#ntqgaccnyi .gt_table {
+#vtmstlsedz .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -1334,7 +1334,7 @@ remove duplicates from 50
   border-left-color: #D3D3D3;
 }
 
-#ntqgaccnyi .gt_heading {
+#vtmstlsedz .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1346,7 +1346,7 @@ remove duplicates from 50
   border-right-color: #D3D3D3;
 }
 
-#ntqgaccnyi .gt_title {
+#vtmstlsedz .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1356,7 +1356,7 @@ remove duplicates from 50
   border-bottom-width: 0;
 }
 
-#ntqgaccnyi .gt_subtitle {
+#vtmstlsedz .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1366,13 +1366,13 @@ remove duplicates from 50
   border-top-width: 0;
 }
 
-#ntqgaccnyi .gt_bottom_border {
+#vtmstlsedz .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#ntqgaccnyi .gt_col_headings {
+#vtmstlsedz .gt_col_headings {
   border-top-style: solid;
   border-top-width: 0.5px;
   border-top-color: #D3D3D3;
@@ -1387,7 +1387,7 @@ remove duplicates from 50
   border-right-color: #D3D3D3;
 }
 
-#ntqgaccnyi .gt_col_heading {
+#vtmstlsedz .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1407,7 +1407,7 @@ remove duplicates from 50
   overflow-x: hidden;
 }
 
-#ntqgaccnyi .gt_column_spanner_outer {
+#vtmstlsedz .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1419,15 +1419,15 @@ remove duplicates from 50
   padding-right: 4px;
 }
 
-#ntqgaccnyi .gt_column_spanner_outer:first-child {
+#vtmstlsedz .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#ntqgaccnyi .gt_column_spanner_outer:last-child {
+#vtmstlsedz .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#ntqgaccnyi .gt_column_spanner {
+#vtmstlsedz .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 0.5px;
   border-bottom-color: #D3D3D3;
@@ -1439,7 +1439,7 @@ remove duplicates from 50
   width: 100%;
 }
 
-#ntqgaccnyi .gt_group_heading {
+#vtmstlsedz .gt_group_heading {
   padding: 8px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1461,7 +1461,7 @@ remove duplicates from 50
   vertical-align: middle;
 }
 
-#ntqgaccnyi .gt_empty_group_heading {
+#vtmstlsedz .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1476,19 +1476,19 @@ remove duplicates from 50
   vertical-align: middle;
 }
 
-#ntqgaccnyi .gt_striped {
+#vtmstlsedz .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#ntqgaccnyi .gt_from_md > :first-child {
+#vtmstlsedz .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#ntqgaccnyi .gt_from_md > :last-child {
+#vtmstlsedz .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#ntqgaccnyi .gt_row {
+#vtmstlsedz .gt_row {
   padding-top: 5px;
   padding-bottom: 5px;
   padding-left: 5px;
@@ -1507,7 +1507,7 @@ remove duplicates from 50
   overflow-x: hidden;
 }
 
-#ntqgaccnyi .gt_stub {
+#vtmstlsedz .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1519,7 +1519,7 @@ remove duplicates from 50
   padding-left: 12px;
 }
 
-#ntqgaccnyi .gt_summary_row {
+#vtmstlsedz .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1529,7 +1529,7 @@ remove duplicates from 50
   padding-right: 5px;
 }
 
-#ntqgaccnyi .gt_first_summary_row {
+#vtmstlsedz .gt_first_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1539,7 +1539,7 @@ remove duplicates from 50
   border-top-color: #D3D3D3;
 }
 
-#ntqgaccnyi .gt_grand_summary_row {
+#vtmstlsedz .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1549,7 +1549,7 @@ remove duplicates from 50
   padding-right: 5px;
 }
 
-#ntqgaccnyi .gt_first_grand_summary_row {
+#vtmstlsedz .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1559,7 +1559,7 @@ remove duplicates from 50
   border-top-color: #D3D3D3;
 }
 
-#ntqgaccnyi .gt_table_body {
+#vtmstlsedz .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1568,7 +1568,7 @@ remove duplicates from 50
   border-bottom-color: #D3D3D3;
 }
 
-#ntqgaccnyi .gt_footnotes {
+#vtmstlsedz .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1582,13 +1582,13 @@ remove duplicates from 50
   border-right-color: #D3D3D3;
 }
 
-#ntqgaccnyi .gt_footnote {
+#vtmstlsedz .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding: 4px;
 }
 
-#ntqgaccnyi .gt_sourcenotes {
+#vtmstlsedz .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1602,47 +1602,47 @@ remove duplicates from 50
   border-right-color: #D3D3D3;
 }
 
-#ntqgaccnyi .gt_sourcenote {
+#vtmstlsedz .gt_sourcenote {
   font-size: 90%;
   padding: 4px;
 }
 
-#ntqgaccnyi .gt_left {
+#vtmstlsedz .gt_left {
   text-align: left;
 }
 
-#ntqgaccnyi .gt_center {
+#vtmstlsedz .gt_center {
   text-align: center;
 }
 
-#ntqgaccnyi .gt_right {
+#vtmstlsedz .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#ntqgaccnyi .gt_font_normal {
+#vtmstlsedz .gt_font_normal {
   font-weight: normal;
 }
 
-#ntqgaccnyi .gt_font_bold {
+#vtmstlsedz .gt_font_bold {
   font-weight: bold;
 }
 
-#ntqgaccnyi .gt_font_italic {
+#vtmstlsedz .gt_font_italic {
   font-style: italic;
 }
 
-#ntqgaccnyi .gt_super {
+#vtmstlsedz .gt_super {
   font-size: 65%;
 }
 
-#ntqgaccnyi .gt_footnote_marks {
+#vtmstlsedz .gt_footnote_marks {
   font-style: italic;
   font-size: 65%;
 }
 </style>
 
-<div id="ntqgaccnyi" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="vtmstlsedz" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 
 <table class="gt_table">
 
@@ -2034,15 +2034,6 @@ of CSR at 4 years of follow-up </summary>
 
 <p>
 
-    ## Warning in omit | x: longer object length is not a multiple of shorter object
-    ## length
-    
-    ## Warning in omit | x: longer object length is not a multiple of shorter object
-    ## length
-    
-    ## Warning in omit | x: longer object length is not a multiple of shorter object
-    ## length
-
 ![](Thymectomy_results_files/figure-gfm/forestplotma44-1.svg)<!-- -->
 
 </p>
@@ -2055,15 +2046,6 @@ of CSR at 4 years of follow-up </summary>
 of CSR at 5 years of follow-up </summary>
 
 <p>
-
-    ## Warning in omit | x: longer object length is not a multiple of shorter object
-    ## length
-    
-    ## Warning in omit | x: longer object length is not a multiple of shorter object
-    ## length
-    
-    ## Warning in omit | x: longer object length is not a multiple of shorter object
-    ## length
 
 ![](Thymectomy_results_files/figure-gfm/forestplotma45-1.svg)<!-- -->
 
