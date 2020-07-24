@@ -4,8 +4,8 @@ Oscar J. Ponce & Andrea Solis-Pazmino
 5/7/2020
 
 The following documents should not be viewed without reading the
-article, especially the graphs and tables. The article will guide how to
-use this information.
+article, especially the graphs and tables. The article will clarify how
+to use all the information available in this site.
 
 ## Open Data
 
