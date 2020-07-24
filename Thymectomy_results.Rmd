@@ -18,6 +18,7 @@ library("forestplot")
 library(grid)
 library(gt)
 library(glue)
+library(Gmisc)
 
 ```
 
@@ -154,7 +155,7 @@ pao$comparison <- paste(pao$int, " vs. ", pao$comp)
 
 ```
 
-
+The following documents should not be viewed without reading the article, especially the graphs and tables. The article will guide how to use this information.
 
 
 
@@ -169,11 +170,11 @@ pao$comparison <- paste(pao$int, " vs. ", pao$comp)
 | Stage  |      File     |  
 |:----------:|:-------------:|
 | Protocol | [Prospero](https://www.crd.york.ac.uk/prospero/display_record.php?RecordID=166827)|
-| Search strategy | `Available in this page` |
+| Search strategy | `Shown below` (Available to download as `.CSV`: [OVID](https://github.com/ponceoscarj/Thymectomy/blob/master/1%20Search%20strategy/ovid_search.csv), [Scopus](https://github.com/ponceoscarj/Thymectomy/blob/master/1%20Search%20strategy/scopus_search.csv)) |
 | Abstract screening | [References used in this stage or search results](https://github.com/ponceoscarj/Thymectomy/blob/master/Screening_results/articles_for_abstract_screening.txt) |
 | Full-text screening | [References used in this stage](https://github.com/ponceoscarj/Thymectomy/blob/master/Screening_results/articles_for_fulltext_screening.txt) |
 | Included studies | [References used for data extraction](https://github.com/ponceoscarj/Thymectomy/blob/master/Screening_results/included_articles.txt) |
-| Raw data | [Data as `.CSV`](https://github.com/ponceoscarj/Thymectomy/blob/master/Data/thymectomy_outcomes.csv)|
+| Raw Outcome data | [Available as `.CSV`](https://github.com/ponceoscarj/Thymectomy/blob/master/Data/thymectomy_outcomes.csv)|
 | Analysis codes | [Script as `R Markdown`](https://github.com/ponceoscarj/Thymectomy/blob/master/Thymectomy_results.Rmd)|
 
 
@@ -184,17 +185,31 @@ pao$comparison <- paste(pao$int, " vs. ", pao$comp)
 <summary>Show OVID search</summary>
 
 ```{r ovid, echo=FALSE, message=FALSE, warning=FALSE}
+
 ovid <- read.csv("1 Search strategy/ovid_search.csv")
 names(ovid)[1] <- "line"
 names(ovid)[2] <- "terms"
 
 ovid <- as_tibble(ovid)
 
-ovid %>% 
-gt() %>%
+ovid <- 
+  ovid %>%
+  gt(
+    rowname_col = "row",
+    groupname_col = "group"
+  )   %>%
+  fmt_markdown(columns = TRUE)
+
+
+ovid2 <- 
+  ovid %>%
   tab_header( 
     title = md("**Ovid Search**"),
-    subtitle = "Databases: EBM Reviews - Cochrane Central Register of Controlled Trials April 2019, EBM Reviews - Cochrane Database of Systematic Reviews 2005 to May 2, 2019, Embase 1974 to 2019 May 03, Ovid MEDLINE(R) and Epub Ahead of Print, In-Process & Other Non-Indexed Citations and Daily 1946 to May 03, 2019") %>%
+    subtitle = md("Databases: EBM Reviews - Cochrane Central Register of Controlled Trials April 2019, EBM Reviews - Cochrane Database of Systematic Reviews 2005 to May 2, 2019, Embase 1974 to 2019 May 03, Ovid MEDLINE(R) and Epub Ahead of Print, In-Process & Other Non-Indexed Citations and Daily 1946 to May 03, 2019")
+    ) %>%
+  tab_options( 
+    data_row.padding = px(5)
+  ) %>%
   cols_align(
     align = "left",
     columns = TRUE
@@ -210,14 +225,11 @@ gt() %>%
   cols_label(
     line = md("**Search <br> line**"),
     terms = md("**Search <br> terms**")
-  ) %>%
-  tab_options(
-        column_labels.border.bottom.width = 0.5,
-        column_labels.border.top.width = 0.5,
-        table.font.size = "small",
+  ) 
+  
 
-        data_row.padding = px(5)
-  )
+gtsave(ovid2, "trial1.png")
+invisible(file.remove("trial1.png"))
 
 
 ```
@@ -229,13 +241,14 @@ gt() %>%
 <summary>Show SCOPUS search</summary>
 
 ```{r scopus, echo=FALSE, message=FALSE, warning=FALSE}
+
 scopus <- read.csv("1 Search strategy/scopus_search.csv")
 names(scopus)[1] <- "line"
 names(scopus)[2] <- "terms"
 
 ovid <- as_tibble(scopus)
 
-scopus %>% 
+scopus <- scopus %>% 
 gt() %>%
   tab_header( 
     title = md("**Scopus Search**"),
@@ -267,9 +280,23 @@ gt() %>%
         data_row.padding = px(5)
   )
 
+gtsave(scopus, "trial2.png")
+invisible(file.remove("trial2.png"))
+
 ```
 </details>
 
+## Flow chart 
+
+
+### Figure 1
+
+<details>
+<summary>Show</summary>
+
+![flowchart](Flowchart/flowchart.png)
+
+</details>
 
 
 ```{r overall_analysis, echo=FALSE}
@@ -678,7 +705,7 @@ summaryafter <- rbind(
 
 ## Summary of forest plots
 
-### Figure 1 
+### Figure 2 
 <details><summary>Click to show</summary>
 
 *Risk of achieving Complete Stable Remission in patients with myasthenia gravis who underwent* ***Transsternal thymectomy***  *vs.*  ***Transsternal thymectomy*** *at different follow-ups*
@@ -761,7 +788,7 @@ forestplot(agr2,
 </details>
 
 
-### Figure 2
+### Figure 3
 <details><summary>Click to show</summary>
 
 *Risk of achieving Complete Stable Remission in patients with myasthenia gravis who underwent* ***Transsternal  Thymectomy*** *vs.* ***Minimally Invasive Thymectomy*** *at different follow-ups*
@@ -857,7 +884,7 @@ forestplot(lessagr2,
 </details>
 
 
-### Figure 3
+### Figure 4
 <details><summary>Click to show</summary>
 
 *Risk of achieving Complete Stable Remission in patients with myasthenia gravis who underwent* ***Minimally Invasive Thymectomy***  *vs.* ***Minimally Invasive Thymectomy*** *at different follow-ups*
@@ -946,7 +973,7 @@ forestplot(less2,
 </details>
 
 
-### Figure 4
+### Figure 5
 <details><summary>Click to show</summary>
 *Risk of achieving Complete Stable Remission in patients with myasthenia gravis who underwent a* ***Minimally Invasive Thymectomy***  *those who underwent another* ***Minimally Invasive Thymectomy*** *at different follow-ups*
 
