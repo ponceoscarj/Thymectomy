@@ -155,7 +155,7 @@ pao$comparison <- paste(pao$int, " vs. ", pao$comp)
 
 ```
 
-The following documents should not be viewed without reading the article, especially the graphs and tables. The article will guide how to use this information.
+The following documents should not be viewed without reading the article, especially the graphs and tables. The article will clarify how to use all the information available in this site.
 
 
 
@@ -793,7 +793,7 @@ forestplot(agr2,
 
 *Risk of achieving Complete Stable Remission in patients with myasthenia gravis who underwent* ***Transsternal  Thymectomy*** *vs.* ***Minimally Invasive Thymectomy*** *at different follow-ups*
 ```{r, fig.height=7, fig.width=19, echo=FALSE, message=FALSE, warning=FALSE}
-lessagr <- as_tibble(rbind(b, c, d, j, k, l))
+lessagr <- as_tibble(rbind(c, d, j, k, b, l))
 colnames(lessagr) <- head
 
 lessagr[,c(3:8,9:12)] <- sapply(lessagr[,c(3:8,9:12)], as.numeric)
@@ -813,11 +813,11 @@ lessagr$p2 <-
          paste(formatC(round2(lessagr$p,n=3), format='f', digits=3))))
 
 
-lessagr <- lessagr %>% add_row(followup="Basic Transcervical vs. Extended Transsternal", .before = 1)
-lessagr <- lessagr %>% add_row(followup="VATS extended vs. Standard Transsternal ", .before = 3)
-lessagr <- lessagr %>% add_row(followup="VATS extended vs. Extended Transsternal", .before = 7)
-lessagr <- lessagr %>% add_row(followup="Transcervical-Subxiphoid vs. Standard Transsternal", .before = 15)
-lessagr <- lessagr %>% add_row(followup="Extended Transsternal vs. Transcervical-Subxiphoid", .before = 19)
+lessagr <- lessagr %>% add_row(followup="VATS extended vs. Standard Transsternal ", .before = 1)
+lessagr <- lessagr %>% add_row(followup="VATS extended vs. Extended Transsternal", .before = 5)
+lessagr <- lessagr %>% add_row(followup="Transcervical-Subxiphoid vs. Standard Transsternal", .before = 13)
+lessagr <- lessagr %>% add_row(followup="Extended Transsternal vs. Transcervical-Subxiphoid", .before = 17)
+lessagr <- lessagr %>% add_row(followup="Basic Transcervical vs. Extended Transsternal", .before = 21)
 lessagr <- lessagr %>% add_row(followup="Subxiphoid Mediastinoscopy vs. Extended Transsternal", .before = 23)
 
 lessagr <- lessagr %>% add_row(.before = 1)
@@ -833,7 +833,7 @@ lessagr2 <- cbind(c("Treatment vs. Control", "Follow-up",lessagr$followup),
               c("p value", NA, lessagr$p2))
 
 
-sub1 <- c(5, 7:9, 11:17, 19:21, 23:25, 27)
+sub1 <- c(5:7, 9:15, 17:19, 21:23, 25, 27)
 lessagr2[,1][sub1] <- paste("  ",lessagr2[,1][sub1])
 
 rrslessagr <- structure(list(
@@ -856,11 +856,11 @@ forestplot(lessagr2,
            lineheight=unit(0.6,'cm'),
            line.margin = 2,
            is.summary = c(T, T, F, 
-                          T, F,
-                          T, rep(F, 3), 
+                          T, rep(F, 3),
                           T, rep(F, 7), 
                           T, rep(F, 3), 
-                          T, rep(F, 3), T, F, F),
+                          T, rep(F, 3), 
+                          T, rep(F, 1), T, F, F),
            align = c("l","c", "c", "c", "l", "l", "l"),
            boxsize = 0.5,
            ci.vertices = TRUE,
