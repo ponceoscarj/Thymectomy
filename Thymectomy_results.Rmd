@@ -793,7 +793,7 @@ forestplot(agr2,
 
 *Risk of achieving Complete Stable Remission in patients with myasthenia gravis who underwent* ***Transsternal  Thymectomy*** *vs.* ***Minimally Invasive Thymectomy*** *at different follow-ups*
 ```{r, fig.height=7, fig.width=19, echo=FALSE, message=FALSE, warning=FALSE}
-lessagr <- as_tibble(rbind(c, d, j, k, b, l))
+lessagr <- as_tibble(rbind(c, d, j, k,  l, b))
 colnames(lessagr) <- head
 
 lessagr[,c(3:8,9:12)] <- sapply(lessagr[,c(3:8,9:12)], as.numeric)
@@ -812,13 +812,12 @@ lessagr$p2 <-
   ifelse(lessagr$p<0.001, paste("<0.001"), 
          paste(formatC(round2(lessagr$p,n=3), format='f', digits=3))))
 
-
 lessagr <- lessagr %>% add_row(followup="VATS extended vs. Standard Transsternal ", .before = 1)
 lessagr <- lessagr %>% add_row(followup="VATS extended vs. Extended Transsternal", .before = 5)
 lessagr <- lessagr %>% add_row(followup="Transcervical-Subxiphoid vs. Standard Transsternal", .before = 13)
 lessagr <- lessagr %>% add_row(followup="Extended Transsternal vs. Transcervical-Subxiphoid", .before = 17)
-lessagr <- lessagr %>% add_row(followup="Basic Transcervical vs. Extended Transsternal", .before = 21)
-lessagr <- lessagr %>% add_row(followup="Subxiphoid Mediastinoscopy vs. Extended Transsternal", .before = 23)
+lessagr <- lessagr %>% add_row(followup="Subxiphoid Mediastinoscopy vs. Extended Transsternal", .before = 21)
+lessagr <- lessagr %>% add_row(followup="Basic Transcervical vs. Extended Transsternal", .before = 23)
 
 lessagr <- lessagr %>% add_row(.before = 1)
 lessagr <- lessagr %>% add_row(.after = 25)
