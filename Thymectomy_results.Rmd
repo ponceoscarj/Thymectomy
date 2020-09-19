@@ -10,6 +10,7 @@ knitr::opts_chunk$set(echo=TRUE)
 knitr::opts_chunk$set(dpi=900)
 knitr::opts_chunk$set(dev='svg')
 
+
 library("metafor")
 library("tidyverse")
 library("rmarkdown")
@@ -20,13 +21,13 @@ library(gt)
 library(glue)
 library(Gmisc)
 
+
+
 ```
 
  
 ```{r cleaning, echo=FALSE, message=FALSE, warning=FALSE}
 pao <- read.csv("Data/thymectomy_outcomes.csv")
-
-
 
 names(pao)[1] <- "refid"
 names(pao)[2] <- "int"
@@ -49,8 +50,7 @@ pao$int[pao$int %in% c("extended transsternal\r\nthymectomies",
                        "extended transsternal\nthymectomies",
                        "Extended median sternotomy")] <- "ETsT"
 pao$int[pao$int == "Infrasternal mediastinoscopic thymectomy (IMT)"] <- "IMT"
-pao$int[pao$int == 
-          "transcervical-subxiphoidvideothoracoscopic\n‘maximal’ thymectomy"] <- "TcSxVT"
+pao$int[pao$int %in% c("transcervical-subxiphoidvideothoracoscopic\n‘maximal’ thymectomy", "transcervical-subxiphoidvideothoracoscopic\n\x91maximal\x92 thymectomy")] <- "TcSxVT"
 pao$int[pao$int == "Transcervical thymectomy"] <- "BTcT"
 pao$int[pao$int == "VATS unilateral alone"] <- 'VATS unilateral'
 pao$int[pao$int == " VATET (bilateral)"] <- 'VATET bilateral'
@@ -73,7 +73,7 @@ pao$comp[pao$comp %in% c("Extended median sternotomy",
 pao$comp[pao$comp %in% 
            c("\ntranscervical-subxiphoidvideothoracoscopic\n‘maximal’ thymectomy",
              "transcervical-subxiphoidvideothoracoscopic\n‘maximal’ thymectomy", 
-             "transcervical-subxiphoidvideothoracoscopic\n‘maximal’ thymectomy\n")] <- "TcSxVT"
+             "transcervical-subxiphoidvideothoracoscopic\n‘maximal’ thymectomy\n", "\ntranscervical-subxiphoidvideothoracoscopic\n\x91maximal\x92 thymectomy ", "transcervical-subxiphoidvideothoracoscopic\n\x91maximal\x92 thymectomy\n", "transcervical-subxiphoidvideothoracoscopic\n\x91maximal\x92 thymectomy", "\ntranscervical-subxiphoidvideothoracoscopic\n\x91maximal\x92 thymectomy", "transcervical-subxiphoidvideothoracoscopic\n\x91maximal\x92 thymectomy")] <- "TcSxVT"
 pao$comp[pao$comp == "basic transsternal\nthymectomies"] <- "STsT"
 pao$comp[pao$comp == "VATS unilateral alone"] <- 'VATS unilateral'
 pao$comp[pao$comp == " VATET (bilateral)"] <- 'VATET bilateral'
@@ -150,9 +150,6 @@ pao$int <- ifelse(pao$refid==196, paste("T2b uni"), pao$int)
 
 #Final paste
 pao$comparison <- paste(pao$int, " vs. ", pao$comp)
-
-
-
 ```
 
 The following documents should not be viewed without reading the article, especially the graphs and tables. The article will clarify how to use all the information available in this site.
@@ -708,7 +705,7 @@ summaryafter <- rbind(
 ### Figure 2 
 <details><summary>Click to show</summary>
 
-*Risk of achieving Complete Stable Remission in patients with myasthenia gravis who underwent* ***Transsternal thymectomy***  *vs.*  ***Transsternal thymectomy*** *at different follow-ups*
+*Risk of achieving Complete Stable Remission in patients with myasthenia gravis who underwent* ***Extended transsternal thymectomy***  *vs.*  ***Transsternal thymectomy*** *at different follow-ups*
 
 ```{r,  fig.height=3, fig.width=13, echo=FALSE, message=FALSE, warning=FALSE}
 agr <- as_tibble(a)
@@ -731,7 +728,7 @@ agr$p2 <-
          paste(formatC(round2(agr$p,n=3), format='f', digits=3))))
 
 
-agr <- agr %>% add_row(followup="Extended Transsternal vs. Standard Transsternal", .before = 1)
+agr <- agr %>% add_row(followup="Extended Transsternal vs. Basic Transsternal", .before = 1)
 agr <- agr %>% add_row(.before =  1)
 agr <- agr %>% add_row(.after =  5)
 
@@ -812,12 +809,12 @@ lessagr$p2 <-
   ifelse(lessagr$p<0.001, paste("<0.001"), 
          paste(formatC(round2(lessagr$p,n=3), format='f', digits=3))))
 
-lessagr <- lessagr %>% add_row(followup="VATS extended vs. Standard Transsternal ", .before = 1)
+lessagr <- lessagr %>% add_row(followup="VATS extended vs. Basic Transsternal ", .before = 1)
 lessagr <- lessagr %>% add_row(followup="VATS extended vs. Extended Transsternal", .before = 5)
-lessagr <- lessagr %>% add_row(followup="Transcervical-Subxiphoid vs. Standard Transsternal", .before = 13)
+lessagr <- lessagr %>% add_row(followup="Combined transcervical-Subxiphoid vs. Basic Transsternal", .before = 13)
 lessagr <- lessagr %>% add_row(followup="Extended Transsternal vs. Transcervical-Subxiphoid", .before = 17)
 lessagr <- lessagr %>% add_row(followup="Subxiphoid Mediastinoscopy vs. Extended Transsternal", .before = 21)
-lessagr <- lessagr %>% add_row(followup="Basic Transcervical vs. Extended Transsternal", .before = 23)
+lessagr <- lessagr %>% add_row(followup="Extended Transcervical vs. Extended Transsternal", .before = 23)
 
 lessagr <- lessagr %>% add_row(.before = 1)
 lessagr <- lessagr %>% add_row(.after = 25)
@@ -886,7 +883,7 @@ forestplot(lessagr2,
 ### Figure 4
 <details><summary>Click to show</summary>
 
-*Risk of achieving Complete Stable Remission in patients with myasthenia gravis who underwent* ***Minimally Invasive Thymectomy***  *vs.* ***Minimally Invasive Thymectomy*** *at different follow-ups*
+*Risk of achieving Complete Stable Remission in patients with myasthenia gravis who underwent* ***different types of minimally invasive thymectomy*** *at different follow-ups*
 
 
 ```{r,  fig.height=3, fig.width=15, echo=FALSE, message=FALSE, warning=FALSE}
@@ -910,7 +907,7 @@ less$p2 <-
 
 
 
-less <- less %>% add_row(followup="VATS extended lelft vs. VATS extended right", .before = 1)
+less <- less %>% add_row(followup="VATS extended left vs. VATS extended right", .before = 1)
 less <- less %>% add_row(followup="VATS extended with robotic  vs. VATS extended", .before = 4)
 
 less <- less %>% add_row(.before = 1)
@@ -974,7 +971,8 @@ forestplot(less2,
 
 ### Figure 5
 <details><summary>Click to show</summary>
-*Risk of achieving Complete Stable Remission in patients with myasthenia gravis who underwent a* ***Minimally Invasive Thymectomy***  *those who underwent another* ***Minimally Invasive Thymectomy*** *at different follow-ups*
+*Risk of achieving Complete Stable Remission in patients with myasthenia gravis who underwent* ***VATS extended unilateral*** *vs. those who underwent* ***VATS extended bilateral*** *thymectomy at different follow-ups*
+
 
 ```{r label_of_this_figure,  fig.height=3, fig.width=14, echo=FALSE, message=FALSE, warning=FALSE}
 less3 <- as_tibble(rbind(g))

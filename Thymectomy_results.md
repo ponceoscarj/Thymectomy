@@ -27,7 +27,7 @@ to use all the information available in this site.
 
 <summary>Show OVID search</summary>
 
-![](Thymectomy_results_files/figure-gfm/ovid-1.png)<!-- -->
+    ## NULL
 
 </details>
 
@@ -35,7 +35,7 @@ to use all the information available in this site.
 
 <summary>Show SCOPUS search</summary>
 
-![](Thymectomy_results_files/figure-gfm/scopus-1.png)<!-- -->
+    ## NULL
 
 </details>
 
@@ -60,7 +60,7 @@ to use all the information available in this site.
 <summary>Click to show</summary>
 
 *Risk of achieving Complete Stable Remission in patients with myasthenia
-gravis who underwent* ***Transsternal thymectomy*** *vs.*
+gravis who underwent* ***Extended transsternal thymectomy*** *vs.*
 ***Transsternal thymectomy*** *at different follow-ups*
 
 ![](Thymectomy_results_files/figure-gfm/unnamed-chunk-1-1.svg)<!-- -->
@@ -93,8 +93,8 @@ Invasive Thymectomy*** *at different follow-ups*
 <summary>Click to show</summary>
 
 *Risk of achieving Complete Stable Remission in patients with myasthenia
-gravis who underwent* ***Minimally Invasive Thymectomy*** *vs.*
-***Minimally Invasive Thymectomy*** *at different follow-ups*
+gravis who underwent* ***different types of minimally invasive
+thymectomy*** *at different follow-ups*
 
 ![](Thymectomy_results_files/figure-gfm/unnamed-chunk-3-1.svg)<!-- -->
 
@@ -105,9 +105,9 @@ gravis who underwent* ***Minimally Invasive Thymectomy*** *vs.*
 <details>
 
 <summary>Click to show</summary> *Risk of achieving Complete Stable
-Remission in patients with myasthenia gravis who underwent a*
-***Minimally Invasive Thymectomy*** *those who underwent another*
-***Minimally Invasive Thymectomy*** *at different follow-ups*
+Remission in patients with myasthenia gravis who underwent* ***VATS
+extended unilateral*** *vs. those who underwent* ***VATS extended
+bilateral*** *thymectomy at different follow-ups*
 
 ![](Thymectomy_results_files/figure-gfm/label_of_this_figure-1.svg)<!-- -->
 
