@@ -224,9 +224,11 @@ ovid2 <-
     terms = md("**Search <br> terms**")
   ) 
   
+ovid2
 
-gtsave(ovid2, "trial1.png")
-invisible(file.remove("trial1.png"))
+# Codes below were used to create a better-looking table but in the png format, which in the end we did not use
+#gtsave(ovid2, "trial1.png")
+#invisible(file.remove("trial1.png"))
 
 
 ```
@@ -277,8 +279,11 @@ gt() %>%
         data_row.padding = px(5)
   )
 
-gtsave(scopus, "trial2.png")
-invisible(file.remove("trial2.png"))
+scopus
+
+# Codes below were used to create a better-looking table but in the png format, which in the end we did not use
+#gtsave(scopus, "trial2.png")
+#invisible(file.remove("trial2.png"))
 
 ```
 </details>
@@ -971,10 +976,10 @@ forestplot(less2,
 
 ### Figure 5
 <details><summary>Click to show</summary>
+
 *Risk of achieving Complete Stable Remission in patients with myasthenia gravis who underwent* ***VATS extended unilateral*** *vs. those who underwent* ***VATS extended bilateral*** *thymectomy at different follow-ups*
 
-
-```{r label_of_this_figure,  fig.height=3, fig.width=14, echo=FALSE, message=FALSE, warning=FALSE}
+```{r,  fig.height=3, fig.width=14, echo=FALSE, message=FALSE, warning=FALSE}
 less3 <- as_tibble(rbind(g))
 colnames(less3) <- head
 
