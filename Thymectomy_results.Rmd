@@ -816,8 +816,8 @@ lessagr$p2 <-
 
 lessagr <- lessagr %>% add_row(followup="VATS extended vs. Basic Transsternal ", .before = 1)
 lessagr <- lessagr %>% add_row(followup="VATS extended vs. Extended Transsternal", .before = 5)
-lessagr <- lessagr %>% add_row(followup="Combined transcervical-Subxiphoid vs. Basic Transsternal", .before = 13)
-lessagr <- lessagr %>% add_row(followup="Extended Transsternal vs. Transcervical-Subxiphoid", .before = 17)
+lessagr <- lessagr %>% add_row(followup="Combined Transcervical-Subxiphoid vs. Basic Transsternal", .before = 13)
+lessagr <- lessagr %>% add_row(followup="Extended Transsternal vs. Combined Transcervical-Subxiphoid", .before = 17)
 lessagr <- lessagr %>% add_row(followup="Subxiphoid Mediastinoscopy vs. Extended Transsternal", .before = 21)
 lessagr <- lessagr %>% add_row(followup="Extended Transcervical vs. Extended Transsternal", .before = 23)
 
