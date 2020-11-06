@@ -10,7 +10,7 @@ knitr::opts_chunk$set(echo=TRUE)
 knitr::opts_chunk$set(dpi=900)
 knitr::opts_chunk$set(dev='svg')
 
-
+library("webshot")
 library("metafor")
 library("tidyverse")
 library("rmarkdown")
@@ -20,6 +20,8 @@ library(grid)
 library(gt)
 library(glue)
 library(Gmisc)
+
+webshot::install_phantomjs()
 
 #if you are using macOS, you might need to install: https://www.xquartz.org
 
@@ -198,8 +200,7 @@ ovid <-
   fmt_markdown(columns = TRUE)
 
 
-ovid2 <- 
-  ovid %>%
+ovid2 <-  ovid %>%
   tab_header( 
     title = md("**Ovid Search**"),
     subtitle = md("Databases: EBM Reviews - Cochrane Central Register of Controlled Trials April 2019, EBM Reviews - Cochrane Database of Systematic Reviews 2005 to May 2, 2019, Embase 1974 to 2019 May 03, Ovid MEDLINE(R) and Epub Ahead of Print, In-Process & Other Non-Indexed Citations and Daily 1946 to May 03, 2019")
@@ -218,17 +219,13 @@ ovid2 <-
   fmt_passthrough(
     columns = vars("terms"),
   ) %>%
-
   cols_label(
     line = md("**Search <br> line**"),
     terms = md("**Search <br> terms**")
   ) 
-  
-ovid2
 
-# Codes below were used to create a better-looking table but in the png format, which in the end we did not use
-#gtsave(ovid2, "trial1.png")
-#invisible(file.remove("trial1.png"))
+gtsave(ovid2, "trial1.png")
+invisible(file.remove("trial1.png"))
 
 
 ```
@@ -279,11 +276,8 @@ gt() %>%
         data_row.padding = px(5)
   )
 
-scopus
-
-# Codes below were used to create a better-looking table but in the png format, which in the end we did not use
-#gtsave(scopus, "trial2.png")
-#invisible(file.remove("trial2.png"))
+gtsave(scopus, "trial2.png")
+invisible(file.remove("trial2.png"))
 
 ```
 </details>
