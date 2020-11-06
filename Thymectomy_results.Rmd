@@ -21,7 +21,7 @@ library(gt)
 library(glue)
 library(Gmisc)
 
-
+#if you are using macOS, you might need to install: https://www.xquartz.org
 
 ```
 
