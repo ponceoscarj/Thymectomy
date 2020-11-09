@@ -1057,8 +1057,8 @@ forestplot(less4,
 
 ## Supplementary Figures
 
-### Extended Transsternal vs. Standard Transsternal forest plots
-<details><summary> Suppl. Figure 1: Extended Transsternal vs. Standard Transsternal, risk of CSR at 3 years of follow-up </summary>
+### Extended Transsternal vs. Basic Transsternal forest plots
+<details><summary> Suppl. Figure 1: Extended Transsternal vs. Basic Transsternal, risk of CSR at 3 years of follow-up </summary>
 <p>
 
 ```{r forestplotma40, echo=FALSE, fig.height=3, fig.width=10, message=FALSE, warning=FALSE}
@@ -1131,7 +1131,7 @@ forestplot(tfma1,
 </details>
 
 
-<details><summary> Suppl. Figure 2: Extended Transsternal vs. Standard Transsternal, risk of CSR at 4 years of follow-up </summary>
+<details><summary> Suppl. Figure 2: Extended Transsternal vs. Basic Transsternal, risk of CSR at 4 years of follow-up </summary>
 <p>
 
 ```{r forestplotma41, echo=FALSE, fig.height=3, fig.width=10, message=FALSE, warning=FALSE}
@@ -1205,7 +1205,7 @@ forestplot(tfma2,
 
 
 
-<details><summary> Suppl. Figure 3: Extended Transsternal vs. Standard Transsternal, risk of CSR at 4 years of follow-up </summary>
+<details><summary> Suppl. Figure 3: Extended Transsternal vs. Basic Transsternal, risk of CSR at 4 years of follow-up </summary>
 <p>
 
 ```{r forestplotma42, echo=FALSE, fig.height=3, fig.width=10, message=FALSE, warning=FALSE}

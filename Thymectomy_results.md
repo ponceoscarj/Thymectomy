@@ -117,12 +117,12 @@ follow-ups*
 
 ## Supplementary Figures
 
-### Extended Transsternal vs. Standard Transsternal forest plots
+### Extended Transsternal vs. Basic Transsternal forest plots
 
 <details>
 
-<summary> Suppl. Figure 1: Extended Transsternal vs. Standard
-Transsternal, risk of CSR at 3 years of follow-up </summary>
+<summary> Suppl. Figure 1: Extended Transsternal vs. Basic Transsternal,
+risk of CSR at 3 years of follow-up </summary>
 
 <p>
 
@@ -134,8 +134,8 @@ Transsternal, risk of CSR at 3 years of follow-up </summary>
 
 <details>
 
-<summary> Suppl. Figure 2: Extended Transsternal vs. Standard
-Transsternal, risk of CSR at 4 years of follow-up </summary>
+<summary> Suppl. Figure 2: Extended Transsternal vs. Basic Transsternal,
+risk of CSR at 4 years of follow-up </summary>
 
 <p>
 
@@ -147,8 +147,8 @@ Transsternal, risk of CSR at 4 years of follow-up </summary>
 
 <details>
 
-<summary> Suppl. Figure 3: Extended Transsternal vs. Standard
-Transsternal, risk of CSR at 4 years of follow-up </summary>
+<summary> Suppl. Figure 3: Extended Transsternal vs. Basic Transsternal,
+risk of CSR at 4 years of follow-up </summary>
 
 <p>
 
