@@ -115,6 +115,17 @@ follow-ups*
 
 </details>
 
+### Figure 6
+
+<details>
+
+<summary>Click to show</summary>
+
+*Risk of complications in patients with myasthenia gravis*
+![](Thymectomy_results_files/figure-gfm/complications_overall-1.svg)<!-- -->
+
+</details>
+
 ## Supplementary Figures
 
 ### Extended Transsternal vs. Basic Transsternal forest plots

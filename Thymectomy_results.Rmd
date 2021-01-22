@@ -1054,6 +1054,340 @@ forestplot(less4,
 </details>
 
 
+```{r complications, echo=FALSE, fig.height=3, fig.width=10, message=FALSE, warning=FALSE}
+comp <- read.csv("Data/complications.csv")
+comp <- comp[c(1:8),]
+
+comp$versus <- paste0(comp$intervention, ' vs. ', comp$comparison)
+names(comp)[3] <- "int"
+names(comp)[5] <- "comp"
+
+
+
+
+
+rr <- function(database, e1, e2){
+  db <- database
+  db <- escalc(measure="RR", ai=e1, ci=e2, n1i=n1, n2i=n2,data=database)
+  db <- db[order(db$yi),]
+  db <- summary(db)
+  
+  db$est <-  exp(db$yi)
+  db$ci.lb <- exp(db$ci.lb)
+  db$ci.ub <- exp(db$ci.ub)
+  
+  
+  db$rate1 <- paste(e1,"/",db$n1)
+  db$rate2 <- paste(e2,"/",db$n2)
+  db$rr <- paste(formatC(db$est, format='f', digits =2)," ",
+                 "(",formatC(db$ci.lb, format='f', digits =2),
+                 "-",formatC(db$ci.ub, format='f', digits=2),")")  
+  
+  ma <- rma(db$yi, db$vi, measure='RR', data=db, method='REML')
+  exp <- predict(ma, transf = transf.exp.int)
+  
+  db$weights <- weights(ma)
+  db$w <- paste(formatC(db$weights, format='f', digits = 1),'%')
+  
+  
+  list(pre = db, ma = ma, exp = exp)
+}
+
+
+table_rr <- function(analysis, int, comp, outcome, nstudies){
+  ifelse(nstudies>1,
+  b <- cbind( 
+    c("Author", analysis$pre$author, 
+      paste("Overall Relative Risk for", analysis$ma$k, "studies","\n", 
+            "(Tau^2 = ", (formatC(analysis$ma$tau2, digits=2, format="f")), ", df = ", 
+            (analysis$ma$k - analysis$ma$p),
+            ", p ", (ifelse(analysis$ma$QEp < 0.001, 
+                            paste("< 0.001"),
+                            paste("= ", formatC(analysis$ma$QEp, digits=3, format="f")))),
+            "; ", "I^2", " = ", (formatC(analysis$ma$I2, digits=1, format="f")), "%)")),
+    c(paste(int, '\n', outcome,'/','total n'),analysis$pre$rate1, paste(sum(analysis$pre$e1), " / ",
+                                                      sum(analysis$pre$n1))),
+    c(paste(comp, '\n', outcome,'/', 'total n'),analysis$pre$rate2, paste(sum(analysis$pre$e2), " / ",
+                                                        sum(analysis$pre$n2))),
+    c("Relative Risk (95% CI)", analysis$pre$rr, 
+      paste(formatC(analysis$exp$pred, format='f', digits =2), 
+            " (",formatC(analysis$exp$ci.lb, format='f', digits=2),
+            "-", formatC(analysis$exp$ci.ub, format='f', digits=2), ")")),
+    c("Weight(%)", paste(formatC(weights(analysis$ma), format='f', digits = 1),'%'), NA)),
+       b <- cbind( 
+        c("Author", analysis$pre$author),
+        c(paste(int, '\n', outcome,'/','total n'),analysis$pre$rate1),
+        c(paste(comp, '\n', outcome,'/', 'total n'),analysis$pre$rate2),
+        c("Relative Risk (95% CI)", analysis$pre$rr)))
+  
+  b <- as_tibble(b, .name_repair = "unique")
+  b <- b %>% add_row(.before = 2)
+  b <- b %>% add_row(.before = 2)
+  b <- b %>% add_row(.after = nrow(b))  
+  
+  ifelse(nstudies>1, b <- b %>% add_row(.before = nrow(b)-1), NA)
+
+  
+  ifelse(nstudies > 1,
+        (c <- structure(list(
+          mean = c(rep(NA, 3), analysis$pre$est, NA, analysis$exp$pred,NA),
+          lower = c(rep(NA, 3), analysis$pre$ci.lb, NA, analysis$exp$ci.lb, NA),
+          upper = c(rep(NA, 3), analysis$pre$ci.ub, NA, analysis$exp$ci.ub, NA)),
+          .Names = c("mean", "lower", "upper"),
+          row.names = c(NA, -1L*nrow(b)),
+          class = "data.frame")),
+        (c <- structure(list(
+          mean = c(rep(NA, 3), analysis$pre$est, NA),
+          lower = c(rep(NA, 3), analysis$pre$ci.lb, NA),
+          upper = c(rep(NA, 3), analysis$pre$ci.ub, NA)),
+          .Names = c("mean", "lower", "upper"),
+          row.names = c(NA, -1L*nrow(b)),
+          class = "data.frame")))
+
+  c <- as_tibble(c)
+  
+  list(b = b, c = c)
+} 
+  
+  
+  
+
+
+
+
+plotrr_single_studies <- function(words, numbers, xtick, sizes, 
+                                  bolding, aligning, fpPosition){
+  
+  forestplot(words,
+             graph.pos = fpPosition,
+             zero = 1,
+             numbers,
+             new_page = TRUE,
+             colgap = unit(5, "mm"),
+             hrzl_lines = list("3" = gpar (lwd=1, columns=c(1:(ncol(words)+1)), col="black")),
+             lineheight=unit(0.7,'cm'),
+             boxsize = sizes,
+             line.margin = 2,
+             is.summary = bolding,
+             align = aligning,
+             ci.vertices = TRUE,
+             txt_gp = fpTxtGp(label =gpar (cex=0.9), 
+                              ticks = gpar(cex = 0.9, fontface="bold"),
+                              summary = gpar(cex = 0.9),
+                              xlab = gpar(cex=0.9)),
+             xticks = xtick,
+             xlog=TRUE,
+             clip = c(0.2, 32),
+             grid = xtick,
+             lwd.xaxis = 1,
+             lwd.ci = 2.2,
+             lwd.zero = 2,
+             graphwidth = unit(10,"cm"),
+             col=fpColors(box="black",line="grey", zero = 'dodgerblue4', axes="grey20", summary="black"))
+  
+  
+}  
+
+
+
+comp1 <- subset(comp, versus=='Extended transsternal vs. Basic transsternal')
+
+
+comp1_pn <- rr(comp1,e1 = comp1$pn1, e2=comp1$pn2)
+tcomp1_pn <- table_rr(comp1_pn,int = 'Extended transsternal (n)', 
+                      comp = 'Basic trnassternal (n)', nstudies = 1, outcome = 'Pneumonia')
+
+comp1_winf <- rr(comp1, e1 = comp1$winf1, e2=comp1$winf2)
+tcomp1_winf <- table_rr(comp1_winf,int = 'Intervention (n)', 
+                      comp = 'Comparison (n)', nstudies = 1, outcome = 'Wound Infection')
+
+
+comp2 <- subset(comp, versus=='VATS extended vs. Basic transsternal')
+
+comp2_winf <- rr(comp2, e1 = comp2$winf1, e2=comp2$winf2)
+tcomp2_winf <- table_rr(comp2_winf,int = 'Intervention (n)', 
+                      comp = 'Comparison (n)', nstudies = 1, outcome = 'Wound Infection')
+
+
+comp3 <- subset(comp, versus=='VATS extended vs. Extended transsternal')
+
+comp3_pn <- subset(comp3, !is.na(comp3$pn1))
+comp3_pn <- rr(comp3_pn, e1 = comp3_pn$pn1, e2=comp3_pn$pn2)
+tcomp3_pn <- table_rr(comp3_pn,int = 'Intervention (n)', 
+                      comp = 'Comparison (n)', nstudies = 6, outcome = 'Pneumonia')
+
+comp3_mya <- subset(comp3, !is.na(comp3$mya1))
+comp3_mya <- rr(comp3_mya,e1 = comp3_mya$mya1, e2=comp3_mya$mya2)
+tcomp3_mya <- table_rr(comp3_mya,int = 'Intervention (n)', 
+                      comp = 'Comparison (n)', nstudies = 6, outcome = 'Myasthenia Gravis')
+
+comp3_ate <- subset(comp3, !is.na(comp3$ate1))
+comp3_ate <- rr(comp3_ate,e1 = comp3_ate$ate1, e2=comp3_ate$ate2)
+tcomp3_ate <- table_rr(comp3_ate,int = 'Intervention (n)', 
+                      comp = 'Comparison (n)', nstudies = 1, outcome = 'Atelectasia')
+
+comp3_arr <- subset(comp3, !is.na(comp3$arr1))
+comp3_arr <- rr(comp3_arr,e1 = comp3_arr$arr1, e2=comp3_arr$arr2)
+tcomp3_arr <- table_rr(comp3_arr,int = 'Intervention (n)', 
+                      comp = 'Comparison (n)', nstudies = 1, outcome = 'Arrhythmia')
+
+comp3_winf <- subset(comp3, !is.na(comp3$winf1))
+comp3_winf <- rr(comp3_winf, e1 = comp3_winf$winf1, e2=comp3_winf$winf2)
+tcomp3_winf <- table_rr(comp3_winf,int = 'Intervention (n)', 
+                      comp = 'Comparison (n)', nstudies = 6, outcome = 'Wound Infection')
+
+
+
+comp4 <- subset(comp, versus=='VATS extended unilateral vs. VATS extended bilateral')
+
+comp4_pn <- rr(comp4,e1 = comp4$pn1, e2=comp4$pn2)
+tcomp4_pn <- table_rr(comp4_pn,int = 'Intervention (n)', 
+                      comp = 'Comparison (n)', nstudies = 1, outcome = 'Pneumonia')
+
+comp4_mya <- rr(comp4,e1 = comp4$mya1, e2=comp4$mya2)
+tcomp4_mya <- table_rr(comp4_mya,int = 'Intervention (n)', 
+                      comp = 'Comparison (n)', nstudies = 1, outcome = 'Myasthenia Gravis')
+
+comp4_arr <- rr(comp4,e1 = comp4$arr1, e2=comp4$arr2)
+tcomp4_arr <- table_rr(comp4_arr,int = 'Intervention (n)', 
+                      comp = 'Comparison (n)', nstudies = 1, outcome = 'Myasthenia Gravis')
+
+comp4_winf <- rr(comp4, e1 = comp4$winf1, e2=comp4$winf2)
+tcomp4_winf <- table_rr(comp4_winf,int = 'Intervention (n)', 
+                      comp = 'Comparison (n)', nstudies = 1, outcome = 'Wound Infection')
+
+
+
+
+
+
+```
+
+
+
+
+
+### Figure 6
+<details><summary>Click to show</summary>
+
+*Risk of complications in patients with myasthenia gravis*
+```{r complications_overall, echo=FALSE, fig.height=7, fig.width=13, message=FALSE, warning=FALSE}
+
+head <- c(paste0('Treatment vs. Control','\n','  Complication'), 'N of studies',
+          paste0('Treatment','\n','events/n'), paste0('Control','\n','events/n'),
+          'I^2')
+
+cp1 <- cbind(
+        c('Extended transsternal vs. Basic transsternal', 'Pneumonia', 'Wound Infection'),
+        c(NA, comp1_pn$ma$k.all, comp1_winf$ma$k.all),
+        c(NA, comp1_pn$pre$rate1, comp1_winf$pre$rate1),
+        c(NA, comp1_pn$pre$rate2, comp1_winf$pre$rate2),
+        c(NA, 'na', 'na'),
+        c(NA, tcomp1_pn$b[[4,4]], tcomp1_winf$b[[4,4]]))
+
+cp2 <- cbind(
+        c('VATS extended vs. Basic transsternal', 'Wound Infection'),
+        c(NA, comp2_winf$ma$k.all),
+        c(NA, comp2_winf$pre$rate1),
+        c(NA, comp2_winf$pre$rate2),
+        c(NA, 'na'),
+        c(NA, tcomp2_winf$b[[4,4]]))
+
+cp3 <- cbind(
+        c('VATS extended vs. Extended transsternal', 'Pneumonia', 'Myasthenia gravis', 'Atelectasia',
+          'Arrhythmia', 'Wound Infection'),
+        c(NA, comp3_pn$ma$k.all, comp3_mya$ma$k.all, comp3_ate$ma$k.all, 
+          comp3_arr$ma$k.all, comp3_winf$ma$k.all),
+        c(NA, tcomp3_pn$b[[8,2]], tcomp3_mya$b[[9,2]], tcomp3_ate$b[[4,2]], 
+          tcomp3_arr$b[[4,2]], tcomp3_winf$b[[7,2]]),
+        c(NA, tcomp3_pn$b[[8,3]], tcomp3_mya$b[[9,3]], tcomp3_ate$b[[4,3]], 
+          tcomp3_arr$b[[4,3]], tcomp3_winf$b[[7,3]]),
+        c(NA, comp3_pn$ma$I2, comp3_mya$ma$I2, 'na', 
+          'na', comp3_winf$ma$I2),
+        c(NA, tcomp3_pn$b[[8,4]], tcomp3_mya$b[[9,4]], tcomp3_ate$b[[4,4]], 
+          tcomp3_arr$b[[4,4]], tcomp3_winf$b[[7,4]]))
+
+cp4 <- cbind(
+        c('VATS extended unilateral vs. VATS extended bilateral', 'Pneumonia', 'Myasthenia gravis',
+          'Arrhythmia', 'Wound Infection'),
+        c(NA, comp4_pn$ma$k.all, comp4_mya$ma$k.all, 
+          comp4_arr$ma$k.all, comp4_winf$ma$k.all),
+        c(NA, comp4_pn$pre$rate1, comp4_mya$pre$rate1, 
+          comp4_arr$pre$rate1, comp4_winf$pre$rate1),
+        c(NA, comp4_pn$pre$rate2, comp4_mya$pre$rate2, 
+          comp4_arr$pre$rate2, comp4_winf$pre$rate2),
+        c(NA, rep('na',4)),
+        c(NA, tcomp4_pn$b[[4,4]], tcomp4_mya$b[[4,4]], 
+          tcomp4_arr$b[[4,4]], tcomp4_winf$b[[4,4]]))
+
+complications <- rbind(head, cp1, cp2, cp3, cp4)
+
+sub1 <- c(3,4,6,8:12,14:17)
+complications[,1][sub1] <- paste("    ",complications[,1][sub1])
+complications <- as_tibble(complications)
+complications <- add_row(complications, .after = 1)
+complications <- add_row(complications, .after = 1)
+complications <- add_row(complications, .after = 6)
+complications <- add_row(complications, .after = 9)
+complications <- add_row(complications, .after = 16)
+complications <- add_row(complications, .after = 22)
+
+
+c <- rbind(tcomp1_pn$c[4,] , tcomp1_winf$c[4,], NA,
+           tcomp2_winf$c[4,], NA,
+           tcomp3_pn$c[8,], tcomp3_mya$c[9,], tcomp3_ate$c[4,], 
+            tcomp3_arr$c[4,], tcomp3_winf$c[7,], NA,
+           tcomp4_pn$c[4,], tcomp4_mya$c[4,], 
+            tcomp4_arr$c[4,], tcomp4_winf$c[4,], NA)
+c <- add_row(c, .after = 0)
+c <- add_row(c, .after = 0)  
+c <- add_row(c, .after = 0)
+c <- add_row(c, .after = 3)
+c <- add_row(c, .after = 7)
+c <- add_row(c, .after = 10)
+c <- add_row(c, .after = 17)
+
+c <- structure(list(
+          mean = c(c$mean),
+          lower = c(c$lower),
+          upper = c(c$upper)),
+          .Names = c("mean", "lower", "upper"),
+          row.names = c(NA, (-1L*nrow(c))),
+          class = "data.frame")
+
+
+forestplot(complications,
+             graph.pos = 6,
+             zero = 1,
+             c,
+             new_page = TRUE,
+             colgap = unit(5, "mm"),
+             hrzl_lines = list("3" = gpar (lwd=1, columns=c(1:7), col="black")),
+             lineheight=unit(0.7,'cm'),
+             boxsize = 0.5,
+             line.margin = 2,
+             is.summary = c(T, rep(F,2), T, rep(F,3), T, rep(F,2), T, rep(F,6), T, rep(F,5)),
+             align = c('l', rep('c',4), 'l'),
+             ci.vertices = TRUE,
+             txt_gp = fpTxtGp(label =gpar (cex=0.9), 
+                              ticks = gpar(cex = 0.9, fontface="bold"),
+                              summary = gpar(cex = 0.9),
+                              xlab = gpar(cex=0.9)),
+             xticks = c(0.06, 0.25,0.5,2,4,16),
+             xlog=TRUE,
+             clip = c(0.2, 32),
+             grid = c(0.06, 0.25,0.5,2,4,16),
+             lwd.xaxis = 1,
+             lwd.ci = 2.2,
+             lwd.zero = 2,
+             graphwidth = unit(10,"cm"),
+             col=fpColors(box="black",line="grey", zero = 'dodgerblue4', axes="grey20", summary="black"))
+
+
+                              
+```
+</details>
+
 
 ## Supplementary Figures
 
