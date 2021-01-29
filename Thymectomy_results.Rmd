@@ -1272,7 +1272,7 @@ tcomp4_winf <- table_rr(comp4_winf,int = 'Intervention (n)',
 
 head <- c(paste0('Treatment vs. Control','\n','  Complication'), 'N of studies',
           paste0('Treatment','\n','events/n'), paste0('Control','\n','events/n'),
-          'I^2')
+          'I^2', 'Relative Risk (95% CI)')
 
 cp1 <- cbind(
         c('Extended transsternal vs. Basic transsternal', 'Pneumonia', 'Wound Infection'),
@@ -1372,7 +1372,7 @@ forestplot(complications,
                               xlab = gpar(cex=0.9)),
              xticks = c(0.06, 0.25,0.5,2,4,16),
              xlog=TRUE,
-             clip = c(0.2, 32),
+             clip = c(0.2, 16),
              grid = c(0.06, 0.25,0.5,2,4,16),
              lwd.xaxis = 1,
              lwd.ci = 2.2,
