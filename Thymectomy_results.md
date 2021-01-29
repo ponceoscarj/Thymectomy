@@ -248,3 +248,17 @@ of CSR at 8 years of follow-up </summary>
 </p>
 
 </details>
+
+### Complications combining surgical approaches
+
+<details>
+
+<summary> Suppl. Figure 10 </summary>
+
+<p>
+
+![](Thymectomy_results_files/figure-gfm/forestplotma49-1.svg)<!-- -->
+
+</p>
+
+</details>
