@@ -121,7 +121,10 @@ follow-ups*
 
 <summary>Click to show</summary>
 
-*Risk of complications in patients with myasthenia gravis*
+*Risk of postoperative complications in patients with myasthenia gravis
+undergoing thymectomy by minimally invasive vs. median sternotomy
+approaches*
+
 ![](Thymectomy_results_files/figure-gfm/complications_overall-1.svg)<!-- -->
 
 </details>
@@ -244,20 +247,6 @@ of CSR at 8 years of follow-up </summary>
 <p>
 
 ![](Thymectomy_results_files/figure-gfm/forestplotma48-1.svg)<!-- -->
-
-</p>
-
-</details>
-
-### Complications combining surgical approaches
-
-<details>
-
-<summary> Suppl. Figure 10 </summary>
-
-<p>
-
-![](Thymectomy_results_files/figure-gfm/forestplotma49-1.svg)<!-- -->
 
 </p>
 
