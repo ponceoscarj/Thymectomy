@@ -1288,27 +1288,6 @@ tminst_winf <- table_rr(minst_winf,int = 'Intervention (n)',
 
 
 
-min2_pn <- subset(min2, !is.na(min2$pn1))
-min2_pn <- rr(min2_pn, e1 = min2_pn$pn1, e2=min2_pn$pn2)
-tmin2_pn <- table_rr(min2_pn,int = 'Intervention (n)', 
-                      comp = 'Comparison (n)', nstudies = 1, outcome = 'Pneumonia')
-
-min2_mya <- subset(min2, !is.na(min2$mya1))
-min2_mya <- rr(min2_mya,e1 = min2_mya$mya1, e2=min2_mya$mya2)
-tmin2_mya <- table_rr(min2_mya,int = 'Intervention (n)', 
-                      comp = 'Comparison (n)', nstudies = 1, outcome = 'Myasthenia Gravis')
-
-min2_arr <- subset(min2, !is.na(min2$arr1))
-min2_arr <- rr(min2_arr,e1 = min2_arr$arr1, e2=min2_arr$arr2)
-tmin2_arr <- table_rr(min2_arr,int = 'Intervention (n)', 
-                      comp = 'Comparison (n)', nstudies = 1, outcome = 'Arrhythmia')
-
-min2_winf <- subset(min2, !is.na(min2$winf1))
-min2_winf <- rr(min2_winf, e1 = min2_winf$winf1, e2=min2_winf$winf2)
-tmin2_winf <- table_rr(min2_winf,int = 'Intervention (n)', 
-                      comp = 'Comparison (n)', nstudies = 1, outcome = 'Wound Infection')
-
-
 ```
 
 
@@ -1318,15 +1297,15 @@ tmin2_winf <- table_rr(min2_winf,int = 'Intervention (n)',
 ### Figure 6 
 <details><summary>Click to show</summary>
 
-*Risk of postoperative complications in patients with myasthenia gravis undergoing thymectomy by minimally invasive vs. median sternotomy approaches*
+*Risk of postoperative complications in patients with Myasthenia gravis exacerbation undergoing thymectomy by minimally invasive vs. median sternotomy approaches*
 
-```{r complications_overall, echo=FALSE, fig.height=11, fig.width=14, message=FALSE, warning=FALSE}
+```{r complications_overall, echo=FALSE, fig.height=10, fig.width=16, message=FALSE, warning=FALSE}
 
 head <- c(paste0('Treatment vs. Control','\n','By Complication'), 'N of studies',
           paste0('Treatment','\n','events/n'), paste0('Control','\n','events/n'),
           'I^2', 'Relative Risk (95% CI)')
 
-subhead1 <- c(paste0('Comparison of thymectomy approaches'), rep(NA, 5))
+subhead1 <- c(paste0('Individual minimally invasive approaches vs. individual sternotomy approaches'), rep(NA, 5))
 
 cp2 <- cbind(
         c('VATS extended vs. Basic transsternal', 'Wound Infection'),
@@ -1369,7 +1348,7 @@ cp5 <- cbind(
 
 
 
-subhead2 <- c(paste0('All minimally invasive vs. All median sternotomy approaches'), rep(NA, 5))
+subhead2 <- c(paste0('All minimally invasive approaches pooled vs. All median sternotomy approaches pooled'), rep(NA, 5))
 
 
 part1 <- cbind(
@@ -1388,25 +1367,14 @@ part1 <- cbind(
 
 
 
-part2 <- cbind(
-        c('Minimally invasive vs. Minimally invasive', 'Pneumonia', 'Myasthenia gravis', 'Arrhythmia', 
-          'Wound Infection'),
-        c(NA, min2_pn$ma$k.all, min2_mya$ma$k.all, min2_arr$ma$k.all, min2_winf$ma$k.all),
-        c(NA, min2_pn$pre$rate1, min2_mya$pre$rate1, min2_arr$pre$rate1, min2_winf$pre$rate1),
-        c(NA, min2_pn$pre$rate2, min2_mya$pre$rate2, min2_arr$pre$rate2, min2_winf$pre$rate2),
-        c(NA, 'na', 'na', 'na', 'na'),
-        c(NA, tmin2_pn$b[[4,4]], tmin2_mya$b[[4,4]], tmin2_arr$b[[4,4]], tmin2_winf$b[[4,4]]))
-
-
-
 complications <- rbind(head, NA, NA, subhead1, NA, cp2, NA, cp3, NA, cp4, NA, cp5,
-                       NA, NA, subhead2, NA, part1, NA, part2, NA)
+                       NA, NA, subhead2, NA, part1, NA)
 rownames(complications) <- NULL
 
-sub1 <- c(7, 10:14, 17, 18, 21, 22, 28:32, 35:38)
+sub1 <- c(7, 10:14, 17, 18, 21, 22, 28:32)
 complications[,1][sub1] <- paste("        ",complications[,1][sub1])
 
-sub2 <- c(6, 9, 16, 20, 27, 34)
+sub2 <- c(6, 9, 16, 20, 27)
 complications[,1][sub2] <- paste("    ",complications[,1][sub2])
 
 
@@ -1416,8 +1384,7 @@ c <- rbind(NA,  NA, NA, NA, NA, NA, tcomp2_winf$c[4,], NA,
           NA, tcomp4_pn$c[4,], tcomp4_winf$c[4,], NA,
           NA, tcomp5_pn$c[4,], tcomp5_winf$c[4,], NA,
           NA, NA, NA, NA, tminst_pn$c[8,], tminst_mya$c[9,], tminst_ate$c[4,], 
-          tminst_arr$c[4,], tminst_winf$c[8,], NA,
-          NA, tmin2_pn$c[4,], tmin2_mya$c[4,], tmin2_arr$c[4,], tmin2_winf$c[4,], NA)
+          tminst_arr$c[4,], tminst_winf$c[8,], NA)
 
 c <- structure(list(
           mean = c(c$mean),
@@ -1439,7 +1406,7 @@ forestplot(complications,
              boxsize = 0.5,
              line.margin = 2,
              is.summary = c(T, rep(F,2), T, F, T, rep(F,2), T, rep(F,6), T, rep(F,3), T, rep(F,4),
-                            T, F, T, rep(F, 6), T, rep(F,5)),
+                            T, F, T, rep(F, 6)),
              align = c('l', rep('c',4), 'l'),
              ci.vertices = TRUE,
              txt_gp = fpTxtGp(label =gpar (cex=0.9), 
