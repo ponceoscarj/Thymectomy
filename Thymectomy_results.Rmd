@@ -1310,7 +1310,7 @@ tminst_winf <- table_rr(minst_winf,int = 'Intervention (n)',
 ### Figure 6 
 <details><summary>Click to show</summary>
 
-*Risk of postoperative complications in patients with Myasthenia gravis exacerbation undergoing thymectomy by minimally invasive vs. median sternotomy approaches*
+*Risk of postoperative complications in patients with Myasthenia gravis undergoing thymectomy by minimally invasive vs. median sternotomy approaches*
 
 ```{r complications_overall, echo=FALSE, fig.height=10, fig.width=16, message=FALSE, warning=FALSE}
 
@@ -1329,7 +1329,7 @@ cp2 <- cbind(
         c(NA, tcomp2_winf$b[[4,4]]))
 
 cp3 <- cbind(
-        c('VATS extended vs. Extended transsternal', 'Pneumonia', 'Myasthenia gravis', 'Atelectasia',
+        c('VATS extended vs. Extended transsternal', 'Pneumonia', 'Myasthenia gravis exacerbation', 'Atelectasia',
           'Arrhythmia', 'Wound Infection'),
         c(NA, comp3_pn$ma$k.all, comp3_mya$ma$k.all, comp3_ate$ma$k.all, 
           comp3_arr$ma$k.all, comp3_winf$ma$k.all),
@@ -1365,7 +1365,7 @@ subhead2 <- c(paste0('All minimally invasive approaches pooled vs. All median st
 
 
 part1 <- cbind(
-        c('Minimally invasive vs. Median sternotomy', 'Pneumonia', 'Myasthenia gravis', 'Atelectasia',
+        c('Minimally invasive vs. Median sternotomy', 'Pneumonia', 'Myasthenia gravis exacerbation', 'Atelectasia',
           'Arrhythmia', 'Wound Infection'),
         c(NA, minst_pn$ma$k.all, minst_mya$ma$k.all, minst_ate$ma$k.all, 
           minst_arr$ma$k.all, minst_winf$ma$k.all),

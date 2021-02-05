@@ -122,8 +122,8 @@ follow-ups*
 <summary>Click to show</summary>
 
 *Risk of postoperative complications in patients with Myasthenia gravis
-exacerbation undergoing thymectomy by minimally invasive vs. median
-sternotomy approaches*
+undergoing thymectomy by minimally invasive vs. median sternotomy
+approaches*
 
 ![](Thymectomy_results_files/figure-gfm/complications_overall-1.svg)<!-- -->
 
