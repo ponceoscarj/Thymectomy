@@ -1083,7 +1083,7 @@ rr <- function(database, e1, e2){
 }
 
 
-table_rr <- function(analysis, int, comp, outcome, nstudies){
+table_rr <- function(analysis, int, comp, outcome, nstudies, e1, e2){
   ifelse(nstudies>1,
   b <- cbind( 
     c("Author", analysis$pre$author, 
@@ -1094,9 +1094,9 @@ table_rr <- function(analysis, int, comp, outcome, nstudies){
                             paste("< 0.001"),
                             paste("= ", formatC(analysis$ma$QEp, digits=3, format="f")))),
             "; ", "I^2", " = ", (formatC(analysis$ma$I2, digits=1, format="f")), "%)")),
-    c(paste(int, '\n', outcome,'/','total n'),analysis$pre$rate1, paste(sum(analysis$pre$e1), " / ",
+    c(paste(int, '\n', outcome,'/','total n'),analysis$pre$rate1, paste(sum(e1), " / ",
                                                       sum(analysis$pre$n1))),
-    c(paste(comp, '\n', outcome,'/', 'total n'),analysis$pre$rate2, paste(sum(analysis$pre$e2), " / ",
+    c(paste(comp, '\n', outcome,'/', 'total n'),analysis$pre$rate2, paste(sum(e2), " / ",
                                                         sum(analysis$pre$n2))),
     c("Relative Risk (95% CI)", analysis$pre$rr, 
       paste(formatC(analysis$exp$pred, format='f', digits =2), 
@@ -1189,7 +1189,8 @@ comp2 <- subset(comp, versus=='VATS extended vs. Basic transsternal')
 
 comp2_winf <- rr(comp2, e1 = comp2$winf1, e2=comp2$winf2)
 tcomp2_winf <- table_rr(comp2_winf,int = 'Intervention (n)', 
-                      comp = 'Comparison (n)', nstudies = 1, outcome = 'Wound Infection')
+                      comp = 'Comparison (n)', nstudies = 1, outcome = 'Wound Infection',
+                      e1 = comp2_winf$pre$winf1, e2 = comp2_winf$pre$winf2)
 
 
 comp3 <- subset(comp, versus=='VATS extended vs. Extended transsternal')
@@ -1197,27 +1198,32 @@ comp3 <- subset(comp, versus=='VATS extended vs. Extended transsternal')
 comp3_pn <- subset(comp3, !is.na(comp3$pn1))
 comp3_pn <- rr(comp3_pn, e1 = comp3_pn$pn1, e2=comp3_pn$pn2)
 tcomp3_pn <- table_rr(comp3_pn,int = 'Intervention (n)', 
-                      comp = 'Comparison (n)', nstudies = 6, outcome = 'Pneumonia')
+                      comp = 'Comparison (n)', nstudies = 6, outcome = 'Pneumonia',
+                       e1 = comp3_pn$pre$pn1, e2 = comp3_pn$pre$pn2)
 
 comp3_mya <- subset(comp3, !is.na(comp3$mya1))
 comp3_mya <- rr(comp3_mya,e1 = comp3_mya$mya1, e2=comp3_mya$mya2)
 tcomp3_mya <- table_rr(comp3_mya,int = 'Intervention (n)', 
-                      comp = 'Comparison (n)', nstudies = 6, outcome = 'Myasthenia Gravis')
+                      comp = 'Comparison (n)', nstudies = 6, outcome = 'Myasthenia Gravis',
+                      e1 = comp3_mya$pre$mya1, e2 = comp3_mya$pre$mya2)
 
 comp3_ate <- subset(comp3, !is.na(comp3$ate1))
 comp3_ate <- rr(comp3_ate,e1 = comp3_ate$ate1, e2=comp3_ate$ate2)
 tcomp3_ate <- table_rr(comp3_ate,int = 'Intervention (n)', 
-                      comp = 'Comparison (n)', nstudies = 1, outcome = 'Atelectasia')
+                      comp = 'Comparison (n)', nstudies = 1, outcome = 'Atelectasia',
+                      e1 = comp3_ate$pre$ate1, e2 = comp3_ate$pre$ate2)
 
 comp3_arr <- subset(comp3, !is.na(comp3$arr1))
 comp3_arr <- rr(comp3_arr,e1 = comp3_arr$arr1, e2=comp3_arr$arr2)
 tcomp3_arr <- table_rr(comp3_arr,int = 'Intervention (n)', 
-                      comp = 'Comparison (n)', nstudies = 1, outcome = 'Arrhythmia')
+                      comp = 'Comparison (n)', nstudies = 1, outcome = 'Arrhythmia',
+                      e1 = comp3_arr$pre$arr1, e2 = comp3_arr$pre$arr2)
 
 comp3_winf <- subset(comp3, !is.na(comp3$winf1))
 comp3_winf <- rr(comp3_winf, e1 = comp3_winf$winf1, e2=comp3_winf$winf2)
 tcomp3_winf <- table_rr(comp3_winf,int = 'Intervention (n)', 
-                      comp = 'Comparison (n)', nstudies = 6, outcome = 'Wound Infection')
+                      comp = 'Comparison (n)', nstudies = 6, outcome = 'Wound Infection',
+                      e1 = comp3_winf$pre$winf1, e2 = comp3_winf$pre$winf2)
 
 
 comp4 <- subset(comp, versus=='Combined Transcervical-subxiphoid vs. Basic transsternal')
@@ -1225,12 +1231,14 @@ comp4 <- subset(comp, versus=='Combined Transcervical-subxiphoid vs. Basic trans
 comp4_pn <- subset(comp4, !is.na(comp4$pn1))
 comp4_pn <- rr(comp4_pn, e1 = comp4_pn$pn1, e2=comp4_pn$pn2)
 tcomp4_pn <- table_rr(comp4_pn,int = 'Intervention (n)', 
-                      comp = 'Comparison (n)', nstudies = 1, outcome = 'Pneumonia')
+                      comp = 'Comparison (n)', nstudies = 1, outcome = 'Pneumonia',
+                      e1 = comp4_pn$pre$pn1, e2 = comp4_pn$pre$pn2)
 
 comp4_winf <- subset(comp4, !is.na(comp4$winf1))
 comp4_winf <- rr(comp4_winf, e1 = comp4_winf$winf1, e2=comp4_winf$winf2)
 tcomp4_winf <- table_rr(comp4_winf,int = 'Intervention (n)', 
-                      comp = 'Comparison (n)', nstudies = 1, outcome = 'Wound Infection')
+                      comp = 'Comparison (n)', nstudies = 1, outcome = 'Wound Infection',
+                      e1 = comp4_winf$pre$winf1, e2 = comp4_winf$pre$winf2)
 
 
 
@@ -1239,12 +1247,14 @@ comp5 <- subset(comp, versus=='Combined Transcervical-subxiphoid vs. Extended tr
 comp5_pn <- subset(comp5, !is.na(comp5$pn1))
 comp5_pn <- rr(comp5_pn, e1 = comp5_pn$pn1, e2=comp5_pn$pn2)
 tcomp5_pn <- table_rr(comp5_pn,int = 'Intervention (n)', 
-                      comp = 'Comparison (n)', nstudies = 1, outcome = 'Pneumonia')
+                      comp = 'Comparison (n)', nstudies = 1, outcome = 'Pneumonia',
+                      e1 = comp5_pn$pre$pn1, e2 = comp5_pn$pre$pn2)
 
 comp5_winf <- subset(comp5, !is.na(comp5$winf1))
 comp5_winf <- rr(comp5_winf, e1 = comp5_winf$winf1, e2=comp5_winf$winf2)
 tcomp5_winf <- table_rr(comp5_winf,int = 'Intervention (n)', 
-                      comp = 'Comparison (n)', nstudies = 1, outcome = 'Wound Infection')
+                      comp = 'Comparison (n)', nstudies = 1, outcome = 'Wound Infection',
+                      e1 = comp5_winf$pre$winf1, e2 = comp5_winf$pre$winf2)
 
 
 
@@ -1258,36 +1268,39 @@ comp$vsgroup <- paste0(comp$intgroup, ' vs. ', comp$compgroup)
 
 
 minst <- subset(comp, vsgroup=='Minimally invasive vs. Median sternotomy')
-min2 <- subset(comp, vsgroup=='Minimally invasive vs. Minimally invasive')
-
+rownames(minst) <- NULL
+minst <- minst[c(1:6, 8),]
+rownames(minst) <- NULL
 
 minst_pn <- subset(minst, !is.na(minst$pn1))
 minst_pn <- rr(minst_pn, e1 = minst_pn$pn1, e2=minst_pn$pn2)
 tminst_pn <- table_rr(minst_pn,int = 'Intervention (n)', 
-                      comp = 'Comparison (n)', nstudies = 3, outcome = 'Pneumonia')
+                      comp = 'Comparison (n)', nstudies = 3, outcome = 'Pneumonia',
+                      e1 = minst_pn$pre$pn1, e2 = minst_pn$pre$pn2)
 
 minst_mya <- subset(minst, !is.na(minst$mya1))
 minst_mya <- rr(minst_mya,e1 = minst_mya$mya1, e2=minst_mya$mya2)
 tminst_mya <- table_rr(minst_mya,int = 'Intervention (n)', 
-                      comp = 'Comparison (n)', nstudies = 6, outcome = 'Myasthenia Gravis')
+                      comp = 'Comparison (n)', nstudies = 6, outcome = 'Myasthenia Gravis',
+                      e1 = minst_mya$pre$mya1, e2 = minst_mya$pre$mya2)
 
 minst_ate <- subset(minst, !is.na(minst$ate1))
 minst_ate <- rr(minst_ate,e1 = minst_ate$ate1, e2=minst_ate$ate2)
 tminst_ate <- table_rr(minst_ate,int = 'Intervention (n)', 
-                      comp = 'Comparison (n)', nstudies = 1, outcome = 'Atelectasia')
+                      comp = 'Comparison (n)', nstudies = 1, outcome = 'Atelectasia',
+                      e1 = minst_ate$pre$ate1, e2 = minst_ate$pre$ate2)
 
 minst_arr <- subset(minst, !is.na(minst$arr1))
 minst_arr <- rr(minst_arr,e1 = minst_arr$arr1, e2=minst_arr$arr2)
 tminst_arr <- table_rr(minst_arr,int = 'Intervention (n)', 
-                      comp = 'Comparison (n)', nstudies = 1, outcome = 'Arrhythmia')
+                      comp = 'Comparison (n)', nstudies = 1, outcome = 'Arrhythmia',
+                      e1 = minst_arr$pre$arr1, e2 = minst_arr$pre$arr2)
 
 minst_winf <- subset(minst, !is.na(minst$winf1))
 minst_winf <- rr(minst_winf, e1 = minst_winf$winf1, e2=minst_winf$winf2)
 tminst_winf <- table_rr(minst_winf,int = 'Intervention (n)', 
-                      comp = 'Comparison (n)', nstudies = 6, outcome = 'Wound Infection')
-
-
-
+                      comp = 'Comparison (n)', nstudies = 6, outcome = 'Wound Infection',
+                      e1 = minst_winf$pre$winf1, e2 = minst_winf$pre$winf2)
 ```
 
 
@@ -1356,14 +1369,14 @@ part1 <- cbind(
           'Arrhythmia', 'Wound Infection'),
         c(NA, minst_pn$ma$k.all, minst_mya$ma$k.all, minst_ate$ma$k.all, 
           minst_arr$ma$k.all, minst_winf$ma$k.all),
-        c(NA, tminst_pn$b[[8,2]], tminst_mya$b[[9,2]], tminst_ate$b[[4,2]], 
-          tminst_arr$b[[4,2]], tminst_winf$b[[8,2]]),
-        c(NA, tminst_pn$b[[8,3]], tminst_mya$b[[9,3]], tminst_ate$b[[4,3]], 
-          tminst_arr$b[[4,3]], tminst_winf$b[[8,3]]),
+        c(NA, tminst_pn$b[[9,2]], tminst_mya$b[[9,2]], tminst_ate$b[[4,2]], 
+          tminst_arr$b[[4,2]], tminst_winf$b[[9,2]]),
+        c(NA, tminst_pn$b[[9,3]], tminst_mya$b[[9,3]], tminst_ate$b[[4,3]], 
+          tminst_arr$b[[4,3]], tminst_winf$b[[9,3]]),
         c(NA, minst_pn$ma$I2, minst_mya$ma$I2, 'na', 
           'na', minst_winf$ma$I2),
-        c(NA, tminst_pn$b[[8,4]], tminst_mya$b[[9,4]], tminst_ate$b[[4,4]], 
-          tminst_arr$b[[4,4]], tminst_winf$b[[8,4]]))
+        c(NA, tminst_pn$b[[9,4]], tminst_mya$b[[9,4]], tminst_ate$b[[4,4]], 
+          tminst_arr$b[[4,4]], tminst_winf$b[[9,4]]))
 
 
 
@@ -1383,8 +1396,8 @@ c <- rbind(NA,  NA, NA, NA, NA, NA, tcomp2_winf$c[4,], NA,
           tcomp3_arr$c[4,], tcomp3_winf$c[7,], NA,
           NA, tcomp4_pn$c[4,], tcomp4_winf$c[4,], NA,
           NA, tcomp5_pn$c[4,], tcomp5_winf$c[4,], NA,
-          NA, NA, NA, NA, tminst_pn$c[8,], tminst_mya$c[9,], tminst_ate$c[4,], 
-          tminst_arr$c[4,], tminst_winf$c[8,], NA)
+          NA, NA, NA, NA, tminst_pn$c[9,], tminst_mya$c[9,], tminst_ate$c[4,], 
+          tminst_arr$c[4,], tminst_winf$c[9,], NA)
 
 c <- structure(list(
           mean = c(c$mean),
