@@ -63,7 +63,7 @@ to use all the information available in this site.
 gravis who underwent* ***Extended transsternal thymectomy*** *vs.*
 ***Transsternal thymectomy*** *at different follow-ups*
 
-![](Thymectomy_results_files/figure-gfm/unnamed-chunk-1-1.pdf)<!-- -->
+![](Thymectomy_results_files/figure-gfm/unnamed-chunk-1-1.svg)<!-- -->
 
 > To generate this forest plot, we used information from Supplementary
 > Figures 1 to 3.
@@ -79,7 +79,7 @@ gravis who underwent* ***Extended transsternal thymectomy*** *vs.*
 *Risk of achieving Complete Stable Remission in patients with myasthenia
 gravis who underwent* ***Transsternal Thymectomy*** *vs.* ***Minimally
 Invasive Thymectomy*** *at different follow-ups*
-![](Thymectomy_results_files/figure-gfm/unnamed-chunk-2-1.pdf)<!-- -->
+![](Thymectomy_results_files/figure-gfm/unnamed-chunk-2-1.svg)<!-- -->
 
 > To generate this forest plot, we used information from Supplementary
 > Figures 4 to 9.
@@ -96,7 +96,7 @@ Invasive Thymectomy*** *at different follow-ups*
 gravis who underwent* ***different types of minimally invasive
 thymectomy*** *at different follow-ups*
 
-![](Thymectomy_results_files/figure-gfm/unnamed-chunk-3-1.pdf)<!-- -->
+![](Thymectomy_results_files/figure-gfm/unnamed-chunk-3-1.svg)<!-- -->
 
 </details>
 
@@ -111,7 +111,7 @@ gravis who underwent* ***VATS extended unilateral*** *vs. those who
 underwent* ***VATS extended bilateral*** *thymectomy at different
 follow-ups*
 
-![](Thymectomy_results_files/figure-gfm/unnamed-chunk-4-1.pdf)<!-- -->
+![](Thymectomy_results_files/figure-gfm/unnamed-chunk-4-1.svg)<!-- -->
 
 </details>
 
@@ -125,7 +125,7 @@ follow-ups*
 undergoing thymectomy by minimally invasive vs. median sternotomy
 approaches*
 
-![](Thymectomy_results_files/figure-gfm/complications_overall-1.pdf)<!-- -->
+![](Thymectomy_results_files/figure-gfm/complications_overall-1.svg)<!-- -->
 
 </details>
 
@@ -140,7 +140,7 @@ risk of CSR at 3 years of follow-up </summary>
 
 <p>
 
-![](Thymectomy_results_files/figure-gfm/forestplotma40-1.pdf)<!-- -->
+![](Thymectomy_results_files/figure-gfm/forestplotma40-1.svg)<!-- -->
 
 </p>
 
@@ -153,7 +153,7 @@ risk of CSR at 4 years of follow-up </summary>
 
 <p>
 
-![](Thymectomy_results_files/figure-gfm/forestplotma41-1.pdf)<!-- -->
+![](Thymectomy_results_files/figure-gfm/forestplotma41-1.svg)<!-- -->
 
 </p>
 
@@ -166,7 +166,7 @@ risk of CSR at 4 years of follow-up </summary>
 
 <p>
 
-![](Thymectomy_results_files/figure-gfm/forestplotma42-1.pdf)<!-- -->
+![](Thymectomy_results_files/figure-gfm/forestplotma42-1.svg)<!-- -->
 
 </p>
 
@@ -181,7 +181,7 @@ of CSR at 3 years of follow-up </summary>
 
 <p>
 
-![](Thymectomy_results_files/figure-gfm/forestplotma43-1.pdf)<!-- -->
+![](Thymectomy_results_files/figure-gfm/forestplotma43-1.svg)<!-- -->
 
 </p>
 
@@ -194,7 +194,7 @@ of CSR at 4 years of follow-up </summary>
 
 <p>
 
-![](Thymectomy_results_files/figure-gfm/forestplotma44-1.pdf)<!-- -->
+![](Thymectomy_results_files/figure-gfm/forestplotma44-1.svg)<!-- -->
 
 </p>
 
@@ -207,7 +207,7 @@ of CSR at 5 years of follow-up </summary>
 
 <p>
 
-![](Thymectomy_results_files/figure-gfm/forestplotma45-1.pdf)<!-- -->
+![](Thymectomy_results_files/figure-gfm/forestplotma45-1.svg)<!-- -->
 
 </p>
 
@@ -220,7 +220,7 @@ of CSR at 6 years of follow-up </summary>
 
 <p>
 
-![](Thymectomy_results_files/figure-gfm/forestplotma46-1.pdf)<!-- -->
+![](Thymectomy_results_files/figure-gfm/forestplotma46-1.svg)<!-- -->
 
 </p>
 
@@ -233,7 +233,7 @@ of CSR at 7 years of follow-up </summary>
 
 <p>
 
-![](Thymectomy_results_files/figure-gfm/forestplotma47-1.pdf)<!-- -->
+![](Thymectomy_results_files/figure-gfm/forestplotma47-1.svg)<!-- -->
 
 </p>
 
@@ -246,7 +246,7 @@ of CSR at 8 years of follow-up </summary>
 
 <p>
 
-![](Thymectomy_results_files/figure-gfm/forestplotma48-1.pdf)<!-- -->
+![](Thymectomy_results_files/figure-gfm/forestplotma48-1.svg)<!-- -->
 
 </p>
 

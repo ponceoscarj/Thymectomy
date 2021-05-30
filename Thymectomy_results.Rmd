@@ -8,7 +8,7 @@ output: github_document
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo=TRUE)
 knitr::opts_chunk$set(dpi=900)
-knitr::opts_chunk$set(dev='pdf')
+knitr::opts_chunk$set(dev='svg')
 
 library("webshot")
 library("metafor")
@@ -532,141 +532,181 @@ head <- c("comparison",  "followup", "k", "ai", "bi",
                      "ci", "di", "i2", "eff", "llci", "ulci","p")
 
 a<- rbind(
-  c("T3b  vs.  T3a",  "3 years",  ma1[[15]], 
+  c("T3b  vs.  T3a",  "3 years",  ma1$k.eff, 
   sum(prema1$events1), (sum(prema1$n1)-sum(prema1$events1)),
   sum(prema1$events2), (sum(prema1$n2)-sum(prema1$events2)), 
-  ma1[[25]], expma1[[1]], expma1[[3]],
-  expma1[[4]], ma1[[24]] ), 
-  c("T3b  vs.  T3a",  "4 years", ma2[[15]], 
+  ma1$I2, expma1$pred, expma1$ci.lb, expma1$ci.ub,
+  ma1$pval), 
+  c("T3b  vs.  T3a",  "4 years", ma2$k.eff, 
   sum(prema2$events1), (sum(prema2$n1)-sum(prema2$events1)),
   sum(prema2$events2), (sum(prema2$n2)-sum(prema2$events2)), 
-  ma2[[25]], expma2[[1]], expma2[[3]],
-  expma2[[4]], ma2[[24]]), 
-  c("T3b  vs.  T3a", "5 years", ma3[[15]], 
+  ma2$I2, expma2$pred, expma2$ci.lb, expma2$ci.ub,
+  ma2$pval), 
+  c("T3b  vs.  T3a", "5 years", ma3$k.eff, 
   sum(prema3$events1), (sum(prema3$n1)-sum(prema3$events1)),
   sum(prema3$events2), (sum(prema3$n2)-sum(prema3$events2)), 
-  ma3[[25]], expma3[[1]], expma3[[3]],
-  expma3[[4]], ma3[[24]]))
+   ma3$I2, expma3$pred, expma3$ci.lb, expma3$ci.ub,
+  ma3$pval))
 
 
 
 
-b <-  c("T1a  vs.  T3b",  "10 years", ma4[[15]], sum(ma4[[42]]), sum(ma4[[43]]),
-    sum(ma4[[44]]),sum(ma4[[45]]), ma4[[25]], expma4[[1]], expma4[[3]], expma4[[4]],
-    ma4[[24]])
+b <-  c("T1a  vs.  T3b",  "10 years", ma4$k.eff, 
+  sum(ma4$ai.f), sum(ma4$bi.f),
+  sum(ma4$ci.f), sum(ma4$di.f), 
+   ma4$I2, expma4$pred, expma4$ci.lb, expma4$ci.ub,
+  ma4$pval)
 
 
 
 c <- rbind(
-  c("T2b  vs.  T3a",  "3 years", ma5[[15]], sum(ma5[[42]]), sum(ma5[[43]]),
-    sum(ma5[[44]]),sum(ma5[[45]]), ma5[[25]], expma5[[1]], expma5[[3]], expma5[[4]],
-    ma5[[24]]), 
-  c("T2b  vs.  T3a",  "4 years", ma6[[15]], sum(ma6[[42]]), sum(ma6[[43]]),
-    sum(ma6[[44]]),sum(ma6[[45]]), ma6[[25]], expma6[[1]], expma6[[3]], expma6[[4]],
-    ma6[[24]]),
-  c("T2b  vs.  T3a", "5 years", ma7[[15]], sum(ma7[[42]]), sum(ma7[[43]]),
-    sum(ma7[[44]]),sum(ma7[[45]]), ma7[[25]], expma7[[1]], expma7[[3]], expma7[[4]],
-    ma7[[24]]))
+  c("T2b  vs.  T3a",  "3 years", ma4$k.eff, 
+  sum(ma4$ai.f), sum(ma4$bi.f),
+  sum(ma4$ci.f), sum(ma4$di.f), 
+   ma4$I2, expma4$pred, expma4$ci.lb, expma4$ci.ub,
+  ma4$pval), 
+  c("T2b  vs.  T3a",  "4 years", ma5$k.eff, 
+  sum(ma5$ai.f), sum(ma5$bi.f),
+  sum(ma5$ci.f), sum(ma5$di.f), 
+   ma5$I2, expma5$pred, expma5$ci.lb, expma5$ci.ub,
+  ma5$pval),
+  c("T2b  vs.  T3a", "5 years", ma6$k.eff, 
+  sum(ma6$ai.f), sum(ma6$bi.f),
+  sum(ma6$ci.f), sum(ma6$di.f), 
+   ma6$I2, expma6$pred, expma6$ci.lb, expma6$ci.ub,
+  ma6$pval))
   
 
 d <- rbind(
-  c("T2b  vs.  T3b", "3 years", ma8[[15]], 
+  c("T2b  vs.  T3b", "3 years", ma8$k.eff, 
   sum(prema8$events1), (sum(prema8$n1)-sum(prema8$events1)),
   sum(prema8$events2), (sum(prema8$n2)-sum(prema8$events2)), 
-  ma8[[25]], expma8[[1]], expma8[[3]],
-  expma8[[4]], ma8[[24]]),
-  c("T2b  vs.  T3b", "4 years", ma9[[15]], 
-    sum(prema9$events1), (sum(prema9$n1)-sum(prema9$events1)),
-    sum(prema9$events2), (sum(prema9$n2)-sum(prema9$events2)), 
-    ma9[[25]], expma9[[1]], expma9[[3]],
-    expma9[[4]], ma9[[24]]),
-  c("T2b  vs.  T3b", "5 years", ma10[[15]], 
-    sum(prema10$events1), (sum(prema10$n1)-sum(prema10$events1)),
-    sum(prema10$events2), (sum(prema10$n2)-sum(prema10$events2)), 
-    ma10[[25]], expma10[[1]], expma10[[3]],
-    expma10[[4]], ma10[[24]]),
-  c("T2b  vs.  T3b", "6 years", ma11[[15]], 
-    sum(prema11$events1), (sum(prema11$n1)-sum(prema11$events1)),
-    sum(prema11$events2), (sum(prema11$n2)-sum(prema11$events2)), 
-    ma11[[25]], expma11[[1]], expma11[[3]],
-    expma11[[4]], ma11[[24]]),
-  c("T2b  vs.  T3b", "7 years", ma12[[15]], 
-    sum(prema12$events1), (sum(prema12$n1)-sum(prema12$events1)),
-    sum(prema12$events2), (sum(prema12$n2)-sum(prema12$events2)), 
-    ma12[[25]], expma12[[1]], expma12[[3]],
-    expma12[[4]], ma12[[24]]),
-  c("T2b  vs.  T3b", "8 years", ma13[[15]], 
-    sum(prema13$events1), (sum(prema13$n1)-sum(prema13$events1)),
-    sum(prema13$events2), (sum(prema13$n2)-sum(prema13$events2)), 
-    ma13[[25]], expma13[[1]], expma13[[3]],
-    expma13[[4]], ma13[[24]]),
-  c("T2b  vs.  T3b", "9 years", ma14[[15]], sum(ma14[[42]]), sum(ma14[[43]]),
-    sum(ma14[[44]]),sum(ma14[[45]]), ma14[[25]], expma14[[1]], expma14[[3]],
-    expma14[[4]], ma14[[24]]))
+   ma8$I2, expma8$pred, expma8$ci.lb, expma8$ci.ub,
+  ma8$pval),
+  c("T2b  vs.  T3b", "4 years", ma9$k.eff, 
+  sum(prema9$events1), (sum(prema9$n1)-sum(prema9$events1)),
+  sum(prema9$events2), (sum(prema9$n2)-sum(prema9$events2)), 
+   ma9$I2, expma9$pred, expma9$ci.lb, expma9$ci.ub,
+  ma9$pval),
+  c("T2b  vs.  T3b", "5 years", ma10$k.eff, 
+  sum(prema10$events1), (sum(prema10$n1)-sum(prema10$events1)),
+  sum(prema10$events2), (sum(prema10$n2)-sum(prema10$events2)), 
+   ma10$I2, expma10$pred, expma10$ci.lb, expma10$ci.ub,
+  ma10$pval),
+  c("T2b  vs.  T3b", "6 years", ma11$k.eff, 
+  sum(prema11$events1), (sum(prema11$n1)-sum(prema11$events1)),
+  sum(prema11$events2), (sum(prema11$n2)-sum(prema11$events2)), 
+   ma11$I2, expma11$pred, expma11$ci.lb, expma11$ci.ub,
+  ma11$pval),
+  c("T2b  vs.  T3b", "7 years", ma12$k.eff, 
+  sum(prema12$events1), (sum(prema12$n1)-sum(prema12$events1)),
+  sum(prema12$events2), (sum(prema12$n2)-sum(prema12$events2)), 
+   ma12$I2, expma12$pred, expma12$ci.lb, expma12$ci.ub,
+  ma12$pval),
+  c("T2b  vs.  T3b", "8 years", ma13$k.eff, 
+  sum(prema13$events1), (sum(prema13$n1)-sum(prema13$events1)),
+  sum(prema13$events2), (sum(prema13$n2)-sum(prema13$events2)), 
+   ma13$I2, expma13$pred, expma13$ci.lb, expma13$ci.ub,
+  ma13$pval),
+  c("T2b  vs.  T3b", "9 years", ma14$k.eff, 
+  sum(ma14$ai.f), sum(ma14$bi.f),
+  sum(ma14$ci.f), sum(ma14$di.f), 
+   ma14$I2, expma14$pred, expma14$ci.lb, expma14$ci.ub,
+  ma14$pval))
 
 
 
 
 g <- rbind(
-  c("T2b uni  vs.  T2b bi", "3 years", ma24[[15]], sum(ma24[[42]]), sum(ma24[[43]]),
-    sum(ma24[[44]]),sum(ma24[[45]]), ma24[[25]], expma24[[1]], expma24[[3]],
-    expma24[[4]], ma24[[24]]),
-  c("T2b uni  vs.  T2b bi", "4 years", ma25[[15]], sum(ma25[[42]]), sum(ma25[[43]]),
-    sum(ma25[[44]]),sum(ma25[[45]]), ma25[[25]], expma25[[1]], expma25[[3]],
-    expma25[[4]], ma25[[24]]),
-  c("T2b uni  vs.  T2b bi", "5 years", ma26[[15]], sum(ma26[[42]]), sum(ma26[[43]]),
-    sum(ma26[[44]]),sum(ma26[[45]]), ma26[[25]], expma26[[1]], expma26[[3]],
-    expma26[[4]], ma26[[24]]),
-  c("T2b uni  vs.  T2b bi", "6 years", ma27[[15]], sum(ma27[[42]]), sum(ma27[[43]]),
-    sum(ma27[[44]]),sum(ma27[[45]]), ma27[[25]], expma27[[1]], expma27[[3]],
-    expma27[[4]], ma27[[24]]))
+  c("T2b uni  vs.  T2b bi", "3 years", ma24$k.eff, 
+  sum(ma24$ai.f), sum(ma24$bi.f),
+  sum(ma24$ci.f), sum(ma24$di.f), 
+   ma24$I2, expma24$pred, expma24$ci.lb, expma24$ci.ub,
+  ma24$pval),
+  c("T2b uni  vs.  T2b bi", "4 years", ma25$k.eff, 
+  sum(ma25$ai.f), sum(ma25$bi.f),
+  sum(ma25$ci.f), sum(ma25$di.f), 
+   ma25$I2, expma25$pred, expma25$ci.lb, expma25$ci.ub,
+  ma25$pval),
+  c("T2b uni  vs.  T2b bi", "5 years", ma26$k.eff, 
+  sum(ma26$ai.f), sum(ma26$bi.f),
+  sum(ma26$ci.f), sum(ma26$di.f), 
+   ma26$I2, expma26$pred, expma26$ci.lb, expma26$ci.ub,
+  ma26$pval),
+  c("T2b uni  vs.  T2b bi", "6 years", ma27$k.eff, 
+  sum(ma27$ai.f), sum(ma27$bi.f),
+  sum(ma27$ci.f), sum(ma27$di.f), 
+   ma27$I2, expma27$pred, expma27$ci.lb, expma27$ci.ub,
+  ma27$pval))
 
 
 
 
 h <- rbind(
-  c("T2b left  vs.  T2b right", "3 years", ma28[[15]], sum(ma28[[42]]), 
-    sum(ma28[[43]]), sum(ma28[[44]]),sum(ma28[[45]]), ma28[[25]], expma28[[1]], 
-    expma28[[3]], expma28[[4]], ma28[[24]]),
-  c("T2b left  vs.  T2b right", "4 years", ma29[[15]], sum(ma29[[42]]),
-    sum(ma29[[43]]), sum(ma29[[44]]),sum(ma29[[45]]), ma29[[25]], expma29[[1]],
-    expma29[[3]], expma29[[4]], ma29[[24]]))
+  c("T2b left  vs.  T2b right", "3 years", ma28$k.eff, 
+  sum(ma28$ai.f), sum(ma28$bi.f),
+  sum(ma28$ci.f), sum(ma28$di.f), 
+   ma28$I2, expma28$pred, expma28$ci.lb, expma28$ci.ub,
+  ma28$pval),
+  c("T2b left  vs.  T2b right", "4 years", ma29$k.eff, 
+  sum(ma29$ai.f), sum(ma29$bi.f),
+  sum(ma29$ci.f), sum(ma29$di.f), 
+   ma29$I2, expma29$pred, expma29$ci.lb, expma29$ci.ub,
+  ma29$pval))
 
 i <- rbind(
-  c("T2c  vs.  T2b", "3 years", ma30[[15]], sum(ma30[[42]]),
-    sum(ma30[[43]]), sum(ma30[[44]]),sum(ma30[[45]]), ma30[[25]], expma30[[1]],
-    expma30[[3]], expma30[[4]], ma30[[24]]),
-  c("T2c  vs.  T2b", "5 years", ma31[[15]], sum(ma31[[42]]),
-    sum(ma31[[43]]), sum(ma31[[44]]),sum(ma31[[45]]), ma31[[25]], expma31[[1]],
-    expma31[[3]], expma31[[4]], ma31[[24]]))
+  c("T2c  vs.  T2b", "3 years", ma30$k.eff, 
+  sum(ma30$ai.f), sum(ma30$bi.f),
+  sum(ma30$ci.f), sum(ma30$di.f), 
+   ma30$I2, expma30$pred, expma30$ci.lb, expma30$ci.ub,
+  ma30$pval),
+  c("T2c  vs.  T2b", "5 years", ma31$k.eff, 
+  sum(ma31$ai.f), sum(ma31$bi.f),
+  sum(ma31$ci.f), sum(ma31$di.f), 
+   ma31$I2, expma31$pred, expma31$ci.lb, expma31$ci.ub,
+  ma31$pval))
 
 
 j <- rbind(
-  c("T5a  vs.  T3a", "3 years", ma32[[15]], sum(ma32[[42]]), sum(ma32[[43]]),
-    sum(ma32[[44]]),sum(ma32[[45]]), ma32[[25]], expma32[[1]], expma32[[3]], expma32[[4]],
-    ma32[[24]]),
-  c("T5a  vs.  T3a", "4 years", ma33[[15]], sum(ma33[[42]]), sum(ma33[[43]]),
-    sum(ma33[[44]]),sum(ma33[[45]]), ma33[[25]], expma33[[1]], expma33[[3]], expma33[[4]],
-    ma33[[24]]), 
-  c("T5a  vs.  T3a", "5 years", ma34[[15]], sum(ma34[[42]]), sum(ma34[[43]]),
-    sum(ma34[[44]]),sum(ma34[[45]]), ma34[[25]], expma34[[1]], expma34[[3]], expma34[[4]],
-    ma34[[24]]))
+  c("T5a  vs.  T3a", "3 years", ma32$k.eff, 
+  sum(ma32$ai.f), sum(ma32$bi.f),
+  sum(ma32$ci.f), sum(ma32$di.f), 
+   ma32$I2, expma32$pred, expma32$ci.lb, expma32$ci.ub,
+  ma32$pval),
+  c("T5a  vs.  T3a", "4 years", ma33$k.eff, 
+  sum(ma33$ai.f), sum(ma33$bi.f),
+  sum(ma33$ci.f), sum(ma33$di.f), 
+   ma33$I2, expma33$pred, expma33$ci.lb, expma33$ci.ub,
+  ma33$pval), 
+  c("T5a  vs.  T3a", "5 years", ma34$k.eff, 
+  sum(ma34$ai.f), sum(ma34$bi.f),
+  sum(ma34$ci.f), sum(ma34$di.f), 
+   ma34$I2, expma34$pred, expma34$ci.lb, expma34$ci.ub,
+  ma34$pval))
 
 
 k <- rbind(
-  c("T5a  vs.  T3b", "3 years", ma35[[15]], sum(ma35[[42]]), sum(ma35[[43]]),
-    sum(ma35[[44]]),sum(ma35[[45]]), ma35[[25]], expma35[[1]], expma35[[3]], expma35[[4]],
-    ma35[[24]]),
-  c("T5a  vs.  T3b", "4 years", ma36[[15]], sum(ma36[[42]]), sum(ma36[[43]]),
-    sum(ma36[[44]]),sum(ma36[[45]]), ma36[[25]], expma36[[1]], expma36[[3]], expma36[[4]],
-    ma36[[24]]), 
-  c("T5a  vs.  T3b", "5 years", ma37[[15]], sum(ma37[[42]]), sum(ma37[[43]]),
-    sum(ma37[[44]]),sum(ma37[[45]]), ma37[[25]], expma37[[1]], expma37[[3]], expma37[[4]],
-    ma37[[24]]))
+  c("T5a  vs.  T3b", "3 years", ma35$k.eff, 
+  sum(ma35$ai.f), sum(ma35$bi.f),
+  sum(ma35$ci.f), sum(ma35$di.f), 
+   ma35$I2, expma35$pred, expma35$ci.lb, expma35$ci.ub,
+  ma35$pval),
+  c("T5a  vs.  T3b", "4 years", ma36$k.eff, 
+  sum(ma36$ai.f), sum(ma36$bi.f),
+  sum(ma36$ci.f), sum(ma36$di.f), 
+   ma36$I2, expma36$pred, expma36$ci.lb, expma36$ci.ub,
+  ma36$pval), 
+  c("T5a  vs.  T3b", "5 years", ma37$k.eff, 
+  sum(ma37$ai.f), sum(ma37$bi.f),
+  sum(ma37$ci.f), sum(ma37$di.f), 
+   ma37$I2, expma37$pred, expma37$ci.lb, expma37$ci.ub,
+  ma37$pval))
 
-l <- c("T5d  vs.  T3b", "5 years", ma38[[15]], sum(ma38[[42]]), sum(ma38[[43]]),
-    sum(ma38[[44]]),sum(ma38[[45]]), ma38[[25]], expma38[[1]], expma38[[3]], 
-    expma38[[4]], ma38[[24]])
+l <- c("T5d  vs.  T3b", "5 years", ma38$k.eff, 
+  sum(ma38$ai.f), sum(ma38$bi.f),
+  sum(ma38$ci.f), sum(ma38$di.f), 
+   ma38$I2, expma38$pred, expma38$ci.lb, expma38$ci.ub,
+  ma38$pval)
 
 
 
