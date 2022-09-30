@@ -27,7 +27,7 @@ The results of this study were also shared in the [Neurology® Podcast](https://
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo=TRUE)
 knitr::opts_chunk$set(dpi=900)
-knitr::opts_chunk$set(dev='svg')
+knitr::opts_chunk$set(fig.path = "Forestplots/", dev='svg') 
 
 library("webshot")
 library("metafor")
@@ -707,6 +707,7 @@ forestplot(agr2,
                         axes="grey20", summary="black", zero="black"))
 
 ```
+
 
 > To generate this forest plot, we used information from Supplementary Figures 1 to 3.
 

@@ -48,7 +48,7 @@ Click to show
 gravis who underwent* ***Extended transsternal thymectomy*** *vs.*
 ***Transsternal thymectomy*** *at different follow-ups*
 
-![](/Users/oscarponce/Documents/GitHub/Thymectomy/README_files/figure-gfm/unnamed-chunk-1-1.svg)<!-- -->
+![](Forestplots/unnamed-chunk-1-1.svg)<!-- -->
 
 > To generate this forest plot, we used information from Supplementary
 > Figures 1 to 3.
@@ -65,7 +65,7 @@ Click to show
 *Risk of achieving Complete Stable Remission in patients with myasthenia
 gravis who underwent* ***Transsternal Thymectomy*** *vs.* ***Minimally
 Invasive Thymectomy*** *at different follow-ups*
-![](/Users/oscarponce/Documents/GitHub/Thymectomy/README_files/figure-gfm/unnamed-chunk-2-1.svg)<!-- -->
+![](Forestplots/unnamed-chunk-2-1.svg)<!-- -->
 
 > To generate this forest plot, we used information from Supplementary
 > Figures 4 to 9.
@@ -83,7 +83,7 @@ Click to show
 gravis who underwent* ***different types of minimally invasive
 thymectomy*** *at different follow-ups*
 
-![](/Users/oscarponce/Documents/GitHub/Thymectomy/README_files/figure-gfm/unnamed-chunk-3-1.svg)<!-- -->
+![](Forestplots/unnamed-chunk-3-1.svg)<!-- -->
 </details>
 
 ### Figure 5
@@ -98,7 +98,7 @@ gravis who underwent* ***VATS extended unilateral*** *vs. those who
 underwent* ***VATS extended bilateral*** *thymectomy at different
 follow-ups*
 
-![](/Users/oscarponce/Documents/GitHub/Thymectomy/README_files/figure-gfm/unnamed-chunk-4-1.svg)<!-- -->
+![](Forestplots/unnamed-chunk-4-1.svg)<!-- -->
 </details>
 
 ### Figure 6
@@ -112,7 +112,7 @@ Click to show
 undergoing thymectomy by minimally invasive vs. median sternotomy
 approaches*
 
-![](/Users/oscarponce/Documents/GitHub/Thymectomy/README_files/figure-gfm/complications_overall-1.svg)<!-- -->
+![](Forestplots/complications_overall-1.svg)<!-- -->
 </details>
 
 ## Supplementary Figures
@@ -125,7 +125,7 @@ Suppl. Figure 1: Extended Transsternal vs. Basic Transsternal, risk of
 CSR at 3 years of follow-up
 </summary>
 <p>
-![](/Users/oscarponce/Documents/GitHub/Thymectomy/README_files/figure-gfm/forestplotma40-1.svg)<!-- -->
+![](Forestplots/forestplotma40-1.svg)<!-- -->
 </p>
 </details>
 <details>
@@ -134,7 +134,7 @@ Suppl. Figure 2: Extended Transsternal vs. Basic Transsternal, risk of
 CSR at 4 years of follow-up
 </summary>
 <p>
-![](/Users/oscarponce/Documents/GitHub/Thymectomy/README_files/figure-gfm/forestplotma41-1.svg)<!-- -->
+![](Forestplots/forestplotma41-1.svg)<!-- -->
 </p>
 </details>
 <details>
@@ -143,7 +143,7 @@ Suppl. Figure 3: Extended Transsternal vs. Basic Transsternal, risk of
 CSR at 4 years of follow-up
 </summary>
 <p>
-![](/Users/oscarponce/Documents/GitHub/Thymectomy/README_files/figure-gfm/forestplotma42-1.svg)<!-- -->
+![](Forestplots/forestplotma42-1.svg)<!-- -->
 </p>
 </details>
 
@@ -155,7 +155,7 @@ Suppl. Figure 4: Extended Transsternal vs. VATS extended, risk of CSR at
 3 years of follow-up
 </summary>
 <p>
-![](/Users/oscarponce/Documents/GitHub/Thymectomy/README_files/figure-gfm/forestplotma43-1.svg)<!-- -->
+![](Forestplots/forestplotma43-1.svg)<!-- -->
 </p>
 </details>
 <details>
@@ -164,7 +164,7 @@ Suppl. Figure 5: Extended Transsternal vs. VATS extended, risk of CSR at
 4 years of follow-up
 </summary>
 <p>
-![](/Users/oscarponce/Documents/GitHub/Thymectomy/README_files/figure-gfm/forestplotma44-1.svg)<!-- -->
+![](Forestplots/forestplotma44-1.svg)<!-- -->
 </p>
 </details>
 <details>
@@ -173,7 +173,7 @@ Suppl. Figure 6: Extended Transsternal vs. VATS extended, risk of CSR at
 5 years of follow-up
 </summary>
 <p>
-![](/Users/oscarponce/Documents/GitHub/Thymectomy/README_files/figure-gfm/forestplotma45-1.svg)<!-- -->
+![](Forestplots/forestplotma45-1.svg)<!-- -->
 </p>
 </details>
 <details>
@@ -182,7 +182,7 @@ Suppl. Figure 7: Extended Transsternal vs. VATS extended, risk of CSR at
 6 years of follow-up
 </summary>
 <p>
-![](/Users/oscarponce/Documents/GitHub/Thymectomy/README_files/figure-gfm/forestplotma46-1.svg)<!-- -->
+![](Forestplots/forestplotma46-1.svg)<!-- -->
 </p>
 </details>
 <details>
@@ -191,7 +191,7 @@ Suppl. Figure 8: Extended Transsternal vs. VATS extended, risk of CSR at
 7 years of follow-up
 </summary>
 <p>
-![](/Users/oscarponce/Documents/GitHub/Thymectomy/README_files/figure-gfm/forestplotma47-1.svg)<!-- -->
+![](Forestplots/forestplotma47-1.svg)<!-- -->
 </p>
 </details>
 <details>
@@ -200,6 +200,6 @@ Suppl. Figure 9: Extended Transsternal vs. VATS extended, risk of CSR at
 8 years of follow-up
 </summary>
 <p>
-![](/Users/oscarponce/Documents/GitHub/Thymectomy/README_files/figure-gfm/forestplotma48-1.svg)<!-- -->
+![](Forestplots/forestplotma48-1.svg)<!-- -->
 </p>
 </details>
