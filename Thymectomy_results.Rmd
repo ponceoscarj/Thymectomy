@@ -1,9 +1,28 @@
 ---
 title: "Thymectomy"
-author: "Oscar J. Ponce & Andrea Solis-Pazmino"
-date: "5/7/2020"
 output: github_document
+knit: (function(inputFile, encoding) { rmarkdown::render(inputFile, encoding = encoding, output_file = paste0(dirname(inputFile),'/README.md')) })
 ---
+
+<i>Analysis and visualization developed by [Oscar J. Ponce](https://twitter.com/PonceOJ), and project led by [Andrea Paola Solis-Pazmino](https://twitter.com/paosolpaz18)</i>
+
+
+## Publication
+
+To know more about the methodology, results and conclusion of this study follow the link below.
+
+| Title      | Impact of the Surgical Approach to Thymectomy Upon Complete Stable Remission Rates in Myasthenia Gravis: A Meta-analysis |
+| :--- | :---- |
+| Journal      | Neurology       |
+| Publication date | 4 May 2021 |
+| DOI | [10.1212/WNL.0000000000012153](https://n.neurology.org/content/97/4/e357) |
+
+
+## Podcast
+
+The results of this study were also shared in the [Neurology® Podcast](https://podcasts.apple.com/us/podcast/impact-of-thymectomy-on-myasthenia-gravis-remission/id266288159?i=1000530091215)
+
+
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo=TRUE)
@@ -16,14 +35,6 @@ library("tidyverse")
 library("rmarkdown")
 library("magrittr")
 library("forestplot")
-library(grid)
-library(gt)
-library(glue)
-library(Gmisc)
-
-webshot::install_phantomjs()
-
-#if you are using macOS, you might need to install: https://www.xquartz.org
 
 ```
 
@@ -154,11 +165,6 @@ pao$int <- ifelse(pao$refid==196, paste("T2b uni"), pao$int)
 pao$comparison <- paste(pao$int, " vs. ", pao$comp)
 ```
 
-The following documents should not be viewed without reading the article, especially the graphs and tables. The article will clarify how to use all the information available in this site.
-
-
-
-
 
 
 ## Open Data
@@ -169,130 +175,13 @@ The following documents should not be viewed without reading the article, especi
 | Stage  |      File     |  
 |:----------:|:-------------:|
 | Protocol | [Prospero](https://www.crd.york.ac.uk/prospero/display_record.php?RecordID=166827)|
-| Search strategy | `Shown below` (Available to download as `.CSV`: [OVID](https://github.com/ponceoscarj/Thymectomy/blob/master/1%20Search%20strategy/ovid_search.csv), [Scopus](https://github.com/ponceoscarj/Thymectomy/blob/master/1%20Search%20strategy/scopus_search.csv)) |
+| Search strategy | Available to download as `.CSV`: [OVID](https://github.com/ponceoscarj/Thymectomy/blob/master/1%20Search%20strategy/ovid_search.csv), [Scopus](https://github.com/ponceoscarj/Thymectomy/blob/master/1%20Search%20strategy/scopus_search.csv) |
 | Abstract screening | [References used in this stage or search results](https://github.com/ponceoscarj/Thymectomy/blob/master/Screening_results/articles_for_abstract_screening.txt) |
 | Full-text screening | [References used in this stage](https://github.com/ponceoscarj/Thymectomy/blob/master/Screening_results/articles_for_fulltext_screening.txt) |
 | Included studies | [References used for data extraction](https://github.com/ponceoscarj/Thymectomy/blob/master/Screening_results/included_articles.txt) |
 | Raw Outcome data | [Available as `.CSV`](https://github.com/ponceoscarj/Thymectomy/blob/master/Data/thymectomy_outcomes.csv)|
 | Analysis codes | [Script as `R Markdown`](https://github.com/ponceoscarj/Thymectomy/blob/master/Thymectomy_results.Rmd)|
 
-
-## Search strategy
-
-
-<details>
-<summary>Show OVID search</summary>
-
-```{r ovid, echo=FALSE, message=FALSE, warning=FALSE}
-
-ovid <- read.csv("1 Search strategy/ovid_search.csv")
-names(ovid)[1] <- "line"
-names(ovid)[2] <- "terms"
-
-ovid <- as_tibble(ovid)
-
-ovid <- 
-  ovid %>%
-  gt(
-    rowname_col = "row",
-    groupname_col = "group"
-  )   %>%
-  fmt_markdown(columns = TRUE)
-
-
-ovid2 <-  ovid %>%
-  tab_header( 
-    title = md("**Ovid Search**"),
-    subtitle = md("Databases: EBM Reviews - Cochrane Central Register of Controlled Trials April 2019, EBM Reviews - Cochrane Database of Systematic Reviews 2005 to May 2, 2019, Embase 1974 to 2019 May 03, Ovid MEDLINE(R) and Epub Ahead of Print, In-Process & Other Non-Indexed Citations and Daily 1946 to May 03, 2019")
-    ) %>%
-  tab_options( 
-    data_row.padding = px(5)
-  ) %>%
-  cols_align(
-    align = "left",
-    columns = TRUE
-  ) %>%
-  fmt_number( 
-    columns = vars("line"),
-    decimals = 0
-  ) %>%
-  fmt_passthrough(
-    columns = vars("terms"),
-  ) %>%
-  cols_label(
-    line = md("**Search <br> line**"),
-    terms = md("**Search <br> terms**")
-  ) 
-
-gtsave(ovid2, "trial1.png")
-invisible(file.remove("trial1.png"))
-
-
-```
-
-</details>
-
-
-<details>
-<summary>Show SCOPUS search</summary>
-
-```{r scopus, echo=FALSE, message=FALSE, warning=FALSE}
-
-scopus <- read.csv("1 Search strategy/scopus_search.csv")
-names(scopus)[1] <- "line"
-names(scopus)[2] <- "terms"
-
-ovid <- as_tibble(scopus)
-
-scopus <- scopus %>% 
-gt() %>%
-  tab_header( 
-    title = md("**Scopus Search**"),
-  ) %>%
-  cols_align(
-    align = "left",
-    columns = TRUE
-  ) %>%
-  fmt_number( 
-    columns = vars("line"),
-    decimals = 0
-  ) %>%
-  fmt_passthrough(
-    columns = vars("terms"),
-  ) %>%
-  cols_label(
-    line = md("**Search <br> line**"),
-    terms = md("**Search <br> terms**"),
-  ) %>%
-  tab_options(
-        column_labels.border.bottom.width = 0.5,
-        data_row.padding = px(4)
-  )%>%
-  tab_options(
-        column_labels.border.bottom.width = 0.5,
-        column_labels.border.top.width = 0.5,
-        table.font.size = "small",
-
-        data_row.padding = px(5)
-  )
-
-gtsave(scopus, "trial2.png")
-invisible(file.remove("trial2.png"))
-
-```
-</details>
-
-## Flow chart 
-
-
-### Figure 1
-
-<details>
-<summary>Show</summary>
-
-![flowchart](Flowchart/flowchart.png)
-
-</details>
 
 
 ```{r overall_analysis, echo=FALSE}
@@ -1532,7 +1421,7 @@ rrsma1 <- structure(list(
   class = "data.frame")
 
 
-forestplot(tfma1,
+forestplot(as.matrix(tfma1),
            graph.pos = 4,
            zero=1,
            rrsma1,
@@ -1605,7 +1494,7 @@ rrsma2 <- structure(list(
   class = "data.frame")
 
 
-forestplot(tfma2,
+forestplot(as.matrix(tfma2),
            graph.pos = 4,
            zero=1,
            rrsma2,
@@ -1679,7 +1568,7 @@ rrsma3 <- structure(list(
   class = "data.frame")
 
 
-forestplot(tfma3,
+forestplot(as.matrix(tfma3),
            graph.pos = 4,
            zero=1,
            rrsma3,
@@ -1751,7 +1640,7 @@ rrsma8 <- structure(list(
   class = "data.frame")
 
 
-forestplot(tfma8,
+forestplot(as.matrix(tfma8),
            graph.pos = 4,
            zero=1,
            rrsma8,
@@ -1820,7 +1709,7 @@ rrsma9 <- structure(list(
   row.names = c(NA, -11L),
   class = "data.frame")
 
-forestplot(tfma9,
+forestplot(as.matrix(tfma9),
            graph.pos = 4,
            zero=1,
            rrsma9,
@@ -1891,7 +1780,7 @@ rrsma10 <- structure(list(
   row.names = c(NA, -10L),
   class = "data.frame")
 
-forestplot(tfma10,
+forestplot(as.matrix(tfma10),
            graph.pos = 4,
            zero=1,
            rrsma10,
@@ -1960,7 +1849,7 @@ rrsma11 <- structure(list(
   row.names = c(NA, -9L),
   class = "data.frame")
 
-forestplot(tfma11,
+forestplot(as.matrix(tfma11),
            graph.pos = 4,
            zero=1,
            rrsma11,
@@ -2028,7 +1917,7 @@ rrsma12 <- structure(list(
   row.names = c(NA, -9L),
   class = "data.frame")
 
-forestplot(tfma12,
+forestplot(as.matrix(tfma12),
            graph.pos = 4,
            zero=1,
            rrsma12,
@@ -2097,7 +1986,7 @@ rrsma13 <- structure(list(
   row.names = c(NA, -8L),
   class = "data.frame")
 
-forestplot(tfma13,
+forestplot(as.matrix(tfma13),
            graph.pos = 4,
            zero=1,
            rrsma13,
