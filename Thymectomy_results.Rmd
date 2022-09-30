@@ -1449,6 +1449,7 @@ forestplot(as.matrix(tfma1),
            col=fpColors(box="black",line="grey", 
                         axes="grey20", summary="black", zero="black"))
 ```
+
 </p>
 </details>
 
@@ -1522,6 +1523,7 @@ forestplot(as.matrix(tfma2),
            col=fpColors(box="black",line="grey", 
                         axes="grey20", summary="black", zero="black"))
 ```
+
 </p>
 </details>
 
@@ -1596,6 +1598,7 @@ forestplot(as.matrix(tfma3),
            col=fpColors(box="black",line="grey", 
                         axes="grey20", summary="black", zero="black"))
 ```
+
 </p>
 </details>
 
@@ -1604,6 +1607,7 @@ forestplot(as.matrix(tfma3),
 ### Extended Transsternal vs. VATS extended forest plots
 <details><summary> Suppl. Figure 4: Extended Transsternal vs. VATS extended, risk of CSR at 3 years of follow-up </summary>
 <p>
+
 ```{r forestplotma43, echo=FALSE, message=FALSE, warning=FALSE, fig.height=3, fig.width=9.5}
 boxsize <- (0.01666667*(weights(ma8)))
 
@@ -1668,12 +1672,14 @@ forestplot(as.matrix(tfma8),
            col=fpColors(box="black",line="grey", 
                         axes="grey20", summary="black", zero="black"))
 ```
+
 </p>
 </details>
 
 
 <details><summary> Suppl. Figure 5: Extended Transsternal vs. VATS extended, risk of CSR at 4 years of follow-up </summary>
 <p>
+
 ```{r forestplotma44, echo=FALSE, message=FALSE, warning=FALSE, fig.height=3, fig.width=9.5}
 boxsize <- (0.01666667*(weights(ma9)))
 
@@ -1738,6 +1744,7 @@ forestplot(as.matrix(tfma9),
                         axes="grey20", summary="black", zero="black"))
 
 ```
+
 </p>
 </details>
 
@@ -1745,6 +1752,7 @@ forestplot(as.matrix(tfma9),
 
 <details><summary> Suppl. Figure 6: Extended Transsternal vs. VATS extended, risk of CSR at 5 years of follow-up </summary>
 <p>
+
 ```{r forestplotma45, echo=FALSE, message=FALSE, warning=FALSE, fig.height=3, fig.width=9.5}
 boxsize <- (0.0125*(weights(ma10)))
 
@@ -1808,12 +1816,14 @@ forestplot(as.matrix(tfma10),
            col=fpColors(box="black",line="grey", 
                         axes="grey20", summary="black", zero="black"))
 ```
+
 </p>
 </details>
 
 
 <details><summary> Suppl. Figure 7: Extended Transsternal vs. VATS extended, risk of CSR at 6 years of follow-up </summary>
 <p>
+
 ```{r forestplotma46, echo=FALSE, message=FALSE, warning=FALSE, fig.height=3, fig.width=9.5}
 boxsize <- (0.0125*(weights(ma11)))
 
@@ -1877,11 +1887,13 @@ forestplot(as.matrix(tfma11),
            col=fpColors(box="black",line="grey", 
                         axes="grey20", summary="black", zero="black"))
 ```
+
 </p>
 </details>
 
 <details><summary> Suppl. Figure 8: Extended Transsternal vs. VATS extended, risk of CSR at 7 years of follow-up </summary>
 <p>
+
 ```{r forestplotma47, echo=FALSE, message=FALSE, warning=FALSE, fig.height=3, fig.width=9.5}
 boxsize <- (0.0125*(weights(ma12)))
 
@@ -1945,12 +1957,14 @@ forestplot(as.matrix(tfma12),
            col=fpColors(box="black",line="grey", 
                         axes="grey20", summary="black", zero="black"))
 ```
+
 </p>
 </details>
 
 
 <details><summary> Suppl. Figure 9: Extended Transsternal vs. VATS extended, risk of CSR at 8 years of follow-up </summary>
 <p>
+
 ```{r forestplotma48, echo=FALSE, message=FALSE, warning=FALSE, fig.height=3, fig.width=9.5}
 boxsize <- (0.0125*(weights(ma13)))
 
@@ -2014,6 +2028,7 @@ forestplot(as.matrix(tfma13),
            col=fpColors(box="black",line="grey", 
                         axes="grey20", summary="black", zero="black"))
 ```
+
 </p>
 </details>
 
